@@ -24,7 +24,8 @@ namespace Datamodel {
 
 		}
 
-		public int CheckPositionIds{
+		public IEnumerable<int> CheckPositionIds
+        {
 			get;
 			set;
 		}

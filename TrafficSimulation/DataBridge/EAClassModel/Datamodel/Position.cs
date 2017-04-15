@@ -14,27 +14,27 @@ using System.IO;
 
 
 namespace Datamodel {
-	public class Position {
+    public class Position {
 
-		public Position(){
+        public Position() {
 
-		}
+        }
 
-		~Position(){
+        ~Position() {
 
-		}
+        }
 
-		public int Id{
-			get;
-			set;
-		}
+        public int Id {
+            get;
+            set;
+        }
 
-		public int MaxVelocity{
-			get;
-			set;
-		}
+        public int MaxVelocity {
+            get;
+            set;
+        }
 
-		public int PredecessorIds{
+        public IEnumerable<int> PredecessorIds{
 			get;
 			set;
 		}
@@ -44,12 +44,14 @@ namespace Datamodel {
 			set;
 		}
 
-		public int RuleIds{
+		public IEnumerable<int> RuleIds
+        {
 			get;
 			set;
 		}
 
-		public int SuccessorIds{
+		public IEnumerable<int> SuccessorIds
+        {
 			get;
 			set;
 		}

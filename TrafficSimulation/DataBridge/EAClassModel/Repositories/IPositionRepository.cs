@@ -29,19 +29,19 @@ namespace Repositories {
 		/// <param name="positionId"></param>
 		Datamodel.Position GetPosition(int positionId);
 
-		/// <summary>
-		/// TODO: List
-		/// </summary>
-		/// <param name="numSteps"></param>
-		/// <param name="startPositionId"></param>
-		List<Position> GetPredeccessors(int numSteps, int startPositionId);
+        /// <summary>
+        /// TODO: List
+        /// </summary>
+        /// <param name="numSteps"></param>
+        /// <param name="startPositionId"></param>
+        IEnumerable<Position> GetPredeccessors(int numSteps, int startPositionId);
 
-		/// <summary>
-		/// Todo: List
-		/// </summary>
-		/// <param name="numSteps"></param>
-		/// <param name="startPositionId"></param>
-		List<Position> GetSuccessors(int numSteps, int startPositionId);
+        /// <summary>
+        /// Todo: List
+        /// </summary>
+        /// <param name="numSteps"></param>
+        /// <param name="startPositionId"></param>
+        IEnumerable<Position> GetSuccessors(int numSteps, int startPositionId);
 
 		/// 
 		/// <param name="position"></param>

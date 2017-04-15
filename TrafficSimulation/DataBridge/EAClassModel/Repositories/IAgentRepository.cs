@@ -36,45 +36,12 @@ namespace Repositories {
 		/// TODO: List
 		/// </summary>
 		/// <param name="positionIds"></param>
-		List<Agent> GetAgentsForPositionIds(int positionIds);
+		IEnumerable<Agent> GetAgentsForPositionIds(int positionIds);
 
-		/// <summary>
-		/// TODO: List
-		/// </summary>
-		List<Agent> GetAllAgents();
-
-		/// 
-		/// <param name="agent"></param>
-		Datamodel.Agent Update(Agent agent);
-	}//end IAgentRepository
-
-	/// <summary>
-	/// end IAgentRepository
-	/// </summary>
-	public interface IAgentRepository  {
-
-		/// 
-		/// <param name="agent"></param>
-		Datamodel.Agent Create(Agent agent);
-
-		/// 
-		/// <param name="agent"></param>
-		void Delete(Agent agent);
-
-		/// 
-		/// <param name="agentId"></param>
-		Datamodel.Agent GetAgent(int agentId);
-
-		/// <summary>
-		/// TODO: List
-		/// </summary>
-		/// <param name="positionIds"></param>
-		List<Agent> GetAgentsForPositionIds(int positionIds);
-
-		/// <summary>
-		/// TODO: List
-		/// </summary>
-		List<Agent> GetAllAgents();
+        /// <summary>
+        /// TODO: List
+        /// </summary>
+        IEnumerable<Agent> GetAllAgents();
 
 		/// 
 		/// <param name="agent"></param>

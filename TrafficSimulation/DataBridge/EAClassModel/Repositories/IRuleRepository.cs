@@ -25,24 +25,24 @@ namespace Repositories {
 		/// <param name="rule"></param>
 		void Delete(Rule rule);
 
-		/// <summary>
-		/// TODO:List
-		/// </summary>
-		List<Rule> GetAllRules();
+        /// <summary>
+        /// TODO:List
+        /// </summary>
+        IEnumerable<Rule> GetAllRules();
 
-		/// <summary>
-		/// Todo: List
-		/// </summary>
-		List<Rule> GetDynamicRules();
+        /// <summary>
+        /// Todo: List
+        /// </summary>
+        IEnumerable<Rule> GetDynamicRules();
 
 		/// 
 		/// <param name="ruleId"></param>
 		Datamodel.Rule GetRule(int ruleId);
 
-		/// <summary>
-		/// Todo: List
-		/// </summary>
-		List<Rule> GetStaticRules();
+        /// <summary>
+        /// Todo: List
+        /// </summary>
+        IEnumerable<Rule> GetStaticRules();
 
 		/// 
 		/// <param name="rule"></param>
