@@ -15,9 +15,6 @@ using System.IO;
 
 using Datamodel;
 namespace Repositories {
-	/// <summary>
-	/// end IAgentRepository
-	/// </summary>
 	public interface IAgentRepository  {
 
 		/// 
