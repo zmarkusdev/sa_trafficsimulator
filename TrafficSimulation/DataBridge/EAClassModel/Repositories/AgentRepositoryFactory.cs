@@ -17,14 +17,6 @@ using Repositories;
 namespace Repositories {
 	public abstract class AgentRepositoryFactory {
 
-		public AgentRepositoryFactory(){
-
-		}
-
-		~AgentRepositoryFactory(){
-
-		}
-
 		public static IAgentRepository CreateRepository(){
 
 			return null;

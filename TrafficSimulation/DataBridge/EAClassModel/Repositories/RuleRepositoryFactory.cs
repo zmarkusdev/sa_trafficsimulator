@@ -17,14 +17,6 @@ using Repositories;
 namespace Repositories {
 	public abstract class RuleRepositoryFactory {
 
-		public RuleRepositoryFactory(){
-
-		}
-
-		~RuleRepositoryFactory(){
-
-		}
-
 		public static IRuleRepository CreateRepository(){
 
 			return null;

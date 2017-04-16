@@ -17,14 +17,6 @@ using Repositories;
 namespace Repositories {
 	public abstract class MapRepositoryFactory {
 
-		public MapRepositoryFactory(){
-
-		}
-
-		~MapRepositoryFactory(){
-
-		}
-
 		public static IMapRepository CreateRepository(){
 
 			return null;

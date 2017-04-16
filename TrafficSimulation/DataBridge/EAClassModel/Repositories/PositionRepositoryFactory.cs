@@ -17,14 +17,6 @@ using Repositories;
 namespace Repositories {
 	public abstract class PositionRepositoryFactory {
 
-		public PositionRepositoryFactory(){
-
-		}
-
-		~PositionRepositoryFactory(){
-
-		}
-
 		public static IPositionRepository CreateRepository(){
 
 			return null;
