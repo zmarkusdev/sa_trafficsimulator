@@ -12,7 +12,7 @@ using System.Text;
 using System.IO;
 
 
-
+using Datamodel;
 namespace Repositories {
 	public interface IAgentSimConfigurationRepository  {
 
