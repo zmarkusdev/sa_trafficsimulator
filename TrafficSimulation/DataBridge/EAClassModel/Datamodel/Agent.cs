@@ -44,6 +44,21 @@ namespace Datamodel {
 			set;
 		}
 
+		public int Acceleration{
+			get;
+			set;
+		}
+
+		public int Deceleration{
+			get;
+			set;
+		}
+
+		public int MaxVelocity{
+			get;
+			set;
+		}
+
 	}//end Agent
 
 }//end namespace Datamodel

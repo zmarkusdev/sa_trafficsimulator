@@ -15,7 +15,7 @@ using System.IO;
 
 using Datamodel;
 namespace Repositories {
-	public interface IRuleRepository   {
+	public interface IRuleRepository      {
 
 		/// 
 		/// <param name="rule"></param>

@@ -15,7 +15,7 @@ using System.IO;
 
 using Datamodel;
 namespace Repositories {
-	public interface IPositionRepository   {
+	public interface IPositionRepository      {
 
 		/// 
 		/// <param name="position"></param>

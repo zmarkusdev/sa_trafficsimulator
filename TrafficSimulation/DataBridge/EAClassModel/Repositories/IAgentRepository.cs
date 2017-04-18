@@ -18,7 +18,7 @@ namespace Repositories {
 	/// <summary>
 	/// end IAgentRepository
 	/// </summary>
-	public interface IAgentRepository    {
+	public interface IAgentRepository         {
 
 		/// 
 		/// <param name="agent"></param>
