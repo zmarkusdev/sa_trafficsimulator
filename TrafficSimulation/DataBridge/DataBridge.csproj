@@ -40,23 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="EAClassModel\Datamodel\Agent.cs" />
-    <Compile Include="EAClassModel\Datamodel\AgentType.cs" />
-    <Compile Include="EAClassModel\Datamodel\Map.cs" />
-    <Compile Include="EAClassModel\Datamodel\Position.cs" />
-    <Compile Include="EAClassModel\Datamodel\Rule.cs" />
-    <Compile Include="EAClassModel\Datamodel\RuleType.cs" />
-    <Compile Include="EAClassModel\Repositories\AgentRepositoryFactory.cs" />
-    <Compile Include="EAClassModel\Repositories\IAgentRepository.cs" />
-    <Compile Include="EAClassModel\Repositories\IMapRepository.cs" />
-    <Compile Include="EAClassModel\Repositories\IPositionRepository.cs" />
-    <Compile Include="EAClassModel\Repositories\IRuleRepository.cs" />
-    <Compile Include="EAClassModel\Repositories\MapRepositoryFactory.cs" />
-    <Compile Include="EAClassModel\Repositories\PositionRepositoryFactory.cs" />
-    <Compile Include="EAClassModel\Repositories\RuleRepositoryFactory.cs" />
+    <Compile Include="Datamodel\Agent.cs" />
+    <Compile Include="Datamodel\AgentSimConfiguration.cs" />
+    <Compile Include="Datamodel\AgentType.cs" />
+    <Compile Include="Datamodel\Map.cs" />
+    <Compile Include="Datamodel\Position.cs" />
+    <Compile Include="Datamodel\Rule.cs" />
+    <Compile Include="Datamodel\RuleType.cs" />
+    <Compile Include="Repositories\AgentRepositoryFactory.cs" />
+    <Compile Include="Repositories\AgentSimConfigurationRepositoryFactory.cs" />
+    <Compile Include="Repositories\IAgentRepository.cs" />
+    <Compile Include="Repositories\IAgentSimConfigurationRepository.cs" />
+    <Compile Include="Repositories\IMapRepository.cs" />
+    <Compile Include="Repositories\IPositionRepository.cs" />
+    <Compile Include="Repositories\IRuleRepository.cs" />
+    <Compile Include="Repositories\MapRepositoryFactory.cs" />
+    <Compile Include="Repositories\PositionRepositoryFactory.cs" />
+    <Compile Include="Repositories\RuleRepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
