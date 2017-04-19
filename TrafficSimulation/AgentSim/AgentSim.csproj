@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgentSim.cs" />
+    <Compile Include="AgentSimulation.cs" />
     <Compile Include="IAgentSim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgentSim;
+using Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,22 @@ namespace TrafficSimulation
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            // Prepare dependencies
+            IAgentSimConfigurationRepository agentSimConfigurationRepository = AgentSimConfigurationRepositoryFactory.CreateRepository();
+
+            // Start agent simulation
+            IAgentSim agentSim = new AgentSimulation(agentSimConfigurationRepository);
+            agentSim.Start();
+
+
+            // Prepare ending of the simulation
+            do
+            {
+                Console.WriteLine("Press q to quit...");
+            } while (!Console.ReadLine().Equals("q"));
+
+            // Stop applications
+            agentSim.Stop();
         }
     }
 }

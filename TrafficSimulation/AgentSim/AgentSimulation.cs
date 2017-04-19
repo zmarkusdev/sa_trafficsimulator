@@ -5,23 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Datamodel;
 using Repositories;
+using System.Threading;
 
 namespace AgentSim
 {
     /// <summary>
     /// Implementation for the IAgentSim interface for spawning agents and calling their Behaviours
     /// </summary>
-    public class AgentSim : IAgentSim
+    public class AgentSimulation : IAgentSim
     {
         private readonly IAgentSimConfigurationRepository agentSimConfigurationRepository_;
+
+        private bool shouldStop_;
+        private Thread simulationThread_;
 
         /// <summary>
         /// Dependency constructor for the AgentSim class.
         /// </summary>
         /// <param name="agentSimConfigurationRepository">DataBridge dependency of the IAgentSimConfigurationRepository</param>
-        public AgentSim(IAgentSimConfigurationRepository agentSimConfigurationRepository)
+        public AgentSimulation(IAgentSimConfigurationRepository agentSimConfigurationRepository)
         {
             agentSimConfigurationRepository_ = agentSimConfigurationRepository;
+
+            shouldStop_ = false;
         }
 
         /// <summary>
@@ -38,7 +44,10 @@ namespace AgentSim
         /// </summary>
         public void Start()
         {
-            throw new NotImplementedException();
+            shouldStop_ = false;
+
+            simulationThread_ = new Thread(this.Run);
+            simulationThread_.Start();
         }
 
         /// <summary>
@@ -46,7 +55,20 @@ namespace AgentSim
         /// </summary>
         public void Stop()
         {
-            throw new NotImplementedException();
+            shouldStop_ = true;
+        }
+
+        /// <summary>
+        /// Run method for the simulation thread
+        /// </summary>
+        private void Run()
+        {
+            while(!shouldStop_)
+            {
+                Console.WriteLine("Executing simulation thread cycle");
+
+                Thread.Sleep(100);
+            }
         }
     }
 }

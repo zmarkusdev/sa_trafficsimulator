@@ -52,6 +52,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AgentSim\AgentSim.csproj">
+      <Project>{1337d396-7f97-46ce-b758-4bd1f5633c51}</Project>
+      <Name>AgentSim</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBridge\DataBridge.csproj">
       <Project>{340107c2-a376-454f-8e21-4ffe995a8eba}</Project>
       <Name>DataBridge</Name>
