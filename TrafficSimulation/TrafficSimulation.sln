@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RuleEngine", "RuleEngine", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBridge", "DataBridge\DataBridge.csproj", "{340107C2-A376-454F-8E21-4FFE995A8EBA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Experiments", "Experiments", "{FCD2827F-EC7C-4925-B9D8-FA551C09146E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experiment01", "Experiment01\Experiment01.csproj", "{01900E85-FC5B-420E-8F70-36B9A39DB472}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{340107C2-A376-454F-8E21-4FFE995A8EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{340107C2-A376-454F-8E21-4FFE995A8EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{340107C2-A376-454F-8E21-4FFE995A8EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01900E85-FC5B-420E-8F70-36B9A39DB472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01900E85-FC5B-420E-8F70-36B9A39DB472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01900E85-FC5B-420E-8F70-36B9A39DB472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01900E85-FC5B-420E-8F70-36B9A39DB472}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,5 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C0E77E0F-6A3C-4F42-B6A0-28C81254AAA9} = {CD5C9E9C-5E16-4EE1-A147-3A323169FD3F}
 		{340107C2-A376-454F-8E21-4FFE995A8EBA} = {9D20ACFD-85FA-4948-B7ED-692EC32FDB02}
+		{FCD2827F-EC7C-4925-B9D8-FA551C09146E} = {9634841A-9236-47E4-8377-09E20659D54F}
+		{01900E85-FC5B-420E-8F70-36B9A39DB472} = {FCD2827F-EC7C-4925-B9D8-FA551C09146E}
 	EndGlobalSection
 EndGlobal
