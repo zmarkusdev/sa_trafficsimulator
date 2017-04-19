@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datamodel;
 using Repositories;
 using System.Threading;
+using AgentSim.Spawners;
 
 namespace AgentSim
 {
@@ -15,18 +16,24 @@ namespace AgentSim
     public class AgentSimulation : IAgentSim
     {
         private readonly IAgentSimConfigurationRepository agentSimConfigurationRepository_;
+        private readonly IPositionRepository positionRepository_;
+        private readonly IAgentRepository agentRepository_;
 
         private bool shouldStop_;
         private Thread simulationThread_;
+
+        private List<Agent> agents_;
 
         /// <summary>
         /// Dependency constructor for the AgentSim class.
         /// </summary>
         /// <param name="agentSimConfigurationRepository">DataBridge dependency of the IAgentSimConfigurationRepository</param>
-        public AgentSimulation(IAgentSimConfigurationRepository agentSimConfigurationRepository)
+        /// <param name="positionRepository">DataBridge dependency of the IPositionRepository</param>
+        public AgentSimulation(IAgentSimConfigurationRepository agentSimConfigurationRepository, IPositionRepository positionRepository, IAgentRepository agentRepository)
         {
             agentSimConfigurationRepository_ = agentSimConfigurationRepository;
-
+            positionRepository_ = positionRepository;
+            agentRepository_ = agentRepository;
             shouldStop_ = false;
         }
 
@@ -63,9 +70,19 @@ namespace AgentSim
         /// </summary>
         private void Run()
         {
+            // Get agent configuration
+            IEnumerable<AgentSimConfiguration> agentConfigurations = agentSimConfigurationRepository_.GetAll();
+
+            // Create instance of spawner
+            ISpawner spawner = SpawnerFactory.CreateSpawner(positionRepository_);
+
             while(!shouldStop_)
             {
                 Console.WriteLine("Executing simulation thread cycle");
+
+                // Spawn new agents
+
+                // Execute behaviours for all agents
 
                 Thread.Sleep(100);
             }

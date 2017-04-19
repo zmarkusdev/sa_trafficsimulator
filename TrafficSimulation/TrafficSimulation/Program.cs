@@ -21,9 +21,11 @@ namespace TrafficSimulation
         {
             // Prepare dependencies
             IAgentSimConfigurationRepository agentSimConfigurationRepository = AgentSimConfigurationRepositoryFactory.CreateRepository();
+            IPositionRepository positionRepository = PositionRepositoryFactory.CreateRepository();
+            IAgentRepository agentRepository = AgentRepositoryFactory.CreateRepository();
 
             // Start agent simulation
-            IAgentSim agentSim = new AgentSimulation(agentSimConfigurationRepository);
+            IAgentSim agentSim = new AgentSimulation(agentSimConfigurationRepository, positionRepository, agentRepository);
             agentSim.Start();
 
 
