@@ -19,7 +19,7 @@ namespace Repositories {
 
 		public static IRuleRepository CreateRepository(){
 
-			return null;
+			return new DataBridge.Services.MockedRuleService();
 		}
 
 	}//end RuleRepositoryFactory
