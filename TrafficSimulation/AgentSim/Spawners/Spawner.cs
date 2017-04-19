@@ -10,9 +10,11 @@ namespace AgentSim.Spawners
 {
     internal class Spawner : ISpawner
     {
+        private IEnumerable<Position> possibleStartPositions_;
+
         public Spawner(IPositionRepository positionRepository)
         {
-            
+            possibleStartPositions_ = positionRepository.GetStartPositions();
         }
 
         public IEnumerable<Agent> SpawnAgents(IEnumerable<AgentSimConfiguration> simConfiguration)

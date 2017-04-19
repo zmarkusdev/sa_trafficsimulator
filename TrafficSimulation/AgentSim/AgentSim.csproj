@@ -42,8 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentSimulation.cs" />
+    <Compile Include="Behaviours\IBehaviour.cs" />
     <Compile Include="IAgentSim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spawners\ISpawner.cs" />
+    <Compile Include="Spawners\Spawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBridge\DataBridge.csproj">

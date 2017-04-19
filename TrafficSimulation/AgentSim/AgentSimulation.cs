@@ -74,13 +74,14 @@ namespace AgentSim
             IEnumerable<AgentSimConfiguration> agentConfigurations = agentSimConfigurationRepository_.GetAll();
 
             // Create instance of spawner
-            ISpawner spawner = SpawnerFactory.CreateSpawner(positionRepository_);
+            ISpawner spawner = new Spawner(positionRepository_);
 
             while(!shouldStop_)
             {
                 Console.WriteLine("Executing simulation thread cycle");
 
                 // Spawn new agents
+                IEnumerable<Agent> newAgents = spawner.SpawnAgents(agentConfigurations);
 
                 // Execute behaviours for all agents
 
