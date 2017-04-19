@@ -19,7 +19,7 @@ namespace Repositories {
 
 		public static IAgentRepository CreateRepository(){
 
-			return null;
+            return new DataBridge.Services.MockedAgentService();
 		}
 
 	}//end AgentRepositoryFactory
