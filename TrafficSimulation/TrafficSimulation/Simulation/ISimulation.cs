@@ -14,12 +14,19 @@ using System.IO;
 
 
 namespace Simulation {
+
+	/// <summary>
+	/// Simulation runs the agent sim and stops it if requested.
+	/// </summary>
 	public interface ISimulation  {
-
-		void LoadConfiguration();
-
+        /// <summary>
+        /// Starts the simulation thread.
+        /// </summary>
 		void Start();
 
+        /// <summary>
+        /// Stops the simulation thread.
+        /// </summary>
 		void Stop();
 	}//end ISimulation
 

@@ -5,24 +5,28 @@
 //  Created on:      18-Apr-2017 20:06:25
 //  Original author: David
 ///////////////////////////////////////////////////////////
-
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-
-
-
 using Datamodel;
+
 namespace AgentSim {
+	/// <summary>
+	/// Interface for the AgentSim implementation that starts the thread for agent simulation.
+	/// </summary>
 	public interface IAgentSim  {
 
-		/// 
-		/// <param name="agent"></param>
+		/// <summary>
+		/// Spawns a new agent in the simulation.
+		/// </summary>
+		/// <param name="agent">The agent that should be spawned in the simulation</param>
 		void SpawnAgent(Agent agent);
 
+		/// <summary>
+		/// Starts the thread for the agent simulation
+		/// </summary>
 		void Start();
 
+		/// <summary>
+		/// Stops the thread for the agent simulation
+		/// </summary>
 		void Stop();
 	}//end IAgentSim
 

@@ -14,12 +14,23 @@ using System.IO;
 
 
 namespace Simulation {
+    /// <summary>
+    /// Interface for the Watchdog that is responsible for watching over all sub processes of the traffic simulation
+    /// </summary>
 	public interface IWatchdog  {
-
+        /// <summary>
+        /// Starts the watchdog thread
+        /// </summary>
 		void Start();
 
+        /// <summary>
+        /// Stops the watchdog thread
+        /// </summary>
 		void Stop();
 
+        /// <summary>
+        /// Start the watching over all sub processes of the traffic simulation
+        /// </summary>
 		void Watch();
 	}//end IWatchdog
 
