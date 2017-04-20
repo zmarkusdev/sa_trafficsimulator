@@ -43,9 +43,19 @@ namespace Repositories {
         /// <param name="startPositionId"></param>
         IEnumerable<Position> GetSuccessors(int numSteps, int startPositionId);
 
-		/// 
-		/// <param name="position"></param>
-		Datamodel.Position Update(Position position);
+        /// <summary>
+        /// Todo: List
+        /// </summary>
+        IEnumerable<Position> GetStartPositions();
+
+        /// <summary>
+        /// Todo: List
+        /// </summary>
+        IEnumerable<Position> GetEndPositions();
+
+        /// 
+        /// <param name="position"></param>
+        Datamodel.Position Update(Position position);
 	}//end IPositionRepository
 
 }//end namespace Repositories
