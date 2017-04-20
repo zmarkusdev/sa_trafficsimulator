@@ -85,6 +85,8 @@ namespace AgentSim
 
                 // Execute behaviours for all agents
 
+                // Update positions
+
                 Thread.Sleep(100);
             }
         }
