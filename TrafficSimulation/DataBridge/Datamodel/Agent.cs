@@ -34,10 +34,9 @@ namespace Datamodel {
 			set;
 		}
 
-		public int PositionId{
-			get;
-			set;
-		}
+		public int EdgeId { get; set; }
+
+        public int RunLength { get; set; }
 
 		public AgentType Type{
 			get;

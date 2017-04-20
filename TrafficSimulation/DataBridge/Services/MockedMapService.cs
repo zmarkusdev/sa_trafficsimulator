@@ -11,7 +11,7 @@ namespace DataBridge.Services
     class MockedMapService : IMapRepository
     {
         Map map = null;
-        List<Position> = null;
+        List<Position> test = null;
         public MockedMapService()
         {
             // eine Map 
