@@ -24,7 +24,7 @@ namespace Datamodel {
 
 		}
 
-		public char BackgroundImageBase64{
+		public char[] BackgroundImageBase64{
 			get;
 			set;
 		}

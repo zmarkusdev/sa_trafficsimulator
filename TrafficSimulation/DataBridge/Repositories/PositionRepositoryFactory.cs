@@ -14,12 +14,14 @@ using System.IO;
 
 
 using Repositories;
+using DataBridge.Services;
+
 namespace Repositories {
 	public abstract class PositionRepositoryFactory {
 
 		public static IPositionRepository CreateRepository(){
 
-			return null;
+            return new MockedPositionService();
 		}
 
 	}//end PositionRepositoryFactory

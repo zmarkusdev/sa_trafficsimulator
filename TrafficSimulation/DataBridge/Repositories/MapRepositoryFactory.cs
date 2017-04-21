@@ -14,12 +14,14 @@ using System.IO;
 
 
 using Repositories;
+using DataBridge.Services;
+
 namespace Repositories {
 	public abstract class MapRepositoryFactory {
 
 		public static IMapRepository CreateRepository(){
 
-			return null;
+			return new MockedMapService();
 		}
 
 	}//end MapRepositoryFactory

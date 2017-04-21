@@ -15,7 +15,10 @@ using System.IO;
 
 namespace Datamodel {
 	public enum AgentType : int {
-
+        Car01 = 1,
+        Car02 = 2,
+        Lkw01 = 3,
+        Lkw02 = 4
 	}//end AgentType
 
 }//end namespace Datamodel
