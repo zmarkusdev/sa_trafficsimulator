@@ -34,7 +34,7 @@ namespace Datamodel {
             set;
         }
 
-        public IEnumerable<int> PredecessorIds{
+        public IEnumerable<int> PredecessorEdgeIds{
 			get;
 			set;
 		}
@@ -50,7 +50,7 @@ namespace Datamodel {
 			set;
 		}
 
-		public IEnumerable<int> SuccessorIds
+		public IEnumerable<int> SuccessorEdgeIds
         {
 			get;
 			set;

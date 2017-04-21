@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datamodel\AbstractEdge.cs" />
     <Compile Include="Datamodel\Agent.cs" />
     <Compile Include="Datamodel\AgentSimConfiguration.cs" />
     <Compile Include="Datamodel\AgentType.cs" />
+    <Compile Include="Datamodel\DynamicEdge.cs" />
+    <Compile Include="Datamodel\Edge.cs" />
     <Compile Include="Datamodel\Map.cs" />
     <Compile Include="Datamodel\Position.cs" />
     <Compile Include="Datamodel\Rule.cs" />
