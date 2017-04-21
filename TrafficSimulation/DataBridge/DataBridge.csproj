@@ -61,9 +61,12 @@
     <Compile Include="Services\MockedAgentSimConfigurationService.cs" />
     <Compile Include="Services\MockedAgentService.cs" />
     <Compile Include="Services\MockedMapService.cs" />
+    <Compile Include="Services\MockedPositionService.cs" />
     <Compile Include="Services\MockedRuleService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Services\backGroundMap.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

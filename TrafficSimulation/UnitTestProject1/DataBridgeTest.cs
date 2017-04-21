@@ -13,11 +13,16 @@ namespace UnitTestProject1
         {
             IMapRepository mapRepo = MapRepositoryFactory.CreateRepository();
             Map map = mapRepo.GetMap();
-            Assert.AreEqual(map.Width, 1920);
-            Assert.AreEqual(map.Height, 1080);
-            //char [] text = "background.png oder Image Objekt.".ToCharArray();
-            //Assert.AreEqual(map.BackgroundImageBase64, text);
+            Assert.AreNotEqual(map.Width, 0); // 1920
+            Assert.AreNotEqual(map.Height, 0) // 1080
+            Assert.AreNotEqual(map.BackgroundImageBase64.Length, 0);
+            
+        }
+        [TestMethod]
+        public void createPoint()
+        {
 
+            Assert.IsTrue(true);
         }
     }
 }
