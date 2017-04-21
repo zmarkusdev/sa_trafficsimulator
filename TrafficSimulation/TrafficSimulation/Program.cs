@@ -1,10 +1,9 @@
 ﻿using AgentSim;
-using Repositories;
+using AgentSpawner;
+using DataManager;
+using PhysicEngine;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Watchdog;
 
 namespace TrafficSimulation
 {
@@ -19,15 +18,27 @@ namespace TrafficSimulation
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            // Prepare dependencies
-            IAgentSimConfigurationRepository agentSimConfigurationRepository = AgentSimConfigurationRepositoryFactory.CreateRepository();
-            IPositionRepository positionRepository = PositionRepositoryFactory.CreateRepository();
-            IAgentRepository agentRepository = AgentRepositoryFactory.CreateRepository();
+            // Start applications
+            ApplicationWatchdog watchDog = new ApplicationWatchdog();
+            watchDog.StartApplicationsSynchronous();
+            watchDog.StartWatchThread();
+
+            // Initialize data manager
+            IDataManager dataManager = SimDataManager.Instance;
+            dataManager.Initialize();
+            dataManager.Start();
+
+            // Start physic engine
+            IPhysicEngine physicEngine = new SimPhysicEngine(dataManager);
+            physicEngine.Start();
 
             // Start agent simulation
-            IAgentSim agentSim = new AgentSimulation(agentSimConfigurationRepository, positionRepository, agentRepository);
+            IAgentSim agentSim = new AgentSimulation(dataManager);
             agentSim.Start();
 
+            // Start agent spawner
+            IAgentSpawner agentSpawner = new SimAgentSpawner(dataManager);
+            agentSpawner.Start();
 
             // Prepare ending of the simulation
             do
@@ -36,7 +47,11 @@ namespace TrafficSimulation
             } while (!Console.ReadLine().Equals("q"));
 
             // Stop applications
+            agentSpawner.Stop();
             agentSim.Stop();
+            physicEngine.Stop();
+            dataManager.Stop();
+            watchDog.StopWatchThread();
         }
     }
 }

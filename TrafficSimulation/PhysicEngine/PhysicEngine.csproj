@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0E77E0F-6A3C-4F42-B6A0-28C81254AAA9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TrafficSimulation</RootNamespace>
-    <AssemblyName>TrafficSimulation</AssemblyName>
+    <ProjectGuid>{EB6B7F7C-80BE-4D17-8A81-58FDF3D3E335}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PhysicEngine</RootNamespace>
+    <AssemblyName>PhysicEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,10 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\TrafficSimulation.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,34 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IPhysicEngine.cs" />
+    <Compile Include="SimPhysicEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulation\ISimulation.cs" />
-    <Compile Include="Simulation\IWatchdog.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AgentSim\AgentSim.csproj">
-      <Project>{1337d396-7f97-46ce-b758-4bd1f5633c51}</Project>
-      <Name>AgentSim</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AgentSpawner\AgentSpawner.csproj">
-      <Project>{f2d71cb8-4198-4fe0-8260-d55f7497351a}</Project>
-      <Name>AgentSpawner</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataManager\DataManager.csproj">
       <Project>{881c36ae-1f5f-4688-8c1c-8f2d8e9c1ea9}</Project>
       <Name>DataManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhysicEngine\PhysicEngine.csproj">
-      <Project>{eb6b7f7c-80be-4d17-8a81-58fdf3d3e335}</Project>
-      <Name>PhysicEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Watchdog\Watchdog.csproj">
-      <Project>{9add1319-c297-431e-9642-d4f4d6342f8b}</Project>
-      <Name>Watchdog</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

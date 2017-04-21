@@ -12,13 +12,6 @@ namespace AgentSim {
 	/// Interface for the AgentSim implementation that starts the thread for agent simulation.
 	/// </summary>
 	public interface IAgentSim  {
-
-		/// <summary>
-		/// Spawns a new agent in the simulation.
-		/// </summary>
-		/// <param name="agent">The agent that should be spawned in the simulation</param>
-		void SpawnAgent(Agent agent);
-
 		/// <summary>
 		/// Starts the thread for the agent simulation
 		/// </summary>
