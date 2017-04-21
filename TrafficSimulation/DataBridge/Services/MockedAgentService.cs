@@ -28,7 +28,7 @@ namespace DataBridge.Services
             newAgent.CurrentVelocity = agent.CurrentVelocity;
             newAgent.Deceleration = agent.Deceleration;
             newAgent.MaxVelocity = agent.MaxVelocity;
-            newAgent.PositionId = agent.PositionId;
+            newAgent.EdgeId = agent.EdgeId;
             return newAgent;
         }
 
@@ -45,7 +45,7 @@ namespace DataBridge.Services
             newAgent.CurrentVelocity = 120;
             newAgent.Deceleration = 0;
             newAgent.MaxVelocity = 423;
-            newAgent.PositionId = 1;
+            newAgent.EdgeId = 1;
             return newAgent;
         }
 
@@ -81,7 +81,7 @@ namespace DataBridge.Services
             agent1.CurrentVelocity = 120;
             agent1.Deceleration = 0;
             agent1.MaxVelocity = 423;
-            agent1.PositionId = 1;
+            agent1.EdgeId = 1;
             return agent1;
         }
 
@@ -93,7 +93,7 @@ namespace DataBridge.Services
             agent2.CurrentVelocity = 45;
             agent2.Deceleration = 3;
             agent2.MaxVelocity = 120;
-            agent2.PositionId = 2;
+            agent2.EdgeId = 2;
             return agent2;
         }
     }

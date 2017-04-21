@@ -11,7 +11,7 @@ namespace DataBridge.Services
     class MockedPositionService : IPositionRepository
     {
         List<Position> positions = new List<Position>();
-        int freePosId = 0;
+        int freePosId = 1;
 
 
         public Position Create(Position position)
@@ -88,10 +88,12 @@ namespace DataBridge.Services
             Position position = new Position();
             position.Id = getuniquePosId();
             position.MaxVelocity = 10;
-            position.PredecessorIds = null;
-            position.SuccessorIds = null;
-            //position = 100;
-            //positions.Y = 100;
+            position.PredecessorEdgeIds = null;
+            position.SuccessorEdgeIds = null;
+            position.Rotation = 167;
+            position.RuleIds = null;
+            position.X = 100;
+            position.Y = 100;
 
             return position;
         }

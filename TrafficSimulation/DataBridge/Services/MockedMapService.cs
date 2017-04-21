@@ -1,9 +1,5 @@
 ﻿using Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Datamodel;
 using System.IO;
 
@@ -12,11 +8,13 @@ namespace DataBridge.Services
     class MockedMapService : IMapRepository
     {
         private Map map = null;
-        private string backGroundMapfilename = "C:\\Users\\maximilian\\Githubs\\ADS\\TrafficSimulation\\DataBridge\\Services\\backGroundMap.jpg";
+        private MockedDefinitions definitions = MockedDefinitions.getInstance();
+        private string backGroundMapfilename; 
 
         public MockedMapService()
         {
-            map = new Datamodel.Map();
+            map = new Map();
+            backGroundMapfilename = definitions.getbackGroundMapfilename();
             byte[] imagedata = backGroundMapreader(backGroundMapfilename);
             var temp = Convert.ToBase64String(imagedata);
             map.BackgroundImageBase64 = temp.ToCharArray();
@@ -37,6 +35,7 @@ namespace DataBridge.Services
             var len = (int)fs.Length;
             var filedata = new byte[len];
             fs.Read(filedata, 0, len);
+            fs.Close();
             return (filedata);
         }
     }
