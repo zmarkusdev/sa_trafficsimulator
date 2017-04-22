@@ -53,6 +53,12 @@ namespace Repositories {
         /// </summary>
         IEnumerable<Position> GetEndPositions();
 
+        /// <summary>
+        /// TODO: List
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<Position> GetAll();
+
         /// 
         /// <param name="position"></param>
         Datamodel.Position Update(Position position);

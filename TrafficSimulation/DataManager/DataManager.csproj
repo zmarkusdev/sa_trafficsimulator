@@ -42,8 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDataManager.cs" />
+    <Compile Include="MappingModels\SimAgent.cs" />
     <Compile Include="SimDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBridge\DataBridge.csproj">
+      <Project>{340107c2-a376-454f-8e21-4ffe995a8eba}</Project>
+      <Name>DataBridge</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
