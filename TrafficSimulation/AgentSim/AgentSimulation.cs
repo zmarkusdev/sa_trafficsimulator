@@ -50,12 +50,8 @@ namespace AgentSim
             while(!shouldStop_)
             {
                 Console.WriteLine("Executing simulation thread cycle");
-
-                // Spawn new agents
-
-                // Execute behaviours for all agents
-
-                // Update positions
+                
+                // TODO
 
                 Thread.Sleep(100);
             }
