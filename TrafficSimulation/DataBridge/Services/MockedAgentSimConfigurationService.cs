@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datamodel;
+using Repositories;
 
 namespace DataBridge.Services
 {
-    class MockedAgentSimConfigurationService : Repositories.IAgentSimConfigurationRepository
+    class MockedAgentSimConfigurationService : IAgentSimConfigurationRepository
     {
         public IEnumerable<AgentSimConfiguration> GetAll()
         {

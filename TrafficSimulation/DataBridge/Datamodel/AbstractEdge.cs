@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBridge.Datamodel
+namespace Datamodel
 {
     public abstract class AbstractEdge
     {
