@@ -18,10 +18,11 @@ namespace DataBridge.Services
             byte[] imagedata = backGroundMapreader(backGroundMapfilename);
             var temp = Convert.ToBase64String(imagedata);
             map.BackgroundImageBase64 = temp.ToCharArray();
-            
-            // Mal ableiten aus dem Image
-            map.Height = 1080;
-            map.Width = 1920;
+
+            // Dimensionen 
+            map.Width = 800;
+            map.Height = 600;
+
         }
         public Map GetMap()
         {

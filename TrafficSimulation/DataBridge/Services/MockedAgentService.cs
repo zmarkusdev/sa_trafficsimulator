@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datamodel;
+using Repositories;
 
 namespace DataBridge.Services
 {
 
-    class MockedAgentService : Repositories.IAgentRepository
+    class MockedAgentService : IAgentRepository
     {
         private Agent agent1;
         private Agent agent2;

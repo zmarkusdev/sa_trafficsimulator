@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficSimulation", "TrafficSimulation\TrafficSimulation.csproj", "{C0E77E0F-6A3C-4F42-B6A0-28C81254AAA9}"
 EndProject
@@ -26,6 +26,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentSpawner", "AgentSpawner\AgentSpawner.csproj", "{F2D71CB8-4198-4FE0-8260-D55F7497351A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watchdog", "Watchdog\Watchdog.csproj", "{9ADD1319-C297-431E-9642-D4F4D6342F8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayerTest", "DataAccessLayerTest\DataAccessLayerTest.csproj", "{5C54F81D-7049-420B-AD9A-F8CD6045F4BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +69,14 @@ Global
 		{9ADD1319-C297-431E-9642-D4F4D6342F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ADD1319-C297-431E-9642-D4F4D6342F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ADD1319-C297-431E-9642-D4F4D6342F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C54F81D-7049-420B-AD9A-F8CD6045F4BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C54F81D-7049-420B-AD9A-F8CD6045F4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C54F81D-7049-420B-AD9A-F8CD6045F4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C54F81D-7049-420B-AD9A-F8CD6045F4BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +90,7 @@ Global
 		{EB6B7F7C-80BE-4D17-8A81-58FDF3D3E335} = {CD5C9E9C-5E16-4EE1-A147-3A323169FD3F}
 		{F2D71CB8-4198-4FE0-8260-D55F7497351A} = {CD5C9E9C-5E16-4EE1-A147-3A323169FD3F}
 		{9ADD1319-C297-431E-9642-D4F4D6342F8B} = {CD5C9E9C-5E16-4EE1-A147-3A323169FD3F}
+		{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25} = {9D20ACFD-85FA-4948-B7ED-692EC32FDB02}
+		{5C54F81D-7049-420B-AD9A-F8CD6045F4BC} = {9D20ACFD-85FA-4948-B7ED-692EC32FDB02}
 	EndGlobalSection
 EndGlobal
