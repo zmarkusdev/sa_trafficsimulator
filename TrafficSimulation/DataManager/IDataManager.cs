@@ -1,4 +1,5 @@
 ﻿using DataManager.MappingModels;
+using Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,42 @@ namespace DataManager
         /// Updates the given agent in the data access component
         /// </summary>
         /// <param name="updateAgent">The agent that needs to be updated</param>
-        void Update(SimAgent updateAgent);
+        void UpdateAgent(SimAgent updateAgent);
+
+        /// <summary>
+        /// Creates the given agent in the data access component
+        /// </summary>
+        /// <param name="createAgent">The agent that should be created</param>
+        void CreateAgent(SimAgent createAgent);
+
+        /// <summary>
+        /// All currently active agents in the simulation
+        /// </summary>
+        IReadOnlyList<SimAgent> Agents { get; }
+
+        /// <summary>
+        /// All rules of the map
+        /// </summary>
+        IReadOnlyList<Rule> Rules { get; }
+
+        /// <summary>
+        /// Start positions of the map
+        /// </summary>
+        IReadOnlyList<Position> StartPositions { get; }
+
+        /// <summary>
+        /// End positions of the map
+        /// </summary>
+        IReadOnlyList<Position> EndPositions { get; }
+
+        /// <summary>
+        /// All positions of the map
+        /// </summary>
+        IReadOnlyList<Position> AllPositions { get; }
+
+        /// <summary>
+        /// All edges on the map
+        /// </summary>
+        IReadOnlyList<Edge> Edges { get; }
     }
 }

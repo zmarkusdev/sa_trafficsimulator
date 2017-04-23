@@ -43,9 +43,6 @@
   <ItemGroup>
     <Compile Include="IDataManager.cs" />
     <Compile Include="MappingModels\SimAgent.cs" />
-    <Compile Include="MappingModels\SimEdge.cs" />
-    <Compile Include="MappingModels\SimPosition.cs" />
-    <Compile Include="MappingModels\SimRule.cs" />
     <Compile Include="SimDataManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

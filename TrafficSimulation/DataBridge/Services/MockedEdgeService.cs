@@ -55,6 +55,10 @@ namespace Repositories
             return edge;
         }
 
-
+        public IEnumerable<Edge> GetAll()
+        {
+#warning @walter and max, this method is needed for simulation initialization, thanks :-)
+            throw new NotImplementedException();
+        }
     }
 }
