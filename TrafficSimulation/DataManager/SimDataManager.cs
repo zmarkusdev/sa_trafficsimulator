@@ -31,6 +31,7 @@ namespace DataManager
         private readonly IRuleRepository ruleRepository_;
         private readonly IPositionRepository positionRepository_;
         private readonly IEdgeRepository edgeRepository_;
+        private readonly IAgentSimConfigurationRepository agentSimConfigurationRepository_;
 
         // Synchronization queues
         private ConcurrentQueue<SimAgent> agentUpdateQueue_;
@@ -43,6 +44,7 @@ namespace DataManager
         private List<Position> endPositions_;
         private List<Position> positions_;
         private List<Edge> edges_;
+        private List<AgentSimConfiguration> agentSimConfigurations_;
 
         /// <summary>
         /// All currently active agents in the simulation
@@ -86,7 +88,12 @@ namespace DataManager
         /// <summary>
         /// Singleton instance of the SimDataManager
         /// </summary>
-        public static readonly SimDataManager Instance = new SimDataManager();        
+        public static readonly SimDataManager Instance = new SimDataManager();
+
+        /// <summary>
+        /// Agent simulation configurations for spawning new agents in the simulation
+        /// </summary>
+        public IReadOnlyList<AgentSimConfiguration> AgentSimConfigurations => agentSimConfigurations_.AsReadOnly();
 
         private SimDataManager()
         {
@@ -95,6 +102,7 @@ namespace DataManager
             ruleRepository_ = RuleRepositoryFactory.CreateRepository();
             positionRepository_ = PositionRepositoryFactory.CreateRepository();
             edgeRepository_ = EdgeRepositoryFactory.CreateRepository();
+            agentSimConfigurationRepository_ = AgentSimConfigurationRepositoryFactory.CreateRepository();
 
             // Initialize synchronization queues
             agentUpdateQueue_ = new ConcurrentQueue<SimAgent>();
@@ -107,6 +115,7 @@ namespace DataManager
             endPositions_ = new List<Position>();
             positions_ = new List<Position>();
             edges_ = new List<Edge>();
+            agentSimConfigurations_ = new List<AgentSimConfiguration>();
         }
 
         /// <summary>
@@ -148,6 +157,10 @@ namespace DataManager
             // Get edges
             IEnumerable<Edge> edges = edgeRepository_.GetAll();
             edges.ToList().ForEach(edges_.Add);
+
+            // Get agent sim configurations
+            IEnumerable<AgentSimConfiguration> agentSimConfigurations = agentSimConfigurationRepository_.GetAll();
+            agentSimConfigurations.ToList().ForEach(agentSimConfigurations_.Add);
         }
 
         /// <summary>

@@ -69,5 +69,10 @@ namespace DataManager
         /// All edges on the map
         /// </summary>
         IReadOnlyList<Edge> Edges { get; }
+
+        /// <summary>
+        /// Agent simulation configurations for spawning new agents in the simulation
+        /// </summary>
+        IReadOnlyList<AgentSimConfiguration> AgentSimConfigurations { get; }
     }
 }
