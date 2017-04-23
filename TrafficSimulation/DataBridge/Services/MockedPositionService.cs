@@ -97,5 +97,10 @@ namespace DataBridge.Services
 
             return position;
         }
+
+        public IEnumerable<Position> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

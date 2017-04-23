@@ -1,5 +1,4 @@
-﻿using DataBridge.Datamodel;
-using DataManager.MappingModels;
+﻿using DataManager.MappingModels;
 using Datamodel;
 using Repositories;
 using System;

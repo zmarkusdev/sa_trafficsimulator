@@ -1,5 +1,4 @@
-﻿using DataBridge.Datamodel;
-using Datamodel;
+﻿using Datamodel;
 using System.Collections.Generic;
 
 namespace DataManager.MappingModels
