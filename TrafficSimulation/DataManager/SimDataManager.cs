@@ -1,4 +1,5 @@
-﻿using DataManager.MappingModels;
+﻿using DataBridge.Repositories;
+using DataManager.MappingModels;
 using Datamodel;
 using Repositories;
 using System;
@@ -29,17 +30,19 @@ namespace DataManager
         private readonly IAgentRepository agentRepository_;
         private readonly IRuleRepository ruleRepository_;
         private readonly IPositionRepository positionRepository_;
+        private readonly IEdgeRepository edgeRepository_;
 
         // Synchronization queues
         private ConcurrentQueue<SimAgent> agentUpdateQueue_;        
 
         // Data containers
-        private ConcurrentDictionary<int, SimAgent> agents_;
-        private ConcurrentDictionary<int, Rule> staticRules_;
-        private ConcurrentDictionary<int, Rule> dynamicRules_;
-        private ConcurrentDictionary<int, Position> startPositions_;
-        private ConcurrentDictionary<int, Position> endPositions_;
-        private ConcurrentDictionary<int, Position> positions_;
+        private List<SimAgent> agents_;
+        private List<SimRule> staticRules_;
+        private List<SimRule> dynamicRules_;
+        private List<SimPosition> startPositions_;
+        private List<SimPosition> endPositions_;
+        private List<SimPosition> positions_;
+        private List<SimEdge> edges_;
 
         /// <summary>
         /// Singleton instance of the SimDataManager
@@ -52,17 +55,18 @@ namespace DataManager
             agentRepository_ = AgentRepositoryFactory.CreateRepository();
             ruleRepository_ = RuleRepositoryFactory.CreateRepository();
             positionRepository_ = PositionRepositoryFactory.CreateRepository();
+            edgeRepository_ = EdgeRepositoryFactory.CreateRepository();
 
             // Initialize synchronization queues
             agentUpdateQueue_ = new ConcurrentQueue<SimAgent>();
 
             // Initialize data containers
-            agents_ = new ConcurrentDictionary<int, SimAgent>();
-            staticRules_ = new ConcurrentDictionary<int, Rule>();
-            dynamicRules_ = new ConcurrentDictionary<int, Rule>();
-            startPositions_ = new ConcurrentDictionary<int, Position>();
-            endPositions_ = new ConcurrentDictionary<int, Position>();
-            positions_ = new ConcurrentDictionary<int, Position>();
+            agents_ = new List<SimAgent>();
+            staticRules_ = new List<SimRule>();
+            dynamicRules_ = new List<SimRule>();
+            startPositions_ = new List<SimPosition>();
+            endPositions_ = new List<SimPosition>();
+            positions_ = new List<SimPosition>();
         }
 
         /// <summary>
@@ -76,7 +80,7 @@ namespace DataManager
             {
                 var simAgent = existingAgent as SimAgent;
                 simAgent.Route = new Queue<AbstractEdge>();
-                agents_.TryAdd(simAgent.Id ,simAgent);
+                agents_.Add(simAgent);
             }
 
             // Get rule data
@@ -84,25 +88,26 @@ namespace DataManager
             foreach(var rule in rules)
             {
                 if (rule.IsDynamicRule)
-                    dynamicRules_.TryAdd(rule.Id, rule);
+                    dynamicRules_.Add(rule as SimRule);
                 else
-                    staticRules_.TryAdd(rule.Id, rule);
+                    staticRules_.Add(rule as SimRule);
             }
 
             // Get start positions
             IEnumerable<Position> startPositions = positionRepository_.GetStartPositions();
-            foreach (var position in startPositions)
-                startPositions_.TryAdd(position.Id, position);
+            startPositions.ToList().ForEach(x => startPositions_.Add(x as SimPosition));
 
             // Get end positions
             IEnumerable<Position> endPositions = positionRepository_.GetEndPositions();
-            foreach (var position in endPositions)
-                endPositions_.TryAdd(position.Id, position);
+            endPositions.ToList().ForEach(x => endPositions_.Add(x as SimPosition));
 
             // Get positions
             IEnumerable<Position> positions = positionRepository_.GetAll();
-            foreach (var position in positions)
-                positions_.TryAdd(position.Id, position);
+            positions.ToList().ForEach(x => positions_.Add(x as SimPosition));
+
+            // Get edges
+            IEnumerable<Edge> edges = edgeRepository_.GetAll();
+            edges.ToList().ForEach(x => edges_.Add(x as SimEdge));
 
             throw new NotImplementedException();
         }
@@ -138,26 +143,23 @@ namespace DataManager
                 // Update agents from the udpate queue
                 SimAgent updateAgent;
                 while(agentUpdateQueue_.TryDequeue(out updateAgent))
-                {
                     agentRepository_.Update(updateAgent);
-                }
 
                 // Update dynamic rules
                 IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
                 foreach(var rule in remoteDynamicRules)
                 {
                     // Check if dynamic rule already exists
-                    Rule localRule;                    
-                    if (dynamicRules_.TryGetValue(rule.Id, out localRule))
+                    SimRule localRule = dynamicRules_.FirstOrDefault(r => r.Id == rule.Id);                    
+                    if (localRule != null)
                     {
                         // Update
-                        dynamicRules_.TryUpdate(rule.Id, rule, localRule);
+                        dynamicRules_.Remove(localRule);
+                        dynamicRules_.Add(rule as SimRule);
                     }
                     else
-                    {
                         // Create
-                        dynamicRules_.TryAdd(rule.Id, rule);
-                    }
+                        dynamicRules_.Add(rule as SimRule);
                 }
 
                 Thread.Sleep(100);

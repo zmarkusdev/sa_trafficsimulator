@@ -12,13 +12,5 @@ namespace DataManager.MappingModels
         /// The route the agent wants to travel on
         /// </summary>
         public Queue<AbstractEdge> Route { get; set; }
-
-        /// <summary>
-        /// Simulation specific agent constructor initializes the simulation specific agent data
-        /// </summary>
-        public SimAgent() : base()
-        {
-            Route = new Queue<AbstractEdge>();
-        }
     }
 }

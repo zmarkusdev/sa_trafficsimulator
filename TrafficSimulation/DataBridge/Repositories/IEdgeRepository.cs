@@ -13,5 +13,7 @@ namespace Repositories
         void Delete(Edge edge);
         Edge GetEdge(int edgeId);
         Edge Update(Edge edge);
+
+        IEnumerable<Edge> GetAll();
     }
 }
