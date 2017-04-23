@@ -6,6 +6,12 @@ namespace DataManagerTest
     [TestClass]
     public class InitializeTest
     {
+        [TestInitialize]
+        public void InitializeTests()
+        {
+            // TODO: Mock dependencies
+        }
+
         [TestMethod]
         public void HelloUnitTest()
         {
