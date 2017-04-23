@@ -9,8 +9,21 @@ namespace DataManager.MappingModels
     public class SimAgent : Agent
     {
         /// <summary>
+        /// Initializes a new simulation specific agent object
+        /// </summary>
+        public SimAgent() : base()
+        {
+            Route = new Queue<AbstractEdge>();
+        }
+
+        /// <summary>
         /// The route the agent wants to travel on
         /// </summary>
         public Queue<AbstractEdge> Route { get; set; }
+
+        /// <summary>
+        /// The current acceleration of this agent
+        /// </summary>
+        public int CurrentAcceleration { get; set; }        
     }
 }

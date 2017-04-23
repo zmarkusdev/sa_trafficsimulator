@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBridge\DataBridge.csproj">
+      <Project>{340107C2-A376-454F-8E21-4FFE995A8EBA}</Project>
+      <Name>DataBridge</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataManager\DataManager.csproj">
       <Project>{881c36ae-1f5f-4688-8c1c-8f2d8e9c1ea9}</Project>
       <Name>DataManager</Name>

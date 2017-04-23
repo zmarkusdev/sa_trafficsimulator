@@ -180,6 +180,8 @@ namespace DataManager
         public void Stop()
         {
             shouldStop_ = true;
+            // Wait until the sync thread is terminated
+            while (syncThread_.IsAlive) Thread.Sleep(100);
         }
 
         /// <summary>

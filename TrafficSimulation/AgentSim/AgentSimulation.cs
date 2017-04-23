@@ -30,7 +30,7 @@ namespace AgentSim
         {
             shouldStop_ = false;
 
-            simulationThread_ = new Thread(this.Run);
+            simulationThread_ = new Thread(Run);
             simulationThread_.Start();
         }
 
@@ -40,6 +40,8 @@ namespace AgentSim
         public void Stop()
         {
             shouldStop_ = true;
+            // Wait until simulation thread is terminated
+            while (simulationThread_.IsAlive) Thread.Sleep(100);
         }
 
         /// <summary>
