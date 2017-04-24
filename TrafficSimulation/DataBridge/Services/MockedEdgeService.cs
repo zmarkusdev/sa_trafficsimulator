@@ -22,20 +22,36 @@ namespace Repositories
 
         public void Delete(Edge edge)
         {
-            return;
+            if (edges != null)
+                edges.RemoveAll(i => i.Id == edge.Id);
         }
 
         public Edge GetEdge(int edgeId)
         {
-            Edge edge = new Edge();
-            edge.Id = edgeId;
-            edges.Add(edge);
-            return (edge);
+            if (edges != null)
+                foreach (Edge edge in edges)
+                {
+                    if (edge.Id == edgeId)
+                        return edge;
+                }
+            return null;
         }
 
         public Edge Update(Edge edge)
         {
-            return (edge);
+            if (edges != null)
+                foreach (Edge currentEdge in edges)
+                {
+                    if (currentEdge.Id == edge.Id)
+                    {
+                        currentEdge.CurveLength = edge.CurveLength;
+                        currentEdge.EndPositionId = edge.EndPositionId;
+                        currentEdge.Neighbors = edge.Neighbors;
+                        currentEdge.StartPositionId = edge.StartPositionId;
+                        return currentEdge;
+                    }
+                }
+            return Create(edge);
         }
 
         //************************* meine **********************************
@@ -57,8 +73,7 @@ namespace Repositories
 
         public IEnumerable<Edge> GetAll()
         {
-#warning @walter and max, this method is needed for simulation initialization, thanks :-)
-            throw new NotImplementedException();
+            return edges;
         }
     }
 }

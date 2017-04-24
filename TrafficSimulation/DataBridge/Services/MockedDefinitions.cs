@@ -16,8 +16,7 @@ namespace DataBridge.Services
                 instance = new MockedDefinitions();
             return instance;
         }
-        // lokale Anpassungen!
-        private String backGroundMapfilename = "C:\\Users\\maximilian\\Githubs\\ADS\\TrafficSimulation\\DataBridge\\Resources\\backGroundMap.jpg";
+        private string backGroundMapfilename = "..\\..\\..\\DataBridge\\Resources\\backGroundMap.jpg";
         public string getbackGroundMapfilename() { return backGroundMapfilename; }
     }
 }
