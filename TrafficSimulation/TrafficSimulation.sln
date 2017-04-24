@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficSimulation", "TrafficSimulation\TrafficSimulation.csproj", "{C0E77E0F-6A3C-4F42-B6A0-28C81254AAA9}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E2BD0923-8CAA-48E4-B6E1-27A9808D6FDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagerTest", "DataManagerTest\DataManagerTest.csproj", "{2E236B55-FD93-4FBB-BF6E-AF7436E7A9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulationUserInterface", "SimulationUserInterface\SimulationUserInterface.csproj", "{EBBC8182-29E8-4E01-8A1C-69E28BEC1310}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{2E236B55-FD93-4FBB-BF6E-AF7436E7A9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E236B55-FD93-4FBB-BF6E-AF7436E7A9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E236B55-FD93-4FBB-BF6E-AF7436E7A9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBBC8182-29E8-4E01-8A1C-69E28BEC1310}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBBC8182-29E8-4E01-8A1C-69E28BEC1310}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBBC8182-29E8-4E01-8A1C-69E28BEC1310}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBBC8182-29E8-4E01-8A1C-69E28BEC1310}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +108,6 @@ Global
 		{5C54F81D-7049-420B-AD9A-F8CD6045F4BC} = {9D20ACFD-85FA-4948-B7ED-692EC32FDB02}
 		{E2BD0923-8CAA-48E4-B6E1-27A9808D6FDC} = {CD5C9E9C-5E16-4EE1-A147-3A323169FD3F}
 		{2E236B55-FD93-4FBB-BF6E-AF7436E7A9EF} = {E2BD0923-8CAA-48E4-B6E1-27A9808D6FDC}
+		{EBBC8182-29E8-4E01-8A1C-69E28BEC1310} = {9634841A-9236-47E4-8377-09E20659D54F}
 	EndGlobalSection
 EndGlobal
