@@ -127,7 +127,7 @@ namespace Experiment01.Models
             switch (type)
             {
                 default:
-                    ImagePath = Properties.Resources.Car01.;
+                    break;// ImagePath = Properties.Resources.Car01;
             }
 
             Image img = Image.FromFile(ImagePath);

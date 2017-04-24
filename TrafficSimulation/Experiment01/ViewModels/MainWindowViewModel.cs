@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using TiledSharp;
 
 namespace Experiment01.ViewModels
 {
@@ -21,6 +22,8 @@ namespace Experiment01.ViewModels
         {
             /// Create Gui Variables (Bindings to GUI)
             GUI = new MainWindowModel();
+
+            var map = new TmxMap("../../Resources\\TiledMap.tmx");
 
             /// Create AgentRepository with Factory
             Agents = AgentRepositoryFactory.CreateRepository();
@@ -45,7 +48,7 @@ namespace Experiment01.ViewModels
             IEnumerable ags = Agents.GetAllAgents();
             foreach (Agent ag in ags)
             {
-                ag.
+                //ag.
             }
 
 

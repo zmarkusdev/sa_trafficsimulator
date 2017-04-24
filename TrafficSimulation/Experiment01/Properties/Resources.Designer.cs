@@ -99,5 +99,15 @@ namespace Experiment01.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] TiledMap {
+            get {
+                object obj = ResourceManager.GetObject("TiledMap", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
