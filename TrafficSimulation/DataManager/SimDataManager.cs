@@ -1,5 +1,4 @@
-﻿using DataBridge.Repositories;
-using DataManager.MappingModels;
+﻿using DataManager.MappingModels;
 using Datamodel;
 using Repositories;
 using System;
@@ -282,6 +281,8 @@ namespace DataManager
             var agents = agents_.Where(a => a.EdgeId == edge.Id && 
                 a.RunLength - a.VehicleLength >= startRunLength && 
                 a.RunLength - a.VehicleLength < startRunLength + range);
+
+            // Add selected agents to the result
             results.AddRange(agents);
 
             // Check if range exceeds current edge length
