@@ -9,7 +9,7 @@ namespace DataManager.MappingModels
     public class SimAgent : Agent
     {
         /// <summary>
-        /// Initializes a new simulation specific agent object
+        /// Initializes a new simulation specific agent object, copy constructor for base class objects
         /// </summary>
         public SimAgent(Agent agent) : base()
         {
@@ -25,6 +25,9 @@ namespace DataManager.MappingModels
             Route = new Queue<AbstractEdge>();
         }
 
+        /// <summary>
+        /// Initializes a new simulation specific agent object
+        /// </summary>
         public SimAgent() : base()
         {
             Route = new Queue<AbstractEdge>();
