@@ -90,7 +90,11 @@ namespace AgentSpawner
                             VehicleLength = rnd.Next(configuration.VehicleLength - configuration.VehicleLengthSpread, configuration.VehicleLength + configuration.VehicleLengthSpread)
                         };
 
-                        dataManager_.CreateAgent(agent);
+                        // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
+                        if(!dataManager_.Agents.Any(a => a.EdgeId == startEdge.Id && a.RunLength - a.VehicleLength < agent.VehicleLength))
+                        {
+                            dataManager_.CreateAgent(agent);
+                        }
                     }
                 }
 
