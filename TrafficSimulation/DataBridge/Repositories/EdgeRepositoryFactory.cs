@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Datamodel;
 using Repositories;
 
-namespace DataBridge.Repositories
+
+namespace Repositories
 {
     public abstract class EdgeRepositoryFactory
     {
