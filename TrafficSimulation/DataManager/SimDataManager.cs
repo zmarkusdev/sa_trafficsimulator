@@ -127,8 +127,7 @@ namespace DataManager
             IEnumerable<Agent> existingAgents = agentRepository_.GetAllAgents();            
             foreach (var existingAgent in existingAgents)
             {
-                var simAgent = existingAgent as SimAgent;
-                simAgent.Route = new Queue<AbstractEdge>();
+                var simAgent = new SimAgent(existingAgent);                
                 agents_.Add(simAgent);
             }
 

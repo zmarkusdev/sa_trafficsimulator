@@ -11,6 +11,20 @@ namespace DataManager.MappingModels
         /// <summary>
         /// Initializes a new simulation specific agent object
         /// </summary>
+        public SimAgent(Agent agent) : base()
+        {
+            Id = agent.Id;
+            CurrentAcceleration = agent.CurrentVelocity;
+            EdgeId = agent.EdgeId;
+            RunLength = agent.RunLength;
+            Type = agent.Type;
+            Acceleration = agent.Acceleration;
+            Deceleration = agent.Deceleration;
+            MaxVelocity = agent.MaxVelocity;
+            VehicleLength = agent.VehicleLength;
+            Route = new Queue<AbstractEdge>();
+        }
+
         public SimAgent() : base()
         {
             Route = new Queue<AbstractEdge>();
