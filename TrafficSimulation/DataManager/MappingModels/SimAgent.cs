@@ -14,7 +14,7 @@ namespace DataManager.MappingModels
         public SimAgent(Agent agent) : base()
         {
             Id = agent.Id;
-            CurrentAcceleration = agent.CurrentVelocity;
+            CurrentVelocity = agent.CurrentVelocity;
             EdgeId = agent.EdgeId;
             RunLength = agent.RunLength;
             Type = agent.Type;
@@ -23,6 +23,9 @@ namespace DataManager.MappingModels
             MaxVelocity = agent.MaxVelocity;
             VehicleLength = agent.VehicleLength;
             Route = new Queue<AbstractEdge>();
+            CurrentAccelerationExact = agent.Acceleration;
+            CurrentVelocityExact = agent.CurrentVelocity;
+            RunLengthExact = agent.RunLength;
         }
 
         /// <summary>
@@ -41,6 +44,16 @@ namespace DataManager.MappingModels
         /// <summary>
         /// The current acceleration of this agent
         /// </summary>
-        public int CurrentAcceleration { get; set; }        
+        public double CurrentAccelerationExact { get; set; }
+
+        /// <summary>
+        /// The current exact velocity of this agent
+        /// </summary>
+        public double CurrentVelocityExact { get; set; }
+
+        /// <summary>
+        /// The current exact run length of this agent
+        /// </summary>
+        public double RunLengthExact { get; set; }
     }
 }
