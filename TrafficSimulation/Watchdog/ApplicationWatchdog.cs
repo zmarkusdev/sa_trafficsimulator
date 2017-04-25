@@ -10,7 +10,7 @@ namespace Watchdog
     {
         public void StartApplicationsSynchronous()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void StartWatchThread()
