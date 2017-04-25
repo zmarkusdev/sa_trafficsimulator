@@ -1,4 +1,5 @@
-﻿using Repositories;
+﻿using DataBridge.Repositories;
+using Repositories;
 using SimulationUserInterface.Models;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,19 @@ namespace SimulationUserInterface.ViewModels
 
                 IMapRepository UserInterfaceMap = MapRepositoryFactory.CreateRepository();
                 Datamodel.Map BackgroundMap = UserInterfaceMap.GetMap();
+                UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
+
+                IEdgeRepository Edges = EdgeRepositoryFactory.CreateRepository();
+                IEnumerable<Datamodel.Edge> Eds = Edges.GetAll();
+
+                IAgentRepository Agents = AgentRepositoryFactory.CreateRepository();
+                IEnumerable<Datamodel.Agent> Ags =  Agents.GetAllAgents();
+
+                foreach (Datamodel.Agent singleAgent in Ags)
+                {
+                    //UserInterfaceAgents.MapAgents.Add(new AgentModel(singleAgent.))
+                }
+
             }
             catch (Exception ex)
             {

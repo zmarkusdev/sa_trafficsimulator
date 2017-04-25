@@ -4,16 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:SimulationUserInterface.ViewModels"
+        xmlns:tc="clr-namespace:SimulationUserInterface.Technics"
         xmlns:local="clr-namespace:SimulationUserInterface"
-        mc:Ignorable="d"
-        Title="Traffic Simulation" Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}" 
-        Width="{Binding Path=UserInterfaceModel.WindowWidth, Mode=TwoWay}">
+        mc:Ignorable="d" Title="Traffic Simulation" Width="900" Height="700">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
-    <DockPanel>
-        <Canvas DockPanel.Dock="Top" >
+    <Window.Resources>
+        <tc:Base64ImageConverter x:Key="Base64ImageConverter" />
+        
+    </Window.Resources>
+    <Grid Width="{Binding Path=UserInterfaceModel.WindowWidth}" Height="{Binding Path=UserInterfaceModel.WindowHeight}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" />
+        <Canvas Grid.Row="0" Grid.Column="0" >
             
         </Canvas>
-    </DockPanel>
+    </Grid>
 </Window>

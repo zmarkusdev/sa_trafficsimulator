@@ -68,6 +68,7 @@
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\SignModel.cs" />
     <Compile Include="Models\SignRepository.cs" />
+    <Compile Include="Technics\Base64ImageConverter.cs" />
     <Compile Include="Technics\Model.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

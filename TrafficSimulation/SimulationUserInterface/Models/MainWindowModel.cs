@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Technics;
 
 namespace SimulationUserInterface.Models
@@ -38,10 +40,40 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        private string _BackgroundMap;
+        public string BackgroundMap
+        {
+            get { return _BackgroundMap; }
+            set
+            {
+                if (_BackgroundMap != value)
+                {
+                    _BackgroundMap = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         public MainWindowModel()
         {
             WindowHeight = 600;
             WindowWidth = 800;
+
+           
+        }
+
+        public void SetBackgroundInformation(char [] bytestream, int width, int height)
+        {
+            try
+            {
+                BackgroundMap = new string (bytestream);
+                WindowWidth = width;
+                WindowHeight = height;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
     }
