@@ -91,8 +91,10 @@ namespace AgentSpawner
                         };
 
                         // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
-                        if(!dataManager_.Agents.Any(a => a.EdgeId == startEdge.Id && a.RunLength - a.VehicleLength < agent.VehicleLength))
+                        if(!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
                         {
+                            // Set agent starting position to it's vehicle length
+                            agent.RunLength = agent.VehicleLength;
                             dataManager_.CreateAgent(agent);
                         }
                     }

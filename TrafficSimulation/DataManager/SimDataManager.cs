@@ -1,5 +1,4 @@
-﻿using DataBridge.Repositories;
-using DataManager.MappingModels;
+﻿using DataManager.MappingModels;
 using Datamodel;
 using Repositories;
 using System;
@@ -253,6 +252,52 @@ namespace DataManager
                 // Add create agent to the local list of agents
                 agents_.Add(createAgent);
             }
+        }
+
+        /// <summary>
+        /// Check edge and successor edges for possible agents in the given range, returns list
+        /// of agents in the range.
+        /// Doesn't check for a specific route on edge overflow!
+        /// </summary>
+        /// <param name="edgeId">Id of the starting edge</param>
+        /// <param name="startRunLength">Start point on the edge in meters</param>
+        /// <param name="range">Range in meters to look for agents, successor edges should be included if overflowing</param>
+        /// <returns>List of SimAgents contained in the given range</returns>
+        public IReadOnlyList<SimAgent> GetAgentsInRange(int edgeId, int startRunLength, int range)
+        {
+            // Prepare result list
+            var results = new List<SimAgent>();
+
+            // Get edge by id
+            var edge = edges_.FirstOrDefault(e => e.Id == edgeId);
+            if (edge == null)
+                return results.AsReadOnly();
+
+            // Check if params are valid
+            if (startRunLength > edge.CurveLength)
+                throw new ArgumentException("Start run length is longer than the edge length");
+
+            // Get agents greater startrunlength and smaller startrunlength 
+            var agents = agents_.Where(a => a.EdgeId == edge.Id && 
+                a.RunLength - a.VehicleLength >= startRunLength && 
+                a.RunLength - a.VehicleLength < startRunLength + range);
+
+            // Add selected agents to the result
+            results.AddRange(agents);
+
+            // Check if range exceeds current edge length
+            if (startRunLength + range > edge.CurveLength)
+            {
+                // Get end point
+                var endPoint = positions_.FirstOrDefault(p => p.Id == edge.EndPositionId);
+                if(endPoint != null)
+                {
+                    foreach (var successorEdgeId in endPoint.SuccessorEdgeIds)
+                        results.AddRange(GetAgentsInRange(successorEdgeId, 0, startRunLength + range - edge.CurveLength));
+                }
+            }
+
+            return results;
         }
     }
 }

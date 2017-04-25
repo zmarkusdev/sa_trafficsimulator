@@ -41,6 +41,17 @@ namespace DataManager
         void CreateAgent(SimAgent createAgent);
 
         /// <summary>
+        /// Check edge and successor edges for possible agents in the given range, returns list
+        /// of agents in the range.
+        /// Doesn't check for a specific route on edge overflow!
+        /// </summary>
+        /// <param name="edgeId">Id of the starting edge</param>
+        /// <param name="startRunLength">Start point on the edge in meters</param>
+        /// <param name="range">Range in meters to look for agents, successor edges should be included if overflowing</param>
+        /// <returns>List of SimAgents contained in the given range</returns>
+        IReadOnlyList<SimAgent> GetAgentsInRange(int edgeId, int startRunLength, int range);
+
+        /// <summary>
         /// All currently active agents in the simulation
         /// </summary>
         IReadOnlyList<SimAgent> Agents { get; }
