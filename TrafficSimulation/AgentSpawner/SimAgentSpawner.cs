@@ -86,7 +86,9 @@ namespace AgentSpawner
                             Deceleration = rnd.Next(configuration.Deceleration - configuration.DecelerationSpread, configuration.Deceleration + configuration.DecelerationSpread),
                             // Roll the maximum allowed velocity
                             MaxVelocity = rnd.Next(configuration.Velocity - configuration.VelocitySpread, configuration.Velocity + configuration.VelocitySpread)
-                        };                        
+                        };
+
+                        dataManager_.CreateAgent(agent);
                     }
                 }
 
