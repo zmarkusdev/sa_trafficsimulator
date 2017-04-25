@@ -64,6 +64,16 @@ namespace Datamodel {
 			set;
 		}
 
+        /// <summary>
+        /// Mean value of vehicle lengths for this agent configuration in meters
+        /// </summary>
+        public int VehicleLength { get; set; }
+
+        /// <summary>
+        /// Spread of values of vehicle lengths for this agent configuration in meters
+        /// </summary>
+        public int VehicleLengthSpread { get; set; }
+
 	}//end AgentSimConfiguration
 
 }//end namespace Datamodel

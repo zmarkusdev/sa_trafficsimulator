@@ -58,6 +58,11 @@ namespace Datamodel {
 			set;
 		}
 
+        /// <summary>
+        /// Vehicle length in meters
+        /// </summary>
+        public int VehicleLength { get; set; }
+
 	}//end Agent
 
 }//end namespace Datamodel
