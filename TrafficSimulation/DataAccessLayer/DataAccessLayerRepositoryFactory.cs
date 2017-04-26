@@ -10,7 +10,8 @@ namespace DataAccessLayer
     {
         public static IDataAccessLayerRepository CreateRepository()
         {
-            return new MockedDataAccessLayer();
+            MockedDataAccessLayer dalInstance = MockedDataAccessLayer.getInstance();
+            return dalInstance;
         }
 
     }

@@ -14,10 +14,16 @@ namespace DataBridge.Services
         private Agent agent1;
         private Agent agent2;
 
+        List<Agent> agents = new List<Agent>();
+        int freeAgentId = 1;
+
+
         public MockedAgentService()
         {
+
             agent1 = createAgent1();
             agent2 = createAgent2();
+            createSmallVillage();
         }
 
         public Agent Create(Agent agent)
@@ -96,6 +102,34 @@ namespace DataBridge.Services
             agent2.MaxVelocity = 120;
             agent2.EdgeId = 2;
             return agent2;
+        }
+
+        private void createSmallVillage()
+        {
+            Agent agent1 = new Agent();
+            Agent agent2 = new Agent();
+
+            agent1.Acceleration = 3;
+            agent1.CurrentVelocity = 0;
+            agent1.Deceleration = 5;
+            agent1.EdgeId = 1;
+            agent1.RunLength = 100;
+            agent1.Type = (AgentType)1;
+            agent1.VehicleLength = 4;
+            Create(agent1);
+
+            agent2.Acceleration = 5;
+            agent2.CurrentVelocity = 0;
+            agent2.Deceleration = 4;
+            agent2.EdgeId = 1;
+            agent2.RunLength = 5;
+            agent2.Type = (AgentType)1;
+            agent2.VehicleLength = 3;
+            Create(agent2);
+        }
+        private int getuniqueEdgeId()
+        {
+            return (freeAgentId++);
         }
     }
 }
