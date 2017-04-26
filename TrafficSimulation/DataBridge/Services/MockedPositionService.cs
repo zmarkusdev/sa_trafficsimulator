@@ -220,6 +220,7 @@ namespace DataBridge
 
         public IEnumerable<Position> GetAll()
         {
+#warning @dataaccess team: added by markus, please implement :-)
             throw new NotImplementedException();
         }
     }

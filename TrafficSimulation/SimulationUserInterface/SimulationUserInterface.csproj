@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,6 +69,8 @@
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\SignModel.cs" />
     <Compile Include="Models\SignRepository.cs" />
+    <Compile Include="Technics\Base64ImageConverter.cs" />
+    <Compile Include="Technics\ImageConverter.cs" />
     <Compile Include="Technics\Model.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -107,6 +110,11 @@
       <Project>{340107c2-a376-454f-8e21-4ffe995a8eba}</Project>
       <Name>DataBridge</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Car01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

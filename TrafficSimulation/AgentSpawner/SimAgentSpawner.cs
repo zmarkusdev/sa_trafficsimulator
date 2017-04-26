@@ -79,7 +79,9 @@ namespace AgentSpawner
                             CurrentVelocity = 0,
                             EdgeId = startEdge.Id,
                             RunLength = 0,
-                            CurrentAcceleration = 0,
+                            RunLengthExact = 0,
+                            CurrentAccelerationExact = 0,
+                            CurrentVelocityExact = 0,
                             // Roll the maximum allowed acceleration
                             Acceleration = rnd.Next(configuration.Acceleration - configuration.AccelerationSpread, configuration.Acceleration + configuration.AccelerationSpread),
                             // Roll the maximum allowed deceleration
@@ -91,8 +93,10 @@ namespace AgentSpawner
                         };
 
                         // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
-                        if(!dataManager_.Agents.Any(a => a.EdgeId == startEdge.Id && a.RunLength - a.VehicleLength < agent.VehicleLength))
+                        if(!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
                         {
+                            // Set agent starting position to it's vehicle length
+                            agent.RunLength = agent.VehicleLength;
                             dataManager_.CreateAgent(agent);
                         }
                     }
