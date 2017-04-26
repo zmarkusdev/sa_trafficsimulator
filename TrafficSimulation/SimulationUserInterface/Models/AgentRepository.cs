@@ -15,5 +15,13 @@ namespace SimulationUserInterface.Models
         {
             MapAgents = new ObservableCollection<AgentModel>();
         }
+
+        public void ApplyImageResize(double widthfactor, double heightfactor)
+        {
+            foreach (AgentModel agent in MapAgents)
+            {
+                agent.ChangeAgentPictureSize(widthfactor, heightfactor);
+            }
+        }
     }
 }

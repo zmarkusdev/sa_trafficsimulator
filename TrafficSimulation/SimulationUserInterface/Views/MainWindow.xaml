@@ -6,25 +6,52 @@
         xmlns:vm="clr-namespace:SimulationUserInterface.ViewModels"
         xmlns:tc="clr-namespace:SimulationUserInterface.Technics"
         xmlns:local="clr-namespace:SimulationUserInterface"
-        mc:Ignorable="d" Title="Traffic Simulation" Width="900" Height="700">
+        mc:Ignorable="d" Title="Traffic Simulation" Width="{Binding Path=UserInterfaceModel.WindowWidth, Mode=TwoWay}" Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}">
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
         <tc:Base64ImageConverter x:Key="Base64ImageConverter" />
-        
+        <tc:ImageConverter x:Key="ImageConverter" />
     </Window.Resources>
-    <Grid Width="{Binding Path=UserInterfaceModel.WindowWidth}" Height="{Binding Path=UserInterfaceModel.WindowHeight}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        
-        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" />
-        <Canvas Grid.Row="0" Grid.Column="0" >
-            
-        </Canvas>
+
+        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" Stretch="Fill"/>
+        <ItemsControl ItemsSource="{Binding Path=UserInterfaceAgents.MapAgents}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Canvas.Left" Value="{Binding X}" />
+                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding ImagePath, Converter={StaticResource ImageConverter}}" 
+                           Width="{Binding Width}" Stretch="Fill" Height="{Binding Height}" 
+                           >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1.456" />
+                                <SkewTransform />
+                                <RotateTransform Angle="{Binding Rotation}" />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </Image.RenderTransform>
+
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>
