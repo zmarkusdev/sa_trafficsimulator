@@ -116,6 +116,7 @@ namespace DataBridge.Services
             agent1.RunLength = 100;
             agent1.Type = (AgentType)1;
             agent1.VehicleLength = 4;
+            agent1.VehicleWidth = 1;
             Create(agent1);
 
             agent2.Acceleration = 5;
@@ -124,7 +125,8 @@ namespace DataBridge.Services
             agent2.EdgeId = 1;
             agent2.RunLength = 5;
             agent2.Type = (AgentType)1;
-            agent2.VehicleLength = 3;
+            agent2.VehicleLength = 4;
+            agent2.VehicleWidth = 2;
             Create(agent2);
         }
         private int getuniqueEdgeId()
