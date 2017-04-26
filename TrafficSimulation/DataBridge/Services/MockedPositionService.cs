@@ -67,7 +67,7 @@ namespace DataBridge
         public IEnumerable<Position> GetPredeccessors(int numSteps, int startPositionId)
         {
             // Todo: brauchma des no?
-            throw NotImplementedException;
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Position> GetStartPositions()
@@ -78,7 +78,7 @@ namespace DataBridge
         public IEnumerable<Position> GetSuccessors(int numSteps, int startPositionId)
         {
             // Todo: brauchma des no?
-            throw NotImplementedException;
+            throw new NotImplementedException();
         }
 
         public Position Update(Position position)
