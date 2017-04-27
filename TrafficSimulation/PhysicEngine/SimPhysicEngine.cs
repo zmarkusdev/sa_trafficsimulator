@@ -13,7 +13,7 @@ namespace PhysicEngine
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 25; // 25 fps
+        private const int timerInterval = 1000 / 100; // 100 fps
 
         public SimPhysicEngine(IDataManager dataManager)
         {
@@ -40,23 +40,34 @@ namespace PhysicEngine
 
             // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
 
+            List<SimAgent> copiedAgents = new List<SimAgent>();
+            copiedAgents.AddRange(dataManager_.Agents);
+
             // Get agents
-            Parallel.ForEach(dataManager_.Agents, (agent) => {
+            Parallel.ForEach(copiedAgents, (agent) => {
                 // Get current edge from agent route, fallback is edge the agent is standing on
-                var curEdge = agent.Route.Any() ? 
-                    agent.Route.Peek() : 
-                    dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
+                var curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
+
+                var curAgent = agent.Clone() as SimAgent;
 
                 if (curEdge == null)
                     return; // Skip if no position is found...
 
                 // Calculate new velocity based on accelleration or decelleration
-                agent.CurrentVelocityExact = agent.CurrentVelocityExact + agent.CurrentAccelerationExact * timerInterval / 1000;
+                curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000;
 
                 // Calculate new position based on velocity and position
-                agent.RunLengthExact = agent.RunLengthExact + agent.CurrentVelocityExact * timerInterval / 1000;                
+                curAgent.RunLengthExact = curAgent.RunLengthExact + curAgent.CurrentVelocityExact * timerInterval / 1000;
 
                 // Save the exact values rounded as integers into the datamodel fields
+                curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
+                curAgent.RunLength = (int)Math.Round(curAgent.RunLengthExact);
+                dataManager_.UpdateAgent(curAgent);
+
+                if(curAgent.RunLengthExact > curEdge.CurveLength)
+                {
+                    //Console.WriteLine($"Edge Overflow detected, cur length is {curAgent.RunLengthExact:N2}");
+                }
             });            
         }
     }

@@ -280,7 +280,7 @@ namespace DataManager
             // Get agents greater startrunlength and smaller startrunlength 
             var agents = agents_.Where(a => a.EdgeId == edge.Id && 
                 a.RunLength - a.VehicleLength >= startRunLength && 
-                a.RunLength - a.VehicleLength < startRunLength + range);
+                a.RunLength - a.VehicleLength < startRunLength + range).ToList();
 
             // Add selected agents to the result
             results.AddRange(agents);
