@@ -51,7 +51,7 @@ namespace AgentSim
         {
             while(!shouldStop_)
             {
-                Console.WriteLine("Executing simulation thread cycle");
+                //Console.WriteLine("Executing simulation thread cycle");
                 
                 // TODO
 

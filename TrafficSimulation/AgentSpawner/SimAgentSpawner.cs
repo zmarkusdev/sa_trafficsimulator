@@ -62,7 +62,7 @@ namespace AgentSpawner
 
                 // Get start edges
                 var startEdges = dataManager_.Edges.Where(e => 
-                    startPositions.SelectMany(p => p.SuccessorEdgeIds).Any(successorEdgeId => successorEdgeId == e.Id)).ToArray();
+                    startPositions.Any(pos => pos.Id == e.StartPositionId)).ToArray();
 
                 if(startEdges.Any())
                 { 
@@ -95,18 +95,22 @@ namespace AgentSpawner
                             };
 
                             // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
-                            if(!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
+                            if (!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
                             {
+                                Console.WriteLine("Spawn agent #" + (dataManager_.Agents.Count + 1));
+
                                 // Set agent starting position to it's vehicle length
                                 agent.RunLength = agent.VehicleLength;
                                 dataManager_.CreateAgent(agent);
                             }
+                            else
+                                Console.WriteLine("Skipping agent creation, rolled start edge is occupied");
                         }
                     }
                 }
 
-                // Wait for 2 seconds before next run
-                Thread.Sleep(2000);
+                // Wait for 5 seconds before next run
+                Thread.Sleep(5000);
             }
         }
     }

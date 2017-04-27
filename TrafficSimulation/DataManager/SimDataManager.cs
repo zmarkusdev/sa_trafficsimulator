@@ -189,7 +189,7 @@ namespace DataManager
         {
             while(!shouldStop_)
             {
-                Console.WriteLine("Executing data synchronization");
+                //Console.WriteLine("Executing data synchronization");
 
                 // Update agents from the udpate queue
                 while (agentUpdateQueue_.TryDequeue(out SimAgent updateAgent))

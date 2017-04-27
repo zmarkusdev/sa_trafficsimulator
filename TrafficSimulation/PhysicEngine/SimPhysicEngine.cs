@@ -36,7 +36,7 @@ namespace PhysicEngine
 
         private void TimerTick(object source, ElapsedEventArgs e)
         {
-            Console.WriteLine("Physic engine tick!");
+            //Console.WriteLine("Physic engine tick!");
 
             // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
 
