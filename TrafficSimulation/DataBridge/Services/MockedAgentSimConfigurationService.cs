@@ -22,7 +22,7 @@ namespace DataBridge.Services
                 agentSimConfig.AccelerationSpread = rnd.Next(500);
                 agentSimConfig.Deceleration = rnd.Next(500);
                 agentSimConfig.DecelerationSpread = rnd.Next(500);
-                agentSimConfig.SpawnPropability = rnd.Next(500);
+                agentSimConfig.SpawnPropability = rnd.Next(100);
                 agentSimConfig.Velocity = rnd.Next(500);
                 agentSimConfig.VelocitySpread = rnd.Next(500);
                 agentSimConfigs.Add(agentSimConfig);
