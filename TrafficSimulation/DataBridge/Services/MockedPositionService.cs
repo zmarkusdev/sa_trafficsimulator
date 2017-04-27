@@ -141,7 +141,7 @@ namespace DataBridge
             posi1.PredecessorEdgeIds = new List<int>();
             posi1.Rotation = 0;
             posi1.RuleIds = new List<int>();
-            posi1.SuccessorEdgeIds = new List<int>(2);
+            posi1.SuccessorEdgeIds = new List<int>(1);
             posi1.X = 40;
             posi1.Y = 300;
             Create(posi1);
@@ -150,7 +150,10 @@ namespace DataBridge
             posi2.PredecessorEdgeIds = new List<int>(1);
             posi2.Rotation = 0;
             posi2.RuleIds = new List<int>();
-            posi2.SuccessorEdgeIds = new List<int>(3);
+            List<int> liste = new List<int>();
+            liste.Add(2);
+            liste.Add(4);
+            posi2.SuccessorEdgeIds = liste;
             posi2.X = 200;
             posi2.Y = 300;
             Create(posi2);
@@ -159,13 +162,13 @@ namespace DataBridge
             posi3.PredecessorEdgeIds = new List<int>(2);
             posi3.Rotation = 0;
             posi3.RuleIds = new List<int>();
-            posi3.SuccessorEdgeIds = new List<int>(4);
+            posi3.SuccessorEdgeIds = new List<int>(3);
             posi3.X = 220;
             posi3.Y = 320;
             Create(posi3);
 
             posi4.MaxVelocity = 50;
-            posi4.PredecessorEdgeIds = new List<int>(2);
+            posi4.PredecessorEdgeIds = new List<int>(4);
             posi4.Rotation = 0;
             posi4.RuleIds = new List<int>();
             posi4.SuccessorEdgeIds = new List<int>(5);
@@ -174,7 +177,7 @@ namespace DataBridge
             Create(posi4);
 
             posi5.MaxVelocity = 50;
-            posi5.PredecessorEdgeIds = new List<int>(4);
+            posi5.PredecessorEdgeIds = new List<int>(5);
             posi5.Rotation = 0;
             posi5.RuleIds = new List<int>();
             posi5.SuccessorEdgeIds = new List<int>();
@@ -186,7 +189,7 @@ namespace DataBridge
             posi6.PredecessorEdgeIds = new List<int>(3);
             posi6.Rotation = 0;
             posi6.RuleIds = new List<int>();
-            posi6.SuccessorEdgeIds = new List<int>(6);
+            posi6.SuccessorEdgeIds = new List<int>();
             posi6.X = 220;
             posi6.Y = 80;
             Create(posi6);
