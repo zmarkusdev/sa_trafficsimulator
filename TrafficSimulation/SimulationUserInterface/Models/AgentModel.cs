@@ -10,29 +10,29 @@ namespace SimulationUserInterface.Models
 {
     public class AgentModel : Model
     {
-        private int _X;
-        public int X
+        private int _XPosition;
+        public int XPosition
         {
-            get { return _X; }
+            get { return _XPosition; }
             set
             {
-                if (_X != value)
+                if (_XPosition != value)
                 {
-                    _X = value;
+                    _XPosition = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Y;
-        public int Y
+        private int _YPosition;
+        public int YPosition
         {
-            get { return _Y; }
+            get { return _YPosition; }
             set
             {
-                if (_Y != value)
+                if (_YPosition != value)
                 {
-                    _Y = value;
+                    _YPosition = value;
                     RaisePropertyChanged();
                 }
             }
@@ -66,36 +66,36 @@ namespace SimulationUserInterface.Models
             }
         }
 
-        private int _Width;
-        public int Width
+        private int _AgentWidth;
+        public int AgentWidth
         {
-            get { return _Width; }
+            get { return _AgentWidth; }
             set
             {
-                if (_Width != value)
+                if (_AgentWidth != value)
                 {
-                    _Width = value;
+                    _AgentWidth = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Height;
-        public int Height
+        private int _AgentHeight;
+        public int AgentHeight
         {
-            get { return _Height; }
+            get { return _AgentHeight; }
             set
             {
-                if (_Height != value)
+                if (_AgentHeight != value)
                 {
-                    _Height = value;
+                    _AgentHeight = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Rotation;
-        public int Rotation
+        private double _Rotation;
+        public double Rotation
         {
             get { return _Rotation; }
             set
@@ -122,19 +122,20 @@ namespace SimulationUserInterface.Models
             }
         }
 
-        public AgentModel(int x, int y, int rotation, int type, int width, int height, double imagewidthscalefactor, double imageheightscalefactor)
+        public AgentModel(int xPosition, int yPosition, double rotation, int agentType, int agentWidth, int agentHeight, double xScale, double yScale)
         {
-            X = x - width / 2;
-            Y = y - height / 2;
+            XPosition = xPosition - agentWidth / 2;
+            YPosition = yPosition - agentHeight / 2;
+
             Rotation = rotation;
 
-            Width = width;
-            Height = height;
+            AgentWidth = agentWidth;
+            AgentHeight = agentHeight;
 
-            XScaleFactor = imagewidthscalefactor;
-            YScaleFactor = imageheightscalefactor;
+            XScaleFactor = xScale;
+            YScaleFactor = yScale;
 
-            switch (type)
+            switch (agentType)
             {
                 case 0:
                     ImagePath = "pack://application:,,,/Resources/Car01.png";
