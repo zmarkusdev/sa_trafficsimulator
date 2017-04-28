@@ -15,7 +15,7 @@ namespace DataAccessLayer.Test
         [TestMethod]
         public void testConvertObject()
         {
-            StreamConverter converter = StreamConverter.getInstance();
+            JsonStreamConverter converter = JsonStreamConverter.getInstance();
 
             Agent agent = new Agent();
             agent.Id = 2;
@@ -42,7 +42,7 @@ namespace DataAccessLayer.Test
         [TestMethod]
         public void testConvertList()
         {
-            StreamConverter converter = StreamConverter.getInstance();
+            JsonStreamConverter converter = JsonStreamConverter.getInstance();
 
             List<Agent> agents = new List<Agent>();
 

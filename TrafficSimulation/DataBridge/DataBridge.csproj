@@ -60,6 +60,7 @@
     <Compile Include="Services\MockedMapService.cs" />
     <Compile Include="Services\MockedPositionService.cs" />
     <Compile Include="Services\MockedRuleService.cs" />
+    <Compile Include="Services\StreamConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\backGroundMap.jpg">
