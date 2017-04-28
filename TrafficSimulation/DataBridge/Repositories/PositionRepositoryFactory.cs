@@ -11,10 +11,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-
-
 using Repositories;
-using DataBridge.Services;
+using DataBridge;
 
 namespace Repositories {
 	public abstract class PositionRepositoryFactory {

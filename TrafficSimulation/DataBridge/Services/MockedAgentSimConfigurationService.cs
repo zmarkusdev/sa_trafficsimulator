@@ -18,13 +18,13 @@ namespace DataBridge.Services
             for (int i = 0; i < 10; i++)
             {
                 AgentSimConfiguration agentSimConfig = new AgentSimConfiguration();
-                agentSimConfig.Acceleration = rnd.Next(500);
-                agentSimConfig.AccelerationSpread = rnd.Next(500);
-                agentSimConfig.Deceleration = rnd.Next(500);
-                agentSimConfig.DecelerationSpread = rnd.Next(500);
-                agentSimConfig.SpawnPropability = rnd.Next(500);
-                agentSimConfig.Velocity = rnd.Next(500);
-                agentSimConfig.VelocitySpread = rnd.Next(500);
+                agentSimConfig.Acceleration = 3 + rnd.Next(4);
+                agentSimConfig.AccelerationSpread = rnd.Next(3);
+                agentSimConfig.Deceleration = 8 + rnd.Next(4);
+                agentSimConfig.DecelerationSpread = rnd.Next(3) - 3;
+                agentSimConfig.SpawnPropability = rnd.Next(100);
+                agentSimConfig.Velocity = rnd.Next(50);
+                agentSimConfig.VelocitySpread = rnd.Next(20) - 20;
                 agentSimConfigs.Add(agentSimConfig);
             }
 

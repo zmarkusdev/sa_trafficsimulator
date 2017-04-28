@@ -40,16 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datamodel\AbstractEdge.cs" />
-    <Compile Include="Datamodel\Agent.cs" />
-    <Compile Include="Datamodel\AgentSimConfiguration.cs" />
-    <Compile Include="Datamodel\AgentType.cs" />
-    <Compile Include="Datamodel\DynamicEdge.cs" />
-    <Compile Include="Datamodel\Edge.cs" />
-    <Compile Include="Datamodel\Map.cs" />
-    <Compile Include="Datamodel\Position.cs" />
-    <Compile Include="Datamodel\Rule.cs" />
-    <Compile Include="Datamodel\RuleType.cs" />
     <Compile Include="Repositories\AgentRepositoryFactory.cs" />
     <Compile Include="Repositories\AgentSimConfigurationRepositoryFactory.cs" />
     <Compile Include="Repositories\EdgeRepositoryFactory.cs" />
@@ -75,6 +65,12 @@
     <Content Include="Resources\backGroundMap.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{6f0355c7-e6fa-475a-a4bd-a4a3d2701162}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

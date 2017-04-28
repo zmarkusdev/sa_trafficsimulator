@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Datamodel;
 using Repositories;
-using DataBridge.Repositories;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace UnitTestProject1
 {
@@ -13,13 +13,16 @@ namespace UnitTestProject1
         IMapRepository mapRepository = MapRepositoryFactory.CreateRepository();
         IPositionRepository positionRepository = PositionRepositoryFactory.CreateRepository();
         IEdgeRepository edgeRepository = EdgeRepositoryFactory.CreateRepository();
+        IAgentRepository agentRepository = AgentRepositoryFactory.CreateRepository();
+
+
         [TestMethod]
         public void getMapTest()
-        {    
+        {
             Map map = mapRepository.GetMap();
             Assert.AreNotEqual(map.Width, 0);
             Assert.AreNotEqual(map.Height, 0);
-            Assert.AreNotEqual(map.BackgroundImageBase64.Length, 0);   
+            Assert.AreNotEqual(map.BackgroundImageBase64.Length, 0);
         }
         [TestMethod]
         public void createPosition()
@@ -62,6 +65,11 @@ namespace UnitTestProject1
             edgeRepository.Delete(edge2);
             edges = edgeRepository.GetAll();
             Assert.AreEqual(vorher, edges.Count());
+        }
+        [TestMethod]
+        public void createSmallVillage()
+        {
+
         }
 
     }
