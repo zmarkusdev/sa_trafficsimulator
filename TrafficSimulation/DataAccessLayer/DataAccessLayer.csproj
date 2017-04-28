@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\StreamConverter.cs" />
     <Compile Include="DataAccessLayerRepositoryFactory.cs" />
     <Compile Include="IDataAccessLayerRepository.cs" />
     <Compile Include="MockedDataAccessLayer.cs" />
@@ -57,6 +59,9 @@
       <Project>{340107c2-a376-454f-8e21-4ffe995a8eba}</Project>
       <Name>DataBridge</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
