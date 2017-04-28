@@ -17,7 +17,7 @@ namespace DataAccessLayer.Controller
 
         public static Object convertFromJson(String str)
         {
-            return new JavaScriptSerializer().Deserialize(str);
+            return new JavaScriptSerializer().Deserialize<Object>(str);
         }
     }
 }
