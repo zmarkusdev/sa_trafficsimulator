@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="dataAccessLayertest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamConverterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

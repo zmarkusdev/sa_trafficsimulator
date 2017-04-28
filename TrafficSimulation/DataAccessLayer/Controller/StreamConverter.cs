@@ -7,17 +7,38 @@ using System.Web.Script.Serialization;
 
 namespace DataAccessLayer.Controller
 {
-    class StreamConverter
+    public class StreamConverter
     {
+        private static StreamConverter instance;
+        private JavaScriptSerializer javaScriptSerializer;
 
-        public static string convertToJson(Object obj)
+        private StreamConverter()
         {
-            return new JavaScriptSerializer().Serialize(obj);
+            this.javaScriptSerializer = new JavaScriptSerializer();
         }
 
-        public static Object convertFromJson(String str)
+        public static StreamConverter getInstance()
         {
-            return new JavaScriptSerializer().Deserialize<Object>(str);
+            if (instance == null)
+            {
+                instance = new StreamConverter();
+            }
+            return instance;
+        }
+
+        public string convertToJson<T>(T obj)
+        {
+            return javaScriptSerializer.Serialize(obj);
+        }
+
+        public string convertListToJson<T>(IEnumerable<T> list)
+        {
+            return javaScriptSerializer.Serialize(list);
+        }
+
+        public T convertFromJson<T>(String str)
+        {
+            return javaScriptSerializer.Deserialize<T>(str);
         }
     }
 }
