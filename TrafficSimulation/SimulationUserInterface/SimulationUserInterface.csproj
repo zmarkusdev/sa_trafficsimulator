@@ -65,14 +65,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\AgentModel.cs" />
-    <Compile Include="Models\AgentRepository.cs" />
+    <Compile Include="Models\Repositorys\AgentRepository.cs" />
     <Compile Include="Models\EdgeModel.cs" />
-    <Compile Include="Models\EdgeRepository.cs" />
+    <Compile Include="Models\Repositorys\EdgeRepository.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Models\PositionModel.cs" />
-    <Compile Include="Models\PositionRepository.cs" />
+    <Compile Include="Models\Repositorys\PositionRepository.cs" />
     <Compile Include="Models\SignModel.cs" />
-    <Compile Include="Models\SignRepository.cs" />
+    <Compile Include="Models\Repositorys\SignRepository.cs" />
     <Compile Include="Technics\Base64ImageConverter.cs" />
     <Compile Include="Technics\ImageConverter.cs" />
     <Compile Include="Technics\Model.cs" />
