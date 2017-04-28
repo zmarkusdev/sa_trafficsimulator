@@ -10,7 +10,7 @@ namespace DataAccessLayer
     {
         void Init();
         void LoadfromFile();
-
-
+        void SavetoFile();
+        
     }
 }

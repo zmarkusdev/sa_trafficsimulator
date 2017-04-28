@@ -10,6 +10,9 @@ namespace DataAccessLayer
     {
         static void Main(string[] args)
         {
+            IDataAccessLayerRepository dal = DataAccessLayerRepositoryFactory.CreateRepository();
+
+            dal.SavetoFile();
         }
     }
 }

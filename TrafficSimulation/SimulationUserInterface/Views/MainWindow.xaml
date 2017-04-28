@@ -24,7 +24,10 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <!-- Draw background map-->
         <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" Stretch="Fill"/>
+        
+        <!-- Draw Agent Images -->
         <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceAgents.MapAgents}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -34,12 +37,12 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="{Binding ImagePath, Converter={StaticResource ImageConverter}}" 
-                           Width="{Binding Width}" Stretch="Fill" Height="{Binding Height}" 
+                           Width="{Binding AgentWidth}" Stretch="Fill" Height="{Binding AgentHeight}" 
                            RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <RotateTransform Angle="{Binding Rotation}" />
-                                <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                                <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
                                 <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
                             </TransformGroup>
                         </Image.RenderTransform>
@@ -48,6 +51,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <!-- Draw Position Points -->
         <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfacePositions.MapPositions}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -71,6 +75,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <!-- Draw Edge Lines -->
         <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceEdges.MapEdges}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
