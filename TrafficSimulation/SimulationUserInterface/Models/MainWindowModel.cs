@@ -86,8 +86,8 @@ namespace SimulationUserInterface.Models
 
         public MainWindowModel()
         {
-            WindowHeight = 1000;
-            WindowWidth = 1000;
+            WindowHeight = 600;
+            WindowWidth = 800;
         }
 
         public void SetBackgroundInformation(char [] bytestream, int width, int height)

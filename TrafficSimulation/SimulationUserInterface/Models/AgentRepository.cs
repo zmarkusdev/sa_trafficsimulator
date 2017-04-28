@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datamodel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,11 +17,15 @@ namespace SimulationUserInterface.Models
             MapAgents = new ObservableCollection<AgentModel>();
         }
 
-        public void ApplyImageResize(double widthfactor, double heightfactor)
+        public void DrawAgends(IEnumerable<Position> positions, IEnumerable<Edge> edges, IEnumerable<Agent> agents)
         {
-            foreach (AgentModel agent in MapAgents)
+            try
             {
-                agent.ChangeAgentPictureSize(widthfactor, heightfactor);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

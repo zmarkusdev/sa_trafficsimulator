@@ -38,6 +38,34 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        private double _XScaleFactor;
+        public double XScaleFactor
+        {
+            get { return _XScaleFactor; }
+            set
+            {
+                if (_XScaleFactor != value)
+                {
+                    _XScaleFactor = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private double _YScaleFactor;
+        public double YScaleFactor
+        {
+            get { return _YScaleFactor; }
+            set
+            {
+                if (_YScaleFactor != value)
+                {
+                    _YScaleFactor = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         private int _Width;
         public int Width
         {
@@ -94,7 +122,7 @@ namespace SimulationUserInterface.Models
             }
         }
 
-        public AgentModel(int x, int y, int rotation, int type, int width, int height)
+        public AgentModel(int x, int y, int rotation, int type, int width, int height, double imagewidthscalefactor, double imageheightscalefactor)
         {
             X = x - width / 2;
             Y = y - height / 2;
@@ -102,6 +130,9 @@ namespace SimulationUserInterface.Models
 
             Width = width;
             Height = height;
+
+            XScaleFactor = imagewidthscalefactor;
+            YScaleFactor = imageheightscalefactor;
 
             switch (type)
             {
@@ -112,15 +143,7 @@ namespace SimulationUserInterface.Models
                     ImagePath = "pack://application:,,,/Resources/Car01.png";
                     break;
             }
-
         }
 
-        public void ChangeAgentPictureSize(double widthfactor, double heightfactor)
-        {
-            Width = Convert.ToInt32(Math.Round(Width * widthfactor));
-            Height = Convert.ToInt32(Math.Round(Height * heightfactor));
-            X = Convert.ToInt32(Math.Round(X * widthfactor));
-            Y = Convert.ToInt32(Math.Round(Y * heightfactor));
-        }
-    }
-}
+    } // Class
+} // Namespace
