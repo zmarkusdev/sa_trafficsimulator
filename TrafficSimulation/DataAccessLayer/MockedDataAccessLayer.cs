@@ -10,14 +10,8 @@ using System.Web.Script.Serialization;
 
 namespace DataAccessLayer
 {
-    class MockedDataAccessLayer : IDataAccessLayerRepository
+    class MockedDataAccessLayer //: IDataAccessLayerRepository<>
     {
-        Map map = null;
-        List<Position> positions = null;
-        List<Edge> edges = null;
-        List<DynamicEdge> dynamicEdges = null;
-        List<Agent> agents = null;
-        List<Rule> rules = null;
 
         private static MockedDataAccessLayer dalInstance = null;
         private MockedDataAccessLayer() { }

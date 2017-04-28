@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datamodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,11 @@ namespace DataAccessLayer
 {
     public abstract class DataAccessLayerRepositoryFactory
     {
-        public static IDataAccessLayerRepository CreateRepository()
+        public static IDataAccess<Position> CreateRepository()
         {
-            MockedDataAccessLayer dalInstance = MockedDataAccessLayer.getInstance();
-            return dalInstance;
+            //MockedDataAccessLayer dalInstance = MockedDataAccessLayer.getInstance();
+            //return dalInstance;
+            return null;
         }
 
     }

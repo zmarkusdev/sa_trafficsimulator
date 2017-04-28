@@ -9,8 +9,8 @@ namespace DataAccessLayerTest
         [TestMethod]
         public void DataAccessLayerInit()
         {
-            IDataAccessLayerRepository dataAccessLayer = DataAccessLayerRepositoryFactory.CreateRepository();
-            dataAccessLayer.Init();
+            //IDataAccessLayerRepository dataAccessLayer = DataAccessLayerRepositoryFactory.CreateRepository();
+            //dataAccessLayer.Init();
             Assert.IsTrue(true);
         }
     }
