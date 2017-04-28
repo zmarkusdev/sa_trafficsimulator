@@ -66,7 +66,11 @@
     </Compile>
     <Compile Include="Models\AgentModel.cs" />
     <Compile Include="Models\AgentRepository.cs" />
+    <Compile Include="Models\EdgeModel.cs" />
+    <Compile Include="Models\EdgeRepository.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
+    <Compile Include="Models\PositionModel.cs" />
+    <Compile Include="Models\PositionRepository.cs" />
     <Compile Include="Models\SignModel.cs" />
     <Compile Include="Models\SignRepository.cs" />
     <Compile Include="Technics\Base64ImageConverter.cs" />
@@ -109,6 +113,10 @@
     <ProjectReference Include="..\DataBridge\DataBridge.csproj">
       <Project>{340107c2-a376-454f-8e21-4ffe995a8eba}</Project>
       <Name>DataBridge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{6F0355C7-E6FA-475A-A4BD-A4A3D2701162}</Project>
+      <Name>DataModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
