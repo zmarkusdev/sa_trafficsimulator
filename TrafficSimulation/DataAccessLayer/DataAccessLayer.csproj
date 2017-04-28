@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\StreamConverter.cs" />
     <Compile Include="DataAccessLayerRepositoryFactory.cs" />
     <Compile Include="IDataAccessLayerRepository.cs" />
     <Compile Include="MockedDataAccessLayer.cs" />
@@ -62,6 +63,9 @@
       <Project>{6f0355c7-e6fa-475a-a4bd-a4a3d2701162}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

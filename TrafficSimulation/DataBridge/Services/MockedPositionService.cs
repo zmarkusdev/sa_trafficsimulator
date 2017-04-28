@@ -154,7 +154,7 @@ namespace DataBridge
             liste.Add(2);
             liste.Add(4);
             posi2.SuccessorEdgeIds = liste;
-            posi2.X = 200;
+            posi2.X = 250;
             posi2.Y = 300;
             Create(posi2);
 
@@ -163,8 +163,8 @@ namespace DataBridge
             posi3.Rotation = 0;
             posi3.RuleIds = new List<int>();
             posi3.SuccessorEdgeIds = new List<int>(3);
-            posi3.X = 220;
-            posi3.Y = 320;
+            posi3.X = 350;
+            posi3.Y = 370;
             Create(posi3);
 
             posi4.MaxVelocity = 50;
@@ -172,8 +172,8 @@ namespace DataBridge
             posi4.Rotation = 0;
             posi4.RuleIds = new List<int>();
             posi4.SuccessorEdgeIds = new List<int>(5);
-            posi4.X = 220;
-            posi4.Y = 320;
+            posi4.X = 350;
+            posi4.Y = 550;
             Create(posi4);
 
             posi5.MaxVelocity = 50;
@@ -181,8 +181,8 @@ namespace DataBridge
             posi5.Rotation = 0;
             posi5.RuleIds = new List<int>();
             posi5.SuccessorEdgeIds = new List<int>();
-            posi5.X = 220;
-            posi5.Y = 580;
+            posi5.X = 430;
+            posi5.Y = 230;
             Create(posi5);
 
             posi6.MaxVelocity = 50;
@@ -190,8 +190,8 @@ namespace DataBridge
             posi6.Rotation = 0;
             posi6.RuleIds = new List<int>();
             posi6.SuccessorEdgeIds = new List<int>();
-            posi6.X = 220;
-            posi6.Y = 80;
+            posi6.X = 420;
+            posi6.Y = 20;
             Create(posi6);
         }
 

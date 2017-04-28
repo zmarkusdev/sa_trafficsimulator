@@ -1,4 +1,5 @@
-﻿using Repositories;
+﻿using Datamodel;
+using Repositories;
 using SimulationUserInterface.Models;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,14 @@ namespace SimulationUserInterface.ViewModels
         public MainWindowModel UserInterfaceModel { get; set; }
         public SignRepository UserInterfaceSigns { get; set; }
         public AgentRepository UserInterfaceAgents { get; set; }
+        public PositionRepository UserInterfacePositions { get; set; }
+        public EdgeRepository UserInterfaceEdges { get; set; }
 
         private DispatcherTimer timer = new DispatcherTimer();
 
         private IEdgeRepository Edges;
         private IAgentRepository Agents;
+        private IPositionRepository EdgeEndpointPositions;
 
         public MainWindowViewModel()
         {
@@ -28,13 +32,16 @@ namespace SimulationUserInterface.ViewModels
                 UserInterfaceModel = new MainWindowModel();
                 UserInterfaceSigns = new SignRepository();
                 UserInterfaceAgents = new AgentRepository();
+                UserInterfacePositions = new PositionRepository();
+                UserInterfaceEdges = new EdgeRepository();
 
                 IMapRepository UserInterfaceMap = MapRepositoryFactory.CreateRepository();
-                Datamodel.Map BackgroundMap = UserInterfaceMap.GetMap();
+                Map BackgroundMap = UserInterfaceMap.GetMap();
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
 
                 Edges = EdgeRepositoryFactory.CreateRepository();
                 Agents = AgentRepositoryFactory.CreateRepository();
+                EdgeEndpointPositions = PositionRepositoryFactory.CreateRepository();
 
 
                 timer.Interval = TimeSpan.FromMilliseconds(10);
@@ -54,19 +61,26 @@ namespace SimulationUserInterface.ViewModels
             try
             {
 
-                IEnumerable<Datamodel.Edge> Eds = Edges.GetAll();
-                IEnumerable<Datamodel.Agent> Ags = Agents.GetAllAgents();
+                IEnumerable<Edge> Eds = Edges.GetAll();
+                IEnumerable<Agent> Ags = Agents.GetAllAgents();
+                IEnumerable<Position> Pos = EdgeEndpointPositions.GetAll();
 
                 UserInterfaceAgents.MapAgents.Clear();
-
-                UserInterfaceAgents.MapAgents.Add(new AgentModel(0, 0, 0, 0, 50, 100));
-                UserInterfaceAgents.MapAgents.Add(new AgentModel(0, 0, -90, 0, 50, 100));
 
                 double tempResizeWidth, tempResizeHeight;
 
                 UserInterfaceModel.GetImageFactor(out tempResizeWidth, out tempResizeHeight);
 
-                UserInterfaceAgents.ApplyImageResize(tempResizeWidth, tempResizeHeight);
+                UserInterfaceAgents.MapAgents.Add(new AgentModel(100, 300, 0, 0, 50, 100, tempResizeWidth, tempResizeHeight));
+                UserInterfaceAgents.MapAgents.Add(new AgentModel(300, 50, -90, 0, 50, 100, tempResizeWidth, tempResizeHeight));
+
+                UserInterfacePositions.SetScaleFactors(tempResizeWidth, tempResizeHeight);
+                UserInterfacePositions.DrawPositions(Pos);
+
+                UserInterfaceEdges.SetScaleFactors(tempResizeWidth, tempResizeHeight);
+                UserInterfaceEdges.DrawEdges(Pos, Eds);
+
+
             }
             catch (Exception ex)
             {
