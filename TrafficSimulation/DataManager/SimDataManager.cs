@@ -192,7 +192,8 @@ namespace DataManager
                 //Console.WriteLine("Executing data synchronization");
 
                 // Update agents from the udpate queue
-                while (agentUpdateQueue_.TryDequeue(out SimAgent updateAgent))
+                SimAgent updateAgent;
+                while (agentUpdateQueue_.TryDequeue(out updateAgent))
                     agentRepository_.Update(updateAgent);
 
                 // Update dynamic rules
