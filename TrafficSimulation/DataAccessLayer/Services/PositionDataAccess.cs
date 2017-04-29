@@ -44,8 +44,7 @@ namespace DataAccessLayer.Services
                 endPositions.RemoveAll(i => i.Id == position.Id);
             if (startPositions != null)
                 startPositions.RemoveAll(i => i.Id == position.Id);
-            //if (positions != null)
-            //    positions.RemoveAll(i => i.Id == position.Id);
+            base.Delete(position);
         }
 
         public override void Init()
