@@ -85,5 +85,13 @@ namespace DataManager
         /// Agent simulation configurations for spawning new agents in the simulation
         /// </summary>
         IReadOnlyList<AgentSimConfiguration> AgentSimConfigurations { get; }
+
+        /// <summary>
+        /// Returns all successors for a given edge.
+        /// </summary>
+        /// <param name="edge">The edge you want to know the successors for</param>
+        /// <returns>Read-only list of successor edges</returns>
+        IReadOnlyList<Edge> GetSuccessorEdges(int edgeId);
+
     }
 }

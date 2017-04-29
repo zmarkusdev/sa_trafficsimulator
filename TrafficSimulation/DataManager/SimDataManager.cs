@@ -123,16 +123,16 @@ namespace DataManager
         public void Initialize()
         {
             // Get agent data
-            IEnumerable<Agent> existingAgents = agentRepository_.GetAllAgents();            
+            IEnumerable<Agent> existingAgents = agentRepository_.GetAllAgents();
             foreach (var existingAgent in existingAgents)
             {
-                var simAgent = new SimAgent(existingAgent);                
+                var simAgent = new SimAgent(existingAgent);
                 agents_.Add(simAgent);
             }
 
             // Get rule data
             IEnumerable<Rule> rules = ruleRepository_.GetAllRules();
-            foreach(var rule in rules)
+            foreach (var rule in rules)
             {
                 if (rule.IsDynamicRule)
                     dynamicRules_.Add(rule);
@@ -187,7 +187,7 @@ namespace DataManager
         /// </summary>
         private void RunSync()
         {
-            while(!shouldStop_)
+            while (!shouldStop_)
             {
                 //Console.WriteLine("Executing data synchronization");
 
@@ -198,10 +198,10 @@ namespace DataManager
 
                 // Update dynamic rules
                 IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
-                foreach(var rule in remoteDynamicRules)
+                foreach (var rule in remoteDynamicRules)
                 {
                     // Check if dynamic rule already exists
-                    Rule localRule = dynamicRules_.FirstOrDefault(r => r.Id == rule.Id);                    
+                    Rule localRule = dynamicRules_.FirstOrDefault(r => r.Id == rule.Id);
                     if (localRule != null)
                     {
                         // Update
@@ -226,7 +226,7 @@ namespace DataManager
             agentUpdateQueue_.Enqueue(updateAgent);
 
             // Update agent in the current agent list
-            lock(this)
+            lock (this)
             {
                 // Get current agent
                 var currentAgent = agents_.FirstOrDefault(a => a.Id == updateAgent.Id);
@@ -245,7 +245,7 @@ namespace DataManager
         /// <param name="createAgent">The agent that should be created</param>
         public void CreateAgent(SimAgent createAgent)
         {
-            lock(this)
+            lock (this)
             {
                 var result = agentRepository_.Create(createAgent);
                 createAgent.Id = result.Id;
@@ -279,8 +279,8 @@ namespace DataManager
                 throw new ArgumentException("Start run length is longer than the edge length");
 
             // Get agents greater startrunlength and smaller startrunlength 
-            var agents = agents_.ToList().Where(a => a.EdgeId == edge.Id && 
-                a.RunLength - a.VehicleLength >= startRunLength && 
+            var agents = agents_.ToList().Where(a => a.EdgeId == edge.Id &&
+                a.RunLength - a.VehicleLength >= startRunLength &&
                 a.RunLength - a.VehicleLength < startRunLength + range).ToList();
 
             // Add selected agents to the result
@@ -291,7 +291,7 @@ namespace DataManager
             {
                 // Get end point
                 var endPoint = positions_.FirstOrDefault(p => p.Id == edge.EndPositionId);
-                if(endPoint != null)
+                if (endPoint != null)
                 {
                     foreach (var successorEdgeId in endPoint.SuccessorEdgeIds)
                         results.AddRange(GetAgentsInRange(successorEdgeId, 0, startRunLength + range - edge.CurveLength));
@@ -300,5 +300,17 @@ namespace DataManager
 
             return results;
         }
+
+
+        /// <summary>
+        /// Returns all successors for a given edge.
+        /// </summary>
+        /// <param name="edgeId">The edge you want to know the successors for</param>
+        /// <returns>Read-only list of successor edges</returns>
+        public IReadOnlyList<Edge> GetSuccessorEdges(int edgeId)
+        {
+            return edges_.FindAll(p => p.StartPositionId == edgeId && p.Id != edgeId);
+        }
+
     }
 }
