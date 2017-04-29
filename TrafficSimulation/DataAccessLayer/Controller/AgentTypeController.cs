@@ -8,17 +8,17 @@ namespace DataAccessLayer.Controller
 {
     class AgentTypeController : AbstractPipeServer
     {
-        public void read<T>(T obj)
+        public override void read<T>(T obj)
         {
             throw new NotImplementedException();
         }
 
-        public void run(string pipeName)
+        public override void run(string pipeName)
         {
             throw new NotImplementedException();
         }
 
-        public void write<T>(T obj)
+        public override void write<T>(T obj)
         {
             throw new NotImplementedException();
         }
