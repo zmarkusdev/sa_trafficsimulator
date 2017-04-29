@@ -16,7 +16,7 @@ namespace AgentSim
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 1; // 100 fps
+        private const int timerInterval = 1000 / 100; // 100 fps
         private IReadOnlyList<Datamodel.Edge> allEdges_;
         // TODO: property for staticRules_
 
@@ -63,13 +63,14 @@ namespace AgentSim
 
             // Iterate over all agents and update their behaviour
             Parallel.ForEach(agents, (agent) => {
-                // Console.WriteLine("updating behaviour");
+                var curAgent = agent.Clone() as SimAgent;
+                //Console.WriteLine("Calculating behaviour of agent #" + agent.Id);
 
                 // Check, if the agent has a defined route, otherwise calculate it.
-                calculateRouteIfNeccessary(agent);
+                calculateRouteIfNeccessary(curAgent);
 
-
-
+                // Update the agent
+                dataManager_.UpdateAgent(curAgent);
             });
         }
 
@@ -80,30 +81,35 @@ namespace AgentSim
         /// <param name="agent">Agent the route should be calculated for</param>
         private void calculateRouteIfNeccessary(SimAgent agent)
         {
-            var route = agent.Route;
-
             // Check, if a route already exists
-            if(!(route == null || route.Count <= 0))
+            if(!(agent.Route == null || agent.Route.Count <= 0))
             {
                 return;
             }
 
             // Instantiate new route (just to be sure)
-            route = new Queue<Datamodel.AbstractEdge>();
+            agent.Route = new Queue<Datamodel.AbstractEdge>();
+
+            // Add current route (the start route so to say)
+            agent.Route.Enqueue(dataManager_.GetEdgeForId(agent.EdgeId));
 
             // Get a list of all possible successor edges
             IReadOnlyList<Datamodel.Edge> successors = dataManager_.GetSuccessorEdges(agent.EdgeId);
+            if (successors.Count <= 0)
+                return;
+
             while (successors != null && successors.Count > 0) {
                 // Randomly choose a successor edge
-                Datamodel.Edge nextEdge = successors[0];
-                route.Enqueue(nextEdge);
+                Random rnd = new Random();
+                int randomPosition = rnd.Next(successors.Count);
+                Datamodel.Edge nextEdge = successors[randomPosition];
+                agent.Route.Enqueue(nextEdge);
 
                 // Fetch successors for the next edge
                 successors = dataManager_.GetSuccessorEdges(nextEdge.Id);
             }
 
-            Console.WriteLine("Calculated a new route");
-
+            Console.WriteLine("Calculated new route for agent #" + agent.Id);
         }
 
     }

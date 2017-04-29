@@ -93,5 +93,12 @@ namespace DataManager
         /// <returns>Read-only list of successor edges</returns>
         IReadOnlyList<Edge> GetSuccessorEdges(int edgeId);
 
+        /// <summary>
+        /// Returns an edge for an ID
+        /// </summary>
+        /// <param name="edge">The edge you want to know return</param>
+        /// <returns>Edge object</returns>
+        Edge GetEdgeForId(int edgeId);
+
     }
 }

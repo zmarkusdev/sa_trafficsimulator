@@ -309,7 +309,18 @@ namespace DataManager
         /// <returns>Read-only list of successor edges</returns>
         public IReadOnlyList<Edge> GetSuccessorEdges(int edgeId)
         {
-            return edges_.FindAll(p => p.StartPositionId == edgeId && p.Id != edgeId);
+            Edge edge = edgeRepository_.GetEdge(edgeId);
+            return edges_.FindAll(p => p.StartPositionId == edge.EndPositionId && p.Id != edgeId);
+        }
+
+        /// <summary>
+        /// Returns an edge for an ID
+        /// </summary>
+        /// <param name="edge">The edge you want to know return</param>
+        /// <returns>Edge object</returns>
+        public Edge GetEdgeForId(int edgeId)
+        {
+            return edges_.Find(p => p.Id == edgeId);
         }
 
     }
