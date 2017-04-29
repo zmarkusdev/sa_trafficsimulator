@@ -278,7 +278,7 @@ namespace DataManager
                 throw new ArgumentException("Start run length is longer than the edge length");
 
             // Get agents greater startrunlength and smaller startrunlength 
-            var agents = agents_.Where(a => a.EdgeId == edge.Id && 
+            var agents = agents_.ToList().Where(a => a.EdgeId == edge.Id && 
                 a.RunLength - a.VehicleLength >= startRunLength && 
                 a.RunLength - a.VehicleLength < startRunLength + range).ToList();
 
