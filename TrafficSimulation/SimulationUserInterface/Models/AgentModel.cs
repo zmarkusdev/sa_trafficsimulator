@@ -10,64 +10,92 @@ namespace SimulationUserInterface.Models
 {
     public class AgentModel : Model
     {
-        private int _X;
-        public int X
+        private int _XPosition;
+        public int XPosition
         {
-            get { return _X; }
+            get { return _XPosition; }
             set
             {
-                if (_X != value)
+                if (_XPosition != value)
                 {
-                    _X = value;
+                    _XPosition = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Y;
-        public int Y
+        private int _YPosition;
+        public int YPosition
         {
-            get { return _Y; }
+            get { return _YPosition; }
             set
             {
-                if (_Y != value)
+                if (_YPosition != value)
                 {
-                    _Y = value;
+                    _YPosition = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Width;
-        public int Width
+        private double _XScaleFactor;
+        public double XScaleFactor
         {
-            get { return _Width; }
+            get { return _XScaleFactor; }
             set
             {
-                if (_Width != value)
+                if (_XScaleFactor != value)
                 {
-                    _Width = value;
+                    _XScaleFactor = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Height;
-        public int Height
+        private double _YScaleFactor;
+        public double YScaleFactor
         {
-            get { return _Height; }
+            get { return _YScaleFactor; }
             set
             {
-                if (_Height != value)
+                if (_YScaleFactor != value)
                 {
-                    _Height = value;
+                    _YScaleFactor = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private int _Rotation;
-        public int Rotation
+        private int _AgentWidth;
+        public int AgentWidth
+        {
+            get { return _AgentWidth; }
+            set
+            {
+                if (_AgentWidth != value)
+                {
+                    _AgentWidth = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private int _AgentHeight;
+        public int AgentHeight
+        {
+            get { return _AgentHeight; }
+            set
+            {
+                if (_AgentHeight != value)
+                {
+                    _AgentHeight = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        private double _Rotation;
+        public double Rotation
         {
             get { return _Rotation; }
             set
@@ -94,16 +122,20 @@ namespace SimulationUserInterface.Models
             }
         }
 
-        public AgentModel(int x, int y, int rotation, int type, int width, int height)
+        public AgentModel(int xPosition, int yPosition, double rotation, int agentType, int agentWidth, int agentHeight, double xScale, double yScale)
         {
-            X = x - width / 2;
-            Y = y - height / 2;
+            XPosition = xPosition - agentWidth / 2;
+            YPosition = yPosition - agentHeight / 2;
+
             Rotation = rotation;
 
-            Width = width;
-            Height = height;
+            AgentWidth = agentWidth;
+            AgentHeight = agentHeight;
 
-            switch (type)
+            XScaleFactor = xScale;
+            YScaleFactor = yScale;
+
+            switch (agentType)
             {
                 case 0:
                     ImagePath = "pack://application:,,,/Resources/Car01.png";
@@ -112,15 +144,7 @@ namespace SimulationUserInterface.Models
                     ImagePath = "pack://application:,,,/Resources/Car01.png";
                     break;
             }
-
         }
 
-        public void ChangeAgentPictureSize(double widthfactor, double heightfactor)
-        {
-            Width = Convert.ToInt32(Math.Round(Width * widthfactor));
-            Height = Convert.ToInt32(Math.Round(Height * heightfactor));
-            X = Convert.ToInt32(Math.Round(X * widthfactor));
-            Y = Convert.ToInt32(Math.Round(Y * heightfactor));
-        }
-    }
-}
+    } // Class
+} // Namespace

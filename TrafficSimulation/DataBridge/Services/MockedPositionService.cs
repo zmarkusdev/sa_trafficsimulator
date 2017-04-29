@@ -141,7 +141,7 @@ namespace DataBridge
             posi1.PredecessorEdgeIds = new List<int>();
             posi1.Rotation = 0;
             posi1.RuleIds = new List<int>();
-            posi1.SuccessorEdgeIds = new List<int>(2);
+            posi1.SuccessorEdgeIds = new List<int>(1);
             posi1.X = 40;
             posi1.Y = 300;
             Create(posi1);
@@ -150,8 +150,11 @@ namespace DataBridge
             posi2.PredecessorEdgeIds = new List<int>(1);
             posi2.Rotation = 0;
             posi2.RuleIds = new List<int>();
-            posi2.SuccessorEdgeIds = new List<int>(3);
-            posi2.X = 200;
+            List<int> liste = new List<int>();
+            liste.Add(2);
+            liste.Add(4);
+            posi2.SuccessorEdgeIds = liste;
+            posi2.X = 250;
             posi2.Y = 300;
             Create(posi2);
 
@@ -159,36 +162,36 @@ namespace DataBridge
             posi3.PredecessorEdgeIds = new List<int>(2);
             posi3.Rotation = 0;
             posi3.RuleIds = new List<int>();
-            posi3.SuccessorEdgeIds = new List<int>(4);
-            posi3.X = 220;
-            posi3.Y = 320;
+            posi3.SuccessorEdgeIds = new List<int>(3);
+            posi3.X = 350;
+            posi3.Y = 370;
             Create(posi3);
 
             posi4.MaxVelocity = 50;
-            posi4.PredecessorEdgeIds = new List<int>(2);
+            posi4.PredecessorEdgeIds = new List<int>(4);
             posi4.Rotation = 0;
             posi4.RuleIds = new List<int>();
             posi4.SuccessorEdgeIds = new List<int>(5);
-            posi4.X = 220;
-            posi4.Y = 320;
+            posi4.X = 350;
+            posi4.Y = 550;
             Create(posi4);
 
             posi5.MaxVelocity = 50;
-            posi5.PredecessorEdgeIds = new List<int>(4);
+            posi5.PredecessorEdgeIds = new List<int>(5);
             posi5.Rotation = 0;
             posi5.RuleIds = new List<int>();
             posi5.SuccessorEdgeIds = new List<int>();
-            posi5.X = 220;
-            posi5.Y = 580;
+            posi5.X = 430;
+            posi5.Y = 230;
             Create(posi5);
 
             posi6.MaxVelocity = 50;
             posi6.PredecessorEdgeIds = new List<int>(3);
             posi6.Rotation = 0;
             posi6.RuleIds = new List<int>();
-            posi6.SuccessorEdgeIds = new List<int>(6);
-            posi6.X = 220;
-            posi6.Y = 80;
+            posi6.SuccessorEdgeIds = new List<int>();
+            posi6.X = 420;
+            posi6.Y = 20;
             Create(posi6);
         }
 

@@ -6,7 +6,9 @@
         xmlns:vm="clr-namespace:SimulationUserInterface.ViewModels"
         xmlns:tc="clr-namespace:SimulationUserInterface.Technics"
         xmlns:local="clr-namespace:SimulationUserInterface"
-        mc:Ignorable="d" Title="Traffic Simulation" Width="{Binding Path=UserInterfaceModel.WindowWidth, Mode=TwoWay}" Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}">
+        mc:Ignorable="d" Title="Traffic Simulation"
+        Width="{Binding Path=UserInterfaceModel.WindowWidth, Mode=TwoWay}" 
+        Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}" >
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
@@ -22,36 +24,76 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
+        <!-- Draw background map-->
         <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" Stretch="Fill"/>
-        <ItemsControl ItemsSource="{Binding Path=UserInterfaceAgents.MapAgents}">
+        
+        <!-- Draw Agent Images -->
+        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceAgents.MapAgents}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemContainerStyle>
-                <Style>
-                    <Setter Property="Canvas.Left" Value="{Binding X}" />
-                    <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                </Style>
-            </ItemsControl.ItemContainerStyle>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Image Source="{Binding ImagePath, Converter={StaticResource ImageConverter}}" 
-                           Width="{Binding Width}" Stretch="Fill" Height="{Binding Height}" 
-                           >
+                           Width="{Binding AgentWidth}" Stretch="Fill" Height="{Binding AgentHeight}" 
+                           RenderTransformOrigin="0.5,0.5">
                         <Image.RenderTransform>
                             <TransformGroup>
-                                <ScaleTransform ScaleX="1.456" />
-                                <SkewTransform />
                                 <RotateTransform Angle="{Binding Rotation}" />
-                                <TranslateTransform />
+                                <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
+                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
                             </TransformGroup>
                         </Image.RenderTransform>
-
                     </Image>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
+        <!-- Draw Position Points -->
+        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfacePositions.MapPositions}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="5" Height="5" 
+                            BorderBrush="Black"
+                            BorderThickness="5"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
+                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Draw Edge Lines -->
+        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceEdges.MapEdges}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Line X1="{Binding X1Position}" Y1="{Binding Y1Position}"
+                          X2="{Binding X2Position}" Y2="{Binding Y2Position}"
+                          Stroke="Gray" StrokeThickness="2">
+                        <Line.LayoutTransform>
+                            <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                        </Line.LayoutTransform>
+                    </Line>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </Window>
