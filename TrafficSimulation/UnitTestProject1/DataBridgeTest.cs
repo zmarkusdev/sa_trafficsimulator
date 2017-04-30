@@ -4,6 +4,7 @@ using Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using DataAccessLayer;
 
 namespace UnitTestProject1
 {
@@ -69,6 +70,22 @@ namespace UnitTestProject1
         [TestMethod]
         public void createSmallVillage()
         {
+            DataAccessCommon commons = DataAccessCommon.getInstance();
+
+            AbstractDataAccess<Position> positionDataAccess = PositionDataAccessFactory.CreateRepository(); // new PositionDataAccess();
+            AbstractDataAccess<Edge> edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
+            AbstractDataAccess<Agent> agentDataAccess = AgentDataAccessFactory.CreateRepository();
+            AbstractDataAccess<Rule> ruleDataAccess = RuleDataAccessFactory.CreateRepository();
+
+            positionDataAccess.LoadfromFile(commons.getfilenamePrefix() + "position" + commons.getfilenameExtension());
+            edgeDataAccess.LoadfromFile(commons.getfilenamePrefix() + "edge" + commons.getfilenameExtension());
+            agentDataAccess.LoadfromFile(commons.getfilenamePrefix() + "agent" + commons.getfilenameExtension());
+
+            Position readPosi = positionDataAccess.ReadbyId(3);
+            Agent readAgent = agentDataAccess.ReadbyId(99);
+            Rule readRule = ruleDataAccess.ReadbyId(2);
+
+            
 
         }
 

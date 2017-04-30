@@ -1,5 +1,4 @@
-﻿using DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,7 +9,9 @@ using System.Web.Script.Serialization;
 
 namespace DataAccessLayer
 {
-    abstract class AbstractDataAccess<T> : IDataAccess<T>
+    // generic Class implementing the basic CRUD and persistence handling for 
+    // objects identified by an ID element of int Type.
+    public abstract class AbstractDataAccess<T> : IDataAccess<T>
     {
         List<T> liste = new List<T>();
 
@@ -77,7 +78,7 @@ namespace DataAccessLayer
                 liste.RemoveAt(index);
         }
 
-        public T deserializefromString(string serialized)
+        public virtual T deserializefromString(string serialized)
         {
             return new JavaScriptSerializer().Deserialize<T>(serialized);
         }
@@ -105,7 +106,7 @@ namespace DataAccessLayer
             }
         }
 
-        public void SavetoFile(string filename)
+        public virtual void SavetoFile(string filename)
         {
             try
             {
@@ -123,17 +124,19 @@ namespace DataAccessLayer
 
         }
 
-        public T ReadbyId(int Id)
+        public virtual T ReadbyId(int Id)
         {
-            foreach (T objekt in liste)
+            foreach (T currT in liste)
             {
-                //if (objekt.Id == Id)
-                //    return objekt;
+                var propertyC = currT.GetType().GetProperty("Id");
+                var extractedId = (int)propertyC.GetValue(currT, null);
+                if (extractedId == Id)
+                    return currT;
             }
             return default(T);
         }
 
-        public List<T> ReadAll()
+        public virtual List<T> ReadAll()
         {
             return liste;
         }

@@ -1,5 +1,4 @@
-﻿using DataAccessLayer.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +7,11 @@ using Datamodel;
 using System.Web.Script.Serialization;
 using System.IO;
 
-namespace DataAccessLayer.Services
+namespace DataAccessLayer
 {
+    // Positions are more complex than the baseclass: implemented and administrated here:
+    // no successors: kept in List endPositions
+    // no predecessors: kept in List startPositions
     class PositionDataAccess : AbstractDataAccess<Position> 
     {
         List<Position> endPositions = new List<Position>();
@@ -52,8 +54,6 @@ namespace DataAccessLayer.Services
             base.Init();
             endPositions = new List<Position>();
             startPositions = new List<Position>();
-        }
-
- 
+        } 
     }
 }

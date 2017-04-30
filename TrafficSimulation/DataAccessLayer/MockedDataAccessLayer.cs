@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace DataAccessLayer
 {
-    class MockedDataAccessLayer //: IDataAccessLayerRepository<>
+    class MockedDataAccessLayer 
     {
 
         private static MockedDataAccessLayer dalInstance = null;

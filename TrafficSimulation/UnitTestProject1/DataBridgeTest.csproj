@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{AE565A81-DDC1-4AF8-9560-3A34A9CC8D25}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBridge\DataBridge.csproj">
       <Project>{340107c2-a376-454f-8e21-4ffe995a8eba}</Project>
       <Name>DataBridge</Name>
