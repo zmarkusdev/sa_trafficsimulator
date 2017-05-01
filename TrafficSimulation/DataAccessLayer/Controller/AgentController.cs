@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataModel.Pipe;
+using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace DataAccessLayer.Controller
     {
         public AgentController() : base()
         {
-            createPipe(ControllerUtil.AGENT());
+            createPipe(PipeUtil.AGENT());
         }
 
         public override void read<T>(T obj)

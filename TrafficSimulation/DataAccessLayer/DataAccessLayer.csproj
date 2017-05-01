@@ -48,7 +48,6 @@
     <Compile Include="Controller\AgentController.cs" />
     <Compile Include="Controller\AgentSimConfigurationController.cs" />
     <Compile Include="Controller\AgentTypeController.cs" />
-    <Compile Include="Controller\ControllerUtil.cs" />
     <Compile Include="Controller\DynamicEdgeController.cs" />
     <Compile Include="Controller\EdgeController.cs" />
     <Compile Include="Controller\AbstractPipeServer.cs" />
