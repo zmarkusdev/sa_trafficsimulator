@@ -132,6 +132,23 @@ namespace AgentSim
             IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
             if(agentsInBrakingDistance.Count > 0)
             {
+                double targetVelocity = agentsInBrakingDistance[0].CurrentVelocityExact;
+                foreach(SimAgent otherAgent in agentsInBrakingDistance)
+                {
+                    // Get delta velocity
+                    double deltaV = agent.CurrentVelocityExact - otherAgent.CurrentVelocityExact;
+
+                    // If the other agent is faster than we are, we ignore him
+                    if(deltaV <= 0)
+                        continue;
+
+                    // Our target velocity is the one of the other agent
+                    if (otherAgent.CurrentVelocityExact < targetVelocity)
+                        targetVelocity = otherAgent.CurrentVelocityExact;
+                }
+
+                // TODO: continue here
+
                 // Brake! (TODO: No full brake; Brake only as much as needed;)
                 agent.CurrentAccelerationExact = -agent.Deceleration;
                 Console.WriteLine("BRAKE");
