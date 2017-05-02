@@ -51,55 +51,79 @@ namespace PhysicEngine
 
                 var curAgent = agent.Clone() as SimAgent;
 
-                if (curEdge == null)
-                    return; // Skip if no position is found...
+                if (curEdge == null) return; // Skip if no position is found...
 
-                // Get current queue position
-                AbstractEdge ae;
-                do
-                {
-                    // If no route of the agent is given, skip the agent
-                    if (!curAgent.Route.Any())
-                        return;
-
-                    ae = curAgent.Route.Dequeue();
-                } while (ae.Id != curEdge.Id);
+                if (!GetCurrentQueuePosition(curAgent, curEdge)) return;
 
                 // Check valid accelerations
-                curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact < curAgent.Deceleration ? curAgent.Deceleration : curAgent.CurrentAccelerationExact;
-                curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact > curAgent.Acceleration ? curAgent.Acceleration : curAgent.CurrentAccelerationExact;
+                CheckValidAccelerations(curAgent);
 
                 // Calculate new velocity based on accelleration or decelleration
                 curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000;
 
                 // check valid velocities of agent
-                curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact < 0 ? 0 : curAgent.CurrentVelocityExact;
-                curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact > curAgent.MaxVelocity ? curAgent.MaxVelocity : curAgent.CurrentVelocityExact;
+                CheckValidVelocities(curAgent);
 
                 // Calculate new position based on velocity and position
-                double runLengthIncrement = curAgent.CurrentVelocityExact * timerInterval / 1000;
-
-                // Calculate new edge position of the cur agent
-                while(curAgent.RunLengthExact + runLengthIncrement > curEdge.CurveLength)
-                {
-                    // Calculate remaining run length increment
-                    runLengthIncrement = runLengthIncrement - (curEdge.CurveLength + curAgent.RunLengthExact);
-
-                    // Always set run length position of agent to zero after edge overflow
-                    curAgent.RunLengthExact = 0;
-
-                    // Set new agent position
-                    curEdge = curAgent.Route.Dequeue();
-                    curAgent.EdgeId = curEdge.Id;
-                }
-
-                curAgent.RunLengthExact = curAgent.RunLengthExact + runLengthIncrement;
+                CalculateNewPositionOfAgent(curAgent, curEdge);
 
                 // Save the exact values rounded as integers into the datamodel fields
                 curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
                 curAgent.RunLength = (int)Math.Round(curAgent.RunLengthExact);
                 dataManager_.UpdateAgent(curAgent);
             });            
+        }
+
+        bool GetCurrentQueuePosition(SimAgent curAgent, AbstractEdge curEdge)
+        {
+            // Get current queue position
+            AbstractEdge ae;
+            do
+            {
+                // If no route of the agent is given, skip the agent
+                if (!curAgent.Route.Any())
+                    return false;
+
+                ae = curAgent.Route.Dequeue();
+            } while (ae.Id != curEdge.Id);
+
+            return true;
+        }
+
+        void CheckValidAccelerations(SimAgent curAgent)
+        {
+            // Check valid accelerations
+            curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact < curAgent.Deceleration ? curAgent.Deceleration : curAgent.CurrentAccelerationExact;
+            curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact > curAgent.Acceleration ? curAgent.Acceleration : curAgent.CurrentAccelerationExact;
+        }
+
+        void CheckValidVelocities(SimAgent curAgent)
+        {
+            // check valid velocities of agent
+            curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact < 0 ? 0 : curAgent.CurrentVelocityExact;
+            curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact > curAgent.MaxVelocity ? curAgent.MaxVelocity : curAgent.CurrentVelocityExact;
+        }
+
+        void CalculateNewPositionOfAgent(SimAgent curAgent, AbstractEdge curEdge)
+        {
+            // Calculate new position based on velocity and position
+            double runLengthIncrement = curAgent.CurrentVelocityExact * timerInterval / 1000;
+
+            // Calculate new edge position of the cur agent
+            while (curAgent.RunLengthExact + runLengthIncrement > curEdge.CurveLength)
+            {
+                // Calculate remaining run length increment
+                runLengthIncrement = runLengthIncrement - (curEdge.CurveLength + curAgent.RunLengthExact);
+
+                // Always set run length position of agent to zero after edge overflow
+                curAgent.RunLengthExact = 0;
+
+                // Set new agent position
+                curEdge = curAgent.Route.Dequeue();
+                curAgent.EdgeId = curEdge.Id;
+            }
+
+            curAgent.RunLengthExact = curAgent.RunLengthExact + runLengthIncrement;
         }
     }
 }
