@@ -29,7 +29,7 @@ namespace DataAccessLayer
         public virtual void Update(T objekt)
         {
             T gefunden = default(T);
-            // Todo: sicherstellen dass alle diese Elemente eine Id haben!
+            // Todo: absicherstellen, falls nicht alle eine Id haben
             var propertyO = objekt.GetType().GetProperty("Id");
             int interestingId = (int)propertyO.GetValue(objekt, null);
 
@@ -53,14 +53,28 @@ namespace DataAccessLayer
 
         public virtual void Delete(T objekt)
         {
+            int gefundenIndex = -1;
+            int index = -1;
             var propertyO = objekt.GetType().GetProperty("Id");
+
             int interestingId = (int)propertyO.GetValue(objekt, null);
             if (liste != null)
             {
-                // Todo!
-                //if (extractedId == interestingId)
-                //    liste.RemoveAll(i => i.Id == interestingId);
+                foreach (var currT in liste)
+                {
+                    var propertyC = currT.GetType().GetProperty("Id");
+                    var extractedId = (int)propertyC.GetValue(currT, null);
+                    if (extractedId == interestingId)
+                    {
+                        gefundenIndex = index;
+                        break;
+                    }
+                    index++;
+
+                }
             }
+            if (index != -1)
+                liste.RemoveAt(index);
         }
 
         public T deserializefromString(string serialized)
