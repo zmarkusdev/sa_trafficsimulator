@@ -266,39 +266,42 @@ namespace DataManager
         /// <returns>List of SimAgents contained in the given range</returns>
         public IReadOnlyList<SimAgent> GetAgentsInRange(int edgeId, int startRunLength, int range)
         {
-            // Prepare result list
-            var results = new List<SimAgent>();
-
-            // Get edge by id
-            var edge = edges_.FirstOrDefault(e => e.Id == edgeId);
-            if (edge == null)
-                return results.AsReadOnly();
-
-            // Check if params are valid
-            if (startRunLength > edge.CurveLength)
-                throw new ArgumentException("Start run length is longer than the edge length");
-
-            // Get agents greater startrunlength and smaller startrunlength 
-            var agents = agents_.ToList().Where(a => a.EdgeId == edge.Id &&
-                a.RunLength - a.VehicleLength >= startRunLength &&
-                a.RunLength - a.VehicleLength < startRunLength + range).ToList();
-
-            // Add selected agents to the result
-            results.AddRange(agents);
-
-            // Check if range exceeds current edge length
-            if (startRunLength + range > edge.CurveLength)
+            lock(this)
             {
-                // Get end point
-                var endPoint = positions_.FirstOrDefault(p => p.Id == edge.EndPositionId);
-                if (endPoint != null)
-                {
-                    foreach (var successorEdgeId in endPoint.SuccessorEdgeIds)
-                        results.AddRange(GetAgentsInRange(successorEdgeId, 0, startRunLength + range - edge.CurveLength));
-                }
-            }
+                // Prepare result list
+                var results = new List<SimAgent>();
 
-            return results;
+                // Get edge by id
+                var edge = edges_.FirstOrDefault(e => e.Id == edgeId);
+                if (edge == null)
+                    return results.AsReadOnly();
+
+                // Check if params are valid
+                if (startRunLength > edge.CurveLength)
+                    throw new ArgumentException("Start run length is longer than the edge length");
+
+                // Get agents greater startrunlength and smaller startrunlength 
+                var agents = Agents.Where(a => a.EdgeId == edge.Id &&
+                    a.RunLength - a.VehicleLength >= startRunLength &&
+                    a.RunLength - a.VehicleLength < startRunLength + range).ToList();
+
+                // Add selected agents to the result
+                results.AddRange(agents);
+
+                // Check if range exceeds current edge length
+                if (startRunLength + range > edge.CurveLength)
+                {
+                    // Get end point
+                    var endPoint = positions_.FirstOrDefault(p => p.Id == edge.EndPositionId);
+                    if (endPoint != null)
+                    {
+                        foreach (var successorEdgeId in endPoint.SuccessorEdgeIds)
+                            results.AddRange(GetAgentsInRange(successorEdgeId, 0, startRunLength + range - edge.CurveLength));
+                    }
+                }
+
+                return results;
+            }
         }
 
 

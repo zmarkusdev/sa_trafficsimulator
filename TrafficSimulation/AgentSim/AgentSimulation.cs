@@ -122,7 +122,7 @@ namespace AgentSim
         /// <param name="agent">Agent for whom you want to recalculate the behaviour</param>
         private void updateBehaviour(SimAgent agent)
         {
-            double SAFE_DISTANCE = 5; // meters
+            double SAFE_DISTANCE = 5; // meters (TODO: calculate dynamically according to the current velocity)
 
             // Calculate braking distance for the current velocity + add the safe distance
             double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration);
@@ -132,12 +132,14 @@ namespace AgentSim
             IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
             if(agentsInBrakingDistance.Count > 0)
             {
-                // Brake!
-                agent.CurrentAccelerationExact = agent.Deceleration;
+                // Brake! (TODO: No full brake; Brake only as much as needed;)
+                agent.CurrentAccelerationExact = -agent.Deceleration;
+                Console.WriteLine("BRAKE");
             } else
             {
                 // Go!
                 agent.CurrentAccelerationExact = agent.Acceleration;
+                Console.WriteLine("GO");
             }
 
             Console.WriteLine("Updated behaviour of agent #" + agent.Id);
