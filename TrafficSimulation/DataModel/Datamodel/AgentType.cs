@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-
-
 namespace Datamodel {
 	public enum AgentType : int {
         Car01 = 1,

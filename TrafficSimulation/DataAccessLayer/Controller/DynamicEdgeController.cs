@@ -1,4 +1,5 @@
-﻿using DataModel.Pipe;
+﻿using Datamodel;
+using DataModel.Pipe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,12 @@ namespace DataAccessLayer.Controller
 {
     class DynamicEdgeController : AbstractPipeServer
     {
-        public DynamicEdgeController() : base()
+        public DynamicEdgeController() : base(typeof(DynamicEdge))
         {
-            createPipe(PipeUtil.DYNAMIC_EDGE());
+            createPipeAndRun(PipeUtil.DYNAMIC_EDGE());
         }
 
-        public override void read<T>(T obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void run(string pipeName)
+        public override void executeCommand(string message)
         {
             throw new NotImplementedException();
         }

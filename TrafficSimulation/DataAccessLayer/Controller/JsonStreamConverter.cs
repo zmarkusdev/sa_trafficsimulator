@@ -36,9 +36,9 @@ namespace DataAccessLayer.Controller
             return javaScriptSerializer.Serialize(list);
         }
 
-        public T convertFromJson<T>(String str)
+        public T convertFromJson<T>(string str)
         {
-            return javaScriptSerializer.Deserialize<T>(str);
+            return javaScriptSerializer.Deserialize<T>(str.Replace("\0", String.Empty));
         }
     }
 }

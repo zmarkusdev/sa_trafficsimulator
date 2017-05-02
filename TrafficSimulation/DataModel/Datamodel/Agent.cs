@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-
-
 namespace Datamodel {
 	public class Agent {
 
@@ -37,6 +35,7 @@ namespace Datamodel {
 		public int EdgeId { get; set; }
 
         public int RunLength { get; set; }
+        
 
 		public AgentType Type{
 			get;
