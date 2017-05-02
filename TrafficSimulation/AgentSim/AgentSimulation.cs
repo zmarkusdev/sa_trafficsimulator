@@ -69,10 +69,14 @@ namespace AgentSim
                 // Check, if the agent has a defined route, otherwise calculate it.
                 calculateRouteIfNeccessary(curAgent);
 
+                // Update the behaviour (acceleration etc.)
+                updateBehaviour(curAgent);
+
                 // Update the agent
                 dataManager_.UpdateAgent(curAgent);
             });
         }
+
 
         /// <summary>
         /// Checks, if a route exists for the passed agent.
@@ -87,10 +91,10 @@ namespace AgentSim
                 return;
             }
 
-            // Instantiate new route (just to be sure)
+            // Instantiate new queue (just to be sure)
             agent.Route = new Queue<Datamodel.AbstractEdge>();
 
-            // Add current route (the start route so to say)
+            // Add current edge (the starting edge so to say)
             agent.Route.Enqueue(dataManager_.GetEdgeForId(agent.EdgeId));
 
             // Get a list of all possible successor edges
@@ -110,6 +114,46 @@ namespace AgentSim
             }
 
             Console.WriteLine("Calculated new route for agent #" + agent.Id);
+        }
+
+        /// <summary>
+        /// Adapts the behaviour of the passed agent. For example adapts the current acceleration.
+        /// </summary>
+        /// <param name="agent">Agent for whom you want to recalculate the behaviour</param>
+        private void updateBehaviour(SimAgent agent)
+        {
+            double SAFE_DISTANCE = 5; // meters
+
+            // Calculate braking distance for the current velocity + add the safe distance
+            double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration);
+            brakingDistance += SAFE_DISTANCE + agent.VehicleLength;
+
+            // Check, if there's an obstacle in the braking distance
+            IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
+            if(agentsInBrakingDistance.Count > 0)
+            {
+                // Brake!
+                agent.CurrentAccelerationExact = agent.Deceleration;
+            } else
+            {
+                // Go!
+                agent.CurrentAccelerationExact = agent.Acceleration;
+            }
+
+            Console.WriteLine("Updated behaviour of agent #" + agent.Id);
+        }
+
+
+        /// <summary>
+        /// Returns the braking distance in meters.
+        /// </summary>
+        /// <param name="velocity">The current velocity in m/s</param>
+        /// <param name="deceleration">Deceleration in m^2/s</param>
+        /// <returns></returns>
+        private double getBrakingDistance(double velocity, double deceleration)
+        {
+            // s= v^2 / 2a
+            return (velocity * velocity) / (2 * deceleration);
         }
 
     }
