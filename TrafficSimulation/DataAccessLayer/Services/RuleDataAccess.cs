@@ -7,18 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    class RuleDataAccess : AbstractDataAccess<Rule>
+    public interface IRuleDataAccess : IDataAccess<Rule> { }
+
+    class RuleDataAccess : AbstractDataAccess<Rule>, IRuleDataAccess
     {
-        DataAccessCommon dataAccessCommon = DataAccessCommon.getInstance();
-
-        public override Rule Create(Rule rule)
-        {
-            if (rule.Id == 0)
-                rule.Id = dataAccessCommon.getuniqueId();
-            rule = base.Create(rule);
-
-            return (rule);
-        }
-
     }
 }

@@ -56,14 +56,12 @@
     <Compile Include="Controller\RuleController.cs" />
     <Compile Include="Controller\RuleTypeController.cs" />
     <Compile Include="Controller\JsonStreamConverter.cs" />
-    <Compile Include="DataAccessLayerRepositoryFactory.cs" />
     <Compile Include="Factories\AgentDataAccessFactory.cs" />
     <Compile Include="Factories\EdgeDataAccessFactory.cs" />
     <Compile Include="Factories\PositionDataAccessFactory.cs" />
     <Compile Include="Factories\RuleDataAccessFactory.cs" />
     <Compile Include="Interfaces\AbstractDataAccess.cs" />
     <Compile Include="Interfaces\IDataAccess.cs" />
-    <Compile Include="MockedDataAccessLayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgentDataAccess.cs" />

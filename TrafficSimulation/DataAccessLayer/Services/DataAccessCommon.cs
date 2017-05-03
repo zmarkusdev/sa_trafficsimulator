@@ -24,16 +24,19 @@ namespace DataAccessLayer
             return instance;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public int getuniqueId()
         {
             return uniqueId++;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public string getfilenamePrefix()
         {
             return datafileprefix;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public string getfilenameExtension()
         {
             return datafileextension;

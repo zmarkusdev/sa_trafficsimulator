@@ -4,7 +4,7 @@ namespace DataAccessLayer
 {
     public abstract class AgentDataAccessFactory
     {
-        public static AbstractDataAccess<Agent> CreateRepository()
+        public static IAgentDataAccess CreateRepository()
         {
             return new AgentDataAccess();
         }

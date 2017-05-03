@@ -4,7 +4,7 @@ namespace DataAccessLayer
 {
     public abstract class PositionDataAccessFactory
     {
-        public static AbstractDataAccess<Position> CreateRepository()
+        public static IPostionDataAccess CreateRepository()
         {
             return new PositionDataAccess();
         }

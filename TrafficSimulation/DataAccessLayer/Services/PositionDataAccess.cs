@@ -9,20 +9,20 @@ using System.IO;
 
 namespace DataAccessLayer
 {
-    // Positions are more complex than the baseclass: implemented and administrated here:
-    // no successors: kept in List endPositions
-    // no predecessors: kept in List startPositions
-    class PositionDataAccess : AbstractDataAccess<Position> 
+    public interface IPostionDataAccess : IDataAccess<Position> { }
+
+    class PositionDataAccess : AbstractDataAccess<Position>, IPostionDataAccess
     {
+        // das hat hier natürlich nichts verloren, das ist Business Logik
         List<Position> endPositions = new List<Position>();
         List<Position> startPositions = new List<Position>();
 
         DataAccessCommon dataAccessCommon = DataAccessCommon.getInstance();
 
-        public override Position Create(Position position)
+        public Position CreateXX(Position position)
         {
             if (position.Id == 0)
-                position.Id = dataAccessCommon.getuniqueId();
+                position.Id = getuniqueId();
             // unsere Positions haben immer eine Liste, auch wenn diese leer ist
             if (position.SuccessorEdgeIds == null)
                 position.SuccessorEdgeIds = new List<int>();
@@ -40,7 +40,7 @@ namespace DataAccessLayer
             return (position);
         }
 
-        public override void Delete(Position position)
+        public void DeleteXX(Position position)
         {
             if (endPositions != null)
                 endPositions.RemoveAll(i => i.Id == position.Id);
@@ -49,11 +49,11 @@ namespace DataAccessLayer
             base.Delete(position);
         }
 
-        public override void Init()
+        public void InitXX()
         {
             base.Init();
             endPositions = new List<Position>();
             startPositions = new List<Position>();
-        } 
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace DataAccessLayer
 {
     public class RuleDataAccessFactory
     {
-            public static AbstractDataAccess<Rule> CreateRepository()
+            public static IRuleDataAccess CreateRepository()
             {
                 return new RuleDataAccess();
             }
