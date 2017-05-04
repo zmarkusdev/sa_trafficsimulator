@@ -133,6 +133,7 @@ namespace PhysicEngine
                 else
                 {
                     // TODO: Let agent die
+                    Console.WriteLine("Kill agent");
                     break;
                 }                
             }
