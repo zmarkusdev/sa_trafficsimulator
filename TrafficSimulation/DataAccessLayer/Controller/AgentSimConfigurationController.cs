@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datamodel;
+using DataModel.Pipe;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +10,12 @@ namespace DataAccessLayer.Controller
 {
     class AgentSimConfigurationController : AbstractPipeServer
     {
-        public override void read<T>(T obj)
+        public AgentSimConfigurationController() : base(typeof(AgentSimConfiguration))
         {
-            throw new NotImplementedException();
+            createPipeAndRun(PipeUtil.AGENT_SIM_CONFIG());
         }
 
-        public override void run(string pipeName)
+        public override void executeCommand(string message)
         {
             throw new NotImplementedException();
         }

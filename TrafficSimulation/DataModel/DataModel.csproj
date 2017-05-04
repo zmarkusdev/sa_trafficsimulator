@@ -53,6 +53,7 @@
     <Compile Include="Datamodel\Position.cs" />
     <Compile Include="Datamodel\Rule.cs" />
     <Compile Include="Datamodel\RuleType.cs" />
+    <Compile Include="Pipe\PipeUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,5 +1,4 @@
-﻿using DataAccessLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,18 +9,30 @@ using System.Web.Script.Serialization;
 
 namespace DataAccessLayer
 {
-    abstract class AbstractDataAccess<T> : IDataAccess<T>
+    // generic Class implementing the basic CRUD and persistence handling for 
+    // objects identified by an ID element of int Type.
+    public abstract class AbstractDataAccess<T>
     {
         List<T> liste = new List<T>();
+        private int uniqueId = 0;
+        private string datafileprefix = "datafile_";
+        private string datafileextension = ".txt";
 
+
+        public int getuniqueId()
+        {
+            return uniqueId++;
+        }
         public virtual void Init()
         {
             liste = new List<T>();
+            uniqueId = 0;
         }
-
 
         public virtual T Create(T objekt)
         {
+            if (getObjectId(objekt) == 0)
+                objekt = setObjectId(objekt, getuniqueId());
             liste.Add(objekt);
             return objekt;
         }
@@ -29,9 +40,7 @@ namespace DataAccessLayer
         public virtual void Update(T objekt)
         {
             T gefunden = default(T);
-            // Todo: absicherstellen, falls nicht alle eine Id haben
-            var propertyO = objekt.GetType().GetProperty("Id");
-            int interestingId = (int)propertyO.GetValue(objekt, null);
+            int interestingId = getObjectId(objekt);
 
             if (liste != null)
             {
@@ -48,22 +57,20 @@ namespace DataAccessLayer
             }
             if (!gefunden.Equals(objekt))
                 Create(objekt);
-
         }
 
         public virtual void Delete(T objekt)
         {
             int gefundenIndex = -1;
             int index = -1;
-            var propertyO = objekt.GetType().GetProperty("Id");
 
-            int interestingId = (int)propertyO.GetValue(objekt, null);
+            int interestingId = getObjectId(objekt);
+
             if (liste != null)
             {
                 foreach (var currT in liste)
                 {
-                    var propertyC = currT.GetType().GetProperty("Id");
-                    var extractedId = (int)propertyC.GetValue(currT, null);
+                    int extractedId = getObjectId(objekt);
                     if (extractedId == interestingId)
                     {
                         gefundenIndex = index;
@@ -77,7 +84,7 @@ namespace DataAccessLayer
                 liste.RemoveAt(index);
         }
 
-        public T deserializefromString(string serialized)
+        public virtual T deserializefromString(string serialized)
         {
             return new JavaScriptSerializer().Deserialize<T>(serialized);
         }
@@ -91,7 +98,7 @@ namespace DataAccessLayer
         {
             try
             {
-                using (StreamReader readfile = new StreamReader(filename))
+                using (StreamReader readfile = new StreamReader(getfilenamePrefix() + filename + getfilenameExtension()))
                 {
                     string line;
                     while ((line = readfile.ReadLine()) != null)
@@ -105,11 +112,11 @@ namespace DataAccessLayer
             }
         }
 
-        public void SavetoFile(string filename)
+        public virtual void SavetoFile(string filename)
         {
             try
             {
-                using (StreamWriter writefile = new StreamWriter(filename))
+                using (StreamWriter writefile = new StreamWriter(getfilenamePrefix() + filename + getfilenameExtension()))
                 {
                     foreach (var objekt in liste)
                         writefile.WriteLine(serialize2String(objekt));
@@ -120,22 +127,47 @@ namespace DataAccessLayer
                 Console.WriteLine("Fileschreiben geht ned:" + filename);
                 Console.WriteLine(e.Message);
             }
-
         }
 
-        public T ReadbyId(int Id)
+        public virtual T ReadbyId(int Id)
         {
-            foreach (T objekt in liste)
+            foreach (T currT in liste)
             {
-                //if (objekt.Id == Id)
-                //    return objekt;
+                int extractedId = getObjectId(currT);
+
+                if (extractedId == Id)
+                    return currT;
             }
             return default(T);
         }
 
-        public List<T> ReadAll()
+        public virtual List<T> ReadAll()
         {
             return liste;
+        }
+
+        private int getObjectId(T objekt)
+        {
+            var propertyO = objekt.GetType().GetProperty("Id");
+            int interestingId = (int)propertyO.GetValue(objekt, null);
+            return interestingId;
+        }
+
+        private T setObjectId(T objekt, int id)
+        {
+            Type myType = objekt.GetType();
+            PropertyInfo pinfo = myType.GetProperty("Id");
+            pinfo.SetValue(objekt, id, null);
+            return objekt;
+        }
+        private string getfilenamePrefix()
+        {
+            return datafileprefix;
+        }
+
+        private string getfilenameExtension()
+        {
+            return datafileextension;
         }
     }
 }

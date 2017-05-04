@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datamodel;
+using DataModel.Pipe;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +10,11 @@ namespace DataAccessLayer.Controller
 {
     class RuleController : AbstractPipeServer
     {
-        public override void read<T>(T obj)
+        public RuleController() : base(typeof(Rule))
         {
-            throw new NotImplementedException();
         }
 
-        public override void run(string pipeName)
+        public override void executeCommand(string message)
         {
             throw new NotImplementedException();
         }
