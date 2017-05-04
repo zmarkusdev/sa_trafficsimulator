@@ -63,6 +63,8 @@ namespace AgentSim
 
             // Iterate over all agents and update their behaviour
             Parallel.ForEach(agents, (agent) => {
+                if (agent == null) return;
+
                 var curAgent = agent.Clone() as SimAgent;
                 //Console.WriteLine("Calculating behaviour of agent #" + agent.Id);
 

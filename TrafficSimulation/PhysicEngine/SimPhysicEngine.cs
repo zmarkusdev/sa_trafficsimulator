@@ -81,7 +81,7 @@ namespace PhysicEngine
             do
             {
                 // If no route of the agent is given, skip the agent
-                if (!curAgent.Route.Any())
+                if (curAgent.Route.Count == 0)
                     return false;
 
                 ae = curAgent.Route.Dequeue();
