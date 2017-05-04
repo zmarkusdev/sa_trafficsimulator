@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Services
+namespace DataAccessLayer
 {
     // Todo: achte auf die Threadsicherheit!!
-    class DataAccessCommon
+    // the core administrative things of our database
+    public class DataAccessCommon
     {
         private int uniqueId = 0;
+        private string datafileprefix = "datafile_";
+        private string datafileextension = ".txt";
+
         private static DataAccessCommon instance = null;
         private DataAccessCommon() { }
 
@@ -20,9 +24,22 @@ namespace DataAccessLayer.Services
             return instance;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public int getuniqueId()
         {
             return uniqueId++;
+        }
+
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
+        public string getfilenamePrefix()
+        {
+            return datafileprefix;
+        }
+
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
+        public string getfilenameExtension()
+        {
+            return datafileextension;
         }
     }
 }

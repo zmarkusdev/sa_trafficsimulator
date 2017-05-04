@@ -1,14 +1,16 @@
-﻿using Datamodel;
+﻿using DataAccessLayer;
+using Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Services
+namespace DataAccessLayer
 {
-    class EdgeDataAccess : AbstractDataAccess<Edge>
-    {
+    public interface IEdgeDataAccess : IDataAccess<Edge> { }
 
+    class EdgeDataAccess : AbstractDataAccess<Edge>, IEdgeDataAccess
+    {
     }
 }

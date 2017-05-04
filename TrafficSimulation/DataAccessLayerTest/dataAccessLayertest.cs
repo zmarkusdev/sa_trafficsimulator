@@ -9,8 +9,17 @@ namespace DataAccessLayerTest
         [TestMethod]
         public void DataAccessLayerInit()
         {
-            //IDataAccessLayerRepository dataAccessLayer = DataAccessLayerRepositoryFactory.CreateRepository();
-            //dataAccessLayer.Init();
+
+            IPostionDataAccess positionDataAccess = PositionDataAccessFactory.CreateRepository();
+            IEdgeDataAccess edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
+            IAgentDataAccess agentDataAccess = AgentDataAccessFactory.CreateRepository();
+            IRuleDataAccess ruleDataAccess = RuleDataAccessFactory.CreateRepository();
+
+            positionDataAccess.LoadfromFile("position");
+            edgeDataAccess.LoadfromFile("edge");
+            agentDataAccess.LoadfromFile("agent");
+            ruleDataAccess.LoadfromFile("rule");
+            
             Assert.IsTrue(true);
         }
     }

@@ -112,15 +112,16 @@ namespace DataBridge.Services
             Random random = new Random();
             for (int i = 0; i < 100; i++)
             {
-                agent1.Acceleration = (int) 2 + random.Next(2);
-                agent1.CurrentVelocity = 0;
-                agent1.Deceleration = (int) 7 - random.Next(2);
-                agent1.EdgeId = (i % 5) + 1;
-                agent1.RunLength = 25 + random.Next(50);
-                agent1.Type = (AgentType)1;
-                agent1.VehicleLength = 4;
-                agent1.VehicleWidth = 2;
-                Create(agent1);
+                Agent agentX = new Agent();
+                agentX.Acceleration = (int) 2 + random.Next(2);
+                agentX.CurrentVelocity = 0;
+                agentX.Deceleration = (int) 7 - random.Next(2);
+                agentX.EdgeId = (i % 5) + 1;
+                agentX.RunLength = 25 + random.Next(50);
+                agentX.Type = (AgentType)1;
+                agentX.VehicleLength = 4;
+                agentX.VehicleWidth = 2;
+                Create(agentX);
             }
             
             agent2.Acceleration = 5;
