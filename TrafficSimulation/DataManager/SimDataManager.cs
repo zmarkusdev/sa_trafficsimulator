@@ -48,7 +48,13 @@ namespace DataManager
         /// <summary>
         /// All currently active agents in the simulation
         /// </summary>
-        public IReadOnlyList<SimAgent> Agents => agents_.AsReadOnly();
+        public IReadOnlyList<SimAgent> Agents
+        {
+            get
+            {
+                lock(agents_) return agents_.AsReadOnly();
+            }
+        } 
 
         /// <summary>
         /// All rules of the map

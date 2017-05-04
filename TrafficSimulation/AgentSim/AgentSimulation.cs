@@ -34,7 +34,7 @@ namespace AgentSim
         public void Start()
         {
             // TODO: Fetch staticRules_ once here
-            lock(dataManager_.Edges) allEdges_ = dataManager_.Edges;
+            lock(dataManager_) allEdges_ = dataManager_.Edges;
 
             // Setup Timer
             physicsTimer = new Timer();
@@ -57,7 +57,7 @@ namespace AgentSim
 
             // Get all agents
             List<SimAgent> agents = new List<SimAgent>();
-            lock(dataManager_.Agents) agents.AddRange(dataManager_.Agents);
+            lock(dataManager_) agents.AddRange(dataManager_.Agents);
 
             // TODO: Get dynamic rules
 

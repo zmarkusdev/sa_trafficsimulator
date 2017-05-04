@@ -41,7 +41,7 @@ namespace PhysicEngine
 
             // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
             List<SimAgent> copiedAgents;
-            lock (dataManager_.Agents) copiedAgents = dataManager_.Agents.ToList();
+            lock (dataManager_) copiedAgents = dataManager_.Agents.ToList();
             //copiedAgents.AddRange(dataManager_.Agents);
 
             // Get agents
@@ -50,7 +50,7 @@ namespace PhysicEngine
 
                 // Get current edge from agent route, fallback is edge the agent is standing on
                 AbstractEdge curEdge;
-                lock(dataManager_.Edges) curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
+                lock(dataManager_) curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
 
                 var curAgent = agent.Clone() as SimAgent;
 
