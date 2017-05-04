@@ -34,7 +34,7 @@ namespace AgentSim
         public void Start()
         {
             // TODO: Fetch staticRules_ once here
-            allEdges_ = dataManager_.Edges;
+            lock(dataManager_.Edges) allEdges_ = dataManager_.Edges;
 
             // Setup Timer
             physicsTimer = new Timer();
@@ -57,7 +57,7 @@ namespace AgentSim
 
             // Get all agents
             List<SimAgent> agents = new List<SimAgent>();
-            agents.AddRange(dataManager_.Agents);
+            lock(dataManager_.Agents) agents.AddRange(dataManager_.Agents);
 
             // TODO: Get dynamic rules
 
@@ -115,7 +115,7 @@ namespace AgentSim
                 successors = dataManager_.GetSuccessorEdges(nextEdge.Id);
             }
 
-            Console.WriteLine("Calculated new route for agent #" + agent.Id);
+            //Console.WriteLine("Calculated new route for agent #" + agent.Id);
         }
 
         /// <summary>
@@ -153,15 +153,15 @@ namespace AgentSim
 
                 // Brake! (TODO: No full brake; Brake only as much as needed;)
                 agent.CurrentAccelerationExact = -agent.Deceleration;
-                Console.WriteLine("BRAKE");
+                //Console.WriteLine("BRAKE");
             } else
             {
                 // Go!
                 agent.CurrentAccelerationExact = agent.Acceleration;
-                Console.WriteLine("GO");
+                //Console.WriteLine("GO");
             }
 
-            Console.WriteLine("Updated behaviour of agent #" + agent.Id);
+            //Console.WriteLine("Updated behaviour of agent #" + agent.Id);
         }
 
 

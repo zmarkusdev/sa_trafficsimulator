@@ -40,14 +40,17 @@ namespace PhysicEngine
             //Console.WriteLine("Physic engine tick!");
 
             // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
-
-            List<SimAgent> copiedAgents = new List<SimAgent>();
-            copiedAgents.AddRange(dataManager_.Agents);
+            List<SimAgent> copiedAgents;
+            lock (dataManager_.Agents) copiedAgents = dataManager_.Agents.ToList();
+            //copiedAgents.AddRange(dataManager_.Agents);
 
             // Get agents
             Parallel.ForEach(copiedAgents, (agent) => {
+                if (agent == null) return;
+
                 // Get current edge from agent route, fallback is edge the agent is standing on
-                AbstractEdge curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
+                AbstractEdge curEdge;
+                lock(dataManager_.Edges) curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
 
                 var curAgent = agent.Clone() as SimAgent;
 
@@ -77,17 +80,20 @@ namespace PhysicEngine
         bool GetCurrentQueuePosition(SimAgent curAgent, AbstractEdge curEdge)
         {
             // Get current queue position
-            AbstractEdge ae;
-            do
+            lock (curAgent)
             {
-                // If no route of the agent is given, skip the agent
-                if (curAgent.Route.Count == 0)
-                    return false;
+                AbstractEdge ae;
+                do
+                {
+                    // If no route of the agent is given, skip the agent
+                    if (curAgent.Route.Count <= 0)
+                        return false;
 
-                ae = curAgent.Route.Dequeue();
-            } while (ae.Id != curEdge.Id);
+                    ae = curAgent.Route.Dequeue();
+                } while (ae.Id != curEdge.Id);
 
-            return true;
+                return true;
+            }
         }
 
         void CheckValidAccelerations(SimAgent curAgent)
@@ -119,8 +125,16 @@ namespace PhysicEngine
                 curAgent.RunLengthExact = 0;
 
                 // Set new agent position
-                curEdge = curAgent.Route.Dequeue();
-                curAgent.EdgeId = curEdge.Id;
+                if(curAgent.Route.Count > 0)
+                {
+                    curEdge = curAgent.Route.Dequeue();
+                    curAgent.EdgeId = curEdge.Id;
+                }
+                else
+                {
+                    // TODO: Let agent die
+                    break;
+                }                
             }
 
             curAgent.RunLengthExact = curAgent.RunLengthExact + runLengthIncrement;
