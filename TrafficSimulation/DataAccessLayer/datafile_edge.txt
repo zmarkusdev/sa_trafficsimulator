@@ -1,0 +1,5 @@
+{"StartPositionId":1,"EndPositionId":2,"Neighbors":null,"Id":1,"CurveLength":160}
+{"Id":2,"StartPositionId":2,"EndPositionId":3,"Neighbors":null,"CurveLength":28}
+{"Id":3,"StartPositionId":3,"EndPositionId":4,"Neighbors":null,"CurveLength":300}
+{"Id":4,"StartPositionId":2,"EndPositionId":5,"Neighbors":null,"CurveLength":28}
+{"Id":5,"StartPositionId":5,"EndPositionId":6,"Neighbors":null,"CurveLength":100}

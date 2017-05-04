@@ -1,0 +1,6 @@
+{"Id":0,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":40,"Y":300}
+{"Id":1,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[2,4],"X":250,"Y":300}
+{"Id":2,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":350,"Y":370}
+{"Id":3,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":350,"Y":550}
+{"Id":4,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":430,"Y":230}
+{"Id":5,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":420,"Y":20}
