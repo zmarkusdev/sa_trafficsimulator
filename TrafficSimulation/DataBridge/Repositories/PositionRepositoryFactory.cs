@@ -13,15 +13,18 @@ using System.IO;
 
 using Repositories;
 using DataBridge;
+using DataAccessLayer;
 
-namespace Repositories {
-	public abstract class PositionRepositoryFactory {
+namespace Repositories
+{
+    public abstract class PositionRepositoryFactory
+    {
+        public static IPositionRepository CreateRepository()
+        {
+            //return new MockedPositionService();
+            return new BetterMockedPositionService();
+        }
 
-		public static IPositionRepository CreateRepository(){
-
-            return new MockedPositionService();
-		}
-
-	}//end PositionRepositoryFactory
+    }//end PositionRepositoryFactory
 
 }//end namespace Repositories

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -14,7 +16,7 @@ namespace DataAccessLayer
     public abstract class AbstractDataAccess<T>
     {
         List<T> liste = new List<T>();
-        private int uniqueId = 0;
+        private int uniqueId = 1;
         private string datafileprefix = "datafile_";
         private string datafileextension = ".txt";
 
@@ -29,16 +31,20 @@ namespace DataAccessLayer
             uniqueId = 0;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual T Create(T objekt)
         {
             if (getObjectId(objekt) == 0)
                 objekt = setObjectId(objekt, getuniqueId());
+            Trace.TraceInformation("create(" + objekt.GetType().Name + ") Id=" + getObjectId(objekt));
             liste.Add(objekt);
             return objekt;
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual void Update(T objekt)
         {
+            /*
             T gefunden = default(T);
             int interestingId = getObjectId(objekt);
 
@@ -46,8 +52,7 @@ namespace DataAccessLayer
             {
                 foreach (T currT in liste)
                 {
-                    var propertyC = currT.GetType().GetProperty("Id");
-                    var extractedId = (int)propertyC.GetValue(currT, null);
+                    var extractedId = getObjectId(currT);
                     if (extractedId == interestingId)
                     {
                         gefunden = currT;
@@ -56,9 +61,13 @@ namespace DataAccessLayer
                 }
             }
             if (!gefunden.Equals(objekt))
-                Create(objekt);
+                Create(objekt);   */
+            Trace.TraceInformation("update(" + objekt.GetType().Name + ")"+ getObjectId(objekt));
+            Delete(objekt);
+            Create(objekt);
         }
 
+        [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual void Delete(T objekt)
         {
             int gefundenIndex = -1;
@@ -66,21 +75,21 @@ namespace DataAccessLayer
 
             int interestingId = getObjectId(objekt);
 
+            Trace.TraceInformation("delete(" + objekt.GetType().Name + ")" + getObjectId(objekt)); 
             if (liste != null)
             {
                 foreach (var currT in liste)
                 {
-                    int extractedId = getObjectId(objekt);
+                    index++;
+                    int extractedId = getObjectId(currT);
                     if (extractedId == interestingId)
                     {
                         gefundenIndex = index;
                         break;
                     }
-                    index++;
-
                 }
             }
-            if (index != -1)
+            if (gefundenIndex != -1)
                 liste.RemoveAt(index);
         }
 
@@ -96,18 +105,28 @@ namespace DataAccessLayer
 
         public void LoadfromFile(string filename)
         {
+            string line = "";
             try
             {
-                using (StreamReader readfile = new StreamReader(getfilenamePrefix() + filename + getfilenameExtension()))
+                string relPath = Directory.GetCurrentDirectory();
+                relPath = "..\\..\\..\\DataAccessLayer\\";
+                using (StreamReader readfile = new StreamReader(relPath + getfilenamePrefix() + filename + getfilenameExtension()))
                 {
-                    string line;
                     while ((line = readfile.ReadLine()) != null)
-                        liste.Add(new JavaScriptSerializer().Deserialize<T>(line));
+                    {
+                        //Console.WriteLine(line.Substring(0, 1));
+                        if (line.Substring(0, 1) != "#")
+                        {
+                            T readObjekt = new JavaScriptSerializer().Deserialize<T>(line);
+                            uniqueId = Math.Max(uniqueId, getObjectId(readObjekt));
+                            liste.Add(readObjekt);
+                        }
+                    }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Filelesen geht ned:" + filename);
+                Console.WriteLine("Filelesen geht ned:" + filename + "(" + line + ")");
                 Console.WriteLine(e.Message);
             }
         }

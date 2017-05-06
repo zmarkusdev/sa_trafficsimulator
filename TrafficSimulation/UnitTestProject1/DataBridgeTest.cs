@@ -29,8 +29,9 @@ namespace UnitTestProject1
         public void createPosition()
         {
             Position position1 = new Position();
+            position1.Id = 99;
             position1 = positionRepository.Create(position1);
-            Assert.AreNotEqual(position1.Id, 0);
+            Assert.AreEqual(position1.Id, 99);
         }
         [TestMethod]
         public void createEdge()
@@ -67,6 +68,24 @@ namespace UnitTestProject1
             edges = edgeRepository.GetAll();
             Assert.AreEqual(vorher, edges.Count());
         }
+
+        [TestMethod]
+        public void betterMockedPositionServis()
+        {
+            IPositionRepository positionRepo = PositionRepositoryFactory.CreateRepository();
+            // hier ist alles geladen, oder auch nicht.
+            Position posiDel = positionRepo.GetPosition(1);
+            positionRepo.Delete(posiDel);
+            positionRepo.Delete(posiDel);
+
+            positionRepo.Update(posiDel);
+
+
+            Assert.IsTrue(true);
+        }
+
+
+
         [TestMethod]
         public void createSmallVillage()
         {

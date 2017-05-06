@@ -122,12 +122,12 @@ namespace SimulationUserInterface.ViewModels
                 UserInterfaceModel.GetImageFactor(out calculatedResizeWidth, out calculatedResizeHeight);
                 
                 /// Draw the Position points on the screen
-                //UserInterfacePositions.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
-                //UserInterfacePositions.DrawPositions(positions);
+                UserInterfacePositions.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
+                UserInterfacePositions.DrawPositions(positions);
 
                 /// Draw the Edge lines on the screen
-                //UserInterfaceEdges.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
-                //UserInterfaceEdges.DrawEdges(positions, edges);
+                UserInterfaceEdges.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
+                UserInterfaceEdges.DrawEdges(positions, edges);
 
                 /// Draw the Agent images on the screen
                 UserInterfaceAgents.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);

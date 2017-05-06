@@ -18,7 +18,7 @@ namespace DataAccessLayer
             IAgentDataAccess agentDataAccess = AgentDataAccessFactory.CreateRepository();
             IRuleDataAccess ruleDataAccess = RuleDataAccessFactory.CreateRepository();
 
-            bool laden = false;
+            bool laden = true; // Ja nicht umstellen, sonst sind die Konfig Dateien hin?
 
             if (!laden == true)
             {
@@ -31,7 +31,7 @@ namespace DataAccessLayer
 
                 posi1.MaxVelocity = 50;
                 posi1.PredecessorEdgeIds = new List<int>();
-                posi1.Rotation = 0;
+                posi1.Rotation = 90;
                 posi1.RuleIds = new List<int>();
                 posi1.SuccessorEdgeIds = new List<int>(1);
                 posi1.X = 40;
@@ -40,7 +40,7 @@ namespace DataAccessLayer
 
                 posi2.MaxVelocity = 50;
                 posi2.PredecessorEdgeIds = new List<int>(1);
-                posi2.Rotation = 0;
+                posi2.Rotation = 135;
                 posi2.RuleIds = new List<int>();
                 List<int> liste = new List<int>();
                 liste.Add(2);
@@ -52,7 +52,7 @@ namespace DataAccessLayer
 
                 posi3.MaxVelocity = 50;
                 posi3.PredecessorEdgeIds = new List<int>(2);
-                posi3.Rotation = 0;
+                posi3.Rotation = 180;
                 posi3.RuleIds = new List<int>();
                 posi3.SuccessorEdgeIds = new List<int>(3);
                 posi3.X = 350;
@@ -61,7 +61,7 @@ namespace DataAccessLayer
 
                 posi4.MaxVelocity = 50;
                 posi4.PredecessorEdgeIds = new List<int>(4);
-                posi4.Rotation = 0;
+                posi4.Rotation = 45;
                 posi4.RuleIds = new List<int>();
                 posi4.SuccessorEdgeIds = new List<int>(5);
                 posi4.X = 350;
@@ -174,9 +174,14 @@ namespace DataAccessLayer
                 agentDataAccess.LoadfromFile("agent");
                 ruleDataAccess.LoadfromFile("rule");
                 Position readPosi = positionDataAccess.ReadbyId(3);
-                Agent readAgent = agentDataAccess.ReadbyId(999);
+                Console.WriteLine("PositionsId: " + readPosi.Id);
+                Agent readAgent = agentDataAccess.ReadbyId(2);
+                Console.WriteLine("agentenMaxSpeed: " + readAgent.MaxVelocity);
                 List<Rule> gugga = ruleDataAccess.ReadAll();
+                Console.WriteLine("Anzahl der Rules: " + gugga.Count);
             }
+            Console.WriteLine("Fertig");
+            Console.ReadKey();
         }
     }
 }

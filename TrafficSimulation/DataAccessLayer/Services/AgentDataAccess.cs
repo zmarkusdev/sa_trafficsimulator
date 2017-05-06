@@ -1,5 +1,4 @@
-﻿using DataAccessLayer;
-using Datamodel;
+﻿using Datamodel;
 
 namespace DataAccessLayer
 {
