@@ -59,7 +59,7 @@ namespace DataAccessLayer.Test
                 agents.Add(agent);
             }
 
-            String agentsString = converter.convertListToJson<Agent>(agents);
+            String agentsString = converter.convertToJson<List<Agent>>(agents);
 
             Console.WriteLine(agentsString);
 

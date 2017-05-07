@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataModel.Pipe;
 
 namespace DataAccessLayer
 {
@@ -20,5 +21,9 @@ namespace DataAccessLayer
             return (rule);
         }
 
+        public override void executeCommand(PipeDTO dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

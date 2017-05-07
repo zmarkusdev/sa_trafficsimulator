@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
 namespace DataAccessLayer.Controller
@@ -29,11 +25,6 @@ namespace DataAccessLayer.Controller
         public string convertToJson<T>(T obj)
         {
             return javaScriptSerializer.Serialize(obj);
-        }
-
-        public string convertListToJson<T>(IEnumerable<T> list)
-        {
-            return javaScriptSerializer.Serialize(list);
         }
 
         public T convertFromJson<T>(string str)

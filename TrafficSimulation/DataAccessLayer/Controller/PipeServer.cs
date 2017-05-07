@@ -1,25 +1,28 @@
-﻿using System;
+﻿using DataAccessLayer.Services;
+using DataModel.Pipe;
+using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer.Controller
 {
-    public abstract class AbstractPipeServer
+    public abstract class PipeServer
     {
-        protected static int bufferSize = 10;
-        protected JsonStreamConverter converter;
-        protected NamedPipeServerStream _pipeServer;
-        protected StringBuilder messageBuilder;
-        protected byte[] messageBuffer;
-        protected string messageChunk;
-        protected Type entityClass;
+        private static int bufferSize = 10;
+        private JsonStreamConverter converter;
+        private NamedPipeServerStream _pipeServer;
+        private StringBuilder messageBuilder;
+        private byte[] messageBuffer;
+        private string messageChunk;
+        private IPipeService service;
 
-        public AbstractPipeServer(Type clazz)
+        public PipeServer(IPipeService service)
         {
-            this.entityClass = clazz;
+            this.service = service;
             this.converter = JsonStreamConverter.getInstance();
             this.messageBuilder = new StringBuilder();
             this.messageChunk = string.Empty;
@@ -101,7 +104,7 @@ namespace DataAccessLayer.Controller
                 else // Message is completed
                 {
                     // Finalize the received string and fire MessageReceivedEvent
-                    executeCommand(info.StringBuilder.ToString().TrimEnd('\0'));
+                    service.executeCommand(converter.convertFromJson<PipeDTO>(info.StringBuilder.ToString().TrimEnd('\0')));
                     // Begin a new reading operation
                     beginRead(new Info());
                 }
@@ -129,9 +132,38 @@ namespace DataAccessLayer.Controller
             }
         }
 
-        public abstract void executeCommand(string message);
+        public void write(PipeDTO dto)
+        {
+            _pipeServer.WaitForPipeDrain();
+            _pipeServer.BeginWrite(
+                Encoding.UTF8.GetBytes(converter.convertToJson<PipeDTO>(dto)),
+                0,
+                Encoding.UTF8.GetBytes(converter.convertToJson<PipeDTO>(dto)).Length,
+                EndWriteCallBack,
+                _pipeServer
+            );
+        }
 
-        public abstract void write<clazz>(clazz obj);
+        private void EndWriteCallBack(IAsyncResult result)
+        {
+            try
+            {
+                // End the write
+                _pipeServer.EndWrite(result);
+                _pipeServer.Flush();
+            }
+            catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                    throw;
+                }
+                finally
+                {
+                    _pipeServer.Close();
+                    _pipeServer.Dispose();
+                }
+        }
 
         protected class Info
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datamodel;
 using System.Web.Script.Serialization;
 using System.IO;
+using DataModel.Pipe;
 
 namespace DataAccessLayer
 {
@@ -54,6 +55,11 @@ namespace DataAccessLayer
             base.Init();
             endPositions = new List<Position>();
             startPositions = new List<Position>();
-        } 
+        }
+
+        public override void executeCommand(PipeDTO dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

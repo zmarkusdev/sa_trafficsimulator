@@ -1,5 +1,7 @@
-﻿using DataAccessLayer;
+﻿using System;
+using DataAccessLayer;
 using Datamodel;
+using DataModel.Pipe;
 
 namespace DataAccessLayer
 {
@@ -15,6 +17,11 @@ namespace DataAccessLayer
             agent = base.Create(agent);
 
             return (agent);
+        }
+
+        public override void executeCommand(PipeDTO dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

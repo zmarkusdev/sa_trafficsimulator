@@ -1,10 +1,6 @@
-﻿using DataAccessLayer;
+﻿using System;
 using Datamodel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DataModel.Pipe;
 
 namespace DataAccessLayer
 {
@@ -20,6 +16,11 @@ namespace DataAccessLayer
             edge = base.Create(edge);
 
             return (edge);
+        }
+
+        public override void executeCommand(PipeDTO dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
