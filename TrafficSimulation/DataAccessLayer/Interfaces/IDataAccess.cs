@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Datamodel;
 namespace DataAccessLayer
 {
-    // The basic set of operations any derived Class which wants to use the DataAccessLayer has to implement
+    // The basic set of operations, any implenting Class which wants to use the DataAccessLayer has to offer
     public interface IDataAccess<T>
     {
         void Init();

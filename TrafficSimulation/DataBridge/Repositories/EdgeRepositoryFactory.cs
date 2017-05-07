@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datamodel;
 using Repositories;
-
+using DataBridge;
 
 namespace Repositories
 {
@@ -13,7 +13,8 @@ namespace Repositories
     {
         public static IEdgeRepository CreateRepository()
         {
-            return new MockedEdgeService();
+            //return new MockedEdgeService();
+            return new BetterMockedEdgeService();
         }
     }
 }

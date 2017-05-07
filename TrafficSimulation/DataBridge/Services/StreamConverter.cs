@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
+//using System.Web.Script.Serialization;
 
 namespace DataAccessLayer.Controller
 {
     public class StreamConverter
     {
         private static StreamConverter instance;
-        private JavaScriptSerializer javaScriptSerializer;
+        //private JavaScriptSerializer javaScriptSerializer;
 
         private StreamConverter()
         {
-            this.javaScriptSerializer = new JavaScriptSerializer();
+            //this.javaScriptSerializer = new JavaScriptSerializer();
         }
 
         public static StreamConverter getInstance()
@@ -28,17 +28,20 @@ namespace DataAccessLayer.Controller
 
         public string convertToJson<T>(T obj)
         {
-            return javaScriptSerializer.Serialize(obj);
+            throw new NotImplementedException();
+            //return javaScriptSerializer.Serialize(obj);
         }
 
         public string convertListToJson<T>(IEnumerable<T> list)
         {
-            return javaScriptSerializer.Serialize(list);
+            throw new NotImplementedException();
+            //return javaScriptSerializer.Serialize(list);
         }
 
         public T convertFromJson<T>(String str)
         {
-            return javaScriptSerializer.Deserialize<T>(str);
+            throw new NotImplementedException();
+            //return javaScriptSerializer.Deserialize<T>(str);
         }
     }
 }

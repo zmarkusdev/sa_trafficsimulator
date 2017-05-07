@@ -1,4 +1,5 @@
 ﻿using Datamodel;
+using System;
 using System.Collections.Generic;
 
 namespace DataManager.MappingModels
@@ -6,7 +7,7 @@ namespace DataManager.MappingModels
     /// <summary>
     /// Simulation specific data for the agent which will not be transferred to the data access
     /// </summary>
-    public class SimAgent : Agent
+    public class SimAgent : Agent, ICloneable
     {
         /// <summary>
         /// Initializes a new simulation specific agent object, copy constructor for base class objects
@@ -55,5 +56,25 @@ namespace DataManager.MappingModels
         /// The current exact run length of this agent
         /// </summary>
         public double RunLengthExact { get; set; }
+
+        public object Clone()
+        {
+            return new SimAgent
+            {
+                Id = this.Id,
+                CurrentVelocity = this.CurrentVelocity,
+                EdgeId = this.EdgeId,
+                RunLength = this.RunLength,
+                Type = this.Type,
+                Acceleration = this.Acceleration,
+                Deceleration = this.Deceleration,
+                MaxVelocity = this.MaxVelocity,
+                VehicleLength = this.VehicleLength,
+                Route = this.Route,
+                CurrentAccelerationExact = this.CurrentAccelerationExact,
+                CurrentVelocityExact = this.CurrentVelocityExact,
+                RunLengthExact = this.RunLengthExact
+            };
+        }
     }
 }

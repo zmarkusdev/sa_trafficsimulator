@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
@@ -24,16 +20,19 @@ namespace DataAccessLayer
             return instance;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public int getuniqueId()
         {
             return uniqueId++;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public string getfilenamePrefix()
         {
             return datafileprefix;
         }
 
+        [Obsolete("getuniqueId is deprecated, please use AbstractDataAccess instead.")]
         public string getfilenameExtension()
         {
             return datafileextension;

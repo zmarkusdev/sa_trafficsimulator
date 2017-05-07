@@ -14,13 +14,16 @@ using System.IO;
 
 
 using Repositories;
+using DataBridge;
+
 namespace Repositories {
 	public abstract class RuleRepositoryFactory {
 
 		public static IRuleRepository CreateRepository(){
 
-			return new DataBridge.Services.MockedRuleService();
-		}
+			//return new DataBridge.Services.MockedRuleService();
+            return new BetterMockedRuleService();
+        }
 
 	}//end RuleRepositoryFactory
 

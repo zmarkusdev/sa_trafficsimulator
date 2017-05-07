@@ -13,11 +13,12 @@ namespace DataAccessLayer
         {
             DataAccessCommon commons = DataAccessCommon.getInstance();
 
-            AbstractDataAccess<Position> positionDataAccess = PositionDataAccessFactory.CreateRepository(); // new PositionDataAccess();
-            AbstractDataAccess<Edge> edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
-            AbstractDataAccess<Agent> agentDataAccess = AgentDataAccessFactory.CreateRepository();
+            IPostionDataAccess positionDataAccess = PositionDataAccessFactory.CreateRepository();
+            IEdgeDataAccess edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
+            IAgentDataAccess agentDataAccess = AgentDataAccessFactory.CreateRepository();
+            IRuleDataAccess ruleDataAccess = RuleDataAccessFactory.CreateRepository();
 
-            bool laden = true;
+            bool laden = true; // Ja nicht umstellen, sonst sind die Konfig Dateien hin?
 
             if (!laden == true)
             {
@@ -30,7 +31,7 @@ namespace DataAccessLayer
 
                 posi1.MaxVelocity = 50;
                 posi1.PredecessorEdgeIds = new List<int>();
-                posi1.Rotation = 0;
+                posi1.Rotation = 90;
                 posi1.RuleIds = new List<int>();
                 posi1.SuccessorEdgeIds = new List<int>(1);
                 posi1.X = 40;
@@ -39,7 +40,7 @@ namespace DataAccessLayer
 
                 posi2.MaxVelocity = 50;
                 posi2.PredecessorEdgeIds = new List<int>(1);
-                posi2.Rotation = 0;
+                posi2.Rotation = 135;
                 posi2.RuleIds = new List<int>();
                 List<int> liste = new List<int>();
                 liste.Add(2);
@@ -51,7 +52,7 @@ namespace DataAccessLayer
 
                 posi3.MaxVelocity = 50;
                 posi3.PredecessorEdgeIds = new List<int>(2);
-                posi3.Rotation = 0;
+                posi3.Rotation = 180;
                 posi3.RuleIds = new List<int>();
                 posi3.SuccessorEdgeIds = new List<int>(3);
                 posi3.X = 350;
@@ -60,7 +61,7 @@ namespace DataAccessLayer
 
                 posi4.MaxVelocity = 50;
                 posi4.PredecessorEdgeIds = new List<int>(4);
-                posi4.Rotation = 0;
+                posi4.Rotation = 45;
                 posi4.RuleIds = new List<int>();
                 posi4.SuccessorEdgeIds = new List<int>(5);
                 posi4.X = 350;
@@ -85,7 +86,7 @@ namespace DataAccessLayer
                 posi6.Y = 20;
                 positionDataAccess.Create(posi6);
 
-                positionDataAccess.SavetoFile(commons.getfilenamePrefix() + "position" + commons.getfilenameExtension());
+                positionDataAccess.SavetoFile("position");
 
                 Edge edge1 = new Edge();
                 Edge edge2 = new Edge();
@@ -123,7 +124,7 @@ namespace DataAccessLayer
                 edge5.CurveLength = 100;
                 edge5 = edgeDataAccess.Create(edge5);
 
-                edgeDataAccess.SavetoFile(commons.getfilenamePrefix() + "edge" + commons.getfilenameExtension());
+                edgeDataAccess.SavetoFile("edge");
 
                 Agent agent1 = new Agent();
                 Agent agent2 = new Agent();
@@ -153,19 +154,34 @@ namespace DataAccessLayer
                 agent2.VehicleWidth = 2;
                 agentDataAccess.Create(agent2);
 
-                agentDataAccess.SavetoFile(commons.getfilenamePrefix() + "agent" + commons.getfilenameExtension());
+                agentDataAccess.SavetoFile("agent");
+
+                Rule rule1 = new Rule();
+                rule1.CheckPositionIds = new List<int>(2);
+                rule1.IsDynamicRule = false;
+                rule1.PositionId = 2;
+                rule1.X = 25;
+                rule1.Y = 25;
+                ruleDataAccess.Create(rule1);
+                
+                ruleDataAccess.SavetoFile("rule");
 
             }
             else
             {
-                positionDataAccess.LoadfromFile(commons.getfilenamePrefix() + "position" + commons.getfilenameExtension());
-                edgeDataAccess.LoadfromFile(commons.getfilenamePrefix() + "edge" + commons.getfilenameExtension());
-                agentDataAccess.LoadfromFile(commons.getfilenamePrefix() + "agent" + commons.getfilenameExtension());
-
+                positionDataAccess.LoadfromFile("position");
+                edgeDataAccess.LoadfromFile("edge");
+                agentDataAccess.LoadfromFile("agent");
+                ruleDataAccess.LoadfromFile("rule");
                 Position readPosi = positionDataAccess.ReadbyId(3);
-                Agent readAgent = agentDataAccess.ReadbyId(999);
-
+                Console.WriteLine("PositionsId: " + readPosi.Id);
+                Agent readAgent = agentDataAccess.ReadbyId(2);
+                Console.WriteLine("agentenMaxSpeed: " + readAgent.MaxVelocity);
+                List<Rule> gugga = ruleDataAccess.ReadAll();
+                Console.WriteLine("Anzahl der Rules: " + gugga.Count);
             }
+            Console.WriteLine("Fertig");
+            Console.ReadKey();
         }
     }
 }

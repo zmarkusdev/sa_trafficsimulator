@@ -1,5 +1,6 @@
 ﻿using DataManager;
 using DataManager.MappingModels;
+using Datamodel;
 using System;
 using System.Linq;
 using System.Threading;
@@ -61,49 +62,57 @@ namespace AgentSpawner
                 var startPositions = dataManager_.StartPositions;
 
                 // Get start edges
-                var startEdges = dataManager_.Edges.Where(e => 
-                    startPositions.SelectMany(p => p.SuccessorEdgeIds).Any(successorEdgeId => successorEdgeId == e.Id)).ToArray();
+                Edge[] startEdges;
+                lock(dataManager_) startEdges = dataManager_.Edges.Where(e => 
+                    startPositions.Any(pos => pos.Id == e.StartPositionId)).ToArray();
 
-                // Iterate over configurations
-                foreach(var configuration in configurations)
-                {
-                    // Roll probability for spawn for current configuration
-                    if(rnd.Next(0, 100) <= configuration.SpawnPropability)
+                if(startEdges.Any())
+                { 
+                    // Iterate over configurations
+                    foreach(var configuration in configurations)
                     {
-                        // Roll a start edge
-                        var startEdge = startEdges[rnd.Next(0, startEdges.Count() - 1)];
-
-                        // Agent should be spawned, prepare new agent
-                        var agent = new SimAgent
+                        // Roll probability for spawn for current configuration
+                        if(rnd.Next(0, 100) <= configuration.SpawnPropability)
                         {
-                            CurrentVelocity = 0,
-                            EdgeId = startEdge.Id,
-                            RunLength = 0,
-                            RunLengthExact = 0,
-                            CurrentAccelerationExact = 0,
-                            CurrentVelocityExact = 0,
-                            // Roll the maximum allowed acceleration
-                            Acceleration = rnd.Next(configuration.Acceleration - configuration.AccelerationSpread, configuration.Acceleration + configuration.AccelerationSpread),
-                            // Roll the maximum allowed deceleration
-                            Deceleration = rnd.Next(configuration.Deceleration - configuration.DecelerationSpread, configuration.Deceleration + configuration.DecelerationSpread),
-                            // Roll the maximum allowed velocity
-                            MaxVelocity = rnd.Next(configuration.Velocity - configuration.VelocitySpread, configuration.Velocity + configuration.VelocitySpread),
-                            // Roll vehicle length
-                            VehicleLength = rnd.Next(configuration.VehicleLength - configuration.VehicleLengthSpread, configuration.VehicleLength + configuration.VehicleLengthSpread)
-                        };
+                            // Roll a start edge
+                            var startEdge = startEdges[rnd.Next(0, startEdges.Count() - 1)];
 
-                        // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
-                        if(!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
-                        {
-                            // Set agent starting position to it's vehicle length
-                            agent.RunLength = agent.VehicleLength;
-                            dataManager_.CreateAgent(agent);
+                            // Agent should be spawned, prepare new agent
+                            var agent = new SimAgent
+                            {
+                                CurrentVelocity = 4,
+                                EdgeId = startEdge.Id,
+                                RunLength = 0,
+                                RunLengthExact = 0,
+                                CurrentAccelerationExact = 0,
+                                CurrentVelocityExact = 4,
+                                // Roll the maximum allowed acceleration
+                                Acceleration = rnd.Next(configuration.Acceleration - configuration.AccelerationSpread, configuration.Acceleration + configuration.AccelerationSpread),
+                                // Roll the maximum allowed deceleration
+                                Deceleration = rnd.Next(configuration.Deceleration - configuration.DecelerationSpread, configuration.Deceleration + configuration.DecelerationSpread),
+                                // Roll the maximum allowed velocity
+                                MaxVelocity = rnd.Next(configuration.Velocity - configuration.VelocitySpread, configuration.Velocity + configuration.VelocitySpread),
+                                // Roll vehicle length
+                                VehicleLength = rnd.Next(configuration.VehicleLength - configuration.VehicleLengthSpread, configuration.VehicleLength + configuration.VehicleLengthSpread)
+                            };
+
+                            // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
+                            if (!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
+                            {
+                                Console.WriteLine("Spawn agent #" + (dataManager_.Agents.Count + 1));
+
+                                // Set agent starting position to it's vehicle length
+                                agent.RunLength = agent.VehicleLength;
+                                dataManager_.CreateAgent(agent);
+                            }
+                            else
+                                Console.WriteLine("Skipping agent creation, rolled start edge is occupied");
                         }
                     }
                 }
 
-                // Wait for 2 seconds before next run
-                Thread.Sleep(2000);
+                // Wait for 5 seconds before next run
+                Thread.Sleep(5000);
             }
         }
     }

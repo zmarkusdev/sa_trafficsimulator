@@ -1,0 +1,11 @@
+{"Id":1,"MaxVelocity":50,"PredecessorEdgeIds":[],"Rotation":90,"RuleIds":[],"SuccessorEdgeIds":[1],"X":40,"Y":300}
+{"Id":2,"MaxVelocity":50,"PredecessorEdgeIds":[1],"Rotation":135,"RuleIds":[],"SuccessorEdgeIds":[2,4],"X":250,"Y":300}
+{"Id":3,"MaxVelocity":50,"PredecessorEdgeIds":[2],"Rotation":180,"RuleIds":[],"SuccessorEdgeIds":[3],"X":350,"Y":370}
+{"Id":4,"MaxVelocity":50,"PredecessorEdgeIds":[4],"Rotation":45,"RuleIds":[],"SuccessorEdgeIds":[5],"X":350,"Y":550}
+{"Id":5,"MaxVelocity":50,"PredecessorEdgeIds":[5],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":430,"Y":230}
+{"Id":6,"MaxVelocity":50,"PredecessorEdgeIds":[3],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[],"X":420,"Y":20}
+{"Id":7,"MaxVelocity":30,"PredecessorEdgeIds":[],"Rotation":0,"RuleIds":[],"SuccessorEdgeIds":[6],"X":420,"Y":550}
+{"Id":8,"MaxVelocity":30,"PredecessorEdgeIds":[],"Rotation":180,"RuleIds":[],"SuccessorEdgeIds":[7],"X":380,"Y":20}
+{"Id":9,"MaxVelocity":30,"PredecessorEdgeIds":[8],"Rotation":180,"RuleIds":[],"SuccessorEdgeIds":[9],"X":360,"Y":200}
+{"Id":10,"MaxVelocity":30,"PredecessorEdgeIds":[9],"Rotation":225,"RuleIds":[],"SuccessorEdgeIds":[10],"X":250,"Y":240}
+{"Id":11,"MaxVelocity":30,"PredecessorEdgeIds":[10],"Rotation":225,"RuleIds":[],"SuccessorEdgeIds":[],"X":20,"Y":244}

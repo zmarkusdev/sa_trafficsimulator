@@ -1,0 +1,1 @@
+{"CheckPositionIds":[],"Id":0,"IsDynamicRule":false,"MaxVelocity":0,"PositionId":2,"RuleType":0,"X":25,"Y":25}

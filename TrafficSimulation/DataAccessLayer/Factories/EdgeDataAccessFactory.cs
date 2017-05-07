@@ -9,7 +9,7 @@ namespace DataAccessLayer
 {
     public class EdgeDataAccessFactory
     {
-        public static AbstractDataAccess<Edge> CreateRepository()
+        public static IEdgeDataAccess CreateRepository()
         {
             return new EdgeDataAccess();
         }

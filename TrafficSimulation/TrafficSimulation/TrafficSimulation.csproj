@@ -64,6 +64,10 @@
       <Project>{881c36ae-1f5f-4688-8c1c-8f2d8e9c1ea9}</Project>
       <Name>DataManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{6f0355c7-e6fa-475a-a4bd-a4a3d2701162}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhysicEngine\PhysicEngine.csproj">
       <Project>{eb6b7f7c-80be-4d17-8a81-58fdf3d3e335}</Project>
       <Name>PhysicEngine</Name>

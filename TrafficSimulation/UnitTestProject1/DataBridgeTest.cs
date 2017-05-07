@@ -29,8 +29,9 @@ namespace UnitTestProject1
         public void createPosition()
         {
             Position position1 = new Position();
+            position1.Id = 99;
             position1 = positionRepository.Create(position1);
-            Assert.AreNotEqual(position1.Id, 0);
+            Assert.AreEqual(position1.Id, 99);
         }
         [TestMethod]
         public void createEdge()
@@ -67,27 +68,41 @@ namespace UnitTestProject1
             edges = edgeRepository.GetAll();
             Assert.AreEqual(vorher, edges.Count());
         }
+
+        [TestMethod]
+        public void betterMockedPositionServis()
+        {
+            IPositionRepository positionRepo = PositionRepositoryFactory.CreateRepository();
+            // hier ist alles geladen, oder auch nicht.
+            Position posiDel = positionRepo.GetPosition(1);
+            positionRepo.Delete(posiDel);
+            positionRepo.Delete(posiDel);
+
+            positionRepo.Update(posiDel);
+
+
+            Assert.IsTrue(true);
+        }
+
+
+
         [TestMethod]
         public void createSmallVillage()
         {
             DataAccessCommon commons = DataAccessCommon.getInstance();
 
-            AbstractDataAccess<Position> positionDataAccess = PositionDataAccessFactory.CreateRepository(); // new PositionDataAccess();
-            AbstractDataAccess<Edge> edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
-            AbstractDataAccess<Agent> agentDataAccess = AgentDataAccessFactory.CreateRepository();
-            AbstractDataAccess<Rule> ruleDataAccess = RuleDataAccessFactory.CreateRepository();
+            IPostionDataAccess positionDataAccess = PositionDataAccessFactory.CreateRepository(); // new PositionDataAccess();
+            IEdgeDataAccess edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
+            IAgentDataAccess agentDataAccess = AgentDataAccessFactory.CreateRepository();
+            IRuleDataAccess ruleDataAccess = RuleDataAccessFactory.CreateRepository();
 
-            positionDataAccess.LoadfromFile(commons.getfilenamePrefix() + "position" + commons.getfilenameExtension());
-            edgeDataAccess.LoadfromFile(commons.getfilenamePrefix() + "edge" + commons.getfilenameExtension());
-            agentDataAccess.LoadfromFile(commons.getfilenamePrefix() + "agent" + commons.getfilenameExtension());
+            positionDataAccess.LoadfromFile("position");
+            edgeDataAccess.LoadfromFile("edge");
+            agentDataAccess.LoadfromFile("agent");
 
             Position readPosi = positionDataAccess.ReadbyId(3);
             Agent readAgent = agentDataAccess.ReadbyId(99);
             Rule readRule = ruleDataAccess.ReadbyId(2);
-
-            
-
         }
-
     }
 }

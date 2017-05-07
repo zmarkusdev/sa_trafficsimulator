@@ -10,16 +10,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
-
 using Repositories;
+using DataBridge;
+
 namespace Repositories {
 	public abstract class AgentRepositoryFactory {
 
 		public static IAgentRepository CreateRepository(){
 
-            return new DataBridge.Services.MockedAgentService();
+            //return new DataBridge.Services.MockedAgentService();
+            return new BetterMockedAgentService();
 		}
 
 	}//end AgentRepositoryFactory
