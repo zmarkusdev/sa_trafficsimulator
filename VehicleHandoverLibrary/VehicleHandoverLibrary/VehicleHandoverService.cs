@@ -21,24 +21,30 @@ namespace VehicleHandoverLibrary
     public class VehicleHandoverService
     {
 
-        AWSCredentials awsCredentials;
-        AmazonSQSClient sqsClient;
-        String SQS_URL = "https://sqs.us-east-2.amazonaws.com/047952185359/vehicle-handover-01.fifo";
-        String MESSAGE_GROUP_ID = "1";
+        private AWSCredentials awsCredentials;
+        private AmazonSQSClient sqsClient;
+        private String sqsUrl;
+        private int sentMessages;
 
-        public VehicleHandoverService()
+        private String MESSAGE_GROUP_ID = "1";
+        private int MAX_MESSAGES = 10000;
+
+        public VehicleHandoverService(Groups group)
         {
-            awsCredentials = new BasicAWSCredentials("AKIAJAXVEF37WTBOI5RA", "K78sgjKL3XRD/T4T8/8yubFroIQ8PtvZBQ2yq5r+");
-            sqsClient = new AmazonSQSClient(awsCredentials, Amazon.RegionEndpoint.USEast2);
+            // Setup AWS Credentials
+            this.awsCredentials = new BasicAWSCredentials("AKIAJAXVEF37WTBOI5RA", "K78sgjKL3XRD/T4T8/8yubFroIQ8PtvZBQ2yq5r+");
+            this.sqsClient = new AmazonSQSClient(awsCredentials, Amazon.RegionEndpoint.USEast2);
 
-            //sendMessage("I bims!");
-            var messages = receiveMessage();
-            Console.WriteLine(messages);
+            // Get SQS_URL
+            this.sqsUrl = Group.getUrlForGroup(group);
+
+            // Initialize
+            this.sentMessages = 0;
         }
 
-        private void sendMessage(String message)
+        public void HandoverVehicle(Vehicle vehicle)
         {
-            var sendMessageRequest = new SendMessageRequest(SQS_URL, message);
+            var sendMessageRequest = new SendMessageRequest(sqsUrl, vehicle.toJSON());
             sendMessageRequest.MessageGroupId = MESSAGE_GROUP_ID;
             sendMessageRequest.MessageDeduplicationId = Guid.NewGuid().ToString();
             sqsClient.SendMessage(sendMessageRequest);
@@ -47,7 +53,7 @@ namespace VehicleHandoverLibrary
         private String receiveMessage()
         {
             String response = "";
-            var receiveMessageRequest = new ReceiveMessageRequest(SQS_URL);
+            var receiveMessageRequest = new ReceiveMessageRequest(sqsUrl);
             var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
 
             foreach (var message in receiveMessageResponse.Messages)
@@ -55,7 +61,7 @@ namespace VehicleHandoverLibrary
                 response += "[" + message.Body + "]";
 
                 // Delete it
-                var deleteMessageRequest = new DeleteMessageRequest(SQS_URL, message.ReceiptHandle);
+                var deleteMessageRequest = new DeleteMessageRequest(sqsUrl, message.ReceiptHandle);
                 sqsClient.DeleteMessage(deleteMessageRequest);
             }
 
