@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using Amazon.Runtime;
+using System.Threading;
 
 /*
  * QUEUE Options:
@@ -27,7 +28,7 @@ namespace VehicleHandoverLibrary
         private int sentMessages;
 
         private String MESSAGE_GROUP_ID = "1";
-        private int MAX_MESSAGES = 10000;
+        private int MAX_MESSAGES = 500;
 
         public VehicleHandoverService(Groups group)
         {
@@ -44,10 +45,20 @@ namespace VehicleHandoverLibrary
 
         public void HandoverVehicle(Vehicle vehicle)
         {
-            var sendMessageRequest = new SendMessageRequest(sqsUrl, vehicle.toJSON());
+            Task task = new Task(() => sendMessage(vehicle.toJSON()));
+            task.Start();
+        }
+
+        private void sendMessage(String message)
+        {
+            var sendMessageRequest = new SendMessageRequest(sqsUrl, message);
             sendMessageRequest.MessageGroupId = MESSAGE_GROUP_ID;
             sendMessageRequest.MessageDeduplicationId = Guid.NewGuid().ToString();
             sqsClient.SendMessage(sendMessageRequest);
+            this.sentMessages++;
+
+            if (sentMessages > MAX_MESSAGES)
+                throw new Exception("Maximum of " + MAX_MESSAGES + " messages allowed per session!");
         }
 
         private String receiveMessage()
