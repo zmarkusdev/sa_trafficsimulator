@@ -15,9 +15,9 @@ namespace DataBridge.Controller
         protected static int bufferSize = 10;
         protected JsonStreamConverter converter;
         private NamedPipeClientStream _pipeClient;
-        private AbstractService service;
+        private IPipeClientService service;
 
-        public PipeClient(string pipeName, AbstractService service)
+        public PipeClient(string pipeName, IPipeClientService service)
         {
             _pipeClient = new NamedPipeClientStream(pipeName);
             _pipeClient.Connect();
