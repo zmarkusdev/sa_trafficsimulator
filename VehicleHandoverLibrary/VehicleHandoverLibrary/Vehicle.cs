@@ -27,5 +27,12 @@ namespace VehicleHandoverLibrary
         {
             return JsonConvert.DeserializeObject<Vehicle>(json);
         }
+
+        override
+        public String ToString()
+        {
+            return "Vehicle: " + this.toJSON();
+        }
+
     }
 }

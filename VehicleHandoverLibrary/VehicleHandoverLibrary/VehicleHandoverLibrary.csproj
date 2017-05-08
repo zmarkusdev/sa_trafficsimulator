@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Group.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleEventArgs.cs" />
     <Compile Include="VehicleHandoverService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

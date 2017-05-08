@@ -30,6 +30,8 @@ namespace VehicleHandoverLibrary
         private String MESSAGE_GROUP_ID = "1";
         private int MAX_MESSAGES = 500;
 
+        public event EventHandler<VehicleEventArgs> ReceiveEventHandler;
+
         public VehicleHandoverService(Groups group)
         {
             // Setup AWS Credentials
@@ -79,6 +81,7 @@ namespace VehicleHandoverLibrary
                     {
                         var jsonString = message.Body;
                         Vehicle vehicle = Vehicle.fromJSON(jsonString);
+                        RaiseReceiveEvent(vehicle);
                     } catch (Exception e)
                     {
                         Console.WriteLine("Couldn't parse JSON");
@@ -89,6 +92,14 @@ namespace VehicleHandoverLibrary
                     sqsClient.DeleteMessage(deleteMessageRequest);
                 }
             }
+        }
+
+        // Wrap event invocations inside a protected virtual method
+        // to allow derived classes to override the event invocation behavior
+        protected virtual void RaiseReceiveEvent(Vehicle vehicle)
+        {
+            VehicleEventArgs vehicleEventArgs = new VehicleEventArgs(vehicle);
+            this.ReceiveEventHandler?.Invoke(this, vehicleEventArgs);
         }
 
     }
