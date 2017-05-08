@@ -59,6 +59,7 @@
     <Compile Include="Services\BetterMockedEdgeService.cs" />
     <Compile Include="Services\BetterMockedPositionService.cs" />
     <Compile Include="Services\BetterMockedRuleService.cs" />
+    <Compile Include="Services\IPipeClientService.cs" />
     <Compile Include="Services\MockedDefinitions.cs" />
     <Compile Include="Services\MockedAgentSimConfigurationService.cs" />
     <Compile Include="Services\MockedAgentService.cs" />
