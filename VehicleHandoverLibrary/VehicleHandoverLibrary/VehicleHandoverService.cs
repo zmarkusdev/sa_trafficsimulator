@@ -41,6 +41,10 @@ namespace VehicleHandoverLibrary
 
             // Initialize
             this.sentMessages = 0;
+
+            // Start polling
+            Task task = new Task(() => startLongPolling());
+            task.Start();
         }
 
         public void HandoverVehicle(Vehicle vehicle)
@@ -61,22 +65,30 @@ namespace VehicleHandoverLibrary
                 throw new Exception("Maximum of " + MAX_MESSAGES + " messages allowed per session!");
         }
 
-        private String receiveMessage()
+        private void startLongPolling()
         {
-            String response = "";
-            var receiveMessageRequest = new ReceiveMessageRequest(sqsUrl);
-            var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
-
-            foreach (var message in receiveMessageResponse.Messages)
+            while(true)
             {
-                response += "[" + message.Body + "]";
+                var receiveMessageRequest = new ReceiveMessageRequest(sqsUrl);
+                var receiveMessageResponse = sqsClient.ReceiveMessage(receiveMessageRequest);
 
-                // Delete it
-                var deleteMessageRequest = new DeleteMessageRequest(sqsUrl, message.ReceiptHandle);
-                sqsClient.DeleteMessage(deleteMessageRequest);
+                foreach (var message in receiveMessageResponse.Messages)
+                {
+                    // Parse vehicle
+                    try
+                    {
+                        var jsonString = message.Body;
+                        Vehicle vehicle = Vehicle.fromJSON(jsonString);
+                    } catch (Exception e)
+                    {
+                        Console.WriteLine("Couldn't parse JSON");
+                    }
+
+                    // Delete it
+                    var deleteMessageRequest = new DeleteMessageRequest(sqsUrl, message.ReceiptHandle);
+                    sqsClient.DeleteMessage(deleteMessageRequest);
+                }
             }
-
-            return response;
         }
 
     }

@@ -21,6 +21,8 @@ namespace HandoverTest
             vehicle.Type = VehicleHandoverLibrary.VehicleType.CAR;
 
             service.HandoverVehicle(vehicle);
+
+            Console.ReadLine();
         }
     }
 }
