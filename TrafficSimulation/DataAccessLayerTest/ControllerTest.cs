@@ -21,11 +21,8 @@ namespace DataAccessLayerTest
         [TestMethod]
         public void TestSingleObject()
         {
-            /*
-            using (NamedPipeClientStream namedPipeClient = new NamedPipeClientStream(PipeUtil.AGENT()))
-            {
-            IPipeService agentService = AgentDataAccessFactory.CreateRepository();
-                var controllerThread = new Thread(() => new PipeServer(agentService);
+            IPipeService agentService = (IPipeService) AgentDataAccessFactory.CreateRepository();
+                var controllerThread = new Thread(() => new PipeServer(PipeUtil.AGENT(), agentService));
                 controllerThread.Start();
                 Agent agent = new Agent();
                 agent.Id = 123;
@@ -38,15 +35,11 @@ namespace DataAccessLayerTest
                 agent.RunLength = 0;
                 agent.VehicleLength = 0;
                 agent.VehicleWidth = 0;
-                PipeClient client = new PipeClient(PipeUtil.AGENT(), null);
+                PipeClient client = new PipeClient(PipeUtil.AGENT());
                 PipeDTO dto = new PipeDTO(Guid.NewGuid(), PipeCommand.GET_BY_ID, "123");
-                client.writeQueryWithReturnValue(dto);
+                PipeDTO returnedDTO = client.writeQueryWithReturnValue(dto);
                 string serialised = converter.convertToJson<Agent>(agent);
-                namedPipeClient.Connect();
                 byte[] messageBytes = Encoding.UTF8.GetBytes(serialised);
-                namedPipeClient.Write(messageBytes, 0, messageBytes.Length);
-            }
-            */
         }
 
         [TestMethod]
