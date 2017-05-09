@@ -102,7 +102,7 @@ namespace SimulationUserInterface.Models
                     int yAgent = (int)Math.Round(startposition.Y + Math.Sin(angle) * singleagent.RunLength);
 
                     /// Add a new agent with creted information
-                    MapAgents.Add(new AgentModel(xAgent, yAgent, -90 + (angle / Math.PI * 180), 0, 40, 80, XScaleFactor, YScaleFactor));
+                    MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), 0, 40, 80, XScaleFactor, YScaleFactor));
 
                 }
             }

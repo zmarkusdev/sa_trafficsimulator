@@ -10,6 +10,21 @@ namespace SimulationUserInterface.Models
 {
     public class AgentModel : Model
     {
+
+        private int _AgentId;
+        public int AgentId
+        {
+            get { return _AgentId; }
+            set
+            {
+                if (_AgentId != value)
+                {
+                    _AgentId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         private int _XPosition;
         public int XPosition
         {
@@ -122,8 +137,10 @@ namespace SimulationUserInterface.Models
             }
         }
 
-        public AgentModel(int xPosition, int yPosition, double rotation, int agentType, int agentWidth, int agentHeight, double xScale, double yScale)
+        public AgentModel(int agentId, int xPosition, int yPosition, double rotation, int agentType, int agentWidth, int agentHeight, double xScale, double yScale)
         {
+            AgentId = agentId;
+
             XPosition = xPosition - agentWidth / 2;
             YPosition = yPosition - agentHeight / 2;
 
@@ -144,6 +161,14 @@ namespace SimulationUserInterface.Models
                     ImagePath = "pack://application:,,,/Resources/Car01.png";
                     break;
             }
+
+            AgentTestCommand = new Command(() => AgentTestCommandExecute());
+        }
+
+        public Command AgentTestCommand { get; }
+        private void AgentTestCommandExecute()
+        {
+            Console.WriteLine("Event executed at agent " + AgentId);
         }
 
     } // Class

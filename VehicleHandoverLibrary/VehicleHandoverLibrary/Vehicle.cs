@@ -11,11 +11,22 @@ namespace VehicleHandoverLibrary
 
     public class Vehicle
     {
+        // Maximum acceleration in m/s^2
         public double MaxAcceleration { get; set; }
+
+        // Maximum deceleration in m/s^2
         public double MaxDeceleration { get; set; }
+
+        // Maximum velocity in m/s
         public double MaxVelocity { get; set; }
+
+        // With of the vehicle in m
         public double Width { get; set; }
+
+        // Length of the vehicle in m
         public double Length { get; set; }
+
+        // Type of the vehicle (see enum VehicleType)
         public VehicleType Type { get; set; }
 
         public String toJSON()
