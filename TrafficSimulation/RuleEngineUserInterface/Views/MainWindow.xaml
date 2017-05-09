@@ -1,0 +1,31 @@
+﻿<Window x:Class="RuleEngineUserInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:RuleEngineUserInterface.ViewModels"
+        xmlns:local="clr-namespace:RuleEngineUserInterface"
+        mc:Ignorable="d" Title="Dynamic Rule Setting" 
+        Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}" 
+        Width="{Binding Path=UserInterfaceModel.WindowWidth, Mode=TwoWay}">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Change configuration of dynamic rules" 
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="Close"
+                Command="{Binding Path=ExitCommand}"/>
+    </Grid>
+</Window>

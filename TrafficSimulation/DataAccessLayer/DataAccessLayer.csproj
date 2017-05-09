@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\PipeServer.cs" />
-    <Compile Include="DataAccessLayerRepositoryFactory.cs" />
     <Compile Include="Factories\AgentDataAccessFactory.cs" />
     <Compile Include="Factories\EdgeDataAccessFactory.cs" />
     <Compile Include="Factories\PositionDataAccessFactory.cs" />

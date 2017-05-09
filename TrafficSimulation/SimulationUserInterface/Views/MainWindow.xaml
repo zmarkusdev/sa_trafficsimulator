@@ -1,4 +1,5 @@
 ﻿<Window x:Class="SimulationUserInterface.MainWindow"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -36,9 +37,15 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
+                    
                     <Image Source="{Binding ImagePath, Converter={StaticResource ImageConverter}}" 
                            Width="{Binding AgentWidth}" Stretch="Fill" Height="{Binding AgentHeight}" 
-                           RenderTransformOrigin="0.5,0.5">
+                           RenderTransformOrigin="0.5,0.5" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding Path=AgentTestCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <Image.RenderTransform>
                             <TransformGroup>
                                 <RotateTransform Angle="{Binding Rotation}" />

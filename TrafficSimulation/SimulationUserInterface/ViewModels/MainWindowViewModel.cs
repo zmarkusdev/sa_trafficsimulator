@@ -4,6 +4,7 @@ using SimulationUserInterface.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Threading;
+using Technics;
 
 namespace SimulationUserInterface.ViewModels
 {
@@ -82,11 +83,14 @@ namespace SimulationUserInterface.ViewModels
 
                 /// Update the map picture only at startup
                 Map BackgroundMap = UserInterfaceMap.GetMap();
+                
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
 
                 /// Load Positions and edges once from the DataBridge
                 edges = Edges.GetAll();
                 positions = Positions.GetAll();
+
+                
 
                 /// Configurate and start the update timer for the gui update
                 GuiUpdateTimer.Interval = TimeSpan.FromMilliseconds(25);
@@ -99,6 +103,8 @@ namespace SimulationUserInterface.ViewModels
                 Console.WriteLine(ex.Message);
             }
         }
+
+       
 
         /// <summary>
         /// Dispatched Timer update function which gets called in a certain interval
