@@ -10,13 +10,14 @@ namespace HandoverTest
     {
         static void Main(string[] args)
         {
-            // Create service
-            var service = new VehicleHandoverLibrary.VehicleHandoverService(VehicleHandoverLibrary.Groups.GROUP02);
+            // Create Receiver & Subscribe
+            var vehicleReceiver = new VehicleHandoverLibrary.VehicleReceiver(VehicleHandoverLibrary.Groups.GROUP02);
+            vehicleReceiver.ReceiveEventHandler += VehicleReceiver_ReceiveEventHandler;
 
-            // Subscribe to event
-            service.ReceiveEventHandler += Service_ReceiveEventHandler;
+            // Create sender
+            var vehicleSender = new VehicleHandoverLibrary.VehicleSender(VehicleHandoverLibrary.Groups.GROUP02);
 
-            // Add a dummy vehicle
+            // Define dummy vehicle
             var vehicle = new VehicleHandoverLibrary.Vehicle();
             vehicle.Length = 5;
             vehicle.Width = 2.3;
@@ -24,14 +25,28 @@ namespace HandoverTest
             vehicle.MaxDeceleration = 12.3;
             vehicle.MaxVelocity = 300;
             vehicle.Type = VehicleHandoverLibrary.VehicleType.CAR;
-            service.HandoverVehicle(vehicle);
+            
+            while(true)
+            {
+                Console.WriteLine("Press any key to send a dummy vehicle");
+                Console.WriteLine("Press 'q' to quit");
+                var input = Console.ReadKey();
 
-            Console.ReadLine();
+                if (input.KeyChar == 'q')
+                {
+                    return;
+                } else
+                {
+                    vehicleSender.PushVehicle(vehicle);
+                    Console.WriteLine("Pushed vehicle!");
+                }
+                    
+            }
         }
 
-        private static void Service_ReceiveEventHandler(object sender, VehicleHandoverLibrary.VehicleEventArgs e)
+        private static void VehicleReceiver_ReceiveEventHandler(object sender, VehicleHandoverLibrary.VehicleEventArgs e)
         {
-            Console.WriteLine(e.Vehicle.ToString());
+            Console.WriteLine("Received " + e.Vehicle.ToString());
         }
 
     }

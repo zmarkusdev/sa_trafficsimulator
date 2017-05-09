@@ -53,10 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Group.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleEventArgs.cs" />
-    <Compile Include="VehicleHandoverService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehicleReceiver.cs" />
+    <Compile Include="VehicleSender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
