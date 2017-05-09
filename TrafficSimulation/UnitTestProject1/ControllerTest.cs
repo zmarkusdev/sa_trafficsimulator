@@ -7,9 +7,6 @@ using DataModel.Pipe;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
-using DataBridge.Controller;
-using DataAccessLayer;
-using DataAccessLayer.Services;
 
 namespace DataAccessLayerTest
 {
@@ -21,8 +18,9 @@ namespace DataAccessLayerTest
         [TestMethod]
         public void TestSingleObject()
         {
-            IPipeService agentService = (IPipeService) AgentDataAccessFactory.CreateRepository();
-                var controllerThread = new Thread(() => new PipeServer(PipeUtil.AGENT(), agentService));
+            using (NamedPipeClientStream namedPipeClient = new NamedPipeClientStream(PipeUtil.AGENT()))
+            {
+                var controllerThread = new Thread(() => new AgentController());
                 controllerThread.Start();
                 Agent agent = new Agent();
                 agent.Id = 123;
@@ -35,17 +33,16 @@ namespace DataAccessLayerTest
                 agent.RunLength = 0;
                 agent.VehicleLength = 0;
                 agent.VehicleWidth = 0;
-                PipeClient client = new PipeClient(PipeUtil.AGENT());
-                PipeDTO dto = new PipeDTO(Guid.NewGuid(), PipeCommand.GET_BY_ID, "123");
-                PipeDTO returnedDTO = client.writeQueryWithReturnValue(dto);
                 string serialised = converter.convertToJson<Agent>(agent);
+                namedPipeClient.Connect();
                 byte[] messageBytes = Encoding.UTF8.GetBytes(serialised);
+                namedPipeClient.Write(messageBytes, 0, messageBytes.Length);
+            }
         }
 
         [TestMethod]
         public void TestListOfObjects()
         {
-            /*
             using (NamedPipeClientStream namedPipeClient = new NamedPipeClientStream(PipeUtil.AGENT()))
             {
                 var controllerThread = new Thread(() => new AgentController());
@@ -72,7 +69,6 @@ namespace DataAccessLayerTest
                 byte[] messageBytes = Encoding.UTF8.GetBytes(serialised);
                 namedPipeClient.Write(messageBytes, 0, messageBytes.Length);
             }
-            */
         }
     }
 }

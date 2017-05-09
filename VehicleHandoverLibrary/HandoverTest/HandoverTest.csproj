@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F0355C7-E6FA-475A-A4BD-A4A3D2701162}</ProjectGuid>
+    <ProjectGuid>{02805493-E3FD-4482-8640-78C011BDEF00}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataModel</RootNamespace>
-    <AssemblyName>DataModel</AssemblyName>
+    <RootNamespace>HandoverTest</RootNamespace>
+    <AssemblyName>HandoverTest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,39 +35,25 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vse.Web.Serialization, Version=1.0.4.0, Culture=neutral, PublicKeyToken=fb838febb49f46b2, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vse.Web.Serialization.ControlledSerializationJsonConverter.1.0.4\lib\net45\Vse.Web.Serialization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Datamodel\AbstractEdge.cs" />
-    <Compile Include="Datamodel\Agent.cs" />
-    <Compile Include="Datamodel\AgentSimConfiguration.cs" />
-    <Compile Include="Datamodel\AgentType.cs" />
-    <Compile Include="Datamodel\DynamicEdge.cs" />
-    <Compile Include="Datamodel\Edge.cs" />
-    <Compile Include="Datamodel\Map.cs" />
-    <Compile Include="Datamodel\Position.cs" />
-    <Compile Include="Datamodel\Rule.cs" />
-    <Compile Include="Datamodel\RuleType.cs" />
-    <Compile Include="Pipe\JsonStreamConverter.cs" />
-    <Compile Include="Pipe\PipeCommand.cs" />
-    <Compile Include="Pipe\PipeDTO.cs" />
-    <Compile Include="Pipe\PipeUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VehicleHandoverLibrary\VehicleHandoverLibrary.csproj">
+      <Project>{94ea30fc-dbdc-4363-af60-1f352429b6f6}</Project>
+      <Name>VehicleHandoverLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

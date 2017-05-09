@@ -62,6 +62,10 @@
       <Project>{ae565a81-ddc1-4af8-9560-3a34a9cc8d25}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBridge\DataBridge.csproj">
+      <Project>{340107C2-A376-454F-8E21-4FFE995A8EBA}</Project>
+      <Name>DataBridge</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{6f0355c7-e6fa-475a-a4bd-a4a3d2701162}</Project>
       <Name>DataModel</Name>

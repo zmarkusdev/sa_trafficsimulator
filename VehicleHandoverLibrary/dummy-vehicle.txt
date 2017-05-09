@@ -1,0 +1,1 @@
+{"MaxAcceleration":9.81,"MaxDeceleration":12.3,"MaxVelocity":300.0,"Width":2.3,"Length":5.0,"Type":0}

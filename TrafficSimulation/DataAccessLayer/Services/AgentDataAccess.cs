@@ -1,4 +1,6 @@
-﻿using Datamodel;
+﻿using System;
+using Datamodel;
+using DataModel.Pipe;
 
 namespace DataAccessLayer
 {
@@ -6,5 +8,9 @@ namespace DataAccessLayer
 
     class AgentDataAccess : AbstractDataAccess<Agent>, IAgentDataAccess
     {
+        public override void executeCommand(PipeDTO dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
