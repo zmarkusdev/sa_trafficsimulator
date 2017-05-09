@@ -2,44 +2,49 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO.Pipes;
 using Datamodel;
-using DataAccessLayer.Controller;
+using DataBridge.Services;
 using DataModel.Pipe;
 using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using DataBridge.Controller;
-using DataAccessLayer;
+using DataBridge;
+using Newtonsoft.Json;
 using DataAccessLayer.Services;
+using DataAccessLayer;
+using DataAccessLayer.Controller;
+using System.Threading.Tasks;
 
 namespace DataAccessLayerTest
 {
     [TestClass]
     public class ControllerTest
     {
-        private JsonStreamConverter converter = JsonStreamConverter.getInstance();
-
         [TestMethod]
         public void TestSingleObject()
         {
-            IPipeService agentService = (IPipeService) AgentDataAccessFactory.CreateRepository();
-                var controllerThread = new Thread(() => new PipeServer(PipeUtil.AGENT(), agentService));
-                controllerThread.Start();
-                Agent agent = new Agent();
-                agent.Id = 123;
-                agent.Type = AgentType.Car01;
-                agent.Acceleration = 1;
-                agent.CurrentVelocity = 1;
-                agent.Deceleration = 1;
-                agent.MaxVelocity = 1;
-                agent.EdgeId = 1;
-                agent.RunLength = 0;
-                agent.VehicleLength = 0;
-                agent.VehicleWidth = 0;
-                PipeClient client = new PipeClient(PipeUtil.AGENT());
-                PipeDTO dto = new PipeDTO(Guid.NewGuid(), PipeCommand.GET_BY_ID, "123");
-                PipeDTO returnedDTO = client.writeQueryWithReturnValue(dto);
-                string serialised = converter.convertToJson<Agent>(agent);
-                byte[] messageBytes = Encoding.UTF8.GetBytes(serialised);
+            IPipeService agentService = (IPipeService)AgentDataAccessFactory.CreateRepository();
+            PipeServer server = new PipeServer(PipeUtil.AGENT(), agentService);
+            PipeClient client = new PipeClient(PipeUtil.AGENT());
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Agent agent = new Agent();
+            agent.Id = 123;
+            agent.Type = AgentType.Car01;
+            agent.Acceleration = 1;
+            agent.CurrentVelocity = 1;
+            agent.Deceleration = 1;
+            agent.MaxVelocity = 1;
+            agent.EdgeId = 1;
+            agent.RunLength = 0;
+            agent.VehicleLength = 0;
+            agent.VehicleWidth = 0;
+            PipeDTO dto = new PipeDTO(Guid.NewGuid(), PipeCommand.GET_BY_ID, agent);
+            client.write(dto);
+            server.write(dto);
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
         }
 
         [TestMethod]

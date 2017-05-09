@@ -1,6 +1,9 @@
 ﻿using DataAccessLayer.Services;
 using DataModel.Pipe;
+using NamedPipeWrapper;
+using Newtonsoft.Json;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Text;
@@ -9,74 +12,95 @@ namespace DataAccessLayer.Controller
 {
     public class PipeServer
     {
-        private static int bufferSize = 4096;
-        private JsonStreamConverter converter;
-        private NamedPipeServerStream _pipeServer;
-        private StreamReader reader;
-        private StreamWriter writer;
         private IPipeService service;
+        private NamedPipeServer<PipeDTO> _pipeServer;
 
         public PipeServer(string pipeName, IPipeService service)
         {
-            this.converter = JsonStreamConverter.getInstance();
-            reader = new StreamReader(_pipeServer);
-            writer = new StreamWriter(_pipeServer);
             this.service = service;
+            _pipeServer = new NamedPipeServer<PipeDTO>(pipeName);
 
-            this._pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-
-            connect();
-        }
-
-
-        /// <summary>
-        /// This method begins an asynchronous operation to wait for a client to connect.
-        /// </summary>
-        private void connect()
-        {
-            try
+            _pipeServer.ClientConnected += delegate (NamedPipeConnection<PipeDTO, PipeDTO> conn)
             {
-                _pipeServer.BeginWaitForConnection(WaitForConnectionCallBack, null);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                throw;
-            }
-        }
+                Debug.WriteLine("Client {0} is now connected!", conn.Id);
+                conn.PushMessage(new PipeDTO(new Guid(), PipeCommand.CREATE, "Welcome"));
+            };
 
-        /// <summary>
-        /// This callback is called when the async WaitForConnection operation is completed,
-        /// whether a connection was made or not. WaitForConnection can be completed when the server disconnects.
-        /// </summary>
-        private void WaitForConnectionCallBack(IAsyncResult result)
-        {
-            // Call EndWaitForConnection to complete the connection operation
-            _pipeServer.EndWaitForConnection(result);
+            _pipeServer.ClientMessage += delegate (NamedPipeConnection<PipeDTO, PipeDTO> conn, PipeDTO dto)
+             {
+                 Debug.WriteLine("Client {0} says: {1}", conn.Id, dto.ToString());
+             };
 
-            beginRead();
-        }
-
-        private void beginRead()
-        {
-            try
-            {
-                converter.convertFromJson<PipeDTO>(reader.ReadToEnd());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                throw;
-            }
+            _pipeServer.Start();
         }
 
         public void write(PipeDTO dto)
         {
-            writer.Write(converter.convertToJson<PipeDTO>(dto));
-            writer.Flush();
+            _pipeServer.PushMessage(dto);
         }
-    }
+
+
+
+            /*
+            private static int bufferSize = 4096;
+            private NamedPipeServerStream _pipeServer;
+            private StreamReader reader;
+            private StreamWriter writer;
+            private IPipeService service;
+
+            public PipeServer(string pipeName, IPipeService service)
+            {
+                this.service = service;
+                _pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous, 4096, 4096);
+                _pipeServer.WaitForConnection();
+                reader = new StreamReader(_pipeServer, Encoding.UTF8);
+                writer = new StreamWriter(_pipeServer, Encoding.UTF8);
+                writer.AutoFlush = true;
+                beginRead();
+            }
+
+            private void beginRead()
+            {
+                try
+                {
+                    StringBuilder sb = new StringBuilder();
+
+
+                    do
+                    {
+                        var line = reader.ReadLine();
+                    } while (_pipeServer.IsMessageComplete);
+
+                    write(JsonConvert.DeserializeObject<PipeDTO>(sb.ToString()));
+                    /*
+                    using (StreamReader sr = new StreamReader(_pipeServer))
+                    {
+                        // Display the read text to the console
+                        string temp;
+                        while ((temp = sr.ReadLine()) != null)
+                        {
+                            Console.WriteLine("Received from server: {0}", temp);
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                    throw;
+                }
+            }
+
+            public void write(PipeDTO dto)
+            {
+                writer.Write(JsonConvert.SerializeObject(dto));
+
+                _pipeServer.WaitForPipeDrain();
+
+                beginRead();
+            }
+    */
+        }
 
 }

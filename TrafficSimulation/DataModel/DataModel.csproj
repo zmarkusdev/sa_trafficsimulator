@@ -58,7 +58,6 @@
     <Compile Include="Datamodel\Position.cs" />
     <Compile Include="Datamodel\Rule.cs" />
     <Compile Include="Datamodel\RuleType.cs" />
-    <Compile Include="Pipe\JsonStreamConverter.cs" />
     <Compile Include="Pipe\PipeCommand.cs" />
     <Compile Include="Pipe\PipeDTO.cs" />
     <Compile Include="Pipe\PipeUtil.cs" />

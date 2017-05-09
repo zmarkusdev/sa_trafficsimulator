@@ -8,9 +8,9 @@ namespace DataModel.Pipe
 {
     public class PipeDTO
     {
-        private Guid transferId { get; set; }
-        private PipeCommand command { get; set; }
-        private Object transferObject { get; set; }
+        public Guid transferId { get; set; }
+        public PipeCommand command { get; set; }
+        public Object transferObject { get; set; }
 
         public PipeDTO(Guid id, PipeCommand command, Object obj)
         {
