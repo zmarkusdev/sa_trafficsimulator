@@ -1,12 +1,6 @@
-﻿using Datamodel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAccessLayer
+﻿namespace DataAccessLayer
 {
+    // decouple IRuleDataAccess Interface from Implementation
     public class RuleDataAccessFactory
     {
             public static IRuleDataAccess CreateRepository()

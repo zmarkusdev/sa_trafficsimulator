@@ -44,25 +44,8 @@ namespace DataAccessLayer
         [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual void Update(T objekt)
         {
-            /*
-            T gefunden = default(T);
-            int interestingId = getObjectId(objekt);
-
-            if (liste != null)
-            {
-                foreach (T currT in liste)
-                {
-                    var extractedId = getObjectId(currT);
-                    if (extractedId == interestingId)
-                    {
-                        gefunden = currT;
-                        break;
-                    }
-                }
-            }
-            if (!gefunden.Equals(objekt))
-                Create(objekt);   */
-            Trace.TraceInformation("update(" + objekt.GetType().Name + ")"+ getObjectId(objekt));
+            // Todo: cheap implenetation, expensive runtime.... 
+            Trace.TraceInformation("update(" + objekt.GetType().Name + ")" + getObjectId(objekt));
             Delete(objekt);
             Create(objekt);
         }
@@ -75,9 +58,12 @@ namespace DataAccessLayer
 
             int interestingId = getObjectId(objekt);
 
-            Trace.TraceInformation("delete(" + objekt.GetType().Name + ")" + getObjectId(objekt)); 
+            Trace.TraceInformation("delete(" + objekt.GetType().Name + ")" + getObjectId(objekt));
             if (liste != null)
             {
+                // Todo: so gehts wahrscheinlich performanter:
+                // var matchingObjekt = liste.FirstOrDefault(T => liste.Id == interestingId));
+                // wie in http://stackoverflow.com/questions/19280986/best-way-to-update-an-element-in-a-generic-list
                 foreach (var currT in liste)
                 {
                     index++;
@@ -108,13 +94,14 @@ namespace DataAccessLayer
             string line = "";
             try
             {
+                // TODO: move to config/resources....
                 string relPath = Directory.GetCurrentDirectory();
                 relPath = "..\\..\\..\\DataAccessLayer\\";
                 using (StreamReader readfile = new StreamReader(relPath + getfilenamePrefix() + filename + getfilenameExtension()))
                 {
                     while ((line = readfile.ReadLine()) != null)
                     {
-                        //Console.WriteLine(line.Substring(0, 1));
+                        // Comments start with #, others will be deserialized
                         if (line.Substring(0, 1) != "#")
                         {
                             T readObjekt = new JavaScriptSerializer().Deserialize<T>(line);
@@ -179,6 +166,7 @@ namespace DataAccessLayer
             pinfo.SetValue(objekt, id, null);
             return objekt;
         }
+
         private string getfilenamePrefix()
         {
             return datafileprefix;
