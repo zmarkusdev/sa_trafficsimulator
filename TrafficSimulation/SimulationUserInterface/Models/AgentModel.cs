@@ -202,10 +202,8 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                MessageSender s1 = new MessageSender();
-                Message mes = new Message();
-                mes.AgendId = this.AgentId;
-                s1.PushMessage(mes);
+                MessageSender sender = new MessageSender();
+                sender.ToggleVehicle(this.AgentId);
             }
             catch (Exception ex)
             {
