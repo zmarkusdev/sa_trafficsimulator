@@ -82,6 +82,8 @@ namespace SimulationUserInterface.Models
         {
             WindowHeight = 600;
             WindowWidth = 800;
+
+            //CreatePoint = new Command(() => CreatePointExecute());
         }
 
         public void SetBackgroundInformation(char [] bytestream, int width, int height)
@@ -114,6 +116,12 @@ namespace SimulationUserInterface.Models
                 HeightFactor = 1;
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public Command CreatePoint { get; }
+        private void CreatePointExecute(object parameter)
+        {
+            Console.WriteLine("Click");
         }
     }
 }
