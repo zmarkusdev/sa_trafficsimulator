@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datamodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -137,29 +138,59 @@ namespace SimulationUserInterface.Models
             }
         }
 
-        public AgentModel(int agentId, int xPosition, int yPosition, double rotation, int agentType, int agentWidth, int agentHeight, double xScale, double yScale)
+        public AgentModel(int agentId, int xPosition, int yPosition, double rotation, AgentType agentType, int agentWidth, int agentHeight, double xScale, double yScale, bool active = true)
         {
             AgentId = agentId;
 
-            XPosition = xPosition - agentWidth / 2;
-            YPosition = yPosition - agentHeight / 2;
+            XPosition = xPosition - agentWidth * 15 / 2;
+            YPosition = yPosition - agentHeight * 15 / 2;
 
             Rotation = rotation;
 
-            AgentWidth = agentWidth;
-            AgentHeight = agentHeight;
+            AgentWidth = agentWidth * 15;
+            AgentHeight = agentHeight * 15;
 
             XScaleFactor = xScale;
             YScaleFactor = yScale;
 
-            switch (agentType)
+            if (active)
             {
-                case 0:
-                    ImagePath = "pack://application:,,,/Resources/Car01.png";
-                    break;
-                default:
-                    ImagePath = "pack://application:,,,/Resources/Car01.png";
-                    break;
+
+                switch (agentType)
+                {
+                    case AgentType.Car01:
+                        ImagePath = "pack://application:,,,/Resources/Car01.png";
+                        break;
+                    case AgentType.Car02:
+                        ImagePath = "pack://application:,,,/Resources/Car02.png";
+                        break;
+                    case AgentType.Lkw01:
+                        ImagePath = "pack://application:,,,/Resources/Lkw01.png";
+                        break;
+                    case AgentType.Lkw02:
+                        ImagePath = "pack://application:,,,/Resources/Lkw01.png";
+                        break;
+                    default:
+                        ImagePath = "pack://application:,,,/Resources/Car03.png";
+                        break;
+                }
+            }
+            else
+            {
+                switch (agentType)
+                {
+                    case AgentType.Car01:
+                    case AgentType.Car02:
+                        ImagePath = "pack://application:,,,/Resources/Car00.png";
+                        break;
+                    case AgentType.Lkw01:
+                    case AgentType.Lkw02:
+                        ImagePath = "pack://application:,,,/Resources/Lkw00.png";
+                        break;
+                    default:
+                        ImagePath = "pack://application:,,,/Resources/Car00.png";
+                        break;
+                }
             }
 
             AgentTestCommand = new Command(() => AgentTestCommandExecute());
