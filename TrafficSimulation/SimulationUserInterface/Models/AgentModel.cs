@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using Technics;
+using VehicleDeactivatorLibrary;
 
 namespace SimulationUserInterface.Models
 {
@@ -199,6 +200,18 @@ namespace SimulationUserInterface.Models
         public Command AgentTestCommand { get; }
         private void AgentTestCommandExecute()
         {
+            try
+            {
+                MessageSender s1 = new MessageSender();
+                Message mes = new Message();
+                mes.AgendId = this.AgentId;
+                s1.PushMessage(mes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             Console.WriteLine("Event executed at agent " + AgentId);
         }
 
