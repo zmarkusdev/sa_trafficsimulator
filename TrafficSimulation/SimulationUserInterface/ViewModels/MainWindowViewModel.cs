@@ -106,6 +106,8 @@ namespace SimulationUserInterface.ViewModels
 
        
 
+
+
         /// <summary>
         /// Dispatched Timer update function which gets called in a certain interval
         /// Updates the components of the User Interface

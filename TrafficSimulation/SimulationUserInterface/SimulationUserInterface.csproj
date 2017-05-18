@@ -82,6 +82,7 @@
     <Compile Include="Technics\Command.cs" />
     <Compile Include="Technics\ImageConverter.cs" />
     <Compile Include="Technics\Model.cs" />
+    <Compile Include="Technics\MultiBindingConverter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

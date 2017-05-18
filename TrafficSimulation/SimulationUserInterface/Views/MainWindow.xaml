@@ -16,6 +16,7 @@
     <Window.Resources>
         <tc:Base64ImageConverter x:Key="Base64ImageConverter" />
         <tc:ImageConverter x:Key="ImageConverter" />
+        <tc:MultiBindingConverter x:Key="MultiBindingConverter" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -26,7 +27,20 @@
         </Grid.ColumnDefinitions>
 
         <!-- Draw background map-->
-        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" Stretch="Fill"/>
+        <Image x:Name="BackgroundImage" Grid.Row="0" Grid.Column="0" Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" Stretch="Fill">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding Path=UserInterfaceModel.CreatePoint}">
+                        <i:InvokeCommandAction.CommandParameter>
+                            <MultiBinding Converter="{StaticResource MultiBindingConverter}">
+                                <Binding ElementName="BackgroundImage" Path="X" />
+                                <Binding ElementName="BackgroundImage" Path="Y" />
+                            </MultiBinding>
+                        </i:InvokeCommandAction.CommandParameter>
+                    </i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
         
         <!-- Draw Agent Images -->
         <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceAgents.MapAgents}">
