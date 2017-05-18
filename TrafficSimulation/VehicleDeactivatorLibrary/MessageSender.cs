@@ -28,16 +28,24 @@ namespace VehicleDeactivatorLibrary
             this.SQS_URL = Helper.GetSQSUrl();
         }
 
-        public void PushMessage(Message message)
+        private void PushMessage(Message message)
         {
             Task task = new Task(() => sendMessage(message.toJSON()));
             task.Start();
         }
 
+        public void ToggleVehicle(int vehicleId)
+        {
+            Message message = new Message();
+            message.AgendId = vehicleId;
+            PushMessage(message);
+        }
+
+
         private void sendMessage(String message)
         {
             var sendMessageRequest = new SendMessageRequest(SQS_URL, message);
-            sendMessageRequest.MessageGroupId = MESSAGE_GROUP_ID;
+            //sendMessageRequest.MessageGroupId = MESSAGE_GROUP_ID;
             sendMessageRequest.MessageDeduplicationId = Guid.NewGuid().ToString();
             sqsClient.SendMessage(sendMessageRequest);
             this.numberOfSentMessages++;

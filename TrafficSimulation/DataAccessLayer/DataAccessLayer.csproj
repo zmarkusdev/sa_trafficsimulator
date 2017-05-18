@@ -34,12 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="NamedPipeWrapper, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NamedPipeWrapper.1.5.0\lib\net40\NamedPipeWrapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\PipeServer.cs" />
+    <Compile Include="Communication\DataAccessService.cs" />
+    <Compile Include="Communication\IDataAccessContract.cs" />
     <Compile Include="Factories\AgentDataAccessFactory.cs" />
     <Compile Include="Factories\EdgeDataAccessFactory.cs" />
     <Compile Include="Factories\PositionDataAccessFactory.cs" />
@@ -58,7 +56,6 @@
     <Compile Include="Interfaces\IDataAccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Interfaces\IPipeService.cs" />
     <Compile Include="Services\AgentDataAccess.cs" />
     <Compile Include="Services\DataAccessCommon.cs" />
     <Compile Include="Services\EdgeDataAccess.cs" />
@@ -67,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
