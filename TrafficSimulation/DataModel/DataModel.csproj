@@ -58,15 +58,15 @@
     <Compile Include="Datamodel\Position.cs" />
     <Compile Include="Datamodel\Rule.cs" />
     <Compile Include="Datamodel\RuleType.cs" />
-    <Compile Include="Pipe\PipeCommand.cs" />
-    <Compile Include="Pipe\PipeDTO.cs" />
-    <Compile Include="Pipe\PipeUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pipe\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
