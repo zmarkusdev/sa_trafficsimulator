@@ -11,7 +11,7 @@ namespace DataBridge.Communication
 
         private DataAccessClient()
         {
-            string address = "net.pipe://localhost/ttrafficSim/DataAccessService";
+            string address = "net.pipe://localhost/trafficSim/DataAccessService";
 
             NetNamedPipeBinding binding = new NetNamedPipeBinding(NetNamedPipeSecurityMode.None);
             EndpointAddress ep = new EndpointAddress(address);

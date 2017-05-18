@@ -15,7 +15,7 @@ namespace DataAccessLayer
     {
         static void Main(string[] args)
         {
-            string address = "net.pipe://localhost/ttrafficSim/DataAccessService";
+            string address = "net.pipe://localhost/trafficSim/DataAccessService";
 
             ServiceHost serviceHost = new ServiceHost(typeof(DataAccessService));
             NetNamedPipeBinding binding = new NetNamedPipeBinding(NetNamedPipeSecurityMode.None);
