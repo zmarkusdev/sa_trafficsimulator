@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using VehicleDeactivatorLibrary;
 
 namespace PhysicEngine
 {
@@ -27,7 +28,26 @@ namespace PhysicEngine
             physicsTimer.Elapsed += new ElapsedEventHandler(TimerTick);
             physicsTimer.Interval = timerInterval;
             physicsTimer.Enabled = true;
-            
+
+            var messageReceiver = new MessageReceiver();
+            messageReceiver.ReceiveEventHandler += MessageReceiver_ReceiveEventHandler;
+
+        }
+
+        private void MessageReceiver_ReceiveEventHandler(object sender, MessageEventArgs e)
+        {
+            var agentId = e.Message.AgentId;
+
+            // Get agent
+            SimAgent curAgent;
+            lock (dataManager_) curAgent = dataManager_.Agents.FirstOrDefault(a => a.Id == agentId);
+
+            // Update agent
+            if(curAgent != null)
+            {
+                curAgent.IsActive = false;
+                lock (dataManager_) dataManager_.UpdateAgent(curAgent);
+            }
         }
 
         public void Stop()
@@ -60,6 +80,9 @@ namespace PhysicEngine
 
                 // Check valid accelerations
                 CheckValidAccelerations(curAgent);
+
+                // If agent is dead, decelerate till velocity is zero
+                if (!curAgent.IsActive) curAgent.CurrentAccelerationExact = -curAgent.Deceleration;
 
                 // Calculate new velocity based on accelleration or decelleration
                 curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000;

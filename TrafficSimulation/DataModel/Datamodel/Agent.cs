@@ -63,6 +63,8 @@ namespace Datamodel {
         public int VehicleLength { get; set; }
         public int VehicleWidth { get; set; }
 
+        public bool IsActive { get; set; } = true;
+
     }//end Agent
 
 }//end namespace Datamodel
