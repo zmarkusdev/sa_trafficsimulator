@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Communication\DataAccessClient.cs" />
     <Compile Include="Repositories\AgentRepositoryFactory.cs" />
     <Compile Include="Repositories\AgentSimConfigurationRepositoryFactory.cs" />
     <Compile Include="Repositories\EdgeRepositoryFactory.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Repositories\PositionRepositoryFactory.cs" />
     <Compile Include="Repositories\RuleRepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AgentService.cs" />
     <Compile Include="Services\BetterMockedAgentService.cs" />
     <Compile Include="Services\BetterMockedEdgeService.cs" />
     <Compile Include="Services\BetterMockedPositionService.cs" />
