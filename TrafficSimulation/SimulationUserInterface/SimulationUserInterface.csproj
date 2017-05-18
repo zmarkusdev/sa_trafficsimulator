@@ -125,6 +125,10 @@
       <Project>{6F0355C7-E6FA-475A-A4BD-A4A3D2701162}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VehicleDeactivatorLibrary\VehicleDeactivatorLibrary.csproj">
+      <Project>{6f90b431-6784-47f5-a771-df5b54274c0b}</Project>
+      <Name>VehicleDeactivatorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Car01.png">
