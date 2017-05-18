@@ -80,6 +80,7 @@ namespace AgentSpawner
                             // Agent should be spawned, prepare new agent
                             var agent = new SimAgent
                             {
+                                IsActive = true,
                                 CurrentVelocity = 4,
                                 EdgeId = startEdge.Id,
                                 RunLength = 0,
