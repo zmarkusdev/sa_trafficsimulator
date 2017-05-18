@@ -37,7 +37,7 @@ namespace VehicleDeactivatorLibrary
         public void ToggleVehicle(int vehicleId)
         {
             Message message = new Message();
-            message.AgendId = vehicleId;
+            message.AgentId = vehicleId;
             PushMessage(message);
         }
 
@@ -45,11 +45,8 @@ namespace VehicleDeactivatorLibrary
         private void sendMessage(String message)
         {
             var sendMessageRequest = new SendMessageRequest(SQS_URL, message);
-            //sendMessageRequest.MessageGroupId = MESSAGE_GROUP_ID;
-            sendMessageRequest.MessageDeduplicationId = Guid.NewGuid().ToString();
             sqsClient.SendMessage(sendMessageRequest);
             this.numberOfSentMessages++;
-
             if (this.numberOfSentMessages > MAX_SENT_MESSAGES)
                 throw new Exception("Maximum of " + MAX_SENT_MESSAGES + " messages allowed per session!");
         }

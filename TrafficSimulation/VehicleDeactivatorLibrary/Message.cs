@@ -10,7 +10,7 @@ namespace VehicleDeactivatorLibrary
     public class Message
     {
         // ID of the agent
-        public int AgendId { get; set; }
+        public int AgentId { get; set; }
 
         public String toJSON()
         {
