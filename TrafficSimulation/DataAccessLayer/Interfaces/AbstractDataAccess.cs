@@ -1,10 +1,8 @@
-﻿using DataAccessLayer.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
-using DataModel.Pipe;
 using System.Runtime.CompilerServices;
 using System.Reflection;
 
@@ -12,7 +10,7 @@ namespace DataAccessLayer
 {
     // generic Class implementing the basic CRUD and persistence handling for 
     // objects identified by an ID element of int Type.
-    public abstract class AbstractDataAccess<T> : IDataAccess<T>, IPipeService
+    public abstract class AbstractDataAccess<T> : IDataAccess<T>
     {
         List<T> liste = new List<T>();
         private int uniqueId = 1;
@@ -150,9 +148,7 @@ namespace DataAccessLayer
         {
             return liste;
         }
-
-        public abstract void executeCommand(PipeDTO dto);
-
+        
         private int getObjectId(T objekt)
         {
             var propertyO = objekt.GetType().GetProperty("Id");

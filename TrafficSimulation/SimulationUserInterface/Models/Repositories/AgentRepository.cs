@@ -85,7 +85,7 @@ namespace SimulationUserInterface.Models
                 {
                     /// Get the edge on which the agent is
                     Edge agentEdge = edges.Where(var => var.Id == singleagent.EdgeId).ToList().First();
-
+                    
                     /// Get start and end position
                     Position startposition = positions.Where(var => var.Id == agentEdge.StartPositionId).ToList().First();
                     Position endposition = positions.Where(var => var.Id == agentEdge.EndPositionId).ToList().First();
@@ -102,7 +102,7 @@ namespace SimulationUserInterface.Models
                     int yAgent = (int)Math.Round(startposition.Y + Math.Sin(angle) * singleagent.RunLength);
 
                     /// Add a new agent with creted information
-                    MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), 0, 40, 80, XScaleFactor, YScaleFactor));
+                    MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), singleagent.Type, singleagent.VehicleWidth, singleagent.VehicleLength, XScaleFactor, YScaleFactor));
 
                 }
             }
