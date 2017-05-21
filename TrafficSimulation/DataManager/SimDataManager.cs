@@ -200,7 +200,7 @@ namespace DataManager
                 // Update agents from the udpate queue
                 SimAgent updateAgent;
                 while (agentUpdateQueue_.TryDequeue(out updateAgent))
-                    agentRepository_.Update(updateAgent);
+                    agentRepository_.Update(updateAgent.ToAgent());
 
                 // Update dynamic rules
                 IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
@@ -253,7 +253,7 @@ namespace DataManager
         {
             lock (this)
             {
-                var result = agentRepository_.Create(createAgent);
+                var result = agentRepository_.Create(createAgent.ToAgent());
                 createAgent.Id = result.Id;
 
                 // Add create agent to the local list of agents

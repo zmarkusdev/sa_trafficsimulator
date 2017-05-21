@@ -68,7 +68,9 @@ namespace DataAccessLayer.Communication
 
         public IEnumerable<AgentSimConfiguration> GetAllAgentSimConfigurations()
         {
-            throw new NotImplementedException();
+#warning GetAllAgentSimConfigurations Not yet implemented.
+            return new List<AgentSimConfiguration>();
+            //throw new NotImplementedException();
         }
 
         #endregion
@@ -140,12 +142,12 @@ namespace DataAccessLayer.Communication
 
         public IEnumerable<Position> GetStartPositions()
         {
-            throw new NotImplementedException();
+            return positionDataAccess.ReadAll().Where(p => !p.PredecessorEdgeIds.Any());
         }
 
         public IEnumerable<Position> GetEndPositions()
         {
-            throw new NotImplementedException();
+            return positionDataAccess.ReadAll().Where(p => !p.SuccessorEdgeIds.Any());
         }
 
         public IEnumerable<Position> GetAllPositions()

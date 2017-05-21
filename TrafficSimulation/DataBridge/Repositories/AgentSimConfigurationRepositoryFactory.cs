@@ -27,7 +27,7 @@ namespace Repositories {
 
 		public static IAgentSimConfigurationRepository CreateRepository(){
 
-            return new DataBridge.Services.MockedAgentSimConfigurationService();
+            return new DataBridge.Services.AgentSimConfigurationService();
 		}
 
 	}//end AgentSimConfigurationRepositoryFactory

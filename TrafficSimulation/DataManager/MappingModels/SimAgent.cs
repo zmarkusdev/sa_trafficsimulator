@@ -76,5 +76,23 @@ namespace DataManager.MappingModels
                 RunLengthExact = this.RunLengthExact
             };
         }
+
+        public Agent ToAgent()
+        {
+            return new Agent
+            {
+                Id = Id,
+                CurrentVelocity = CurrentVelocity,
+                EdgeId = EdgeId,
+                RunLength = RunLength,
+                Type = Type,
+                Acceleration = Acceleration,
+                Deceleration = Deceleration,
+                MaxVelocity = MaxVelocity,
+                VehicleLength = VehicleLength,
+                VehicleWidth = VehicleWidth,
+                IsActive = IsActive
+            };
+        }
     }
 }

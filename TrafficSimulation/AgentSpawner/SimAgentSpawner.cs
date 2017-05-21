@@ -94,7 +94,8 @@ namespace AgentSpawner
                                 // Roll the maximum allowed velocity
                                 MaxVelocity = rnd.Next(configuration.Velocity - configuration.VelocitySpread, configuration.Velocity + configuration.VelocitySpread),
                                 // Roll vehicle length
-                                VehicleLength = rnd.Next(configuration.VehicleLength - configuration.VehicleLengthSpread, configuration.VehicleLength + configuration.VehicleLengthSpread)
+                                VehicleLength = rnd.Next(configuration.VehicleLength - configuration.VehicleLengthSpread, configuration.VehicleLength + configuration.VehicleLengthSpread),
+                                Type = configuration.AgentType
                             };
 
                             // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
