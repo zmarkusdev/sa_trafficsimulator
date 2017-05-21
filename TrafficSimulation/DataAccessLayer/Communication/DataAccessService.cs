@@ -69,7 +69,23 @@ namespace DataAccessLayer.Communication
         public IEnumerable<AgentSimConfiguration> GetAllAgentSimConfigurations()
         {
 #warning GetAllAgentSimConfigurations Not yet implemented.
-            return new List<AgentSimConfiguration>();
+
+            // Example Configuration
+            Random rnd = new Random();
+            List<AgentSimConfiguration> agentSimConfigs = new List<AgentSimConfiguration>();
+
+            AgentSimConfiguration agentSimConfig = new AgentSimConfiguration();
+            agentSimConfig.Acceleration = 3 + rnd.Next(4);
+            agentSimConfig.AccelerationSpread = rnd.Next(3);
+            agentSimConfig.Deceleration = rnd.Next(8, 12);
+            agentSimConfig.DecelerationSpread = rnd.Next(0, 3);
+            agentSimConfig.SpawnPropability = 100;// rnd.Next(100);
+            agentSimConfig.Velocity = rnd.Next(10);
+            agentSimConfig.VelocitySpread = rnd.Next(0, 4);
+            agentSimConfig.AgentType = AgentType.Car01;
+            agentSimConfigs.Add(agentSimConfig);
+
+            return agentSimConfigs;
             //throw new NotImplementedException();
         }
 
