@@ -14,13 +14,17 @@ namespace maxTest
     {
         static void Main(string[] args)
         {
-            string address = "net.pipe://localhost/ttrafficSim/DataAccessService";
+            string address = "net.pipe://localhost/trafficSim/DataAccessService";
 
             NetNamedPipeBinding binding = new NetNamedPipeBinding(NetNamedPipeSecurityMode.None);
             EndpointAddress ep = new EndpointAddress(address);
             IDataAccessContract channel = ChannelFactory<IDataAccessContract>.CreateChannel(binding, ep);
 
             var agents = channel.GetAllAgents();
+            var edges = channel.GetAllEdges();
+            var positions = channel.GetAllPositions();
+            var edges2 = channel.GetAllEdges();
+            var rules = channel.GetAllRules();
 
             Console.WriteLine("Client Connected");
 
