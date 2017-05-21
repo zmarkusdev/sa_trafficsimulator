@@ -14,6 +14,7 @@ using System.IO;
 using Repositories;
 using DataBridge;
 using DataAccessLayer;
+using DataBridge.Services;
 
 namespace Repositories
 {
@@ -21,8 +22,7 @@ namespace Repositories
     {
         public static IPositionRepository CreateRepository()
         {
-            //return new MockedPositionService();
-            return new BetterMockedPositionService();
+            return new PositionService();
         }
 
     }//end PositionRepositoryFactory

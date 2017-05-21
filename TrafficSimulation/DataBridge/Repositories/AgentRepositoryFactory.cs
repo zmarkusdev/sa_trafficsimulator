@@ -12,14 +12,13 @@ using System.Text;
 using System.IO;
 using Repositories;
 using DataBridge;
+using DataBridge.Services;
 
 namespace Repositories {
 	public abstract class AgentRepositoryFactory {
 
 		public static IAgentRepository CreateRepository(){
-
-            //return new DataBridge.Services.MockedAgentService();
-            return new BetterMockedAgentService();
+            return new AgentService();
 		}
 
 	}//end AgentRepositoryFactory

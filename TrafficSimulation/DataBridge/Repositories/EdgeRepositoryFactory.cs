@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datamodel;
 using Repositories;
 using DataBridge;
+using DataBridge.Services;
 
 namespace Repositories
 {
@@ -13,8 +14,7 @@ namespace Repositories
     {
         public static IEdgeRepository CreateRepository()
         {
-            //return new MockedEdgeService();
-            return new BetterMockedEdgeService();
+            return new EdgeService();
         }
     }
 }

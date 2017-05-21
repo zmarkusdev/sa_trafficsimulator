@@ -10,19 +10,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-
-
-
 using Repositories;
 using DataBridge;
+using DataBridge.Services;
 
 namespace Repositories {
 	public abstract class RuleRepositoryFactory {
 
-		public static IRuleRepository CreateRepository(){
-
-			//return new DataBridge.Services.MockedRuleService();
-            return new BetterMockedRuleService();
+		public static IRuleRepository CreateRepository()
+        {
+            return new RuleService();
         }
 
 	}//end RuleRepositoryFactory
