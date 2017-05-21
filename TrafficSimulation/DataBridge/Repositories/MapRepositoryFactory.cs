@@ -21,7 +21,7 @@ namespace Repositories {
 
 		public static IMapRepository CreateRepository(){
 
-			return new MockedMapService();
+			return new MapService();
 		}
 
 	}//end MapRepositoryFactory
