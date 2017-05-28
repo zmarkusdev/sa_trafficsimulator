@@ -43,6 +43,9 @@ namespace SimulationUserInterface.Models
 
         #endregion
 
+
+
+
         #region ----- public functions
 
         /// <summary>
@@ -68,12 +71,17 @@ namespace SimulationUserInterface.Models
         /// Delete all existing SignModels and creates new ones with the given
         /// position, edge and rule information
         /// </summary>
-        /// <param name="positions">Positions from the DataBridge</param>
-        /// <param name="edges">Edges from the DataBridge</param>
         /// <param name="signs">Rules from the DataBridge</param>
-        public void DrawSigns(IEnumerable<Position> positions, IEnumerable<Edge> edges, IEnumerable<Rule> signs)
+        public void DrawSigns(IEnumerable<Rule> signs)
         {
-            throw new NotImplementedException();
+            MapSigns.Clear();
+
+            foreach (Rule singleSign in signs)
+            {
+                
+                /// Add a new sign with the created information
+                MapSigns.Add(new SignModel(singleSign.Id, singleSign.X, singleSign.Y, 3, 3, XScaleFactor, YScaleFactor));
+            }
         }
 
         #endregion

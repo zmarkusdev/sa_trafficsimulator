@@ -1,10 +1,5 @@
 ﻿using Datamodel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
 using Technics;
 using VehicleDeactivatorLibrary;
 
@@ -13,7 +8,13 @@ namespace SimulationUserInterface.Models
     public class AgentModel : Model
     {
 
+        #region ----- Variables
+
         private int _AgentId;
+        /// <summary>
+        /// ID of an agent with that he can be identified
+        /// Is creaated form backend
+        /// </summary>
         public int AgentId
         {
             get { return _AgentId; }
@@ -28,6 +29,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _XPosition;
+        /// <summary>
+        /// Current XPosition of the agent on the x-axis in pixel
+        /// </summary>
         public int XPosition
         {
             get { return _XPosition; }
@@ -42,6 +46,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _YPosition;
+        /// <summary>
+        /// Current YPosition of the agent on the y-axis in pixel
+        /// </summary>
         public int YPosition
         {
             get { return _YPosition; }
@@ -56,6 +63,10 @@ namespace SimulationUserInterface.Models
         }
 
         private double _XScaleFactor;
+        /// <summary>
+        /// Current x-scale factor of the map compared with the initial value
+        /// is for resizing the agents on the map after the windowsize is changed
+        /// </summary>
         public double XScaleFactor
         {
             get { return _XScaleFactor; }
@@ -70,6 +81,10 @@ namespace SimulationUserInterface.Models
         }
 
         private double _YScaleFactor;
+        /// <summary>
+        /// Current y-scale factor of the map compared with the initial value
+        /// is for resizing the agents on the map after the windowsize is changed
+        /// </summary>
         public double YScaleFactor
         {
             get { return _YScaleFactor; }
@@ -84,6 +99,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _AgentWidth;
+        /// <summary>
+        /// With of the agent in pixel
+        /// </summary>
         public int AgentWidth
         {
             get { return _AgentWidth; }
@@ -98,6 +116,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _AgentHeight;
+        /// <summary>
+        /// Height of the agent in pixel
+        /// </summary>
         public int AgentHeight
         {
             get { return _AgentHeight; }
@@ -112,6 +133,10 @@ namespace SimulationUserInterface.Models
         }
 
         private double _Rotation;
+        /// <summary>
+        /// Current rotation of the agent
+        /// is calculated through the line on which the agent currently lies
+        /// </summary>
         public double Rotation
         {
             get { return _Rotation; }
@@ -126,6 +151,9 @@ namespace SimulationUserInterface.Models
         }
 
         private string _ImagePath;
+        /// <summary>
+        /// Path of the image for showing the agent on the UI
+        /// </summary>
         public string ImagePath
         {
             get { return _ImagePath; }
@@ -139,6 +167,25 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        #endregion
+
+
+
+        #region ----- Constructor
+
+        /// <summary>
+        /// Constructor which calaculates the positions/rotation/with and selects a picuture for the view
+        /// </summary>
+        /// <param name="agentId">ID of the agent</param>
+        /// <param name="xPosition">Original x-position where the agent should be placed on the screen</param>
+        /// <param name="yPosition">Original y-position where the agent should be placed on the screen</param>
+        /// <param name="rotation">Calculated rotation of the client</param>
+        /// <param name="agentType">Type of the client (AgentType enum from AgentRepository)</param>
+        /// <param name="agentWidth">With of the client given from backend</param>
+        /// <param name="agentHeight">Height of the client given from backend</param>
+        /// <param name="xScale">Calculated x-scale factor of the window</param>
+        /// <param name="yScale">Calculated y-scale factor of the window</param>
+        /// <param name="active">Flag that shows if the client is driving (true) or damaged (false)</param>
         public AgentModel(int agentId, int xPosition, int yPosition, double rotation, AgentType agentType, int agentWidth, int agentHeight, double xScale, double yScale, bool active = true)
         {
             AgentId = agentId;
@@ -194,11 +241,22 @@ namespace SimulationUserInterface.Models
                 }
             }
 
-            AgentTestCommand = new Command(() => AgentTestCommandExecute());
+            /// Command binding for catching a click on a client
+            AgentClickCommand = new Command(() => AgentClickCommandExecute());
         }
 
-        public Command AgentTestCommand { get; }
-        private void AgentTestCommandExecute()
+        #endregion
+
+
+
+        #region ----- Commands
+
+        public Command AgentClickCommand { get; }
+        /// <summary>
+        /// Command event execute function which sends the clientId to a queue 
+        /// for enabling or disabling vehicles (damage them)
+        /// </summary>
+        private void AgentClickCommandExecute()
         {
             try
             {
@@ -212,6 +270,8 @@ namespace SimulationUserInterface.Models
 
             Console.WriteLine("Event executed at agent " + AgentId);
         }
+
+        #endregion
 
     } // Class
 } // Namespace

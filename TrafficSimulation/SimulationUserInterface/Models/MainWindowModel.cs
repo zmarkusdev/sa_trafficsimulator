@@ -6,7 +6,12 @@ namespace SimulationUserInterface.Models
     public class MainWindowModel : Model
     {
 
+        #region ----- Variables
+
         private int _WindowHeight;
+        /// <summary>
+        /// Current window height
+        /// </summary>
         public int WindowHeight
         {
             get { return _WindowHeight; }
@@ -21,6 +26,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _WindowWidth;
+        /// <summary>
+        /// Current window width
+        /// </summary>
         public int WindowWidth
         {
             get { return _WindowWidth; }
@@ -35,6 +43,9 @@ namespace SimulationUserInterface.Models
         }
 
         private string _BackgroundMap;
+        /// <summary>
+        /// Background map
+        /// </summary>
         public string BackgroundMap
         {
             get { return _BackgroundMap; }
@@ -49,6 +60,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _BackgroundMapHeight;
+        /// <summary>
+        /// Heigth of the background map
+        /// </summary>
         public int BackgroundMapHeight
         {
             get { return _BackgroundMapHeight; }
@@ -63,6 +77,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _BackgroundMapWidth;
+        /// <summary>
+        /// Width of the background map
+        /// </summary>
         public int BackgroundMapWidth
         {
             get { return _BackgroundMapWidth; }
@@ -76,8 +93,15 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        #endregion
 
 
+
+        #region ----- Constructor
+
+        /// <summary>
+        /// Default constructor which sets the image size of the application for the first time
+        /// </summary>
         public MainWindowModel()
         {
             WindowHeight = 600;
@@ -86,11 +110,24 @@ namespace SimulationUserInterface.Models
             //CreatePoint = new Command(() => CreatePointExecute());
         }
 
+        #endregion
+
+
+        #region ----- Public functions
+
+        /// <summary>
+        /// Sets the Background information for a new background image
+        /// </summary>
+        /// <param name="bytestream">Base64 encoded background map image</param>
+        /// <param name="width">With of the background map image</param>
+        /// <param name="height">Height of the background map image</param>
         public void SetBackgroundInformation(char [] bytestream, int width, int height)
         {
             try
             {
+                /// The base64 stream has to be decoded into a string for the wpf gui
                 BackgroundMap = new string (bytestream);
+
                 BackgroundMapWidth = width;
                 BackgroundMapHeight = height;
                 WindowWidth = width;
@@ -102,10 +139,16 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        /// <summary>
+        /// Returns the new image resize factors for x and y if the window is resized by the user
+        /// </summary>
+        /// <param name="WidthFactor">output parameter: with factor</param>
+        /// <param name="HeightFactor">output parameter: heiht factor</param>
         public void GetImageFactor(out double WidthFactor, out double HeightFactor)
         {
             try
             {
+                ///Calculate the factors with the information of the map and the window and perform a save 0-division
                 WidthFactor = (double)WindowWidth / (((double)BackgroundMapWidth == 0) ? 1.0 : (double)BackgroundMapWidth);
                 HeightFactor = (double)WindowHeight / (((double)BackgroundMapHeight == 0) ? 1.0 : (double)BackgroundMapHeight);
                 
@@ -117,6 +160,10 @@ namespace SimulationUserInterface.Models
                 Console.WriteLine(ex.Message);
             }
         }
+
+        #endregion
+
+
 
         public Command CreatePoint { get; }
         private void CreatePointExecute(object parameter)

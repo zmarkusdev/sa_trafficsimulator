@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Technics;
+﻿using Technics;
 
 namespace SimulationUserInterface.Models
 {
     public class PositionModel : Model
     {
+
+        #region ----- Variables
+
         private int _XPosition;
+        /// <summary>
+        /// Current XPosition of the point on the x-axis in pixel
+        /// </summary>
         public int XPosition
         {
             get { return _XPosition; }
@@ -24,6 +25,9 @@ namespace SimulationUserInterface.Models
         }
 
         private int _YPosition;
+        /// <summary>
+        /// Current YPosition of the point on the y-axis in pixel
+        /// </summary>
         public int YPosition
         {
             get { return _YPosition; }
@@ -38,6 +42,10 @@ namespace SimulationUserInterface.Models
         }
 
         private double _XScaleFactor;
+        /// <summary>
+        /// Current x-scale factor of the map compared with the initial value
+        /// is for resizing the point on the map after the windowsize is changed
+        /// </summary>
         public double XScaleFactor
         {
             get { return _XScaleFactor; }
@@ -52,6 +60,10 @@ namespace SimulationUserInterface.Models
         }
 
         private double _YScaleFactor;
+        /// <summary>
+        /// Current y-scale factor of the map compared with the initial value
+        /// is for resizing the point on the map after the windowsize is changed
+        /// </summary>
         public double YScaleFactor
         {
             get { return _YScaleFactor; }
@@ -65,6 +77,18 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        #endregion
+
+
+        #region ----- Constructor 
+
+        /// <summary>
+        /// Constructor which saves the shown position of a point for the UI
+        /// </summary>
+        /// <param name="xpos">X value of the position</param>
+        /// <param name="ypos">Y value of the position</param>
+        /// <param name="xScale">Calculated x-scale factor of the window</param>
+        /// <param name="yScale">Calculated y-scale factor of the window</param>
         public PositionModel(int xpos, int ypos, double xscale, double yscale)
         {
             XPosition = xpos;
@@ -73,5 +97,7 @@ namespace SimulationUserInterface.Models
             YScaleFactor = yscale;
         }
 
-    }
-}
+        #endregion
+
+    } // Class
+} // Namespace

@@ -4,12 +4,14 @@ using SimulationUserInterface.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Threading;
-using Technics;
 
 namespace SimulationUserInterface.ViewModels
 {
     public class MainWindowViewModel
     {
+
+        #region ----- Variables
+
         /// <summary>
         /// Main Model with User Interface bindings for static use
         /// </summary>
@@ -60,6 +62,12 @@ namespace SimulationUserInterface.ViewModels
         private IEnumerable<Edge> edges;
         private IEnumerable<Position> positions;
 
+        #endregion
+
+
+
+        #region ----- Constructor
+
         /// <summary>
         /// Main data context of XAML
         /// </summary>
@@ -82,16 +90,13 @@ namespace SimulationUserInterface.ViewModels
                 Signs = RuleRepositoryFactory.CreateRepository();
 
                 /// Update the map picture only at startup
-                Map BackgroundMap = UserInterfaceMap.GetMap();
-                
+                Map BackgroundMap = UserInterfaceMap.GetMap();                
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
 
                 /// Load Positions and edges once from the DataBridge
                 edges = Edges.GetAll();
                 positions = Positions.GetAll();
-
                 
-
                 /// Configurate and start the update timer for the gui update
                 GuiUpdateTimer.Interval = TimeSpan.FromMilliseconds(25);
                 GuiUpdateTimer.Tick += Timer_Tick;
@@ -104,9 +109,11 @@ namespace SimulationUserInterface.ViewModels
             }
         }
 
-       
+        #endregion
 
 
+
+        #region ----- Events
 
         /// <summary>
         /// Dispatched Timer update function which gets called in a certain interval
@@ -125,7 +132,7 @@ namespace SimulationUserInterface.ViewModels
                 /// Load Agents and signs
                 IEnumerable<Agent> agents = Agents.GetAllAgents();
                 IEnumerable<Rule> signs = Signs.GetAllRules();
-
+                
                 /// Calculate the resize factor of the GUI for scaling
                 UserInterfaceModel.GetImageFactor(out calculatedResizeWidth, out calculatedResizeHeight);
                 
@@ -141,11 +148,18 @@ namespace SimulationUserInterface.ViewModels
                 UserInterfaceAgents.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
                 UserInterfaceAgents.DrawAgents(positions, edges, agents);
 
+                /// Draw the Signs on the screen (the dynamic but also the static)
+                UserInterfaceSigns.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
+                UserInterfaceSigns.DrawSigns(signs);
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-    }
-}
+
+        #endregion
+
+    } // Class
+} // Namespace

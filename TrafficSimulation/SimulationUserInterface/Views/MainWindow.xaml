@@ -57,7 +57,7 @@
                            RenderTransformOrigin="0.5,0.5" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonUp">
-                                <i:InvokeCommandAction Command="{Binding Path=AgentTestCommand}" />
+                                <i:InvokeCommandAction Command="{Binding Path=AgentClickCommand}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <Image.RenderTransform>
@@ -72,6 +72,30 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <!-- Draw Rule Images -->
+        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceSigns.MapSigns}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Width="5" Height="5" 
+                            BorderBrush="Black"
+                            BorderThickness="5"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
+                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
         <!-- Draw Position Points -->
         <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfacePositions.MapPositions}">
             <ItemsControl.ItemsPanel>
