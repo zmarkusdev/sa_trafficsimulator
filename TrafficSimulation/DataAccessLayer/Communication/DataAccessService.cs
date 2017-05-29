@@ -83,6 +83,8 @@ namespace DataAccessLayer.Communication
             agentSimConfig.Velocity = rnd.Next(10);
             agentSimConfig.VelocitySpread = rnd.Next(0, 4);
             agentSimConfig.AgentType = AgentType.Car01;
+            agentSimConfig.VehicleLength = 4;
+            agentSimConfig.VehicleLengthSpread = 0;
             agentSimConfigs.Add(agentSimConfig);
 
             return agentSimConfigs;

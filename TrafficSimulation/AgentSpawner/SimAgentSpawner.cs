@@ -87,6 +87,7 @@ namespace AgentSpawner
                                 RunLengthExact = 0,
                                 CurrentAccelerationExact = 0,
                                 CurrentVelocityExact = 4,
+                                VehicleWidth = 2,
                                 // Roll the maximum allowed acceleration
                                 Acceleration = rnd.Next(configuration.Acceleration - configuration.AccelerationSpread, configuration.Acceleration + configuration.AccelerationSpread),
                                 // Roll the maximum allowed deceleration
