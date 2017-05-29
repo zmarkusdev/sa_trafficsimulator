@@ -23,6 +23,7 @@ namespace DataManager.MappingModels
             Deceleration = agent.Deceleration;
             MaxVelocity = agent.MaxVelocity;
             VehicleLength = agent.VehicleLength;
+            VehicleWidth = agent.VehicleWidth;
             Route = new Queue<AbstractEdge>();
             CurrentAccelerationExact = agent.Acceleration;
             CurrentVelocityExact = agent.CurrentVelocity;
@@ -70,6 +71,7 @@ namespace DataManager.MappingModels
                 Deceleration = this.Deceleration,
                 MaxVelocity = this.MaxVelocity,
                 VehicleLength = this.VehicleLength,
+                VehicleWidth = this.VehicleWidth,
                 Route = this.Route,
                 CurrentAccelerationExact = this.CurrentAccelerationExact,
                 CurrentVelocityExact = this.CurrentVelocityExact,

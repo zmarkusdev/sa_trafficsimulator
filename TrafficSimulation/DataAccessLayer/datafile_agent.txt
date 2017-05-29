@@ -1,7 +1,0 @@
-{"CurrentVelocity":0,"Id":0,"EdgeId":1,"RunLength":71,"Type":1,"Acceleration":2,"Deceleration":7,"MaxVelocity":60,"VehicleLength":4,"VehicleWidth":2}
-{"Id":1,"CurrentVelocity":0,"EdgeId":2,"RunLength":25,"Type":1,"Acceleration":2,"Deceleration":6,"MaxVelocity":70,"VehicleLength":4,"VehicleWidth":2}
-{"Id":2,"CurrentVelocity":0,"EdgeId":3,"RunLength":60,"Type":1,"Acceleration":3,"Deceleration":7,"MaxVelocity":80,"VehicleLength":4,"VehicleWidth":2}
-{"Id":3,"CurrentVelocity":0,"EdgeId":5,"RunLength":58,"Type":1,"Acceleration":3,"Deceleration":7,"MaxVelocity":90,"VehicleLength":4,"VehicleWidth":2}
-{"Id":4,"CurrentVelocity":0,"EdgeId":8,"RunLength":18,"Type":2,"Acceleration":2,"Deceleration":6,"MaxVelocity":60,"VehicleLength":5,"VehicleWidth":2}
-{"Id":5,"CurrentVelocity":0,"EdgeId":9,"RunLength":18,"Type":2,"Acceleration":2,"Deceleration":6,"MaxVelocity":60,"VehicleLength":5,"VehicleWidth":2}
-{"Id":6,"CurrentVelocity":0,"EdgeId":6,"RunLength":0,"Type":2,"Acceleration":2,"Deceleration":6,"MaxVelocity":60,"VehicleLength":5,"VehicleWidth":2}

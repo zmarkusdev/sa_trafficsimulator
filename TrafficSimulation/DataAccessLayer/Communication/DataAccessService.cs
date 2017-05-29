@@ -53,7 +53,8 @@ namespace DataAccessLayer.Communication
 
         public IEnumerable<Agent> GetAllAgents()
         {
-            return agentDataAccess.ReadAll();
+            var agents = agentDataAccess.ReadAll();
+            return agents;
         }
 
         public Agent UpdateAgent(Agent agent)
@@ -75,13 +76,13 @@ namespace DataAccessLayer.Communication
             List<AgentSimConfiguration> agentSimConfigs = new List<AgentSimConfiguration>();
 
             AgentSimConfiguration agentSimConfig = new AgentSimConfiguration();
-            agentSimConfig.Acceleration = 3 + rnd.Next(4);
-            agentSimConfig.AccelerationSpread = rnd.Next(3);
-            agentSimConfig.Deceleration = rnd.Next(8, 12);
-            agentSimConfig.DecelerationSpread = rnd.Next(0, 3);
-            agentSimConfig.SpawnPropability = 100;// rnd.Next(100);
-            agentSimConfig.Velocity = rnd.Next(10);
-            agentSimConfig.VelocitySpread = rnd.Next(0, 4);
+            agentSimConfig.Acceleration = 32;
+            agentSimConfig.AccelerationSpread = 0;
+            agentSimConfig.Deceleration = 32;
+            agentSimConfig.DecelerationSpread = 0;
+            agentSimConfig.SpawnPropability = 50;// rnd.Next(100);
+            agentSimConfig.Velocity = 100;
+            agentSimConfig.VelocitySpread = 0;
             agentSimConfig.AgentType = AgentType.Car01;
             agentSimConfig.VehicleLength = 4;
             agentSimConfig.VehicleLengthSpread = 0;
