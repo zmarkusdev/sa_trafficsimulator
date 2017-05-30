@@ -33,7 +33,7 @@ namespace DataAccessLayer
         {
             if (getObjectId(objekt) == 0)
                 objekt = setObjectId(objekt, getuniqueId());
-            Trace.TraceInformation("create(" + objekt.GetType().Name + ") Id=" + getObjectId(objekt));
+            //Trace.TraceInformation("create(" + objekt.GetType().Name + ") Id=" + getObjectId(objekt));
             liste.Add(objekt);
             return objekt;
         }
@@ -42,7 +42,7 @@ namespace DataAccessLayer
         public virtual void Update(T objekt)
         {
             // Todo: cheap implenetation, expensive runtime.... 
-            Trace.TraceInformation("update(" + objekt.GetType().Name + ")" + getObjectId(objekt));
+            //Trace.TraceInformation("update(" + objekt.GetType().Name + ")" + getObjectId(objekt));
             Delete(objekt);
             Create(objekt);
         }
@@ -55,7 +55,7 @@ namespace DataAccessLayer
 
             int interestingId = getObjectId(objekt);
 
-            Trace.TraceInformation("delete(" + objekt.GetType().Name + ")" + getObjectId(objekt));
+            //Trace.TraceInformation("delete(" + objekt.GetType().Name + ")" + getObjectId(objekt));
             if (liste != null)
             {
                 // Todo: so gehts wahrscheinlich performanter:

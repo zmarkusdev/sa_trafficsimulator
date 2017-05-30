@@ -15,7 +15,7 @@ namespace PhysicEngine
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 100; // 100 fps
+        private const int timerInterval = 1000 / 25; // 100 fps
 
         public SimPhysicEngine(IDataManager dataManager)
         {
@@ -96,6 +96,7 @@ namespace PhysicEngine
                     // Save the exact values rounded as integers into the datamodel fields
                     curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
                     curAgent.RunLength = (int)Math.Round(curAgent.RunLengthExact);
+                    curAgent.RunLength = curAgent.RunLength < 0 ? 0 : curAgent.RunLength;
                     dataManager_.UpdateAgent(curAgent);
                 }
             });            
@@ -149,7 +150,7 @@ namespace PhysicEngine
             while (curAgent.RunLengthExact + runLengthIncrement > curEdge.CurveLength)
             {
                 // Calculate remaining run length increment
-                runLengthIncrement = runLengthIncrement - (curEdge.CurveLength + curAgent.RunLengthExact);
+                runLengthIncrement = runLengthIncrement - (curEdge.CurveLength - curAgent.RunLengthExact);
 
                 // Always set run length position of agent to zero after edge overflow
                 curAgent.RunLengthExact = 0;

@@ -272,7 +272,8 @@ namespace DataManager
                 agentRepository_.Delete(deleteAgent.ToAgent());
 
                 // Remove agent from local list of agents
-                agents_.Remove(deleteAgent);
+                SimAgent realDeleteAgent = agents_.First(a => a.Id == deleteAgent.Id);
+                agents_.Remove(realDeleteAgent);
             }
         }
 
