@@ -262,6 +262,21 @@ namespace DataManager
         }
 
         /// <summary>
+        /// Deletes the given agent in the data access component
+        /// </summary>
+        /// <param name="deleteAgent">The agent that should be created</param>
+        public void DeleteAgent(SimAgent deleteAgent)
+        {
+            lock(this)
+            {
+                agentRepository_.Delete(deleteAgent.ToAgent());
+
+                // Remove agent from local list of agents
+                agents_.Remove(deleteAgent);
+            }
+        }
+
+        /// <summary>
         /// Check edge and successor edges for possible agents in the given range, returns list
         /// of agents in the range.
         /// Doesn't check for a specific route on edge overflow!

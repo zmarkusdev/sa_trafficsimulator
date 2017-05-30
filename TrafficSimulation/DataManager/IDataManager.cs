@@ -41,6 +41,12 @@ namespace DataManager
         void CreateAgent(SimAgent createAgent);
 
         /// <summary>
+        /// Deletes the given agent in the data access component
+        /// </summary>
+        /// <param name="deleteAgent">The agent that should be created</param>
+        void DeleteAgent(SimAgent deleteAgent);
+
+        /// <summary>
         /// Check edge and successor edges for possible agents in the given range, returns list
         /// of agents in the range.
         /// Doesn't check for a specific route on edge overflow!

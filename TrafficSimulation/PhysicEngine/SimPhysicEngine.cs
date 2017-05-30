@@ -91,12 +91,13 @@ namespace PhysicEngine
                 CheckValidVelocities(curAgent);
 
                 // Calculate new position based on velocity and position
-                CalculateNewPositionOfAgent(curAgent, curEdge);
-
-                // Save the exact values rounded as integers into the datamodel fields
-                curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
-                curAgent.RunLength = (int)Math.Round(curAgent.RunLengthExact);
-                dataManager_.UpdateAgent(curAgent);
+                if (CalculateNewPositionOfAgent(curAgent, curEdge))
+                {
+                    // Save the exact values rounded as integers into the datamodel fields
+                    curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
+                    curAgent.RunLength = (int)Math.Round(curAgent.RunLengthExact);
+                    dataManager_.UpdateAgent(curAgent);
+                }
             });            
         }
 
@@ -133,7 +134,13 @@ namespace PhysicEngine
             curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact > curAgent.MaxVelocity ? curAgent.MaxVelocity : curAgent.CurrentVelocityExact;
         }
 
-        void CalculateNewPositionOfAgent(SimAgent curAgent, AbstractEdge curEdge)
+        /// <summary>
+        /// Calculates the new position of the agent or dispawns it, if it goes out of bounce.
+        /// </summary>
+        /// <param name="curAgent">Agent of which the new position should be calculated</param>
+        /// <param name="curEdge">Current edge on which the agent is</param>
+        /// <returns>True if agent is still in bounce, false if otherwise</returns>
+        bool CalculateNewPositionOfAgent(SimAgent curAgent, AbstractEdge curEdge)
         {
             // Calculate new position based on velocity and position
             double runLengthIncrement = curAgent.CurrentVelocityExact * timerInterval / 1000;
@@ -156,12 +163,13 @@ namespace PhysicEngine
                 else
                 {
                     // TODO: Let agent die
-                    Console.WriteLine("Kill agent");
-                    break;
+                    lock (dataManager_) dataManager_.DeleteAgent(curAgent);
+                    return false;
                 }                
             }
 
             curAgent.RunLengthExact = curAgent.RunLengthExact + runLengthIncrement;
+            return true;
         }
     }
 }
