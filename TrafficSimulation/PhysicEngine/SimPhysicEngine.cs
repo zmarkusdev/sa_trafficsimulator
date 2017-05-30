@@ -15,7 +15,7 @@ namespace PhysicEngine
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 25; // 100 fps
+        private const int timerInterval = 1000 / 60; // 30 fps
 
         public SimPhysicEngine(IDataManager dataManager)
         {
@@ -65,7 +65,7 @@ namespace PhysicEngine
             //copiedAgents.AddRange(dataManager_.Agents);
 
             // Get agents
-            Parallel.ForEach(copiedAgents, (agent) => {
+            foreach(var agent in copiedAgents) {
                 if (agent == null) return;
 
                 // Get current edge from agent route, fallback is edge the agent is standing on
@@ -95,11 +95,11 @@ namespace PhysicEngine
                 {
                     // Save the exact values rounded as integers into the datamodel fields
                     curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
-                    curAgent.RunLength = (int)Math.Round(curAgent.RunLengthExact);
+                    curAgent.RunLength = (int)Math.Floor(curAgent.RunLengthExact);
                     curAgent.RunLength = curAgent.RunLength < 0 ? 0 : curAgent.RunLength;
                     dataManager_.UpdateAgent(curAgent);
                 }
-            });            
+            }            
         }
 
         bool GetCurrentQueuePosition(SimAgent curAgent, AbstractEdge curEdge)

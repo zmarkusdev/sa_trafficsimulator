@@ -195,13 +195,11 @@ namespace DataManager
         {
             while (!shouldStop_)
             {
-                //Console.WriteLine("Executing data synchronization");
-
-                // Update agents from the udpate queue
-                SimAgent updateAgent;
-                while (agentUpdateQueue_.TryDequeue(out updateAgent))
+                // Fire and forget update handling
+                Parallel.ForEach(agents_, (updateAgent) => {
                     agentRepository_.Update(updateAgent.ToAgent());
-
+                });
+                
                 // Update dynamic rules
                 IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
                 foreach (var rule in remoteDynamicRules)
@@ -219,7 +217,7 @@ namespace DataManager
                         dynamicRules_.Add(rule);
                 }
 
-                Thread.Sleep(100);
+                Thread.Sleep(1000 / 60);
             }
         }
 
@@ -228,12 +226,16 @@ namespace DataManager
         /// </summary>
         /// <param name="updateAgent">The agent that needs to be updated</param>
         public void UpdateAgent(SimAgent updateAgent)
-        {
-            agentUpdateQueue_.Enqueue(updateAgent);
-
+        {            
             // Update agent in the current agent list
             lock (this)
             {
+                // Dequeue all previous updates
+                agentUpdateQueue_ = new ConcurrentQueue<SimAgent>(agentUpdateQueue_.Where(a => a.Id != updateAgent.Id));
+
+                // Queue new update
+                agentUpdateQueue_.Enqueue(updateAgent);
+
                 // Get current agent
                 var currentAgent = agents_.FirstOrDefault(a => a.Id == updateAgent.Id);
 
