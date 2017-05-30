@@ -4,6 +4,7 @@ using SimulationUserInterface.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Threading;
+using Technics;
 
 namespace SimulationUserInterface.ViewModels
 {
@@ -98,15 +99,39 @@ namespace SimulationUserInterface.ViewModels
                 positions = Positions.GetAll();
                 
                 /// Configurate and start the update timer for the gui update
-                GuiUpdateTimer.Interval = TimeSpan.FromMilliseconds(25);
+                GuiUpdateTimer.Interval = TimeSpan.FromMilliseconds(10);
                 GuiUpdateTimer.Tick += Timer_Tick;
                 GuiUpdateTimer.Start();
+
+                /// Bind the command field to the function
+                ChangeNetView = new Command(() => ChangeNetViewExecute());
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        #endregion
+
+
+
+        #region ----- Commands
+
+        public Command ChangeNetView { get; }
+        /// <summary>
+        /// Event that gets executed from the gui and toggles the NetEnabled bit and deletes all Positions and Edges after a certain time
+        /// This function is in order to show/hide the lines and positions on that the cars are driving
+        /// </summary>
+        private void ChangeNetViewExecute()
+        {
+            UserInterfaceModel.NetEnabled ^= true;
+
+            System.Threading.Thread.Sleep(30);
+
+            UserInterfacePositions.MapPositions.Clear();
+            UserInterfaceEdges.MapEdges.Clear();
         }
 
         #endregion
@@ -135,14 +160,17 @@ namespace SimulationUserInterface.ViewModels
                 
                 /// Calculate the resize factor of the GUI for scaling
                 UserInterfaceModel.GetImageFactor(out calculatedResizeWidth, out calculatedResizeHeight);
-                
-                /// Draw the Position points on the screen
-                UserInterfacePositions.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
-                UserInterfacePositions.DrawPositions(positions);
 
-                /// Draw the Edge lines on the screen
-                UserInterfaceEdges.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
-                UserInterfaceEdges.DrawEdges(positions, edges);
+                if (UserInterfaceModel.NetEnabled)
+                {
+                    /// Draw the Position points on the screen
+                    UserInterfacePositions.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
+                    UserInterfacePositions.DrawPositions(positions);
+
+                    /// Draw the Edge lines on the screen
+                    UserInterfaceEdges.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
+                    UserInterfaceEdges.DrawEdges(positions, edges);
+                }
 
                 /// Draw the Agent images on the screen
                 UserInterfaceAgents.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
@@ -158,6 +186,8 @@ namespace SimulationUserInterface.ViewModels
                 Console.WriteLine(ex.Message);
             }
         }
+
+       
 
         #endregion
 

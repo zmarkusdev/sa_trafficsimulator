@@ -93,6 +93,23 @@ namespace SimulationUserInterface.Models
             }
         }
 
+        private bool _NetEnabled;
+        /// <summary>
+        /// Flag that shows/hide the positions and edges of the street map
+        /// </summary>
+        public bool NetEnabled
+        {
+            get { return _NetEnabled; }
+            set
+            {
+                if (_NetEnabled != value)
+                {
+                    _NetEnabled = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
 
@@ -107,7 +124,9 @@ namespace SimulationUserInterface.Models
             WindowHeight = 600;
             WindowWidth = 800;
 
-            //CreatePoint = new Command(() => CreatePointExecute());
+            NetEnabled = false;
+
+            CreatePoint = new Command((var) => CreatePointExecute(var));
         }
 
         #endregion
@@ -168,7 +187,10 @@ namespace SimulationUserInterface.Models
         public Command CreatePoint { get; }
         private void CreatePointExecute(object parameter)
         {
+            
             Console.WriteLine("Click");
         }
+
+        
     }
 }
