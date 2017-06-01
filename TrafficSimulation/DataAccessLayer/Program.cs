@@ -20,7 +20,24 @@ namespace DataAccessLayer
             ServiceHost serviceHost = new ServiceHost(typeof(DataAccessService));
             NetNamedPipeBinding binding = new NetNamedPipeBinding(NetNamedPipeSecurityMode.None);
             serviceHost.AddServiceEndpoint(typeof(IDataAccessContract), binding, address);
-            serviceHost.Open();
+            try
+            {
+                serviceHost.Open();
+                Console.WriteLine("Listening... press a key to stop.");
+                Console.ReadKey();
+                serviceHost.Close();
+            }
+            catch (TimeoutException timeProblem)
+            {
+                Console.WriteLine(timeProblem.Message);
+                Console.ReadLine();
+            }
+            catch (CommunicationException commProblem)
+            {
+                Console.WriteLine(commProblem.Message);
+                Console.ReadLine();
+            }
+
 
             /*
             DataAccessCommon commons = DataAccessCommon.getInstance();
@@ -81,8 +98,6 @@ namespace DataAccessLayer
 
     */
 
-            Console.WriteLine("Fertig");
-            Console.ReadKey();
         }
 
         private void codeParker()

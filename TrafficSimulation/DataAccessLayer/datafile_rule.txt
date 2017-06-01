@@ -1,1 +1,5 @@
-{"CheckPositionIds":[],"Id":0,"IsDynamicRule":false,"MaxVelocity":0,"PositionId":2,"RuleType":0,"X":25,"Y":25}
+{"CheckPositionIds":[],"Id":0,"IsDynamicRule":false,"MaxVelocity":20,"PositionId":2,"RuleType":0,"X":250,"Y":53}
+{"CheckPositionIds":[],"Id":1,"IsDynamicRule":false,"MaxVelocity":50,"PositionId":3,"RuleType":2,"X":12,"Y":28}
+{"CheckPositionIds":[],"Id":2,"IsDynamicRule":false,"MaxVelocity":60,"PositionId":4,"RuleType":0,"X":67,"Y":59}
+{"CheckPositionIds":[],"Id":3,"IsDynamicRule":false,"MaxVelocity":20,"PositionId":6,"RuleType":4,"X":100,"Y":100}
+{"CheckPositionIds":[],"Id":4,"IsDynamicRule":false,"MaxVelocity":10,"PositionId":5,"RuleType":0,"X":500,"Y":199}
