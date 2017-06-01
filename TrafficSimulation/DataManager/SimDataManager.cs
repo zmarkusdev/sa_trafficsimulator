@@ -195,10 +195,11 @@ namespace DataManager
         {
             while (!shouldStop_)
             {
-                // Fire and forget update handling
-                Parallel.ForEach(agents_, (updateAgent) => {
+
+
+                SimAgent updateAgent;
+                while (agentUpdateQueue_.TryDequeue(out updateAgent))
                     agentRepository_.Update(updateAgent.ToAgent());
-                });
                 
                 // Update dynamic rules
                 IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
