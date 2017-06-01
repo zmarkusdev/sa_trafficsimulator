@@ -1,4 +1,4 @@
 {"CheckPositionIds":[],"Id":1,"IsDynamicRule":false,"MaxVelocity":50,"PositionId":2,"RuleType":2,"X":250,"Y":320}
 {"CheckPositionIds":[],"Id":2,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":2,"RuleType":4,"X":250,"Y":340}
-{"CheckPositionIds":[],"Id":3,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":8,"RuleType":4,"X":380,"Y":370}
-{"CheckPositionIds":[],"Id":4,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":10,"RuleType":4,"X":240,"Y":230}
+{"CheckPositionIds":[],"Id":3,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":8,"RuleType":4,"X":480,"Y":370}
+{"CheckPositionIds":[],"Id":4,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":9,"RuleType":4,"X":270,"Y":140}
