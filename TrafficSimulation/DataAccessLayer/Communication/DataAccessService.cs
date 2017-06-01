@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datamodel;
 using System.ServiceModel;
+using DataAccessLayer;
 
 namespace DataAccessLayer.Communication
 {
@@ -15,6 +16,7 @@ namespace DataAccessLayer.Communication
         private IEdgeDataAccess edgeDataAccess;
         private IPostionDataAccess positionDataAccess;
         private IRuleDataAccess ruleDataAccess;
+        private ICrosswayDataAccess crosswayDataAccess;
 
         public DataAccessService()
         {
@@ -26,6 +28,9 @@ namespace DataAccessLayer.Communication
             positionDataAccess.LoadfromFile("position");
             ruleDataAccess = RuleDataAccessFactory.CreateRepository();
             ruleDataAccess.LoadfromFile("rule");
+            crosswayDataAccess = CrosswayDataAccessFactory.CreateRepository();
+            crosswayDataAccess.LoadfromFile("crossway");
+
         }
 
         #region Agent
@@ -218,6 +223,36 @@ namespace DataAccessLayer.Communication
         {
             ruleDataAccess.Update(rule);
             return rule;
+        }
+
+        #endregion
+
+        #region Crossway
+
+        public Crossway CreateCrossway(Crossway crossway)
+        {
+            return crosswayDataAccess.Create(crossway);
+        }
+
+        public void DeleteCrossway(Crossway crossway)
+        {
+            crosswayDataAccess.Delete(crossway);
+        }
+
+        public IEnumerable<Crossway> GetAllCrossways()
+        {
+            return crosswayDataAccess.ReadAll();
+        }
+
+        public Crossway GetCrossway(int crosswayId)
+        {
+            return crosswayDataAccess.ReadbyId(crosswayId);
+        }
+
+        public Crossway UpdateCrossway(Crossway crossway)
+        {
+            crosswayDataAccess.Update(crossway);
+            return crossway;
         }
 
         #endregion

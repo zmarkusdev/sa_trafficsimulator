@@ -28,6 +28,46 @@ namespace DataAccessLayerTest
             Rule xz = ruleDataAccess.ReadbyId(1);
             Assert.IsTrue(true);
         }
+
+
+        [TestMethod]
+        public void createCrosswayFile()
+        {
+
+            ICrosswayDataAccess crosswayDataAccess = CrosswayDataAccessFactory.CreateRepository();
+
+            Crossway crossway1 = new Crossway();
+            Crossway crossway2 = new Crossway();
+
+            CrosswayDirection crosswaydirection1 = new CrosswayDirection();
+            CrosswayDirection crosswaydirection2 = new CrosswayDirection();
+
+            List<int> concurGreen1 = new List<int>();
+            concurGreen1.Add(1);
+            concurGreen1.Add(2);
+
+            List<int> concurGreen2 = new List<int>();
+            concurGreen2.Add(3);
+            concurGreen2.Add(4);
+
+            crosswaydirection1.concurrentGreen = concurGreen1;
+            crosswaydirection1.hightime = 25;
+
+            crosswaydirection2.concurrentGreen = concurGreen2;
+            crosswaydirection2.hightime = 25;
+
+
+            crossway1.greenphase.Add(crosswaydirection1);
+            crossway1.greenphase.Add(crosswaydirection2);
+
+            crossway1 = crosswayDataAccess.Create(crossway1);
+            
+            crosswayDataAccess.SavetoFile("testtest");
+
+            Assert.IsTrue(true);
+        }
+
+
         [TestMethod]
         public void DataAccessPositionInit()
         {
