@@ -16,7 +16,7 @@ namespace AgentSim
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 100; // 100 fps
+        private const int timerInterval = 1000 / 30; // 30 fps
         private IReadOnlyList<Datamodel.Edge> allEdges_;
         // TODO: property for staticRules_
 
@@ -62,7 +62,8 @@ namespace AgentSim
             // TODO: Get dynamic rules
 
             // Iterate over all agents and update their behaviour
-            Parallel.ForEach(agents, (agent) => {
+            foreach(var agent in agents)
+            {
                 if (agent == null) return;
 
                 var curAgent = agent.Clone() as SimAgent;
@@ -76,7 +77,7 @@ namespace AgentSim
 
                 // Update the agent
                 dataManager_.UpdateAgent(curAgent);
-            });
+            }
         }
 
 
