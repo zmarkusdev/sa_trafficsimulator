@@ -45,9 +45,11 @@
     <Compile Include="Communication\DataAccessClient.cs" />
     <Compile Include="Repositories\AgentRepositoryFactory.cs" />
     <Compile Include="Repositories\AgentSimConfigurationRepositoryFactory.cs" />
+    <Compile Include="Repositories\CrosswayRepositoryFactory.cs" />
     <Compile Include="Repositories\EdgeRepositoryFactory.cs" />
     <Compile Include="Repositories\IAgentRepository.cs" />
     <Compile Include="Repositories\IAgentSimConfigurationRepository.cs" />
+    <Compile Include="Repositories\ICrosswayRepository.cs" />
     <Compile Include="Repositories\IEdgeRepository.cs" />
     <Compile Include="Repositories\IMapRepository.cs" />
     <Compile Include="Repositories\IPositionRepository.cs" />
@@ -59,9 +61,11 @@
     <Compile Include="Services\AgentService.cs" />
     <Compile Include="Services\AgentSimConfigurationService.cs" />
     <Compile Include="Services\BetterMockedAgentService.cs" />
+    <Compile Include="Services\BetterMockedCrosswayService.cs" />
     <Compile Include="Services\BetterMockedEdgeService.cs" />
     <Compile Include="Services\BetterMockedPositionService.cs" />
     <Compile Include="Services\BetterMockedRuleService.cs" />
+    <Compile Include="Services\CrosswayService.cs" />
     <Compile Include="Services\EdgeService.cs" />
     <Compile Include="Services\MapService.cs" />
     <Compile Include="Services\MockedDefinitions.cs" />
