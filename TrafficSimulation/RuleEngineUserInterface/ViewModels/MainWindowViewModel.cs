@@ -1,4 +1,6 @@
-﻿using RuleEngineUserInterface.Models;
+﻿using Datamodel;
+using Repositories;
+using RuleEngineUserInterface.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,18 @@ namespace RuleEngineUserInterface.ViewModels
         /// </summary>
         public MainWindowModel UserInterfaceModel { get; set; }
 
+        public CrosswayRepository CrosswayRepository;
 
         public MainWindowViewModel()
         {
             UserInterfaceModel = new MainWindowModel();
+            
+            CrosswayRepository = new CrosswayRepository();
+
+            
+            CrosswayRepository.SaveCrossways(CrosswayRepositoryFactory.CreateRepository().GetAll(), 
+                                             RuleRepositoryFactory.CreateRepository().GetDynamicRules());
+
 
             ExitCommand = new Command(() => ExitCommandExecute());
         }

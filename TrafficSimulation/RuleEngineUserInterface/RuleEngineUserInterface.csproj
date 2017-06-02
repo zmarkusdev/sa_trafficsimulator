@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Crossway.cs" />
+    <Compile Include="Models\CrosswayLine.cs" />
+    <Compile Include="Models\CrosswayRepository.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Technics\Command.cs" />
     <Compile Include="Technics\Model.cs" />
@@ -104,7 +107,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataBridge\DataBridge.csproj">
+      <Project>{340107C2-A376-454F-8E21-4FFE995A8EBA}</Project>
+      <Name>DataBridge</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{6F0355C7-E6FA-475A-A4BD-A4A3D2701162}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
