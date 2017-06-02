@@ -3,8 +3,10 @@
 {"Id":3,"StartPositionId":3,"EndPositionId":4,"Neighbors":null,"CurveLength":180}
 {"Id":4,"StartPositionId":2,"EndPositionId":5,"Neighbors":null,"CurveLength":193}
 {"Id":5,"StartPositionId":5,"EndPositionId":6,"Neighbors":null,"CurveLength":210}
-{"Id":6,"StartPositionId":7,"EndPositionId":5,"Neighbors":null,"CurveLength":320}
+{"Id":6,"StartPositionId":7,"EndPositionId":12,"Neighbors":null,"CurveLength":320}
 {"Id":7,"StartPositionId":8,"EndPositionId":9,"Neighbors":null,"CurveLength":181}
 {"Id":8,"StartPositionId":9,"EndPositionId":10,"Neighbors":null,"CurveLength":117}
 {"Id":9,"StartPositionId":10,"EndPositionId":11,"Neighbors":null,"CurveLength":230}
 {"Id":10,"StartPositionId":9,"EndPositionId":3,"Neighbors":null,"CurveLength":170}
+{"Id":11,"StartPositionId":12,"EndPositionId":5,"Neighbors":null,"CurveLength":170}
+{"Id":12,"StartPositionId":12,"EndPositionId":10,"Neighbors":null,"CurveLength":170}
