@@ -257,5 +257,11 @@ namespace DataAccessLayer.Communication
 
         #endregion
 
+        #region alive
+        public bool isAlive()
+        {
+            return true;
         }
+        #endregion
     }
+}

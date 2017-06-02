@@ -121,5 +121,14 @@ namespace DataAccessLayer.Communication
         Datamodel.Rule UpdateRule(Rule rule);
 
         #endregion
+
+        #region isAliveChecker
+
+        [OperationContract]
+        bool isAlive();
+
+        #endregion
+
+
     }
 }
