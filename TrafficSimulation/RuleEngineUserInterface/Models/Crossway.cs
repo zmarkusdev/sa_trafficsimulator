@@ -75,37 +75,58 @@ namespace RuleEngineUserInterface.Models
 
 
         private void CrosswayTimer_TimeElapsed(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 /// Stop the timer for save handling
                 CrosswayTimer.Stop();
 
-                /// Increase current active crossway line
-                CurrentCrosswayLine += 1;
-
-                /// Catch line overflow
-                if (CurrentCrosswayLine == CrosswayLines.Count)
+                if (CrosswayLines.Count > 1)
                 {
-                    CurrentCrosswayLine = 0;
+                    /// Increase current active crossway line
+                    CurrentCrosswayLine += 1;
+
+                    /// Catch line overflow
+                    if (CurrentCrosswayLine == CrosswayLines.Count)
+                    {
+                        CurrentCrosswayLine = 0;
+                    }
+
+                    /// Update all Crossways
+                    for (int i = 0; i < CrosswayLines.Count; i++)
+                    {
+                        CrosswayLines[i].SetRules((i == CurrentCrosswayLine) ? false : true);
+                    }
+                    
+                    /// Update the timer interval time
+                    CrosswayTimer.Interval = TimeSpan.FromSeconds(CrosswayLines[CurrentCrosswayLine].HighTime);
+                }
+                /// Special case for only one traffic sign
+                else
+                {
+                    if (CurrentCrosswayLine == 1)
+                    {
+                        CrosswayLines[0].SetRules(false);
+                        CurrentCrosswayLine = 0;
+                    }
+                    else
+                    {
+                        CrosswayLines[0].SetRules(true);
+                        CurrentCrosswayLine = 1;
+                    }
+                    
+                    /// Update the timer interval time
+                    CrosswayTimer.Interval = TimeSpan.FromSeconds(CrosswayLines[0].HighTime);
                 }
 
-                /// Update all Crossways
-                for (int i = 0; i < CrosswayLines.Count; i++)
-                {
-                    CrosswayLines[i].SetRules((i == CurrentCrosswayLine) ? false : true);
-                }
+                /// Start the timer again 
+                CrosswayTimer.Start();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            /// Update the timer interval time
-            CrosswayTimer.Interval = TimeSpan.FromSeconds(CrosswayLines[CurrentCrosswayLine].HighTime);
-           
-            /// Start the timer again 
-            CrosswayTimer.Start();
         }
 
     } // Class

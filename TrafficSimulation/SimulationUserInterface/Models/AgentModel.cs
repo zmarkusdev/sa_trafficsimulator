@@ -193,11 +193,11 @@ namespace SimulationUserInterface.Models
             
             Rotation = rotation;
 
-            AgentWidth = agentWidth * 15;
-            AgentHeight = agentHeight * 15;
+            AgentWidth = agentWidth;
+            AgentHeight = agentHeight;
 
-            XPosition = xPosition - agentWidth * 15 / 2;
-            YPosition = yPosition - agentHeight * 15 / 2;
+            XPosition = xPosition - agentWidth / 2;
+            YPosition = yPosition - agentHeight / 2;
 
 
             XScaleFactor = xScale;
@@ -265,11 +265,11 @@ namespace SimulationUserInterface.Models
 
             Rotation = rotation;
 
-            AgentWidth = agentWidth * 15;
-            AgentHeight = agentHeight * 15;
+            AgentWidth = agentWidth;
+            AgentHeight = agentHeight;
 
-            XPosition = xPosition - agentWidth * 15 / 2;
-            YPosition = yPosition - agentHeight * 15 / 2;
+            XPosition = xPosition - agentWidth / 2;
+            YPosition = yPosition - agentHeight / 2;
 
 
             XScaleFactor = 1;
