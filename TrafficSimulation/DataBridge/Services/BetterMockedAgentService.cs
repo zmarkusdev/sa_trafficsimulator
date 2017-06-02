@@ -17,6 +17,12 @@ namespace DataBridge
         {
             agentDataAccess.LoadfromFile("agent");
         }
+
+        public void BulkUpdate(IEnumerable<Agent> agents)
+        {
+            throw new NotImplementedException();
+        }
+
         public Agent Create(Agent agent)
         {
             return agentDataAccess.Create(agent);

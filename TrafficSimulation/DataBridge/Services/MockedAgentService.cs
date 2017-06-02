@@ -26,6 +26,11 @@ namespace DataBridge.Services
             createSmallVillage();
         }
 
+        public void BulkUpdate(IEnumerable<Agent> agents)
+        {
+            throw new NotImplementedException();
+        }
+
         public Agent Create(Agent agent)
         {
             Agent newAgent = new Agent();

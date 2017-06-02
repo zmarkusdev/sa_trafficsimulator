@@ -41,5 +41,10 @@ namespace DataBridge.Services
         {
             return DataAccessClient.Instance.Channel.UpdateAgent(agent);
         }
+
+        public void BulkUpdate(IEnumerable<Agent> agents)
+        {
+            DataAccessClient.Instance.Channel.BulkUpdate(agents);
+        }
     }
 }

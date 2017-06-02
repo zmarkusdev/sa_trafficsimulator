@@ -68,6 +68,12 @@ namespace DataAccessLayer.Communication
             return agent;
         }
 
+        public void BulkUpdate(IEnumerable<Agent> agents)
+        {
+            foreach (var agent in agents)
+                UpdateAgent(agent);
+        }
+
         #endregion
 
         #region AgentSimConfiguration

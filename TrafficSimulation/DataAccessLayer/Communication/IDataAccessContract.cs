@@ -31,6 +31,9 @@ namespace DataAccessLayer.Communication
         [OperationContract]
         Datamodel.Agent UpdateAgent(Agent agent);
 
+        [OperationContract]
+        void BulkUpdate(IEnumerable<Agent> agent);
+
         #endregion
 
         #region AgentSimConfiguration

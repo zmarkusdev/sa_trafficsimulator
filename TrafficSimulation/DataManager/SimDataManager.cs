@@ -195,11 +195,8 @@ namespace DataManager
         {
             while (!shouldStop_)
             {
-
-
-                SimAgent updateAgent;
-                while (agentUpdateQueue_.TryDequeue(out updateAgent))
-                    agentRepository_.Update(updateAgent.ToAgent());
+                agentRepository_.BulkUpdate(agentUpdateQueue_.Select(a => a.ToAgent()));
+                agentUpdateQueue_ = new ConcurrentQueue<SimAgent>();
                 
                 // Update dynamic rules
                 IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();

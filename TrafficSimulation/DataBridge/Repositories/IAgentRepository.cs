@@ -46,6 +46,8 @@ namespace Repositories {
 		/// 
 		/// <param name="agent"></param>
 		Datamodel.Agent Update(Agent agent);
+
+        void BulkUpdate(IEnumerable<Agent> agents);
 	}//end IAgentRepository
 
 }//end namespace Repositories
