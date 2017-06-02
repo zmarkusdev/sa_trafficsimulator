@@ -269,9 +269,11 @@ namespace DataManager
         /// </summary>
         /// <param name="deleteAgent">The agent that should be created</param>
         public void DeleteAgent(SimAgent deleteAgent)
-        {
+        {           
             lock(this)
             {
+                agentUpdateQueue_ = new ConcurrentQueue<SimAgent>(agentUpdateQueue_.Where(a => a.Id != deleteAgent.Id));
+
                 agentRepository_.Delete(deleteAgent.ToAgent());
 
                 // Remove agent from local list of agents

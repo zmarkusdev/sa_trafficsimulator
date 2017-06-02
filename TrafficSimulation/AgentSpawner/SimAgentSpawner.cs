@@ -81,13 +81,13 @@ namespace AgentSpawner
                             var agent = new SimAgent
                             {
                                 IsActive = true,
-                                CurrentVelocity = 4,
+                                CurrentVelocity = 0,
                                 EdgeId = startEdge.Id,
                                 RunLength = 0,
                                 RunLengthExact = 0,
                                 CurrentAccelerationExact = 0,
-                                CurrentVelocityExact = 4,
-                                VehicleWidth = 2,
+                                CurrentVelocityExact = 0,
+                                VehicleWidth = 30,
                                 // Roll the maximum allowed acceleration
                                 Acceleration = rnd.Next(configuration.Acceleration - configuration.AccelerationSpread, configuration.Acceleration + configuration.AccelerationSpread),
                                 // Roll the maximum allowed deceleration

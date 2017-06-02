@@ -15,7 +15,7 @@ namespace PhysicEngine
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 60; // 30 fps
+        private const int timerInterval = 1000 / 30; // 30 fps
 
         public SimPhysicEngine(IDataManager dataManager)
         {
@@ -85,7 +85,7 @@ namespace PhysicEngine
                 if (!curAgent.IsActive) curAgent.CurrentAccelerationExact = -curAgent.Deceleration;
 
                 // Calculate new velocity based on accelleration or decelleration
-                curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000;
+                curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000.0;
 
                 // check valid velocities of agent
                 CheckValidVelocities(curAgent);
@@ -144,7 +144,7 @@ namespace PhysicEngine
         bool CalculateNewPositionOfAgent(SimAgent curAgent, AbstractEdge curEdge)
         {
             // Calculate new position based on velocity and position
-            double runLengthIncrement = curAgent.CurrentVelocityExact * timerInterval / 1000;
+            double runLengthIncrement = curAgent.CurrentVelocityExact * timerInterval / 1000.0;
 
             // Calculate new edge position of the cur agent
             while (curAgent.RunLengthExact + runLengthIncrement > curEdge.CurveLength)
