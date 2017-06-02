@@ -53,12 +53,11 @@ namespace Datamodel {
 			set;
 		}
 
-        /*
 		public RuleType RuleType{
 			get;
 			set;
 		}
-        */
+
 		public int X{
 			get;
 			set;

@@ -15,7 +15,10 @@ using System.IO;
 
 namespace Datamodel {
 	public enum RuleType : int {
-
-	}//end RuleType
+        Stopp = 1,
+        Vorrang = 2,
+        Geschwindigkeit = 3,
+        Ampel = 4
+}//end RuleType
 
 }//end namespace Datamodel

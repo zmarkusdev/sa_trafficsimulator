@@ -33,6 +33,7 @@ namespace DataBridge.Services
 
         public IEnumerable<Agent> GetAllAgents()
         {
+
             return DataAccessClient.Instance.Channel.GetAllAgents();
         }
 
