@@ -122,13 +122,30 @@ namespace DataAccessLayer.Communication
 
         #endregion
 
+        #region Crossway
+        [OperationContract]
+        Datamodel.Crossway CreateCrossway(Crossway crossway);
+
+        [OperationContract]
+        void DeleteCrossway(Crossway crossway);
+
+        [OperationContract]
+        IEnumerable<Crossway> GetAllCrossways();
+
+        [OperationContract]
+        Datamodel.Crossway GetCrossway(int crosswayId);
+
+        [OperationContract]
+        Datamodel.Crossway UpdateCrossway(Crossway crossway);
+
+        #endregion
+
         #region isAliveChecker
 
         [OperationContract]
         bool isAlive();
 
         #endregion
-
 
     }
 }
