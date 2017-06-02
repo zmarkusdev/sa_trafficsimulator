@@ -20,7 +20,6 @@
     <Window.Resources>
         <tc:Base64ImageConverter x:Key="Base64ImageConverter" />
         <tc:ImageConverter x:Key="ImageConverter" />
-        <tc:MultiBindingConverter x:Key="MultiBindingConverter" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -89,30 +88,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
-        <!-- Draw Position Points -->
-        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfacePositions.MapPositions}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border Width="5" Height="5" 
-                            BorderBrush="Black"
-                            BorderThickness="5"
-                           RenderTransformOrigin="0.5,0.5">
-                        <Border.RenderTransform>
-                            <TransformGroup>
-                                <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
-                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
-                            </TransformGroup>
-                        </Border.RenderTransform>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
 
         <!-- Draw Edge Lines -->
         <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfaceEdges.MapEdges}">
@@ -133,6 +108,38 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
+        <!-- Draw Position Points -->
+        <ItemsControl Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Path=UserInterfacePositions.MapPositions}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Width="5" Height="5" 
+                        RenderTransformOrigin="0.5,0.5" >
+                        <Rectangle.Fill>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Fill>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding Path=PositionClickCommand}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
+                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        
 
     </Grid>
 </Window>

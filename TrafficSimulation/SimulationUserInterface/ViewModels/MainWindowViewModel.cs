@@ -89,7 +89,7 @@ namespace SimulationUserInterface.ViewModels
                 Agents = AgentRepositoryFactory.CreateRepository();
                 Positions = PositionRepositoryFactory.CreateRepository();
                 Signs = RuleRepositoryFactory.CreateRepository();
-
+                
                 /// Update the map picture only at startup
                 Map BackgroundMap = UserInterfaceMap.GetMap();                
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);

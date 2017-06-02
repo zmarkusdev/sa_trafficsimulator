@@ -81,7 +81,7 @@ namespace SimulationUserInterface.Models
                 foreach (Position singleposition in positions)
                 {
                     /// Add a new position with created information
-                    MapPositions.Add(new PositionModel(singleposition.X, singleposition.Y, XScaleFactor, YScaleFactor));
+                    MapPositions.Add(new PositionModel(singleposition.Id, singleposition.X, singleposition.Y, XScaleFactor, YScaleFactor));
                 }
             }
             catch (Exception ex)

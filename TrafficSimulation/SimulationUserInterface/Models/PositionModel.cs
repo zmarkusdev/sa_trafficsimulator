@@ -1,4 +1,5 @@
-﻿using Technics;
+﻿using System;
+using Technics;
 
 namespace SimulationUserInterface.Models
 {
@@ -6,6 +7,23 @@ namespace SimulationUserInterface.Models
     {
 
         #region ----- Variables
+
+        private int _PositionId;
+        /// <summary>
+        /// Position Id as it comes from the backend
+        /// </summary>
+        public int PositionId
+        {
+            get { return _PositionId; }
+            set
+            {
+                if (_PositionId != value)
+                {
+                    _PositionId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         private int _XPosition;
         /// <summary>
@@ -89,15 +107,36 @@ namespace SimulationUserInterface.Models
         /// <param name="ypos">Y value of the position</param>
         /// <param name="xScale">Calculated x-scale factor of the window</param>
         /// <param name="yScale">Calculated y-scale factor of the window</param>
-        public PositionModel(int xpos, int ypos, double xscale, double yscale)
+        public PositionModel(int positionid, int xpos, int ypos, double xscale, double yscale)
         {
+            PositionId = positionid;
             XPosition = xpos;
             YPosition = ypos;
             XScaleFactor = xscale;
             YScaleFactor = yscale;
+
+            /// Bind the command to the function
+            PositionClickCommand = new Command(() => PositionClickCommandExecute());
         }
 
         #endregion
+
+        public Command PositionClickCommand { get; }
+        /// <summary>
+        /// Function that shows the actual id and location of the current position
+        /// This function is for street creation usage and has no influence in normal simulation usage
+        /// </summary>
+        private void PositionClickCommandExecute()
+        {
+            try
+            {
+                Console.WriteLine("PositionId {0} on Position > {1} | v {2}", PositionId, XPosition, YPosition);
+            }
+            catch
+            {
+                
+            }
+        }
 
     } // Class
 } // Namespace
