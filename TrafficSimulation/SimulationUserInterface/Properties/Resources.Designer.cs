@@ -63,6 +63,26 @@ namespace SimulationUserInterface.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AmpelGruen {
+            get {
+                object obj = ResourceManager.GetObject("AmpelGruen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AmpelRot {
+            get {
+                object obj = ResourceManager.GetObject("AmpelRot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Car00 {
             get {
                 object obj = ResourceManager.GetObject("Car00", resourceCulture);
@@ -103,6 +123,16 @@ namespace SimulationUserInterface.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Geschwindigkeitsbegrenzung {
+            get {
+                object obj = ResourceManager.GetObject("Geschwindigkeitsbegrenzung", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Lkw00 {
             get {
                 object obj = ResourceManager.GetObject("Lkw00", resourceCulture);
@@ -116,6 +146,26 @@ namespace SimulationUserInterface.Properties {
         internal static System.Drawing.Bitmap Lkw01 {
             get {
                 object obj = ResourceManager.GetObject("Lkw01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Stopp {
+            get {
+                object obj = ResourceManager.GetObject("Stopp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VorrangGeben {
+            get {
+                object obj = ResourceManager.GetObject("VorrangGeben", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -102,7 +102,8 @@ namespace SimulationUserInterface.Models
                     int yAgent = (int)Math.Round(startposition.Y + Math.Sin(angle) * singleagent.RunLength);
 
                     /// Add a new agent with creted information
-                    MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), singleagent.Type, singleagent.VehicleWidth, singleagent.VehicleLength, XScaleFactor, YScaleFactor));
+                    //MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), singleagent.Type, singleagent.VehicleWidth, singleagent.VehicleLength, XScaleFactor, YScaleFactor, singleagent.IsActive));
+                    MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), singleagent.Type, singleagent.VehicleWidth, singleagent.VehicleLength, singleagent.IsActive));
 
                 }
             }

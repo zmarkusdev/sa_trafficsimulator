@@ -190,16 +190,90 @@ namespace SimulationUserInterface.Models
         {
             AgentId = agentId;
 
+            
+            Rotation = rotation;
+
+            AgentWidth = agentWidth * 15;
+            AgentHeight = agentHeight * 15;
+
             XPosition = xPosition - agentWidth * 15 / 2;
             YPosition = yPosition - agentHeight * 15 / 2;
+
+
+            XScaleFactor = xScale;
+            YScaleFactor = yScale;
+
+            if (active)
+            {
+
+                switch (agentType)
+                {
+                    case AgentType.Car01:
+                        ImagePath = "pack://application:,,,/Resources/Car01.png";
+                        break;
+                    case AgentType.Car02:
+                        ImagePath = "pack://application:,,,/Resources/Car02.png";
+                        break;
+                    case AgentType.Lkw01:
+                        ImagePath = "pack://application:,,,/Resources/Lkw01.png";
+                        break;
+                    case AgentType.Lkw02:
+                        ImagePath = "pack://application:,,,/Resources/Lkw01.png";
+                        break;
+                    default:
+                        ImagePath = "pack://application:,,,/Resources/Car03.png";
+                        break;
+                }
+            }
+            else
+            {
+                switch (agentType)
+                {
+                    case AgentType.Car01:
+                    case AgentType.Car02:
+                        ImagePath = "pack://application:,,,/Resources/Car00.png";
+                        break;
+                    case AgentType.Lkw01:
+                    case AgentType.Lkw02:
+                        ImagePath = "pack://application:,,,/Resources/Lkw00.png";
+                        break;
+                    default:
+                        ImagePath = "pack://application:,,,/Resources/Car00.png";
+                        break;
+                }
+            }
+
+            /// Command binding for catching a click on a client
+            AgentClickCommand = new Command(() => AgentClickCommandExecute());
+        }
+
+        /// <summary>
+        /// Constructor which calaculates the positions/rotation/with and selects a picuture for the view
+        /// </summary>
+        /// <param name="agentId">ID of the agent</param>
+        /// <param name="xPosition">Original x-position where the agent should be placed on the screen</param>
+        /// <param name="yPosition">Original y-position where the agent should be placed on the screen</param>
+        /// <param name="rotation">Calculated rotation of the client</param>
+        /// <param name="agentType">Type of the client (AgentType enum from AgentRepository)</param>
+        /// <param name="agentWidth">With of the client given from backend</param>
+        /// <param name="agentHeight">Height of the client given from backend</param>
+        /// <param name="active">Flag that shows if the client is driving (true) or damaged (false)</param>
+        public AgentModel(int agentId, int xPosition, int yPosition, double rotation, AgentType agentType, int agentWidth, int agentHeight, bool active = true)
+        {
+            AgentId = agentId;
+
 
             Rotation = rotation;
 
             AgentWidth = agentWidth * 15;
             AgentHeight = agentHeight * 15;
 
-            XScaleFactor = xScale;
-            YScaleFactor = yScale;
+            XPosition = xPosition - agentWidth * 15 / 2;
+            YPosition = yPosition - agentHeight * 15 / 2;
+
+
+            XScaleFactor = 1;
+            YScaleFactor = 1;
 
             if (active)
             {

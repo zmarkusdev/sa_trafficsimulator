@@ -57,7 +57,7 @@
                             <TransformGroup>
                                 <RotateTransform Angle="{Binding Rotation}" />
                                 <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
-                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                                <!--<ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />-->
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
@@ -74,17 +74,16 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Width="5" Height="5" 
-                            BorderBrush="Black"
-                            BorderThickness="5"
-                           RenderTransformOrigin="0.5,0.5">
-                        <Border.RenderTransform>
+                    <Image Source="{Binding ImagePath, Converter={StaticResource ImageConverter}}" 
+                           Width="{Binding SignWidth}" Stretch="Fill" Height="{Binding SignHeight}" 
+                           RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
                             <TransformGroup>
                                 <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
-                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                                <!--<ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />-->
                             </TransformGroup>
-                        </Border.RenderTransform>
-                    </Border>
+                        </Image.RenderTransform>
+                    </Image>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -101,9 +100,9 @@
                     <Line X1="{Binding X1Position}" Y1="{Binding Y1Position}"
                           X2="{Binding X2Position}" Y2="{Binding Y2Position}"
                           Stroke="Gray" StrokeThickness="2">
-                        <Line.LayoutTransform>
+                        <!--<Line.LayoutTransform>
                             <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
-                        </Line.LayoutTransform>
+                        </Line.LayoutTransform>-->
                     </Line>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -131,7 +130,7 @@
                         <Rectangle.RenderTransform>
                             <TransformGroup>
                                 <TranslateTransform X="{Binding XPosition}" Y="{Binding YPosition}"/>
-                                <ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />
+                                <!--<ScaleTransform ScaleX="{Binding XScaleFactor}" ScaleY="{Binding YScaleFactor}" />-->
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>

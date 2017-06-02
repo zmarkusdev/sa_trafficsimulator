@@ -1,4 +1,5 @@
-﻿using Technics;
+﻿using Datamodel;
+using Technics;
 
 namespace SimulationUserInterface.Models
 {
@@ -157,35 +158,112 @@ namespace SimulationUserInterface.Models
         /// <param name="signId">ID of the sing</param>
         /// <param name="xPosition">Original x-position where the sign should be placed on the screen</param>
         /// <param name="yPosition">Original y-position where the sign should be placed on the screen</param>
-        /// <param name="signWidth">With of the sign</param>
-        /// <param name="signHeight">Height of the sign</param>
+        /// <param name="type">Ruletype that shows which kind of rule it is (for printing the right sign)</param>
+        /// <param name="maxVelocity">Information that shows in addition to the rule type if a traffic light is green or red</param>
         /// <param name="xScale">Calculated x-scale factor of the window</param>
         /// <param name="yScale">Calculated y-scale factor of the window</param>
-        public SignModel(int signId, int xPosition, int yPosition, int signWidth, int signHeight, double xScale, double yScale)
+        public SignModel(int signId, int xPosition, int yPosition, RuleType type, int maxVelocity, double xScale, double yScale)
         {
             SignId = signId;
-
-            XPosition = xPosition - SignWidth * 10 / 2;
-            YPosition = yPosition - SignHeight * 10 / 2;
-
-            SignWidth = signWidth * 10;
-            SignHeight = signHeight * 10;
+            
+            SignWidth =  16;
+            SignHeight =  16;
 
             XScaleFactor = xScale;
             YScaleFactor = yScale;
 
-            //ToDo: Sign Type enablen wenn typ vorhanden
-            //switch (signType)
-            //{
-            //    case SignType.Stopp:
-            //        ImagePath = "pack://application:,,,/Resources/SignStopp.png";
-            //        break;
+            switch (type)
+            {
+                case RuleType.Stopp:
+                    ImagePath = "pack://application:,,,/Resources/Stopp.png";
+                    break;
+                case RuleType.Vorrang:
+                    ImagePath = "pack://application:,,,/Resources/VorrangGeben.png";
+                    break;
+                case RuleType.Ampel:
 
-            //    default:
-            //        break;
-            //}
+                    /// Overwrite the sign height because traffic lights are larger
+                    SignHeight = 45;
+
+                    if (maxVelocity < 1)
+                    {
+                        ImagePath = "pack://application:,,,/Resources/AmpelRot.png";
+                    }
+                    else
+                    {
+                        ImagePath = "pack://application:,,,/Resources/AmpelGruen.png";
+                    }
+                    break;
+                case RuleType.Geschwindigkeit:
+                    //ToDo: Eventuell dynamische Geschwindigkeitsanzeigen erstellen
+                    ImagePath = "pack://application:,,,/Resources/Geschwindigkeitsbegrenzung.png";
+                    break;
+                default:
+                    ImagePath = "pack://application:,,,/Resources/Stopp.png";
+                    break;
+            }
+
+            /// Calculate the position after the size is known
+            XPosition = xPosition - SignWidth / 2;
+            YPosition = yPosition - SignHeight / 2;
+
         }
 
+        /// <summary>
+        /// Constructor which calculates the position/with ans selects a picture for the view
+        /// This constructor ignores the resizing functionality in order to increase performance
+        /// </summary>
+        /// <param name="signId">ID of the sing</param>
+        /// <param name="xPosition">Original x-position where the sign should be placed on the screen</param>
+        /// <param name="yPosition">Original y-position where the sign should be placed on the screen</param>
+        /// <param name="type">Ruletype that shows which kind of rule it is (for printing the right sign)</param>
+        /// <param name="maxVelocity">Information that shows in addition to the rule type if a traffic light is green or red</param>
+        public SignModel(int signId, int xPosition, int yPosition, RuleType type, int maxVelocity)
+        {
+            SignId = signId;
+
+            SignWidth = 16;
+            SignHeight = 16;
+
+            XScaleFactor = 1;
+            YScaleFactor = 1;
+
+            switch (type)
+            {
+                case RuleType.Stopp:
+                    ImagePath = "pack://application:,,,/Resources/Stopp.png";
+                    break;
+                case RuleType.Vorrang:
+                    ImagePath = "pack://application:,,,/Resources/VorrangGeben.png";
+                    break;
+                case RuleType.Ampel:
+
+                    /// Overwrite the sign height because traffic lights are larger
+                    SignHeight = 45;
+
+                    if (maxVelocity < 1)
+                    {
+                        ImagePath = "pack://application:,,,/Resources/AmpelRot.png";
+                    }
+                    else
+                    {
+                        ImagePath = "pack://application:,,,/Resources/AmpelGruen.png";
+                    }
+                    break;
+                case RuleType.Geschwindigkeit:
+                    //ToDo: Eventuell dynamische Geschwindigkeitsanzeigen erstellen
+                    ImagePath = "pack://application:,,,/Resources/Geschwindigkeitsbegrenzung.png";
+                    break;
+                default:
+                    ImagePath = "pack://application:,,,/Resources/Stopp.png";
+                    break;
+            }
+
+            /// Calculate the position after the size is known
+            XPosition = xPosition - SignWidth / 2;
+            YPosition = yPosition - SignHeight / 2;
+        }
+       
         #endregion
 
     } // Class
