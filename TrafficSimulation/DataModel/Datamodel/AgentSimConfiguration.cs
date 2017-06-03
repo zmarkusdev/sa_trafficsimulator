@@ -14,7 +14,7 @@ using System.IO;
 
 
 namespace Datamodel {
-	public class AgentSimConfiguration {
+	public class AgentSimConfiguration : BaseModel {
 
 		public AgentSimConfiguration(){
 

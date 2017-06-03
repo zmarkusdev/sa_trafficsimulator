@@ -14,7 +14,7 @@ using System.IO;
 
 
 namespace Datamodel {
-	public class Rule {
+	public class Rule : BaseModel {
 
 		public Rule(){
 
@@ -26,11 +26,6 @@ namespace Datamodel {
 
 		public IEnumerable<int> CheckPositionIds
         {
-			get;
-			set;
-		}
-
-		public int Id{
 			get;
 			set;
 		}

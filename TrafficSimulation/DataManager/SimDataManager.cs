@@ -219,7 +219,7 @@ namespace DataManager
                 //        dynamicRules_.Add(rule);
                 //}
 
-                Thread.Sleep(1000 / 100);
+                Thread.Sleep(1000 / 30);
             }
         }
 

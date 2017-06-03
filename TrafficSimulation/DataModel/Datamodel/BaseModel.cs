@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Datamodel
 {
-    public abstract class AbstractEdge : BaseModel
+    public abstract class BaseModel
     {
-        public int CurveLength { get; set; }
+        public int Id { get; set; }
     }
 }

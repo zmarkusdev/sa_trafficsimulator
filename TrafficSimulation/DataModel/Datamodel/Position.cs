@@ -14,7 +14,7 @@ using System.IO;
 
 
 namespace Datamodel {
-    public class Position {
+    public class Position : BaseModel {
 
         public Position() {
 
@@ -22,11 +22,6 @@ namespace Datamodel {
 
         ~Position() {
 
-        }
-
-        public int Id {
-            get;
-            set;
         }
 
         public int MaxVelocity {

@@ -86,7 +86,7 @@ namespace DataAccessLayer.Communication
             agentSimConfig.Deceleration = 5*15;
             agentSimConfig.DecelerationSpread = 0;
             agentSimConfig.SpawnPropability = 75;// rnd.Next(100);
-            agentSimConfig.Velocity = 100 * 15;
+            agentSimConfig.Velocity = 50 * 15;
             agentSimConfig.VelocitySpread = 0;
             agentSimConfig.AgentType = AgentType.Car01;
             agentSimConfig.VehicleLength = 60;

@@ -12,7 +12,7 @@ using System.Text;
 using System.IO;
 
 namespace Datamodel {
-	public class Agent {
+	public class Agent : BaseModel {
 
 		public Agent(){
 
@@ -26,12 +26,7 @@ namespace Datamodel {
 			get;
 			set;
 		}
-
-		public int Id{
-			get;
-			set;
-		}
-
+        
 		public int EdgeId { get; set; }
 
         public int RunLength { get; set; }

@@ -15,19 +15,11 @@ using System.Threading.Tasks;
 
 namespace Datamodel
 {
-        public class Crossway
+        public class Crossway : BaseModel
     {
         public Crossway()
         {
             greenphase = new List<CrosswayDirection>();
-        }
-        /// <summary>
-        /// Kommentar
-        /// </summary>
-        public int Id
-        {
-            get;
-            set;
         }
         
         public List<CrosswayDirection> greenphase;

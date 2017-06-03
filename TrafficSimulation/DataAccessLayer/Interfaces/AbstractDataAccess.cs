@@ -7,12 +7,13 @@ using System.Runtime.CompilerServices;
 using System.Reflection;
 using System.Linq;
 using System.Collections.Concurrent;
+using Datamodel;
 
 namespace DataAccessLayer
 {
     // generic Class implementing the basic CRUD and persistence handling for 
     // objects identified by an ID element of int Type.
-    public abstract class AbstractDataAccess<T> : IDataAccess<T>
+    public abstract class AbstractDataAccess<T> : IDataAccess<T> where T : BaseModel
     {
         ConcurrentDictionary<int, T> liste = new ConcurrentDictionary<int, T>();
         private int uniqueId = 1;
@@ -31,11 +32,11 @@ namespace DataAccessLayer
         }
         public virtual T Create(T objekt)
         {
-            int id = getObjectId(objekt);
+            int id = objekt.Id;
             if (id == 0)
             {
                 id = getuniqueId();
-                objekt = setObjectId(objekt, id);
+                objekt.Id = id;
             }
             liste.AddOrUpdate(id, objekt, (k,v) => objekt);
             return objekt;
@@ -49,7 +50,7 @@ namespace DataAccessLayer
 
         public virtual void Delete(T objekt)
         {
-            int id = getObjectId(objekt);
+            int id = objekt.Id;
             liste.TryRemove(id, out objekt);
         }
 
@@ -79,7 +80,7 @@ namespace DataAccessLayer
                         if (line.Substring(0, 1) != "#")
                         {
                             T readObjekt = new JavaScriptSerializer().Deserialize<T>(line);
-                            uniqueId = Math.Max(uniqueId, getObjectId(readObjekt));
+                            uniqueId = Math.Max(uniqueId, readObjekt.Id);
                             liste.AddOrUpdate(uniqueId, readObjekt, (k,v) => readObjekt);
                         }
                     }
@@ -119,21 +120,6 @@ namespace DataAccessLayer
         public virtual List<T> ReadAll()
         {
             return liste.Select(o => o.Value).ToList();
-        }
-        
-        private int getObjectId(T objekt)
-        {
-            var propertyO = objekt.GetType().GetProperty("Id");
-            int interestingId = (int)propertyO.GetValue(objekt, null);
-            return interestingId;
-        }
-
-        private T setObjectId(T objekt, int id)
-        {
-            Type myType = objekt.GetType();
-            PropertyInfo pinfo = myType.GetProperty("Id");
-            pinfo.SetValue(objekt, id, null);
-            return objekt;
         }
 
         private string getfilenamePrefix()
