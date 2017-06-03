@@ -117,9 +117,9 @@ namespace DataAccessLayer
             return result;
         }
 
-        public virtual List<T> ReadAll()
+        public virtual IEnumerable<T> ReadAll()
         {
-            return liste.Select(o => o.Value).ToList();
+            return liste.Select(o => o.Value);
         }
 
         private string getfilenamePrefix()

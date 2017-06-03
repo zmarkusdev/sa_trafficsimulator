@@ -24,6 +24,6 @@ namespace DataAccessLayer
         T ReadbyId(int Id);
         void Update(T objekt);
         void Delete(T objekt);
-        List<T> ReadAll();
+        IEnumerable<T> ReadAll();
     }
 }

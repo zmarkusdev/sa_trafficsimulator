@@ -16,7 +16,7 @@ namespace AgentSim
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 30; // 30 fps
+        private const int timerInterval = 1000 / 60; // 30 fps
         private IReadOnlyList<Datamodel.Edge> allEdges_;
         // TODO: property for staticRules_
 

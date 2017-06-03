@@ -15,7 +15,7 @@ namespace PhysicEngine
     {
         private readonly IDataManager dataManager_;
         private Timer physicsTimer;
-        private const int timerInterval = 1000 / 30; // 30 fps
+        private const int timerInterval = 1000 / 60; // 30 fps
 
         public SimPhysicEngine(IDataManager dataManager)
         {

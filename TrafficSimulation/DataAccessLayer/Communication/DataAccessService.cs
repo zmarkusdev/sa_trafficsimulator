@@ -207,7 +207,7 @@ namespace DataAccessLayer.Communication
 
         public IEnumerable<Rule> GetDynamicRules()
         {
-            return ruleDataAccess.ReadAll().FindAll(cur => cur.IsDynamicRule);
+            return ruleDataAccess.ReadAll().Where(cur => cur.IsDynamicRule);
         }
 
         public Rule GetRule(int ruleId)
@@ -217,7 +217,7 @@ namespace DataAccessLayer.Communication
 
         public IEnumerable<Rule> GetStaticRules()
         {
-            return ruleDataAccess.ReadAll().FindAll(cur => !cur.IsDynamicRule);
+            return ruleDataAccess.ReadAll().Where(cur => !cur.IsDynamicRule);
         }
 
         public Rule UpdateRule(Rule rule)

@@ -101,7 +101,7 @@ namespace SimulationUserInterface.ViewModels
                 positions = Positions.GetAll();
                 
                 /// Configurate and start the update timer for the gui update
-                GuiAgentUpdateTimer.Interval = TimeSpan.FromMilliseconds(30);
+                GuiAgentUpdateTimer.Interval = TimeSpan.FromMilliseconds(1000/60);
                 GuiAgentUpdateTimer.Tick += AgentTimer_Tick;
                 GuiAgentUpdateTimer.Start();
 
