@@ -9,7 +9,7 @@ using DataAccessLayer;
 
 namespace DataAccessLayer.Communication
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Multiple)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple)]
     class DataAccessService : IDataAccessContract
     {
         private IAgentDataAccess agentDataAccess;
@@ -21,16 +21,10 @@ namespace DataAccessLayer.Communication
         public DataAccessService()
         {
             agentDataAccess = AgentDataAccessFactory.CreateRepository();
-            agentDataAccess.LoadfromFile("agent");
             edgeDataAccess = EdgeDataAccessFactory.CreateRepository();
-            edgeDataAccess.LoadfromFile("edge");
             positionDataAccess = PositionDataAccessFactory.CreateRepository();
-            positionDataAccess.LoadfromFile("position");
             ruleDataAccess = RuleDataAccessFactory.CreateRepository();
-            ruleDataAccess.LoadfromFile("rule");
             crosswayDataAccess = CrosswayDataAccessFactory.CreateRepository();
-            crosswayDataAccess.LoadfromFile("crossway");
-
         }
 
         #region Agent

@@ -195,27 +195,31 @@ namespace DataManager
         {
             while (!shouldStop_)
             {
-                agentRepository_.BulkUpdate(agentUpdateQueue_.Select(a => a.ToAgent()));
-                agentUpdateQueue_ = new ConcurrentQueue<SimAgent>();
+                var agentsToUpdate = agentUpdateQueue_.Select(a => a.ToAgent());
+                if (agentsToUpdate.Any())
+                {
+                    agentRepository_.BulkUpdate(agentsToUpdate);
+                    agentUpdateQueue_ = new ConcurrentQueue<SimAgent>();
+                }
                 
                 // Update dynamic rules
-                IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
-                foreach (var rule in remoteDynamicRules)
-                {
-                    // Check if dynamic rule already exists
-                    Rule localRule = dynamicRules_.FirstOrDefault(r => r.Id == rule.Id);
-                    if (localRule != null)
-                    {
-                        // Update
-                        dynamicRules_.Remove(localRule);
-                        dynamicRules_.Add(rule);
-                    }
-                    else
-                        // Create
-                        dynamicRules_.Add(rule);
-                }
+                //IEnumerable<Rule> remoteDynamicRules = ruleRepository_.GetDynamicRules();
+                //foreach (var rule in remoteDynamicRules)
+                //{
+                //    // Check if dynamic rule already exists
+                //    Rule localRule = dynamicRules_.FirstOrDefault(r => r.Id == rule.Id);
+                //    if (localRule != null)
+                //    {
+                //        // Update
+                //        dynamicRules_.Remove(localRule);
+                //        dynamicRules_.Add(rule);
+                //    }
+                //    else
+                //        // Create
+                //        dynamicRules_.Add(rule);
+                //}
 
-                Thread.Sleep(1000 / 30);
+                Thread.Sleep(1000 / 100);
             }
         }
 

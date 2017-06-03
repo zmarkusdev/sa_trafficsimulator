@@ -8,7 +8,10 @@
         public static IPostionDataAccess CreateRepository()
         {
             if (instance == null)
+            {
                 instance = new PositionDataAccess();
+                instance.LoadfromFile("position");
+            }
             return instance;
         }
     }

@@ -14,7 +14,10 @@ namespace DataAccessLayer
         public static ICrosswayDataAccess CreateRepository()
         {
             if (instance == null)
+            {
                 instance = new CrosswayDataAccess();
+                instance.LoadfromFile("crossway");
+            }
             return instance;
         }
     }

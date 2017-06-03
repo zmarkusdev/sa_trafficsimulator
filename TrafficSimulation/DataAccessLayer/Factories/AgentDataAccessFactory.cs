@@ -8,7 +8,10 @@
         public static IAgentDataAccess CreateRepository()
         {
             if (instance == null)
+            {
                 instance = new AgentDataAccess();
+                instance.LoadfromFile("agent");
+            }
             return instance;
         }
     }

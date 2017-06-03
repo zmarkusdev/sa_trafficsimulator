@@ -8,7 +8,10 @@
         public static IEdgeDataAccess CreateRepository()
         {
             if (instance == null)
+            {
                 instance = new EdgeDataAccess();
+                instance.LoadfromFile("edge");
+            }
             return instance;
         }
     }

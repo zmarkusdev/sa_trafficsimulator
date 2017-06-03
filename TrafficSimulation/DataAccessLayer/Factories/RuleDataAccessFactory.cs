@@ -8,7 +8,10 @@
         public static IRuleDataAccess CreateRepository()
         {
             if (instance == null)
+            {
                 instance = new RuleDataAccess();
+                instance.LoadfromFile("rule");
+            }
             return instance;
         }
     }
