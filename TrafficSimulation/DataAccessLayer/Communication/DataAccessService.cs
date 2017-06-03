@@ -9,7 +9,7 @@ using DataAccessLayer;
 
 namespace DataAccessLayer.Communication
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall, ConcurrencyMode = ConcurrencyMode.Multiple)]
     class DataAccessService : IDataAccessContract
     {
         private IAgentDataAccess agentDataAccess;

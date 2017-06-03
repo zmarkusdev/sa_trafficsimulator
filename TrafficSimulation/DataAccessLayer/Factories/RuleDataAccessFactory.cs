@@ -3,9 +3,13 @@
     // decouple IRuleDataAccess Interface from Implementation
     public class RuleDataAccessFactory
     {
-            public static IRuleDataAccess CreateRepository()
-            {
-                return new RuleDataAccess();
-            }
+        static IRuleDataAccess instance;
+
+        public static IRuleDataAccess CreateRepository()
+        {
+            if (instance == null)
+                instance = new RuleDataAccess();
+            return instance;
+        }
     }
 }

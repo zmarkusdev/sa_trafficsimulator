@@ -6,6 +6,7 @@ using System.Web.Script.Serialization;
 using System.Runtime.CompilerServices;
 using System.Reflection;
 using System.Linq;
+using System.Collections.Concurrent;
 
 namespace DataAccessLayer
 {
@@ -13,7 +14,7 @@ namespace DataAccessLayer
     // objects identified by an ID element of int Type.
     public abstract class AbstractDataAccess<T> : IDataAccess<T>
     {
-        List<T> liste = new List<T>();
+        ConcurrentDictionary<int, T> liste = new ConcurrentDictionary<int, T>();
         private int uniqueId = 1;
         private string datafileprefix = "datafile_";
         private string datafileextension = ".txt";
@@ -25,56 +26,31 @@ namespace DataAccessLayer
         }
         public virtual void Init()
         {
-            liste = new List<T>();
+            liste = new ConcurrentDictionary<int, T>();
             uniqueId = 0;
         }
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual T Create(T objekt)
         {
-            if (getObjectId(objekt) == 0)
-                objekt = setObjectId(objekt, getuniqueId());
-            //Trace.TraceInformation("create(" + objekt.GetType().Name + ") Id=" + getObjectId(objekt));
-            liste.Add(objekt);
+            int id = getObjectId(objekt);
+            if (id == 0)
+            {
+                id = getuniqueId();
+                objekt = setObjectId(objekt, id);
+            }
+            liste.AddOrUpdate(id, objekt, (k,v) => objekt);
             return objekt;
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual void Update(T objekt)
         {
-            // Todo: cheap implenetation, expensive runtime.... 
-            //Trace.TraceInformation("update(" + objekt.GetType().Name + ")" + getObjectId(objekt));
-            Delete(objekt);
+            // Create is called here, because createorupdate is handled in that method
             Create(objekt);
         }
 
-        [MethodImpl(MethodImplOptions.Synchronized)]
         public virtual void Delete(T objekt)
         {
-            int gefundenIndex = -1;
-            int index = -1;
-
-            int interestingId = getObjectId(objekt);
-
-            //Trace.TraceInformation("delete(" + objekt.GetType().Name + ")" + getObjectId(objekt));
-            if (liste != null)
-            {
-                // Todo: so gehts wahrscheinlich performanter:
-                // var matchingObjekt = liste.FirstOrDefault(T => liste.Id == interestingId));
-                // wie in http://stackoverflow.com/questions/19280986/best-way-to-update-an-element-in-a-generic-list
-                foreach (var currT in liste)
-                {
-                    index++;
-                    int extractedId = getObjectId(currT);
-                    if (extractedId == interestingId)
-                    {
-                        gefundenIndex = index;
-                        break;
-                    }
-                }
-            }
-            if (gefundenIndex != -1)
-                liste.RemoveAt(index);
+            int id = getObjectId(objekt);
+            liste.TryRemove(id, out objekt);
         }
 
         public virtual T deserializefromString(string serialized)
@@ -104,7 +80,7 @@ namespace DataAccessLayer
                         {
                             T readObjekt = new JavaScriptSerializer().Deserialize<T>(line);
                             uniqueId = Math.Max(uniqueId, getObjectId(readObjekt));
-                            liste.Add(readObjekt);
+                            liste.AddOrUpdate(uniqueId, readObjekt, (k,v) => readObjekt);
                         }
                     }
                 }
@@ -123,7 +99,7 @@ namespace DataAccessLayer
                 using (StreamWriter writefile = new StreamWriter(getfilenamePrefix() + filename + getfilenameExtension()))
                 {
                     foreach (var objekt in liste)
-                        writefile.WriteLine(serialize2String(objekt));
+                        writefile.WriteLine(serialize2String(objekt.Value));
                 }
             }
             catch (Exception e)
@@ -135,19 +111,14 @@ namespace DataAccessLayer
 
         public virtual T ReadbyId(int Id)
         {
-            foreach (T currT in liste)
-            {
-                int extractedId = getObjectId(currT);
-
-                if (extractedId == Id)
-                    return currT;
-            }
-            return default(T);
+            T result;
+            liste.TryGetValue(Id, out result);
+            return result;
         }
 
         public virtual List<T> ReadAll()
         {
-            return liste;
+            return liste.Select(o => o.Value).ToList();
         }
         
         private int getObjectId(T objekt)

@@ -9,9 +9,13 @@ namespace DataAccessLayer
     // decouple IRuleDataAccess Interface from Implementation
     public class CrosswayDataAccessFactory
     {
+        static ICrosswayDataAccess instance;
+
         public static ICrosswayDataAccess CreateRepository()
         {
-            return new CrosswayDataAccess();
+            if (instance == null)
+                instance = new CrosswayDataAccess();
+            return instance;
         }
     }
 }

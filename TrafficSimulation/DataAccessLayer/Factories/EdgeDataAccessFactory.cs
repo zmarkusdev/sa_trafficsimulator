@@ -3,9 +3,13 @@
     // decouple IEdgeDataAccess Interface from Implementation
     public class EdgeDataAccessFactory
     {
+        static IEdgeDataAccess instance;
+
         public static IEdgeDataAccess CreateRepository()
         {
-            return new EdgeDataAccess();
+            if (instance == null)
+                instance = new EdgeDataAccess();
+            return instance;
         }
     }
 }
