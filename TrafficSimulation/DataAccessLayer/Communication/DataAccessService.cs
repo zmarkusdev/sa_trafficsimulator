@@ -83,7 +83,7 @@ namespace DataAccessLayer.Communication
             AgentSimConfiguration agentSimConfig = new AgentSimConfiguration();
             agentSimConfig.Acceleration = 5*15;
             agentSimConfig.AccelerationSpread = 0;
-            agentSimConfig.Deceleration = 5*15;
+            agentSimConfig.Deceleration = 10*15;
             agentSimConfig.DecelerationSpread = 0;
             agentSimConfig.SpawnPropability = 100;// rnd.Next(100);
             agentSimConfig.Velocity = 50 * 15;

@@ -28,6 +28,7 @@ namespace DataManager.MappingModels
             CurrentAccelerationExact = agent.Acceleration;
             CurrentVelocityExact = agent.CurrentVelocity;
             RunLengthExact = agent.RunLength;
+            IsActive = agent.IsActive;
         }
 
         /// <summary>
@@ -75,7 +76,8 @@ namespace DataManager.MappingModels
                 Route = this.Route,
                 CurrentAccelerationExact = this.CurrentAccelerationExact,
                 CurrentVelocityExact = this.CurrentVelocityExact,
-                RunLengthExact = this.RunLengthExact
+                RunLengthExact = this.RunLengthExact,
+                IsActive = this.IsActive
             };
         }
 

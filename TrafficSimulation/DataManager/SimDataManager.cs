@@ -311,8 +311,8 @@ namespace DataManager
                 // Get agents greater startrunlength and smaller startrunlength 
                 List<SimAgent> agents;
                 lock (Agents) agents = Agents.Where(a => a.EdgeId == edge.Id &&
-                    a.RunLength - a.VehicleLength >= startRunLength &&
-                    a.RunLength - a.VehicleLength < startRunLength + range).ToList();
+                    a.RunLength >= startRunLength &&
+                    a.RunLength < startRunLength + range).ToList();
 
                 // Add selected agents to the result
                 results.AddRange(agents);
