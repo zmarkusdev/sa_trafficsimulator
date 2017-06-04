@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using VehicleDeactivatorLibrary;
+using VehicleHandoverLibrary;
 
 namespace PhysicEngine
 {
@@ -36,9 +37,46 @@ namespace PhysicEngine
             physicsThread = new Thread(RunPhysics);
             physicsThread.Start();
 
+            // Message receiver for vehicle deactivation messages
             var messageReceiver = new MessageReceiver();
             messageReceiver.ReceiveEventHandler += MessageReceiver_ReceiveEventHandler;
 
+            // Vehicle receiver for remote vehicle receiving
+            var vehicleReceiver = new VehicleReceiver(Groups.GROUP03);
+            vehicleReceiver.ReceiveEventHandler += VehicleReceiver_ReceiveEventHandler;
+
+        }
+
+        private void VehicleReceiver_ReceiveEventHandler(object sender, VehicleEventArgs e)
+        {
+            // Get remote starting positions
+            var entryPoints = dataManager_.AllPositions.Where(p => p.IsRemoteEntryPoint).ToList();
+            var rnd = new Random();            
+            var entryPoint = entryPoints[rnd.Next(entryPoints.Count)];
+
+            // Agent should be spawned, prepare new agent
+            var agent = new SimAgent
+            {
+                IsActive = true,
+                CurrentVelocity = 0,
+                EdgeId = entryPoint.SuccessorEdgeIds.FirstOrDefault(), // TODO: hardcoded...
+                RunLength = 0,
+                RunLengthExact = 0,
+                CurrentAccelerationExact = 0,
+                CurrentVelocityExact = 0,
+                VehicleWidth = (int)e.Vehicle.Width,
+                // Roll the maximum allowed acceleration
+                Acceleration = (int)e.Vehicle.MaxAcceleration,
+                // Roll the maximum allowed deceleration
+                Deceleration = (int)e.Vehicle.MaxDeceleration,
+                // Roll the maximum allowed velocity
+                MaxVelocity = (int)e.Vehicle.MaxVelocity,
+                // Roll vehicle length
+                VehicleLength = (int)e.Vehicle.Length,
+                Type = AgentType.Car01
+            };
+
+            dataManager_.CreateAgent(agent);
         }
 
         private void MessageReceiver_ReceiveEventHandler(object sender, MessageEventArgs e)
@@ -52,7 +90,8 @@ namespace PhysicEngine
             // Update agent
             if(curAgent != null)
             {
-                curAgent.IsActive = false;
+                // Toggle active state
+                curAgent.IsActive = !curAgent.IsActive;
                 dataManager_.UpdateAgent(curAgent);
             }
         }
@@ -178,9 +217,49 @@ namespace PhysicEngine
                     curAgent.EdgeId = curEdge.Id;
                 }
                 else
-                {
+                {                    
+                    // Check if last position of agent route was a remote exit position
+                    var position = dataManager_.AllPositions.FirstOrDefault(p => p.PredecessorEdgeIds.Any(e => e == curAgent.EdgeId));
+                    var transfer = position?.Transfer ?? RemoteAgentTransfer.none;
+                    if(transfer != RemoteAgentTransfer.none)
+                    {
+                        // Transfer to another application
+                        VehicleSender sender;
+                        switch (transfer)
+                        {
+                            case RemoteAgentTransfer.none:
+                                return false;
+                            case RemoteAgentTransfer.Group1:
+                                sender = new VehicleSender(Groups.GROUP01);
+                                break;
+                            case RemoteAgentTransfer.Group2:
+                                sender = new VehicleSender(Groups.GROUP02);
+                                break;
+                            case RemoteAgentTransfer.Group3:
+                                sender = new VehicleSender(Groups.GROUP03);
+                                break;
+                            default:
+                                return false;
+                        }
+
+                        // Define vehicle
+                        var vehicle = new Vehicle()
+                        {
+                            Length = curAgent.VehicleLength,
+                            Width = curAgent.VehicleWidth,
+                            MaxAcceleration = curAgent.Acceleration,
+                            MaxDeceleration = curAgent.Deceleration,
+                            MaxVelocity = curAgent.MaxVelocity,
+                            Type = VehicleType.CAR
+                        };
+
+                        // Push vehicle
+                        sender.PushVehicle(vehicle);
+                    }
+
                     // Let agent die
                     dataManager_.DeleteAgent(curAgent);
+
                     return false;
                 }                
             }

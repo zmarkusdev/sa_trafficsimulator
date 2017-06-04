@@ -102,8 +102,6 @@ namespace AgentSpawner
                             // Check collisions on the start edge and dont spawn agent on collision (just skip this agent)
                             if (!dataManager_.GetAgentsInRange(startEdge.Id, 0, agent.VehicleLength).Any())
                             {                               
-                                // Set agent starting position to it's vehicle length
-                                agent.RunLength = agent.VehicleLength;
                                 dataManager_.CreateAgent(agent);
                             }
                             //else
@@ -112,8 +110,8 @@ namespace AgentSpawner
                     }
                 }
 
-                // Wait for 100 ms before next run
-                Thread.Sleep(100);
+                // Wait for 1000 ms before next run
+                Thread.Sleep(1000);
             }
         }
     }

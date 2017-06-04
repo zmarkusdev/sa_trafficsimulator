@@ -61,6 +61,17 @@ namespace Datamodel {
 			set;
 		}
 
+        public RemoteAgentTransfer Transfer { get; set; } = RemoteAgentTransfer.none;
+
+        public bool IsRemoteEntryPoint { get; set; }
 	}//end Position
+
+    public enum RemoteAgentTransfer : int
+    {
+        none = 0,
+        Group1 = 1,
+        Group2 = 2,
+        Group3 = 3
+    }
 
 }//end namespace Datamodel
