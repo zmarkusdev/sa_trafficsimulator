@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficSimulation", "TrafficSimulation\TrafficSimulation.csproj", "{C0E77E0F-6A3C-4F42-B6A0-28C81254AAA9}"
 EndProject
@@ -46,6 +46,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleDeactivatorLibrary", "VehicleDeactivatorLibrary\VehicleDeactivatorLibrary.csproj", "{6F90B431-6784-47F5-A771-DF5B54274C0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleDeactivatorLibraryExample", "VehicleDeactivatorLibraryExample\VehicleDeactivatorLibraryExample.csproj", "{A31D6AC3-79F1-4DBC-8E23-4768F1D1CB11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log", "Log\Log.csproj", "{00F048B7-1CCA-4333-AD5D-078E58A5C561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +123,10 @@ Global
 		{A31D6AC3-79F1-4DBC-8E23-4768F1D1CB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A31D6AC3-79F1-4DBC-8E23-4768F1D1CB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A31D6AC3-79F1-4DBC-8E23-4768F1D1CB11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00F048B7-1CCA-4333-AD5D-078E58A5C561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F048B7-1CCA-4333-AD5D-078E58A5C561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00F048B7-1CCA-4333-AD5D-078E58A5C561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00F048B7-1CCA-4333-AD5D-078E58A5C561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,5 +146,6 @@ Global
 		{2E236B55-FD93-4FBB-BF6E-AF7436E7A9EF} = {E2BD0923-8CAA-48E4-B6E1-27A9808D6FDC}
 		{EBBC8182-29E8-4E01-8A1C-69E28BEC1310} = {9634841A-9236-47E4-8377-09E20659D54F}
 		{222D1419-BDB2-4E6A-950E-093EFEAE5395} = {29FBE110-3BBF-4034-B2D1-5C7A2D3FD180}
+		{00F048B7-1CCA-4333-AD5D-078E58A5C561} = {CD5C9E9C-5E16-4EE1-A147-3A323169FD3F}
 	EndGlobalSection
 EndGlobal

@@ -1,10 +1,13 @@
 ﻿using DataManager;
 using DataManager.MappingModels;
 using Datamodel;
+using Log;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using VehicleDeactivatorLibrary;
@@ -14,20 +17,24 @@ namespace PhysicEngine
     public class SimPhysicEngine : IPhysicEngine
     {
         private readonly IDataManager dataManager_;
-        private Timer physicsTimer;
         private const int timerInterval = 1000 / 60; // 30 fps
 
-        public SimPhysicEngine(IDataManager dataManager)
+        bool shouldStop = false;
+        Thread physicsThread;
+
+        readonly ILog log_;
+
+        public SimPhysicEngine(IDataManager dataManager, ILog log)
         {
             dataManager_ = dataManager;
+            log_ = log;
         }
 
         public void Start()
         {
-            physicsTimer = new Timer();
-            physicsTimer.Elapsed += new ElapsedEventHandler(TimerTick);
-            physicsTimer.Interval = timerInterval;
-            physicsTimer.Enabled = true;
+            shouldStop = false;
+            physicsThread = new Thread(RunPhysics);
+            physicsThread.Start();
 
             var messageReceiver = new MessageReceiver();
             messageReceiver.ReceiveEventHandler += MessageReceiver_ReceiveEventHandler;
@@ -40,85 +47,87 @@ namespace PhysicEngine
 
             // Get agent
             SimAgent curAgent;
-            lock (dataManager_) curAgent = dataManager_.Agents.FirstOrDefault(a => a.Id == agentId);
+            curAgent = dataManager_.Agents.FirstOrDefault(a => a.Id == agentId);
 
             // Update agent
             if(curAgent != null)
             {
                 curAgent.IsActive = false;
-                lock (dataManager_) dataManager_.UpdateAgent(curAgent);
+                dataManager_.UpdateAgent(curAgent);
             }
         }
 
         public void Stop()
         {
-            physicsTimer.Enabled = false;
+            shouldStop = true;
+            // Wait for thread termination
+            while (physicsThread.IsAlive) Thread.Sleep(100);
         }
 
-        private void TimerTick(object source, ElapsedEventArgs e)
+        private void RunPhysics()
         {
-            //Console.WriteLine("Physic engine tick!");
+            while(!shouldStop)
+            {
+                // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
+                List<SimAgent> copiedAgents;
+                copiedAgents = dataManager_.Agents.ToList();
+                //copiedAgents.AddRange(dataManager_.Agents);
 
-            // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
-            List<SimAgent> copiedAgents;
-            lock (dataManager_) copiedAgents = dataManager_.Agents.ToList();
-            //copiedAgents.AddRange(dataManager_.Agents);
-
-            // Get agents
-            foreach(var agent in copiedAgents) {
-                if (agent == null) return;
-
-                // Get current edge from agent route, fallback is edge the agent is standing on
-                AbstractEdge curEdge;
-                lock(dataManager_) curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
-
-                var curAgent = agent.Clone() as SimAgent;
-
-                if (curEdge == null) return; // Skip if no position is found...
-
-                if (!GetCurrentQueuePosition(curAgent, curEdge)) return;
-
-                // Check valid accelerations
-                CheckValidAccelerations(curAgent);
-
-                // If agent is dead, decelerate till velocity is zero
-                if (!curAgent.IsActive) curAgent.CurrentAccelerationExact = -curAgent.Deceleration;
-
-                // Calculate new velocity based on accelleration or decelleration
-                curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000.0;
-
-                // check valid velocities of agent
-                CheckValidVelocities(curAgent);
-
-                // Calculate new position based on velocity and position
-                if (CalculateNewPositionOfAgent(curAgent, curEdge))
+                // Get agents
+                foreach (var agent in copiedAgents)
                 {
-                    // Save the exact values rounded as integers into the datamodel fields
-                    curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
-                    curAgent.RunLength = (int)Math.Floor(curAgent.RunLengthExact);
-                    curAgent.RunLength = curAgent.RunLength < 0 ? 0 : curAgent.RunLength;
-                    dataManager_.UpdateAgent(curAgent);
+                    if (agent == null) return;
+                    
+                    // Get current edge from agent route, fallback is edge the agent is standing on
+                    AbstractEdge curEdge;
+                    curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
+                    
+                    var curAgent = agent.Clone() as SimAgent;
+
+                    if (curEdge == null) continue; // Skip if no position is found...
+                    
+                    if (!GetCurrentQueuePosition(curAgent, curEdge)) continue;
+
+                    // Check valid accelerations
+                    CheckValidAccelerations(curAgent);
+
+                    // If agent is dead, decelerate till velocity is zero
+                    if (!curAgent.IsActive) curAgent.CurrentAccelerationExact = -curAgent.Deceleration;
+
+                    // Calculate new velocity based on accelleration or decelleration
+                    curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000.0;
+
+                    // check valid velocities of agent
+                    CheckValidVelocities(curAgent);
+
+                    // Calculate new position based on velocity and position
+                    if (CalculateNewPositionOfAgent(curAgent, curEdge))
+                    {
+                        // Save the exact values rounded as integers into the datamodel fields
+                        curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
+                        curAgent.RunLength = (int)Math.Floor(curAgent.RunLengthExact);
+                        curAgent.RunLength = curAgent.RunLength < 0 ? 0 : curAgent.RunLength;
+                        dataManager_.UpdateAgent(curAgent);                        
+                    }
                 }
-            }            
+                Thread.Sleep(timerInterval);
+            }
         }
 
         bool GetCurrentQueuePosition(SimAgent curAgent, AbstractEdge curEdge)
         {
-            // Get current queue position
-            lock (curAgent)
+            // Get current queue position            
+            AbstractEdge ae;
+            do
             {
-                AbstractEdge ae;
-                do
-                {
-                    // If no route of the agent is given, skip the agent
-                    if (curAgent.Route.Count <= 0)
-                        return false;
+                // If no route of the agent is given, skip the agent
+                if (curAgent.Route.Count <= 0)
+                    return false;
 
-                    ae = curAgent.Route.Dequeue();
-                } while (ae.Id != curEdge.Id);
+                ae = curAgent.Route.Dequeue();
+            } while (ae.Id != curEdge.Id);
 
-                return true;
-            }
+            return true;            
         }
 
         void CheckValidAccelerations(SimAgent curAgent)
@@ -163,8 +172,8 @@ namespace PhysicEngine
                 }
                 else
                 {
-                    // TODO: Let agent die
-                    lock (dataManager_) dataManager_.DeleteAgent(curAgent);
+                    // Let agent die
+                    dataManager_.DeleteAgent(curAgent);
                     return false;
                 }                
             }

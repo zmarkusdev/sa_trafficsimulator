@@ -29,7 +29,8 @@ namespace TrafficSimulation
             dataManager.Start();
 
             // Start physic engine
-            IPhysicEngine physicEngine = new SimPhysicEngine(dataManager);
+            var log = new Log();
+            IPhysicEngine physicEngine = new SimPhysicEngine(dataManager, log);
             physicEngine.Start();
 
             // Start agent simulation

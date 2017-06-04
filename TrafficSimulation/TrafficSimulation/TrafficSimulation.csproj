@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Simulation\ISimulation.cs" />
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{6f0355c7-e6fa-475a-a4bd-a4a3d2701162}</Project>
       <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{00f048b7-1cca-4333-ad5d-078e58a5c561}</Project>
+      <Name>Log</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhysicEngine\PhysicEngine.csproj">
       <Project>{eb6b7f7c-80be-4d17-8a81-58fdf3d3e335}</Project>

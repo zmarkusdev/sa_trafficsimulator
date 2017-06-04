@@ -58,6 +58,10 @@
       <Project>{6f0355c7-e6fa-475a-a4bd-a4a3d2701162}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{00f048b7-1cca-4333-ad5d-078e58a5c561}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VehicleDeactivatorLibrary\VehicleDeactivatorLibrary.csproj">
       <Project>{6f90b431-6784-47f5-a771-df5b54274c0b}</Project>
       <Name>VehicleDeactivatorLibrary</Name>
