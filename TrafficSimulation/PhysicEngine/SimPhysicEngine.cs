@@ -68,49 +68,56 @@ namespace PhysicEngine
         {
             while(!shouldStop)
             {
-                // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
-                List<SimAgent> copiedAgents;
-                copiedAgents = dataManager_.Agents.ToList();
-                //copiedAgents.AddRange(dataManager_.Agents);
+                try
+                {                
+                    // NOTE: all velocities are given as m/s, accellerations as m/s^2 and lengths as m
+                    List<SimAgent> copiedAgents;
+                    copiedAgents = dataManager_.Agents.ToList();
+                    //copiedAgents.AddRange(dataManager_.Agents);
 
-                // Get agents
-                foreach (var agent in copiedAgents)
-                {
-                    if (agent == null) return;
-                    
-                    // Get current edge from agent route, fallback is edge the agent is standing on
-                    AbstractEdge curEdge;
-                    curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
-                    
-                    var curAgent = agent.Clone() as SimAgent;
-
-                    if (curEdge == null) continue; // Skip if no position is found...
-                    
-                    if (!GetCurrentQueuePosition(curAgent, curEdge)) continue;
-
-                    // Check valid accelerations
-                    CheckValidAccelerations(curAgent);
-
-                    // If agent is dead, decelerate till velocity is zero
-                    if (!curAgent.IsActive) curAgent.CurrentAccelerationExact = -curAgent.Deceleration;
-
-                    // Calculate new velocity based on accelleration or decelleration
-                    curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000.0;
-
-                    // check valid velocities of agent
-                    CheckValidVelocities(curAgent);
-
-                    // Calculate new position based on velocity and position
-                    if (CalculateNewPositionOfAgent(curAgent, curEdge))
+                    // Get agents
+                    foreach (var agent in copiedAgents)
                     {
-                        // Save the exact values rounded as integers into the datamodel fields
-                        curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
-                        curAgent.RunLength = (int)Math.Floor(curAgent.RunLengthExact);
-                        curAgent.RunLength = curAgent.RunLength < 0 ? 0 : curAgent.RunLength;
-                        dataManager_.UpdateAgent(curAgent);                        
+                        if (agent == null) return;
+                    
+                        // Get current edge from agent route, fallback is edge the agent is standing on
+                        AbstractEdge curEdge;
+                        curEdge = dataManager_.Edges.FirstOrDefault(edge => edge.Id == agent.EdgeId);
+                    
+                        var curAgent = agent.Clone() as SimAgent;
+
+                        if (curEdge == null) continue; // Skip if no position is found...
+                    
+                        if (!GetCurrentQueuePosition(curAgent, curEdge)) continue;
+
+                        // Check valid accelerations
+                        CheckValidAccelerations(curAgent);
+
+                        // If agent is dead, decelerate till velocity is zero
+                        if (!curAgent.IsActive) curAgent.CurrentAccelerationExact = -curAgent.Deceleration;
+
+                        // Calculate new velocity based on accelleration or decelleration
+                        curAgent.CurrentVelocityExact = curAgent.CurrentVelocityExact + curAgent.CurrentAccelerationExact * timerInterval / 1000.0;
+
+                        // check valid velocities of agent
+                        CheckValidVelocities(curAgent);
+
+                        // Calculate new position based on velocity and position
+                        if (CalculateNewPositionOfAgent(curAgent, curEdge))
+                        {
+                            // Save the exact values rounded as integers into the datamodel fields
+                            curAgent.CurrentVelocity = (int)Math.Round(curAgent.CurrentVelocityExact);
+                            curAgent.RunLength = (int)Math.Floor(curAgent.RunLengthExact);
+                            curAgent.RunLength = curAgent.RunLength < 0 ? 0 : curAgent.RunLength;
+                            dataManager_.UpdateAgent(curAgent);                        
+                        }
                     }
+                    Thread.Sleep(timerInterval);
                 }
-                Thread.Sleep(timerInterval);
+                catch (Exception e)
+                {
+                    log_.Debug(e.Message);
+                }
             }
         }
 

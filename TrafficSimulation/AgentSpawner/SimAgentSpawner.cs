@@ -115,7 +115,7 @@ namespace AgentSpawner
                 }
 
                 // Wait for 1 second before next run
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
     }
