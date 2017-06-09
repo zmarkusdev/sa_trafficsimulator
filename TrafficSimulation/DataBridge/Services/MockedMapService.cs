@@ -20,8 +20,10 @@ namespace DataBridge.Services
             map.BackgroundImageBase64 = temp.ToCharArray();
 
             // Dimensionen 
-            map.Width = 800;
-            map.Height = 600;
+            // background map.Width = 800;
+            // background map.Height = 600;
+            map.Width = 1280;
+            map.Height = 822;
 
         }
         public Map GetMap()

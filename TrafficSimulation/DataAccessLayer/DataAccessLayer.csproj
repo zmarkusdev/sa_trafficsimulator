@@ -51,6 +51,7 @@
     <Compile Include="Factories\AgentDataAccessFactory.cs" />
     <Compile Include="Factories\CrosswayDataAccessFactory.cs" />
     <Compile Include="Factories\EdgeDataAccessFactory.cs" />
+    <Compile Include="Factories\MapDataAccessFactory.cs" />
     <Compile Include="Factories\PositionDataAccessFactory.cs" />
     <Compile Include="Factories\RuleDataAccessFactory.cs" />
     <Compile Include="Interfaces\AbstractDataAccess.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Services\CrosswayDataAccess.cs" />
     <Compile Include="Services\DataAccessCommon.cs" />
     <Compile Include="Services\EdgeDataAccess.cs" />
+    <Compile Include="Services\MapDataAccess.cs" />
     <Compile Include="Services\PositionDataAccess.cs" />
     <Compile Include="Services\RuleDataAccess.cs" />
   </ItemGroup>

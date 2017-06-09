@@ -17,7 +17,7 @@ namespace DataAccessLayer
     {
         ConcurrentDictionary<int, T> liste = new ConcurrentDictionary<int, T>();
         private int uniqueId = 1;
-        private string datafileprefix = "datafile_";
+        private string datafileprefix = "cityfile_";
         private string datafileextension = ".txt";
 
 
@@ -84,6 +84,7 @@ namespace DataAccessLayer
                             liste.AddOrUpdate(uniqueId, readObjekt, (k,v) => readObjekt);
                         }
                     }
+                    Console.WriteLine("File: " + filename + ", read: " + liste.Count);
                 }
             }
             catch (Exception e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    // decouple IRuleDataAccess Interface from Implementation
+    // decouple ICrosswayDataAccess Interface from Implementation
     public class CrosswayDataAccessFactory
     {
         static ICrosswayDataAccess instance;

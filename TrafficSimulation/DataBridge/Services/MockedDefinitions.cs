@@ -16,7 +16,8 @@ namespace DataBridge.Services
                 instance = new MockedDefinitions();
             return instance;
         }
-        private string backGroundMapfilename = "..\\..\\..\\DataBridge\\Resources\\backGroundMap.jpg";
+        //private string backGroundMapfilename = "..\\..\\..\\DataBridge\\Resources\\backGroundMap.jpg";
+        private string backGroundMapfilename = "..\\..\\..\\DataBridge\\Resources\\city.png";
         public string getbackGroundMapfilename() { return backGroundMapfilename; }
     }
 }
