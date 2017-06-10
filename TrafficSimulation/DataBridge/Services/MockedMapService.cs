@@ -22,8 +22,8 @@ namespace DataBridge.Services
             // Dimensionen 
             // background map.Width = 800;
             // background map.Height = 600;
-            map.Width = 1280;
-            map.Height = 822;
+            map.Width = 1400;
+            map.Height = 900;
 
         }
         public Map GetMap()

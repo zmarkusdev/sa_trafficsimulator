@@ -1,31 +1,52 @@
-{"Id":	1	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	7	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	true	}
-{"Id":	2	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	123	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	3	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	486	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	4	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	587	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	5	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	843	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	6	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1136	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	7	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1271	,"Y":	777	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	8	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	145	,"Y":	746	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	9	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	513	,"Y":	749	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	10	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	622	,"Y":	749	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	11	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	881	,"Y":	749	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	12	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1168	,"Y":	749	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	13	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	145	,"Y":	637	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	14	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	515	,"Y":	640	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	15	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	330	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	515	,"Y":	524	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	16	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	300	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	507	,"Y":	504	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	17	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	486	,"Y":	497	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	18	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	320	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	202	,"Y":	493	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	19	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	178	,"Y":	459	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	20	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	209	,"Y":	424	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	21	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	589	,"Y":	421	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	22	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	623	,"Y":	437	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	23	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	30	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	881	,"Y":	540	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	24	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	45	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	888	,"Y":	505	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	25	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1124	,"Y":	500	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	26	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1168	,"Y":	522	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	27	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1168	,"Y":	469	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	28	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1165	,"Y":	8	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	29	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	180	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	623	,"Y":	14	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	30	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	180	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	623	,"Y":	391	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	31	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1167	,"Y":	168	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	1	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	7	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	true	}
+{"Id":	2	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	1	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	7	],"X":	128	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	3	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	2	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	3, 8	],"X":	530	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	4	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	3	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	4, 9	],"X":	648	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	5	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	4	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	5, 10	],"X":	928	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	6	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	5	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	6, 11	],"X":	1245	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	7	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	6	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1391	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	8	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	7	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	12	],"X":	153	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	9	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	8	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	13	],"X":	560	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	10	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	9	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	14	],"X":	682	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	11	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	10	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	15	],"X":	960	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	12	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	11	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	19	],"X":	1276	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	13	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	8	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	31	],"X":	161	,"Y":	686	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	14	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	13, 14	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	20	],"X":	560	,"Y":	686	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	15	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	20	],"Rotation":	330	,"RuleIds":[		],"SuccessorEdgeIds":[	21	],"X":	560	,"Y":	586	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	16	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	21	],"Rotation":	300	,"RuleIds":[		],"SuccessorEdgeIds":[	22	],"X":	552	,"Y":	550	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	17	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	22	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	23	],"X":	520	,"Y":	545	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	18	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	23	],"Rotation":	320	,"RuleIds":[		],"SuccessorEdgeIds":[	24	],"X":	224	,"Y":	543	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	19	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	24	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	25	],"X":	199	,"Y":	502	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	20	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	25	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	26	],"X":	230	,"Y":	459	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	21	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	26	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	28, 33	],"X":	641	,"Y":	459	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	22	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	14	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	33	],"X":	682	,"Y":	474	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	23	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	15	],"Rotation":	30	,"RuleIds":[		],"SuccessorEdgeIds":[	16	],"X":	961	,"Y":	583	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	24	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	16	],"Rotation":	45	,"RuleIds":[		],"SuccessorEdgeIds":[	17	],"X":	970	,"Y":	559	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	25	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	17	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	18	],"X":	1232	,"Y":	547	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	26	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	19	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	32	],"X":	1274	,"Y":	564	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	27	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	25, 26	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	27	],"X":	1274	,"Y":	515	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	28	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	30	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1277	,"Y":	8	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	29	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	29	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	682	,"Y":	8	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	30	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	28,33	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	29	],"X":	682	,"Y":	423	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	31	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	27	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	30	],"X":	1274	,"Y":	188	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	32	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	34	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	35, 53	],"X":	863	,"Y":	460	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	33	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	36	],"Rotation":	75	,"RuleIds":[		],"SuccessorEdgeIds":[	37	],"X":	1153	,"Y":	460	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	34	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	37	],"Rotation":	60	,"RuleIds":[		],"SuccessorEdgeIds":[	38	],"X":	1179	,"Y":	452	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	35	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	38	],"Rotation":	30	,"RuleIds":[		],"SuccessorEdgeIds":[	39	],"X":	1196	,"Y":	435	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	36	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	39	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	40	],"X":	1203	,"Y":	409	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	37	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	40	],"Rotation":	330	,"RuleIds":[		],"SuccessorEdgeIds":[	41	],"X":	1202	,"Y":	263	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	38	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	41	],"Rotation":	300	,"RuleIds":[		],"SuccessorEdgeIds":[	42	],"X":	1191	,"Y":	241	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	39	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	42	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	43	],"X":	1172	,"Y":	228	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	40	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	43	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	44, 50	],"X":	904	,"Y":	228	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	41	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	50	],"Rotation":	180	,"RuleIds":[		],"SuccessorEdgeIds":[	51	],"X":	893	,"Y":	263	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	42	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	51	],"Rotation":	180	,"RuleIds":[		],"SuccessorEdgeIds":[	52	],"X":	892	,"Y":	427	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	43	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	52	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	36	],"X":	913	,"Y":	460	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	44	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	44, 55	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	45	],"X":	844	,"Y":	230	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	45	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	45	],"Rotation":	300	,"RuleIds":[		],"SuccessorEdgeIds":[	46	],"X":	762	,"Y":	227	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	46	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	46	],"Rotation":	330	,"RuleIds":[		],"SuccessorEdgeIds":[	47	],"X":	752	,"Y":	216	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	47	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	47	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	48	],"X":	747	,"Y":	199	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	48	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	48	],"Rotation":	45	,"RuleIds":[		],"SuccessorEdgeIds":[	49	],"X":	762	,"Y":	180	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	49	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	49	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	50	],"X":	793	,"Y":	177	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	50	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	50	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1238	,"Y":	176	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	51	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	45	],"Rotation":	45	,"RuleIds":[		],"SuccessorEdgeIds":[	57	],"X":	158	,"Y":	323	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	52	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	90	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	245	,"Y":	317	,"Transfer":0,"IsRemoteEntryPoint":	false	}
