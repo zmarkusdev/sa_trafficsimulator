@@ -81,15 +81,15 @@ namespace DataAccessLayer.Communication
             List<AgentSimConfiguration> agentSimConfigs = new List<AgentSimConfiguration>();
 
             AgentSimConfiguration agentSimConfig = new AgentSimConfiguration();
-            agentSimConfig.Acceleration = 5*15;
+            agentSimConfig.Acceleration = 2*15;
             agentSimConfig.AccelerationSpread = 0;
-            agentSimConfig.Deceleration = 10*15;
+            agentSimConfig.Deceleration = 5*15;
             agentSimConfig.DecelerationSpread = 0;
             agentSimConfig.SpawnPropability = 100;// rnd.Next(100);
-            agentSimConfig.Velocity = 50 * 15;
+            agentSimConfig.Velocity = 25 * 15;
             agentSimConfig.VelocitySpread = 0;
             agentSimConfig.AgentType = AgentType.Car01;
-            agentSimConfig.VehicleLength = 60;
+            agentSimConfig.VehicleLength = 30;
             
             agentSimConfig.VehicleLengthSpread = 0;
             agentSimConfigs.Add(agentSimConfig);
