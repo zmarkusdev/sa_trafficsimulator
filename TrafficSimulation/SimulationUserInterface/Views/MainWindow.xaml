@@ -9,7 +9,8 @@
         xmlns:local="clr-namespace:SimulationUserInterface"
         mc:Ignorable="d" Title="Traffic Simulation"
         Width="{Binding Path=UserInterfaceModel.WindowWidth, Mode=TwoWay}" 
-        Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}" >
+        Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}" 
+        MinWidth="1450" MinHeight="950" >
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
@@ -21,7 +22,7 @@
         <tc:Base64ImageConverter x:Key="Base64ImageConverter" />
         <tc:ImageConverter x:Key="ImageConverter" />
     </Window.Resources>
-    <Grid>
+    <Grid Width="1400" Height="900" >
         <Grid.RowDefinitions>
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -30,7 +31,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Draw background map-->
-        <Image x:Name="BackgroundImage" Grid.Row="0" Grid.Column="0" 
+        <Image x:Name="BackgroundImage" Grid.Row="0" Grid.Column="0"
                Source="{Binding Path=UserInterfaceModel.BackgroundMap, Converter={StaticResource Base64ImageConverter}}" 
                Stretch="Fill" >
         </Image>

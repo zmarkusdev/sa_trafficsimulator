@@ -121,8 +121,8 @@ namespace SimulationUserInterface.Models
         /// </summary>
         public MainWindowModel()
         {
-            WindowHeight = 900;
-            WindowWidth = 1400;
+            WindowHeight = 950;
+            WindowWidth = 1450;
 
             NetEnabled = false;
 
