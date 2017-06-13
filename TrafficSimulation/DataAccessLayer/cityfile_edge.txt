@@ -55,3 +55,14 @@
 {"Id":	55	,"StartPositionId":	99	,"EndPositionId":	99	,"Neighbors":null,"CurveLength":	0	}
 {"Id":	56	,"StartPositionId":	13	,"EndPositionId":	51	,"Neighbors":null,"CurveLength":	363	}
 {"Id":	57	,"StartPositionId":	51	,"EndPositionId":	52	,"Neighbors":null,"CurveLength":	87	}
+{"Id":	58	,"StartPositionId":	53	,"EndPositionId":	54	,"Neighbors":null,"CurveLength":	94	}
+{"Id":	59	,"StartPositionId":	54	,"EndPositionId":	12	,"Neighbors":null,"CurveLength":	23	}
+{"Id":	60	,"StartPositionId":	54	,"EndPositionId":	55	,"Neighbors":null,"CurveLength":	310	}
+{"Id":	61	,"StartPositionId":	55	,"EndPositionId":	11	,"Neighbors":null,"CurveLength":	27	}
+{"Id":	62	,"StartPositionId":	55	,"EndPositionId":	56	,"Neighbors":null,"CurveLength":	283	}
+{"Id":	63	,"StartPositionId":	56	,"EndPositionId":	10	,"Neighbors":null,"CurveLength":	23	}
+{"Id":	64	,"StartPositionId":	56	,"EndPositionId":	57	,"Neighbors":null,"CurveLength":	121	}
+{"Id":	65	,"StartPositionId":	57	,"EndPositionId":	9	,"Neighbors":null,"CurveLength":	24	}
+{"Id":	66	,"StartPositionId":	57	,"EndPositionId":	58	,"Neighbors":null,"CurveLength":	402	}
+{"Id":	67	,"StartPositionId":	58	,"EndPositionId":	8	,"Neighbors":null,"CurveLength":	28	}
+{"Id":	68	,"StartPositionId":	58	,"EndPositionId":	59	,"Neighbors":null,"CurveLength":	165	}

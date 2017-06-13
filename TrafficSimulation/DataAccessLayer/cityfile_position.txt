@@ -5,11 +5,11 @@
 {"Id":	5	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	4	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	5, 10	],"X":	928	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	6	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	5	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	6, 11	],"X":	1245	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	7	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	6	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1391	,"Y":	848	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	8	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	7	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	12	],"X":	153	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	9	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	8	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	13	],"X":	560	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	10	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	9	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	14	],"X":	682	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	11	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	10	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	15	],"X":	960	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	12	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	11	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	19	],"X":	1276	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	8	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	7, 67	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	12	],"X":	153	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	9	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	8, 65	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	13	],"X":	560	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	10	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	9, 63	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	14	],"X":	682	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	11	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	10, 61	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	15	],"X":	960	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	12	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	11, 59	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	19	],"X":	1276	,"Y":	816	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	13	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	8	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	31	],"X":	161	,"Y":	686	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	14	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	13, 14	],"Rotation":	0	,"RuleIds":[		],"SuccessorEdgeIds":[	20	],"X":	560	,"Y":	686	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	15	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	20	],"Rotation":	330	,"RuleIds":[		],"SuccessorEdgeIds":[	21	],"X":	560	,"Y":	586	,"Transfer":0,"IsRemoteEntryPoint":	false	}
@@ -49,4 +49,11 @@
 {"Id":	49	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	49	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[	50	],"X":	793	,"Y":	177	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	50	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	50	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1238	,"Y":	176	,"Transfer":0,"IsRemoteEntryPoint":	false	}
 {"Id":	51	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	45	],"Rotation":	45	,"RuleIds":[		],"SuccessorEdgeIds":[	57	],"X":	158	,"Y":	323	,"Transfer":0,"IsRemoteEntryPoint":	false	}
-{"Id":	52	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	90	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	245	,"Y":	317	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	52	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	57	],"Rotation":	90	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	245	,"Y":	317	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	53	,"MaxVelocity":	50	,"PredecessorEdgeIds":[		],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	1387	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	true	}
+{"Id":	54	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	58	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	59	],"X":	1293	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	55	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	60	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	61, 62	],"X":	983	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	56	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	62	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	63, 64	],"X":	700	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	57	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	64	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	65, 66	],"X":	579	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	58	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	66	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[	67, 68	],"X":	177	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	false	}
+{"Id":	59	,"MaxVelocity":	50	,"PredecessorEdgeIds":[	68	],"Rotation":	270	,"RuleIds":[		],"SuccessorEdgeIds":[		],"X":	12	,"Y":	831	,"Transfer":0,"IsRemoteEntryPoint":	false	}
