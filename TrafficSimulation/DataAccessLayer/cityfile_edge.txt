@@ -50,9 +50,6 @@
 {"Id":	50	,"StartPositionId":	49	,"EndPositionId":	50	,"Neighbors":null,"CurveLength":	445	}
 {"Id":	51	,"StartPositionId":	41	,"EndPositionId":	42	,"Neighbors":null,"CurveLength":	164	}
 {"Id":	52	,"StartPositionId":	42	,"EndPositionId":	43	,"Neighbors":null,"CurveLength":	39	}
-{"Id":	53	,"StartPositionId":	99	,"EndPositionId":	99	,"Neighbors":null,"CurveLength":	0	}
-{"Id":	54	,"StartPositionId":	99	,"EndPositionId":	99	,"Neighbors":null,"CurveLength":	0	}
-{"Id":	55	,"StartPositionId":	99	,"EndPositionId":	99	,"Neighbors":null,"CurveLength":	0	}
 {"Id":	56	,"StartPositionId":	13	,"EndPositionId":	51	,"Neighbors":null,"CurveLength":	363	}
 {"Id":	57	,"StartPositionId":	51	,"EndPositionId":	52	,"Neighbors":null,"CurveLength":	87	}
 {"Id":	58	,"StartPositionId":	53	,"EndPositionId":	54	,"Neighbors":null,"CurveLength":	94	}

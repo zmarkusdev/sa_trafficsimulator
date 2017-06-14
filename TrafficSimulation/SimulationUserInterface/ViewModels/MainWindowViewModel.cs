@@ -62,9 +62,6 @@ namespace SimulationUserInterface.ViewModels
         /// </summary>
         private IRuleRepository Signs;
 
-        private IEnumerable<Edge> edges;
-        private IEnumerable<Position> positions;
-
         #endregion
 
 
@@ -96,22 +93,18 @@ namespace SimulationUserInterface.ViewModels
                 Map BackgroundMap = UserInterfaceMap.GetMap();                
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
 
-                /// Load Positions and edges once from the DataBridge
-                edges = Edges.GetAll();
-                positions = Positions.GetAll();
-                
                 /// Configurate and start the update timer for the gui update
                 GuiAgentUpdateTimer.Interval = TimeSpan.FromMilliseconds(1000/60);
                 GuiAgentUpdateTimer.Tick += AgentTimer_Tick;
                 GuiAgentUpdateTimer.Start();
 
                 GuiSignUpdateTimer.Interval = TimeSpan.FromMilliseconds(500);
-                GuiSignUpdateTimer.Tick += SignTimer_Tick;
-                GuiSignUpdateTimer.Start();
+                GuiAgentUpdateTimer.Tick += SignTimer_Tick;
+                GuiAgentUpdateTimer.Start();
 
                 /// Bind the command field to the function
                 ChangeNetView = new Command(() => ChangeNetViewExecute());
-
+                
             }
             catch (Exception ex)
             {
@@ -156,23 +149,30 @@ namespace SimulationUserInterface.ViewModels
         /// <param name="e">not used</param>
         private void AgentTimer_Tick(object sender, EventArgs e)
         {
-            /// Temporary storage of the new calculated image scaling for all User Interface components
-            //double calculatedResizeWidth = 1;
-            //double calculatedResizeHeight = 1;
 
             try
             {
                 /// Load Agents
                 IEnumerable<Agent> agents = Agents.GetAllAgents();
+                IEnumerable<Edge> edges = Edges.GetAll();
+                IEnumerable<Position> positions = Positions.GetAll();
                 
-                /// Calculate the resize factor of the GUI for scaling
-                //UserInterfaceModel.GetImageFactor(out calculatedResizeWidth, out calculatedResizeHeight);
-
-
                 /// Draw the Agent images on the screen
-                //UserInterfaceAgents.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
                 UserInterfaceAgents.DrawAgents(positions, edges, agents);
-              
+
+                /// Load signs
+                IEnumerable<Rule> signs = Signs.GetAllRules();
+
+                /// Additionally also draw the positions and lines in this timer
+                if (UserInterfaceModel.NetEnabled)
+                {
+                    /// Draw the Position points on the screen
+                    UserInterfacePositions.DrawPositions(positions);
+
+                    /// Draw the Edge lines on the screen
+                    UserInterfaceEdges.DrawEdges(positions, edges);
+                }
+
             }
             catch (Exception ex)
             {
@@ -182,39 +182,21 @@ namespace SimulationUserInterface.ViewModels
 
         private void SignTimer_Tick(object sender, EventArgs e)
         {
-            /// Temporary storage of the new calculated image scaling for all User Interface components
-            double calculatedResizeWidth = 1;
-            double calculatedResizeHeight = 1;
 
             try
             {
                 /// Load signs
                 IEnumerable<Rule> signs = Signs.GetAllRules();
 
-                /// Calculate the resize factor of the GUI for scaling
-                UserInterfaceModel.GetImageFactor(out calculatedResizeWidth, out calculatedResizeHeight);
-
                 /// Draw the Signs on the screen (the dynamic but also the static)
-                //UserInterfaceSigns.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
                 UserInterfaceSigns.DrawSigns(signs);
-
-                /// Additionally also draw the positions and lines in this timer
-                if (UserInterfaceModel.NetEnabled)
-                {
-                    /// Draw the Position points on the screen
-                    UserInterfacePositions.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
-                    UserInterfacePositions.DrawPositions(positions);
-
-                    /// Draw the Edge lines on the screen
-                    UserInterfaceEdges.SetScaleFactors(calculatedResizeWidth, calculatedResizeHeight);
-                    UserInterfaceEdges.DrawEdges(positions, edges);
-                }
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+            
         }
 
 
