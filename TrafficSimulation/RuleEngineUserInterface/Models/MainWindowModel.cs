@@ -6,6 +6,9 @@ namespace RuleEngineUserInterface.Models
     {
 
         private int _WindowHeight;
+        /// <summary>
+        /// Height of the main window
+        /// </summary>
         public int WindowHeight
         {
             get { return _WindowHeight; }
@@ -20,6 +23,9 @@ namespace RuleEngineUserInterface.Models
         }
 
         private int _WindowWidth;
+        /// <summary>
+        /// Width of the main window
+        /// </summary>
         public int WindowWidth
         {
             get { return _WindowWidth; }
@@ -33,10 +39,11 @@ namespace RuleEngineUserInterface.Models
             }
         }
 
+
         public MainWindowModel()
         {
-            WindowHeight = 400;
-            WindowWidth = 400;
+            WindowHeight = 350;
+            WindowWidth = 700;
         }
     }
 }

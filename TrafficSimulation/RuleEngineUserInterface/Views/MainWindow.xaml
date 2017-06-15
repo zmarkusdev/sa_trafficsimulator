@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:RuleEngineUserInterface.ViewModels"
+        xmlns:views="clr-namespace:RuleEngineUserInterface.Views"
         xmlns:local="clr-namespace:RuleEngineUserInterface"
         mc:Ignorable="d" Title="Dynamic Rule Setting" 
         Height="{Binding Path=UserInterfaceModel.WindowHeight, Mode=TwoWay}" 
@@ -14,18 +15,36 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
+        <!-- Header Text -->
         <TextBlock Text="Change configuration of dynamic rules" 
-                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                   HorizontalAlignment="Center"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Close"
+                   Grid.Row="0" HorizontalAlignment="Center"
+                   Style="{StaticResource MaterialDesignDisplay1TextBlock}"/>
+        <TextBlock Text="Crossways will update automatically. Allowed time (3 &lt; t &lt; 60) in seconds" Grid.Row="1" HorizontalAlignment="Center" />
+
+        <!-- Dynamic visualization of the single crossways -->
+        <StackPanel Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding Path=CrosswayRepository.Crossways}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <views:CrosswayView />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+      
+        <!-- Exit button -->
+      <Button Grid.Row="3" Content="Close"
                 Command="{Binding Path=ExitCommand}"/>
     </Grid>
 </Window>

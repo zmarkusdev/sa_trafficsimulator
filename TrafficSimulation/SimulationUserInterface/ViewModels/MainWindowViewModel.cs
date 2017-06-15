@@ -94,11 +94,11 @@ namespace SimulationUserInterface.ViewModels
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
 
                 /// Configurate and start the update timer for the gui update
-                GuiAgentUpdateTimer.Interval = TimeSpan.FromMilliseconds(1000/60);
+                GuiAgentUpdateTimer.Interval = TimeSpan.FromMilliseconds(10);
                 GuiAgentUpdateTimer.Tick += AgentTimer_Tick;
                 GuiAgentUpdateTimer.Start();
 
-                GuiSignUpdateTimer.Interval = TimeSpan.FromMilliseconds(500);
+                GuiSignUpdateTimer.Interval = TimeSpan.FromMilliseconds(100);
                 GuiAgentUpdateTimer.Tick += SignTimer_Tick;
                 GuiAgentUpdateTimer.Start();
 

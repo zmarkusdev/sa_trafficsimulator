@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 using Technics;
 
@@ -12,6 +10,9 @@ namespace RuleEngineUserInterface.Models
     public class Crossway : Model
     {
         private int _CrosswayId;
+        /// <summary>
+        /// Id of the crossway
+        /// </summary>
         public int CrosswayId
         {
             get { return _CrosswayId; }
@@ -26,6 +27,9 @@ namespace RuleEngineUserInterface.Models
         }
 
         private ObservableCollection<CrosswayLine> _CrosswayLines;
+        /// <summary>
+        /// Traffic lines that are combined in one crossway
+        /// </summary>
         public ObservableCollection<CrosswayLine> CrosswayLines
         {
             get { return _CrosswayLines; }
@@ -39,9 +43,16 @@ namespace RuleEngineUserInterface.Models
             }
         }
 
+        /// <summary>
+        /// Step variable that signals the current active line
+        /// </summary>
         private int CurrentCrosswayLine;
 
+        /// <summary>
+        /// Timer for updating the crossway (switch the phases)
+        /// </summary>
         private DispatcherTimer CrosswayTimer;
+
 
         public Crossway ()
         {
@@ -52,13 +63,19 @@ namespace RuleEngineUserInterface.Models
         }
 
      
-
+        /// <summary>
+        /// Saves the lines and rules of a crossway and starts the timer for updating it 
+        /// </summary>
+        /// <param name="id">Id of the crossway</param>
+        /// <param name="lines">Single directions of the crossway</param>
+        /// <param name="rules">List of all dynamic rules (traffic lights)</param>
         public void SaveCrossway(int id, List<Datamodel.CrosswayDirection> lines, IEnumerable<Datamodel.Rule> rules)
         {
             CrosswayId = id;
 
             foreach (Datamodel.CrosswayDirection singleLine in lines)
             {
+                /// Add the rules of a crossway line into a crosswayline object
                 List<Datamodel.Rule> dependingRules = new List<Datamodel.Rule>();
                 foreach (int singleRuleId in singleLine.concurrentGreen)
                 {
@@ -74,6 +91,11 @@ namespace RuleEngineUserInterface.Models
         }
 
 
+        /// <summary>
+        /// Timer update which actualizes the crossways (switch from red to green or vice versa)
+        /// </summary>
+        /// <param name="sender">not used</param>
+        /// <param name="e">not used</param>
         private void CrosswayTimer_TimeElapsed(object sender, EventArgs e)
         {
             try

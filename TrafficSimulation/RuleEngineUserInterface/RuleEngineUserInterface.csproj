@@ -73,6 +73,14 @@
     <Compile Include="Models\MainWindowModel.cs" />
     <Compile Include="Technics\Command.cs" />
     <Compile Include="Technics\Model.cs" />
+    <Page Include="Views\CrosswayLineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CrosswayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,7 +89,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Technics\ValidationRules\IntegerValidationRule.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\CrosswayLineView.xaml.cs">
+      <DependentUpon>CrosswayLineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CrosswayView.xaml.cs">
+      <DependentUpon>CrosswayView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

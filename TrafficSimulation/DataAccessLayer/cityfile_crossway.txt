@@ -1,1 +1,2 @@
-{"Id":1,"greenphase":[{"hightime":25,"concurrentGreen":[4]},{"hightime":25,"concurrentGreen":[2,3]}]}
+{"Id":1,"greenphase":[{"hightime":25,"concurrentGreen":[3,4]},{"hightime":15,"concurrentGreen":[5,6]}]}
+{"Id":2,"greenphase":[{"hightime":15,"concurrentGreen":[2]}]}
