@@ -75,7 +75,7 @@ namespace AgentSpawner
                         if(rnd.Next(0, 100) <= configuration.SpawnPropability)
                         {
                             // Roll a start edge
-                            var startEdge = startEdges[rnd.Next(0, startEdges.Count() - 1)];
+                            var startEdge = startEdges[rnd.Next(startEdges.Count())];
 
                             // Agent should be spawned, prepare new agent
                             var agent = new SimAgent
