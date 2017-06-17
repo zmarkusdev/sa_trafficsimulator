@@ -148,11 +148,12 @@ namespace AgentSim
                         int edgeLength = edge.CurveLength;
                         int agentCurrentRunLength = agent.RunLength;
                         int restLength = edgeLength - agentCurrentRunLength;
-                        Console.WriteLine("restLength: " + restLength + ", brakingDistance: " + brakingDistance);
-                        if(restLength <= brakingDistance)
+
+                        Console.WriteLine("# " + agent.Id + " restLength: " + restLength + ", brakingDistance: " + brakingDistance);
+                        if (restLength <= brakingDistance)
                         {
                             targetVelocity = 0;
-                            Console.WriteLine("STOPPING");
+                            Console.WriteLine("# " + agent.Id + " STOPPING");
                         }
                         break;
                     case RuleType.Stopp:
@@ -209,6 +210,7 @@ namespace AgentSim
             // ############# END: Safety Distance to other vehicles #############
 
             // Accelerate
+            //Console.WriteLine("# " + agent.Id + " targetVelocity: " + targetVelocity);
             if (targetVelocity > agent.CurrentVelocityExact)
             {
                 agent.CurrentAccelerationExact = agent.Acceleration;
