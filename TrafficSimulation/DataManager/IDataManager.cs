@@ -102,7 +102,7 @@ namespace DataManager
         /// <summary>
         /// Returns an edge for an ID
         /// </summary>
-        /// <param name="edge">The edge you want to know return</param>
+        /// <param name="edgeId">The edge you want to know return</param>
         /// <returns>Edge object</returns>
         Edge GetEdgeForId(int edgeId);
 
@@ -111,7 +111,7 @@ namespace DataManager
         /// </summary>
         /// <param name="edgeId">Edge ID we want the static rule for</param>
         /// <returns>Static Rule for the given edgeId</returns>
-        Rule GetStaticRuleForEdgeId(int edgeId);
+        IReadOnlyList<Rule> GetStaticRulesForEdgeId(int edgeId);
 
     }
 }

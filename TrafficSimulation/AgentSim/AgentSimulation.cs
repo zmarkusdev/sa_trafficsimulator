@@ -128,24 +128,59 @@ namespace AgentSim
         {
             agent.CurrentAccelerationExact = agent.Acceleration; // Default: fully accelerate
             const double SAFE_DISTANCE = 10.0; // meters
-            const double MAX_SPEED = 36.11; // Max allowed speed in Austria is 130 km/h = 36.11 m/s
+            const double MAX_SPEED = 200; // Max allowed speed
             double targetVelocity = MAX_SPEED;
+            double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration) + agent.VehicleLength + SAFE_DISTANCE;
 
-            // ############# START: Check Speed Limit #############
-            Rule staticRule = dataManager_.GetStaticRuleForEdgeId(agent.EdgeId);
-            if(staticRule != null && staticRule.MaxVelocity > 0 && staticRule.MaxVelocity <= MAX_SPEED)
+            // ############# START: Check Static Rules #############
+            IReadOnlyList<Rule> staticRulesForCurrentEdge = dataManager_.GetStaticRulesForEdgeId(agent.EdgeId);
+            foreach(Rule rule in staticRulesForCurrentEdge)
             {
-                targetVelocity = staticRule.MaxVelocity;
+                switch(rule.RuleType)
+                {
+                    case RuleType.Geschwindigkeit:
+                        // Get maximum allowed speed
+                        targetVelocity = rule.MaxVelocity > MAX_SPEED ? MAX_SPEED : rule.MaxVelocity;
+                        break;
+                    case RuleType.Vorrang:
+                        // Get edge length
+                        Edge edge = dataManager_.GetEdgeForId(agent.EdgeId);
+                        int edgeLength = edge.CurveLength;
+                        int agentCurrentRunLength = agent.RunLength;
+                        int restLength = edgeLength - agentCurrentRunLength;
+                        Console.WriteLine("restLength: " + restLength + ", brakingDistance: " + brakingDistance);
+                        if(restLength <= brakingDistance)
+                        {
+                            targetVelocity = 0;
+                            Console.WriteLine("STOPPING");
+                        }
+                        break;
+                    case RuleType.Stopp:
+                        Console.WriteLine("TODO: RuleType.Ampel");
+                        break;
+                    case RuleType.Ampel:
+                        Console.WriteLine("TODO: RuleType.Ampel");
+                        break;
+                }
             }
             // ############# END: Check Speed Limit #############
 
 
-            // ############# START: Safety Distance to other vehicles #############
-            // Calculate braking distance for the current velocity + add the safe distance
-            double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration);
-            brakingDistance += (SAFE_DISTANCE + agent.VehicleLength);
-            Console.WriteLine("Speed: " + agent.CurrentVelocityExact + ", Decel: " + agent.Deceleration + ", Length: " + agent.VehicleLength + "BrakingDistance: " + brakingDistance);
+            // ############# START: Static Rule Checking #############
+            // Get all edges we have to check for other vehicles
+            //int[]edgesToCheck = staticRule.CheckPositionIds.ToArray<int>();
+            //Console.WriteLine("edgesToCheck: " + edgesToCheck.Count());
+            //foreach(int checkEdgeId in edgesToCheck)
+            //{
+                // Check, if a vehicle is on the edge
+                //targetVelocity = 0;
+                //IReadOnlyList<SimAgent> enemyAgents = dataManager_.GetAgentsInRange(checkEdgeId, 0, 50);
+                //if
+            //}
+            // ############# END: Static Rule Checking #############
 
+
+            // ############# START: Safety Distance to other vehicles #############
             // Check, if there's an obstacle in the braking distance
             IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
             foreach(SimAgent otherAgent in agentsInBrakingDistance)
@@ -188,10 +223,10 @@ namespace AgentSim
 
 
         /// <summary>
-        /// Returns the braking distance in meters.
+        /// Returns the braking distance in pixel.
         /// </summary>
-        /// <param name="velocity">The current velocity in m/s</param>
-        /// <param name="deceleration">Deceleration in m^2/s</param>
+        /// <param name="velocity">The current velocity in pixel/s</param>
+        /// <param name="deceleration">Deceleration in pixel^2/s</param>
         /// <returns></returns>
         private double getBrakingDistance(double velocity, double deceleration)
         {

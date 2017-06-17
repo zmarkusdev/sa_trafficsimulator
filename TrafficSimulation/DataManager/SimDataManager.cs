@@ -360,9 +360,9 @@ namespace DataManager
         /// </summary>
         /// <param name="edgeId">Edge ID we want the static rule for</param>
         /// <returns>Static Rule for the given edgeId</returns>
-        public Rule GetStaticRuleForEdgeId(int edgeId)
+        public IReadOnlyList<Rule> GetStaticRulesForEdgeId(int edgeId)
         {
-            return staticRules_.Find(p => p.PositionId == edgeId);
+            return staticRules_.FindAll(p => p.PositionId == edgeId);
         }
 
     }
