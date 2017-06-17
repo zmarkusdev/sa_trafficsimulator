@@ -106,5 +106,12 @@ namespace DataManager
         /// <returns>Edge object</returns>
         Edge GetEdgeForId(int edgeId);
 
+        /// <summary>
+        /// Returns the static rule for an edgeId
+        /// </summary>
+        /// <param name="edgeId">Edge ID we want the static rule for</param>
+        /// <returns>Static Rule for the given edgeId</returns>
+        Rule GetStaticRuleForEdgeId(int edgeId);
+
     }
 }

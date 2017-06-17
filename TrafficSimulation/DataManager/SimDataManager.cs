@@ -355,5 +355,15 @@ namespace DataManager
             return edges_.Find(p => p.Id == edgeId);
         }
 
+        /// <summary>
+        /// Returns the static rule for an edgeId
+        /// </summary>
+        /// <param name="edgeId">Edge ID we want the static rule for</param>
+        /// <returns>Static Rule for the given edgeId</returns>
+        public Rule GetStaticRuleForEdgeId(int edgeId)
+        {
+            return staticRules_.Find(p => p.PositionId == edgeId);
+        }
+
     }
 }

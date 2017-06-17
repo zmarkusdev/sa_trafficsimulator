@@ -1,5 +1,6 @@
 ﻿using DataManager;
 using DataManager.MappingModels;
+using Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,12 +126,16 @@ namespace AgentSim
         /// <param name="agent">Agent for whom you want to recalculate the behaviour</param>
         private void updateBehaviour(SimAgent agent)
         {
+            agent.CurrentAccelerationExact = agent.Acceleration; // Default: fully accelerate
             double SAFE_DISTANCE = 10; // meters (TODO: calculate dynamically according to the current velocity)
             double targetVelocity = Double.MaxValue;
 
             // ############# START: Check Speed Limit #############
-            int currentEdgeId = agent.EdgeId;
-            agent.CurrentAccelerationExact = agent.Acceleration;
+            Rule staticRule = dataManager_.GetStaticRuleForEdgeId(agent.EdgeId);
+            if(staticRule != null && staticRule.MaxVelocity > 0)
+            {
+                targetVelocity = staticRule.MaxVelocity;
+            }
             // ############# END: Check Speed Limit #############
 
 
