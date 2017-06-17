@@ -149,11 +149,11 @@ namespace AgentSim
                         int agentCurrentRunLength = agent.RunLength;
                         int restLength = edgeLength - agentCurrentRunLength;
 
-                        Console.WriteLine("# " + agent.Id + " restLength: " + restLength + ", brakingDistance: " + brakingDistance);
+                        //Console.WriteLine("# " + agent.Id + " restLength: " + restLength + ", brakingDistance: " + brakingDistance);
                         if (restLength <= brakingDistance)
                         {
                             targetVelocity = 0;
-                            Console.WriteLine("# " + agent.Id + " STOPPING");
+                            //Console.WriteLine("# " + agent.Id + " STOPPING");
                         }
                         break;
                     case RuleType.Stopp:

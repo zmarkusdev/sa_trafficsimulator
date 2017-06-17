@@ -365,5 +365,17 @@ namespace DataManager
             return staticRules_.FindAll(p => p.PositionId == edgeId);
         }
 
+        /// <summary>
+        /// Returns rules (static + dynamic) for an edgeId
+        /// </summary>
+        /// <param name="edgeId">Edge ID we want the rules for</param>
+        /// <returns>Rules for the given edgeId</returns>
+        IReadOnlyList<Rule> IDataManager.GetAllRulesForEdgeId(int edgeId)
+        {
+            List<Rule> staticRules = staticRules_.FindAll(p => p.PositionId == edgeId);
+            List<Rule> dynamicRules = dynamicRules_.FindAll(p => p.PositionId == edgeId);
+            return staticRules.Concat(dynamicRules).ToList();
+        }
+
     }
 }

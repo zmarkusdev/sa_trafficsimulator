@@ -113,5 +113,12 @@ namespace DataManager
         /// <returns>Static Rule for the given edgeId</returns>
         IReadOnlyList<Rule> GetStaticRulesForEdgeId(int edgeId);
 
+        /// <summary>
+        /// Returns rules (static + dynamic) for an edgeId
+        /// </summary>
+        /// <param name="edgeId">Edge ID we want the rules for</param>
+        /// <returns>Rules for the given edgeId</returns>
+        IReadOnlyList<Rule> GetAllRulesForEdgeId(int edgeId);
+
     }
 }
