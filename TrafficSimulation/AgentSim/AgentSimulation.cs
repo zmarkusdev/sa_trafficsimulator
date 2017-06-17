@@ -127,12 +127,13 @@ namespace AgentSim
         private void updateBehaviour(SimAgent agent)
         {
             agent.CurrentAccelerationExact = agent.Acceleration; // Default: fully accelerate
-            double SAFE_DISTANCE = 10; // meters (TODO: calculate dynamically according to the current velocity)
-            double targetVelocity = Double.MaxValue;
+            const double SAFE_DISTANCE = 10.0; // meters
+            const double MAX_SPEED = 36.11; // Max allowed speed in Austria is 130 km/h = 36.11 m/s
+            double targetVelocity = MAX_SPEED;
 
             // ############# START: Check Speed Limit #############
             Rule staticRule = dataManager_.GetStaticRuleForEdgeId(agent.EdgeId);
-            if(staticRule != null && staticRule.MaxVelocity > 0)
+            if(staticRule != null && staticRule.MaxVelocity > 0 && staticRule.MaxVelocity <= MAX_SPEED)
             {
                 targetVelocity = staticRule.MaxVelocity;
             }
@@ -142,7 +143,8 @@ namespace AgentSim
             // ############# START: Safety Distance to other vehicles #############
             // Calculate braking distance for the current velocity + add the safe distance
             double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration);
-            brakingDistance += SAFE_DISTANCE + agent.VehicleLength;
+            brakingDistance += (SAFE_DISTANCE + agent.VehicleLength);
+            Console.WriteLine("Speed: " + agent.CurrentVelocityExact + ", Decel: " + agent.Deceleration + ", Length: " + agent.VehicleLength + "BrakingDistance: " + brakingDistance);
 
             // Check, if there's an obstacle in the braking distance
             IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
@@ -167,13 +169,12 @@ namespace AgentSim
                 if (otherAgent.CurrentVelocityExact < targetVelocity)
                 {
                     targetVelocity = otherAgent.CurrentVelocityExact;
-                        
                 }
             }
             // ############# END: Safety Distance to other vehicles #############
 
             // Accelerate
-            if (targetVelocity > agent.CurrentAccelerationExact)
+            if (targetVelocity > agent.CurrentVelocityExact)
             {
                 agent.CurrentAccelerationExact = agent.Acceleration;
             }
