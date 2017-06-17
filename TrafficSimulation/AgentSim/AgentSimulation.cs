@@ -76,6 +76,7 @@ namespace AgentSim
                 updateBehaviour(curAgent);
 
                 // Update the agent
+                Console.WriteLine("agent " + curAgent.Id + " acc: " + curAgent.CurrentAccelerationExact);
                 dataManager_.UpdateAgent(curAgent);
             }
         }
@@ -125,7 +126,12 @@ namespace AgentSim
         /// <param name="agent">Agent for whom you want to recalculate the behaviour</param>
         private void updateBehaviour(SimAgent agent)
         {
-            double SAFE_DISTANCE = 5; // meters (TODO: calculate dynamically according to the current velocity)
+            // ############# START: Check Speed Limit #############
+            //agent.
+            agent.CurrentAccelerationExact = agent.Acceleration;
+
+            // ############# START: Safety Distance to other vehicles #############
+            double SAFE_DISTANCE = 10; // meters (TODO: calculate dynamically according to the current velocity)
 
             // Calculate braking distance for the current velocity + add the safe distance
             double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration);
@@ -133,34 +139,40 @@ namespace AgentSim
 
             // Check, if there's an obstacle in the braking distance
             IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
-            if(agentsInBrakingDistance.Count > 0)
+
+            if (agentsInBrakingDistance.Count > 0)
             {
-                double targetVelocity = agentsInBrakingDistance[0].CurrentVelocityExact;
+                double targetVelocity = Double.MaxValue;
                 foreach(SimAgent otherAgent in agentsInBrakingDistance)
                 {
                     // Get delta velocity
                     double deltaV = agent.CurrentVelocityExact - otherAgent.CurrentVelocityExact;
 
                     // If the other agent is faster than we are, we ignore him
-                    if(deltaV <= 0)
+                    if (deltaV <= 0)
+                    {
                         continue;
+                    }
 
                     // Our target velocity is the one of the other agent
                     if (otherAgent.CurrentVelocityExact < targetVelocity)
+                    {
                         targetVelocity = otherAgent.CurrentVelocityExact;
+                        
+                    }
+
+                    // Break
+                    if(targetVelocity != Double.MaxValue)
+                    {
+                        agent.CurrentAccelerationExact = -agent.Deceleration;
+                    }
                 }
-
-                // TODO: continue here
-
-                // Brake! (TODO: No full brake; Brake only as much as needed;)
-                agent.CurrentAccelerationExact = -agent.Deceleration;
-                //Console.WriteLine("BRAKE");
             } else
             {
                 // Go!
                 agent.CurrentAccelerationExact = agent.Acceleration;
-                //Console.WriteLine("GO");
             }
+            // ############# END: Safety Distance to other vehicles #############
 
             //Console.WriteLine("Updated behaviour of agent #" + agent.Id);
         }

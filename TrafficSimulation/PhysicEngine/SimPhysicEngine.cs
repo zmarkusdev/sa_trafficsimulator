@@ -178,9 +178,13 @@ namespace PhysicEngine
 
         void CheckValidAccelerations(SimAgent curAgent)
         {
-            // Check valid accelerations
-            curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact < curAgent.Deceleration ? curAgent.Deceleration : curAgent.CurrentAccelerationExact;
-            curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact > curAgent.Acceleration ? curAgent.Acceleration : curAgent.CurrentAccelerationExact;
+            if(curAgent.CurrentAccelerationExact < 0) // Max Deccelerate
+            {
+                curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact < -curAgent.Deceleration ? -curAgent.Deceleration : curAgent.CurrentAccelerationExact;
+            } else // Max Accelerate
+            {
+                curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact > curAgent.Acceleration ? curAgent.Acceleration : curAgent.CurrentAccelerationExact;
+            }
         }
 
         void CheckValidVelocities(SimAgent curAgent)
