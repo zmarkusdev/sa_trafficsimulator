@@ -19,5 +19,7 @@ namespace Datamodel
         public int SourceEdgeId { get; set; }
 
         public int DestinationEdgeId { get; set; }
+
+        public int DestinationRunLength { get; set; }
     }
 }

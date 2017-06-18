@@ -219,6 +219,9 @@ namespace PhysicEngine
                 {
                     curEdge = curAgent.Route.Dequeue();
                     curAgent.EdgeId = curEdge.Id;
+
+                    // Check if transition from dynamic edge to normal edge, if true, 
+                    // delete dynamic edge and set run length to target run length
                 }
                 else
                 {                    

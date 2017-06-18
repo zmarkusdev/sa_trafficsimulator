@@ -71,7 +71,7 @@ namespace AgentSim
                 //Console.WriteLine("Calculating behaviour of agent #" + agent.Id);
 
                 // Check, if the agent has a defined route, otherwise calculate it.
-                calculateRouteIfNeccessary(curAgent);
+                calculateRouteIfNeccessary(curAgent);                
 
                 // Update the behaviour (acceleration etc.)
                 updateBehaviour(curAgent);
@@ -81,6 +81,35 @@ namespace AgentSim
             }
         }
 
+
+        private void overtake(SimAgent agent)
+        {
+            // Blocking agent before me? isActive == false
+
+            // Neighbour Edge vorhanden?
+
+            // Gegenverkehr auf dieser Edge?
+
+            // Dynamic Edge anlegen (links abbiegen, überholen, rechts abbiegen)
+
+            /*
+               |
+              /|
+             | |
+              \|
+               |
+             */
+
+            // X/Y Koordinate ausrechnen wo sich auto gerade befindet
+            // X/Y Steht in der Position: d.h. Vektorskalierung von Vektor zwischen Start und Endposition
+            // [X1-X2 Y1-Y2] / Edgelänge * CurrentRunLength (Aktuelle Position)
+            // Vektor der die Neighbour Edge schneidet und im 45° von der aktuellen Edge absteht
+            // Vektor mit Vehicle Length vom blockierenden Fahrzeug erstellen
+            // Vektor der zur ursprünglichen Edge zurückgeht im 45° Winkel 
+            // (Hier die Überholvorgangslänge in das Feld DestinationRunLength schreiben, über Pythagoras berechnen)
+
+            // Aktuelle Route des Agenten löschen
+        }
 
         /// <summary>
         /// Checks, if a route exists for the passed agent.
