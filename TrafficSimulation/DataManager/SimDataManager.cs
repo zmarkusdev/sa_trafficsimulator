@@ -377,5 +377,19 @@ namespace DataManager
             return staticRules.Concat(dynamicRules).ToList();
         }
 
+        public IReadOnlyList<SimAgent> GetAgentsInRangeReverse(int edgeId, int startRunLength, int range)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateDynamicEdge(DynamicEdge edge)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteDynamicEdge(DynamicEdge edge)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

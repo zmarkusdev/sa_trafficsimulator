@@ -58,6 +58,19 @@ namespace DataManager
         IReadOnlyList<SimAgent> GetAgentsInRange(int edgeId, int startRunLength, int range);
 
         /// <summary>
+        /// Get a list of agents that are in the given range on the edge but in reverse order (use case is overtake)
+        /// </summary>
+        /// <param name="edgeId"></param>
+        /// <param name="startRunLength"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
+        IReadOnlyList<SimAgent> GetAgentsInRangeReverse(int edgeId, int startRunLength, int range);
+
+        void CreateDynamicEdge(DynamicEdge edge);
+
+        void DeleteDynamicEdge(DynamicEdge edge);
+
+        /// <summary>
         /// All currently active agents in the simulation
         /// </summary>
         IReadOnlyList<SimAgent> Agents { get; }
