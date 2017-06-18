@@ -156,8 +156,8 @@ namespace AgentSim
         private void updateBehaviour(SimAgent agent)
         {
             agent.CurrentAccelerationExact = agent.Acceleration; // Default: fully accelerate
-            const double SAFE_DISTANCE = 10.0; // meters
-            const double MAX_SPEED = 200; // Max allowed speed
+            const double SAFE_DISTANCE = 15.0; // pixel
+            const double MAX_SPEED = 500; // Max allowed speed
             double targetVelocity = MAX_SPEED;
             double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration) + agent.VehicleLength + SAFE_DISTANCE;
 
