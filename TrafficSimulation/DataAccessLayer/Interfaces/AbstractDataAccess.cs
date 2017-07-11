@@ -23,16 +23,29 @@ namespace DataAccessLayer
         private string datafileprefix = "cityfile_";
         private string datafileextension = ".txt";
 
-
+        /// <summary>
+        /// Creates unique id.
+        /// </summary>
+        /// <returns>Unique id</returns>
         public int getuniqueId()
         {
             return uniqueId++;
         }
+
+        /// <summary>
+        /// Initializes the DataAccess.
+        /// </summary>
         public virtual void Init()
         {
             liste = new ConcurrentDictionary<int, T>();
             uniqueId = 0;
         }
+
+        /// <summary>
+        /// Creates new entity.
+        /// </summary>
+        /// <param name="objekt">Entity to create</param>
+        /// <returns>Created entity</returns>
         public virtual T Create(T objekt)
         {
             int id = objekt.Id;
@@ -45,28 +58,50 @@ namespace DataAccessLayer
             return objekt;
         }
 
+        /// <summary>
+        /// Updates an entity.
+        /// </summary>
+        /// <param name="objekt">Entity to update</param>
         public virtual void Update(T objekt)
         {
             // Create is called here, because createorupdate is handled in that method
             Create(objekt);
         }
 
+        /// <summary>
+        /// Deletes the given entity.
+        /// </summary>
+        /// <param name="objekt">Entity to delete</param>
         public virtual void Delete(T objekt)
         {
             int id = objekt.Id;
             liste.TryRemove(id, out objekt);
         }
 
+        /// <summary>
+        /// Deserialize an entity.
+        /// </summary>
+        /// <param name="serialized">Serialized entity</param>
+        /// <returns>Concrete entity</returns>
         public virtual T deserializefromString(string serialized)
         {
             return new JavaScriptSerializer().Deserialize<T>(serialized);
         }
 
+        /// <summary>
+        /// Serializes an entity
+        /// </summary>
+        /// <param name="objekt">Entity to serialize</param>
+        /// <returns>Serialized entity</returns>
         public string serialize2String(T objekt)
         {
             return new JavaScriptSerializer().Serialize(objekt);
         }
 
+        /// <summary>
+        /// Loads object from file.
+        /// </summary>
+        /// <param name="filename">Name of specific file</param>
         public void LoadfromFile(string filename)
         {
             string line = "";
@@ -97,6 +132,10 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Writes objects to file.
+        /// </summary>
+        /// <param name="filename">File name of responsible file</param>
         public virtual void SavetoFile(string filename)
         {
             try
@@ -114,6 +153,11 @@ namespace DataAccessLayer
             }
         }
 
+        /// <summary>
+        /// Searches for an object in list.
+        /// </summary>
+        /// <param name="Id">Id to search for</param>
+        /// <returns>Object or null</returns>
         public virtual T ReadbyId(int Id)
         {
             T result;
@@ -121,6 +165,10 @@ namespace DataAccessLayer
             return result;
         }
 
+        /// <summary>
+        /// Reads all from file.
+        /// </summary>
+        /// <returns>List of objects or null</returns>
         public virtual IEnumerable<T> ReadAll()
         {
             return liste.Select(o => o.Value);
