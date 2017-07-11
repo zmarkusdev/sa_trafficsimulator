@@ -377,16 +377,70 @@ namespace DataManager
             return staticRules.Concat(dynamicRules).ToList();
         }
 
+        /// <summary>
+        /// Check edge and predecessor edges for possible agents in the given range, returns list
+        /// of agents in the range.
+        /// Doesn't check for a specific route on edge overflow!
+        /// </summary>
+        /// <param name="edgeId">Id of the starting edge</param>
+        /// <param name="startRunLength">Start point on the edge in meters</param>
+        /// <param name="range">Range in meters to look for agents, predecessor edges should be included if overflowing</param>
+        /// <returns>List of SimAgents contained in the given range</returns>
         public IReadOnlyList<SimAgent> GetAgentsInRangeReverse(int edgeId, int startRunLength, int range)
         {
-            throw new NotImplementedException();
+            lock (this)
+            {
+                // Prepare result list
+                var results = new List<SimAgent>();
+
+                // Get edge by id
+                var edge = edges_.FirstOrDefault(e => e.Id == edgeId);
+                if (edge == null)
+                    return results.AsReadOnly();
+
+                // Check if params are valid
+                if (startRunLength > edge.CurveLength)
+                    throw new ArgumentException("Start run length is longer than the edge length");
+
+                // Get Agents in the given range
+                List<SimAgent> agents;
+                lock (Agents) agents = Agents.Where(a => a.EdgeId == edge.Id && a.RunLength < startRunLength && a.RunLength >= startRunLength - range).ToList();
+
+                // Add selected agents to the result
+                results.AddRange(agents);
+
+                // Check if range exceeds current edge length
+                if(startRunLength - range < 0)
+                {
+                    // Get start point
+                    var startPoint = positions_.FirstOrDefault(p => p.Id == edge.StartPositionId);
+                    if(startPoint != null)
+                    {
+                        foreach(var predecessorEdgeId in startPoint.PredecessorEdgeIds)
+                        {
+                            var predecessorEdge = Edges.FirstOrDefault(e => e.Id == predecessorEdgeId);
+                            results.AddRange(GetAgentsInRangeReverse(predecessorEdge.Id, predecessorEdge.CurveLength, range - startRunLength));
+                        }
+                    }
+                }
+
+                return results;
+            }
         }
 
+        /// <summary>
+        /// Create a new dynamic edge on the map
+        /// </summary>
+        /// <param name="edge">Edge object containing the informations for the new edge.</param>
         public void CreateDynamicEdge(DynamicEdge edge)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Delete edge object from the database
+        /// </summary>
+        /// <param name="edge">Edge object which should be deleted</param>
         public void DeleteDynamicEdge(DynamicEdge edge)
         {
             throw new NotImplementedException();
