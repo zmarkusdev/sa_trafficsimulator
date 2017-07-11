@@ -57,7 +57,7 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
+                // Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
                 XScaleFactor = (xScaleFactor == 0.0) ? 1 : xScaleFactor;
                 YScaleFactor = (yScaleFactor == 0.0) ? 1 : yScaleFactor;
             }
@@ -78,31 +78,30 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Delete all old Agens
+                // Delete all old Agens
                 MapAgents.Clear();
 
                 foreach (Agent singleagent in agents)
                 {
-                    /// Get the edge on which the agent is
+                    // Get the edge on which the agent is
                     Edge agentEdge = edges.Where(var => var.Id == singleagent.EdgeId).ToList().First();
                     
-                    /// Get start and end position
+                    // Get start and end position
                     Position startposition = positions.Where(var => var.Id == agentEdge.StartPositionId).ToList().First();
                     Position endposition = positions.Where(var => var.Id == agentEdge.EndPositionId).ToList().First();
 
-                    /// Calculate position difference of the points
+                    // Calculate position difference of the points
                     int xPositionDifference = endposition.X - startposition.X;
                     int yPositionDifference = endposition.Y - startposition.Y;
 
-                    /// Calculate angle for agent rotation
+                    // Calculate angle for agent rotation
                     double angle = Math.Atan2(yPositionDifference, xPositionDifference);
 
-                    /// Calculate new absolute position of the agent
+                    // Calculate new absolute position of the agent
                     int xAgent = (int)Math.Round(startposition.X + Math.Cos(angle) * singleagent.RunLength);
                     int yAgent = (int)Math.Round(startposition.Y + Math.Sin(angle) * singleagent.RunLength);
 
-                    /// Add a new agent with creted information
-                    //MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), singleagent.Type, singleagent.VehicleWidth, singleagent.VehicleLength, XScaleFactor, YScaleFactor, singleagent.IsActive));
+                    // Add a new agent with creted information
                     MapAgents.Add(new AgentModel(singleagent.Id, xAgent, yAgent, -90 + (angle / Math.PI * 180), singleagent.Type, singleagent.VehicleWidth, singleagent.VehicleLength, singleagent.IsActive));
 
                 }

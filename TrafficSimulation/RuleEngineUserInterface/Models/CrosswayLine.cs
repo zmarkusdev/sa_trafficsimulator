@@ -10,6 +10,10 @@ using Technics;
 
 namespace RuleEngineUserInterface.Models
 {
+
+    /// <summary>
+    /// Crossway Line holdin the Rules of a single direction in a crossway
+    /// </summary>
     public class CrosswayLine : Model
     {
         private int _HighTime;
@@ -40,12 +44,17 @@ namespace RuleEngineUserInterface.Models
         private List<KeyValuePair<int, int>> BackupVelocity { get; set; }
 
 
+        /// <summary>
+        /// Constructor initializing the rules and the backup of the rule velocity
+        /// </summary>
+        /// <param name="highTime"></param>
+        /// <param name="rules"></param>
         public CrosswayLine(int highTime, List<Datamodel.Rule> rules)
         {
             HighTime = highTime;
             Rules = new List<Datamodel.Rule>(rules);
             
-            ///Backup the speed of the rules
+            //Backup the speed of the rules
             BackupVelocity = new List<KeyValuePair<int, int>>();
             Rules.ForEach(var => BackupVelocity.Add(new KeyValuePair<int, int>(var.Id, var.MaxVelocity)));
             
@@ -59,10 +68,10 @@ namespace RuleEngineUserInterface.Models
         {
             foreach (Datamodel.Rule singleRule in Rules)
             {
-                /// Set the max allowed speed
+                // Set the max allowed speed
                 singleRule.MaxVelocity = enabled ? BackupVelocity.Where(var => var.Key == singleRule.Id).ToList().First().Value : 0;
 
-                /// Update the backend
+                // Update the backend
                 RuleRepositoryFactory.CreateRepository().Update(singleRule);
 
                 #if DEBUG

@@ -7,6 +7,10 @@ using Technics;
 
 namespace RuleEngineUserInterface.Models
 {
+
+    /// <summary>
+    /// Class holding the information of a crossway including several lines
+    /// </summary>
     public class Crossway : Model
     {
         private int _CrosswayId;
@@ -54,6 +58,9 @@ namespace RuleEngineUserInterface.Models
         private DispatcherTimer CrosswayTimer;
 
 
+        /// <summary>
+        /// Default Constructor initializing the crosswayline list and the dispatcher timer
+        /// </summary>
         public Crossway ()
         {
             CrosswayLines = new ObservableCollection<CrosswayLine>();
@@ -75,18 +82,18 @@ namespace RuleEngineUserInterface.Models
 
             foreach (Datamodel.CrosswayDirection singleLine in lines)
             {
-                /// Add the rules of a crossway line into a crosswayline object
+                // Add the rules of a crossway line into a crosswayline object
                 List<Datamodel.Rule> dependingRules = new List<Datamodel.Rule>();
                 foreach (int singleRuleId in singleLine.concurrentGreen)
                 {
                     dependingRules.AddRange(rules.Where(var => var.Id == singleRuleId));
                 }
 
-                /// Add the lines into the list
+                // Add the lines into the list
                 CrosswayLines.Add(new CrosswayLine(singleLine.hightime, dependingRules));
             }
 
-            /// Start the timer
+            // Start the timer
             CrosswayTimer.Start();
         }
 
@@ -100,30 +107,30 @@ namespace RuleEngineUserInterface.Models
         {
             try
             {
-                /// Stop the timer for save handling
+                // Stop the timer for save handling
                 CrosswayTimer.Stop();
 
                 if (CrosswayLines.Count > 1)
                 {
-                    /// Increase current active crossway line
+                    // Increase current active crossway line
                     CurrentCrosswayLine += 1;
 
-                    /// Catch line overflow
+                    // Catch line overflow
                     if (CurrentCrosswayLine == CrosswayLines.Count)
                     {
                         CurrentCrosswayLine = 0;
                     }
 
-                    /// Update all Crossways
+                    // Update all Crossways
                     for (int i = 0; i < CrosswayLines.Count; i++)
                     {
                         CrosswayLines[i].SetRules((i == CurrentCrosswayLine) ? false : true);
                     }
                     
-                    /// Update the timer interval time
+                    // Update the timer interval time
                     CrosswayTimer.Interval = TimeSpan.FromSeconds(CrosswayLines[CurrentCrosswayLine].HighTime);
                 }
-                /// Special case for only one traffic sign
+                // Special case for only one traffic sign
                 else
                 {
                     if (CurrentCrosswayLine == 1)
@@ -137,11 +144,11 @@ namespace RuleEngineUserInterface.Models
                         CurrentCrosswayLine = 1;
                     }
                     
-                    /// Update the timer interval time
+                    // Update the timer interval time
                     CrosswayTimer.Interval = TimeSpan.FromSeconds(CrosswayLines[0].HighTime);
                 }
 
-                /// Start the timer again 
+                // Start the timer again 
                 CrosswayTimer.Start();
             }
             catch (Exception ex)

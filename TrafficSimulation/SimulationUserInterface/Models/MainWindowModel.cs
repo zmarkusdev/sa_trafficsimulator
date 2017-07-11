@@ -3,6 +3,10 @@ using Technics;
 
 namespace SimulationUserInterface.Models
 {
+
+    /// <summary>
+    /// Window Model holding the connection to the UI
+    /// </summary>
     public class MainWindowModel : Model
     {
 
@@ -144,7 +148,7 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// The base64 stream has to be decoded into a string for the wpf gui
+                // The base64 stream has to be decoded into a string for the wpf gui
                 BackgroundMap = new string (bytestream);
 
                 BackgroundMapWidth = width;
@@ -167,7 +171,7 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                ///Calculate the factors with the information of the map and the window and perform a save 0-division
+                //Calculate the factors with the information of the map and the window and perform a save 0-division
                 WidthFactor = (double)WindowWidth / (((double)BackgroundMapWidth == 0) ? 1.0 : (double)BackgroundMapWidth);
                 HeightFactor = (double)WindowHeight / (((double)BackgroundMapHeight == 0) ? 1.0 : (double)BackgroundMapHeight);
                 
@@ -183,11 +187,12 @@ namespace SimulationUserInterface.Models
         #endregion
 
 
-
+        /// <summary>
+        /// Test command to show a click
+        /// </summary>
         public Command CreatePoint { get; }
         private void CreatePointExecute(object parameter)
-        {
-            
+        {            
             Console.WriteLine("Click");
         }
 

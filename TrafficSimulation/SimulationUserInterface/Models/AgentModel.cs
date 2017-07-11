@@ -5,6 +5,10 @@ using VehicleDeactivatorLibrary;
 
 namespace SimulationUserInterface.Models
 {
+
+    /// <summary>
+    /// Class containing the information fo a Agent including the ability to bind it to the UI
+    /// </summary>
     public class AgentModel : Model
     {
 
@@ -243,7 +247,7 @@ namespace SimulationUserInterface.Models
                 }
             }
 
-            /// Command binding for catching a click on a client
+            // Command binding for catching a click on a client
             AgentClickCommand = new Command(() => AgentClickCommandExecute());
         }
 
@@ -315,7 +319,7 @@ namespace SimulationUserInterface.Models
                 }
             }
 
-            /// Command binding for catching a click on a client
+            // Command binding for catching a click on a client
             AgentClickCommand = new Command(() => AgentClickCommandExecute());
         }
 
@@ -325,6 +329,10 @@ namespace SimulationUserInterface.Models
 
         #region ----- Commands
 
+
+        /// <summary>
+        /// Command that binds the click on a agent to the code
+        /// </summary>
         public Command AgentClickCommand { get; }
         /// <summary>
         /// Command event execute function which sends the clientId to a queue 

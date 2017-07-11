@@ -10,6 +10,10 @@ using Technics;
 
 namespace RuleEngineUserInterface.ViewModels
 {
+
+    /// <summary>
+    /// Main structural class holding the logic and all other objects
+    /// </summary>
     public class MainWindowViewModel
     {
         /// <summary>
@@ -24,23 +28,30 @@ namespace RuleEngineUserInterface.ViewModels
         public CrosswayRepository CrosswayRepository { get; set; }
 
 
+        /// <summary>
+        /// Default constructor initializing the crossway repository and the window content
+        /// </summary>
         public MainWindowViewModel()
         {
-            /// Load GUI Variables
+            // Load GUI Variables
             UserInterfaceModel = new MainWindowModel();
             
-            /// Load Crossway
+            // Load Crossway
             CrosswayRepository = new CrosswayRepository();
             
-            /// Save the crossways and rules in the local repository
+            // Save the crossways and rules in the local repository
             CrosswayRepository.SaveCrossways(CrosswayRepositoryFactory.CreateRepository().GetAll(), 
                                              RuleRepositoryFactory.CreateRepository().GetDynamicRules());
 
 
-            /// Initialize commands
+            // Initialize commands
             ExitCommand = new Command(() => ExitCommandExecute());
         }
 
+
+        /// <summary>
+        /// Command for program exit
+        /// </summary>
         public Command ExitCommand { get; }
         /// <summary>
         /// ExitCommand Function that is called if the ExitCommand is executed

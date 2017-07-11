@@ -5,10 +5,14 @@ using System.Windows.Media.Imaging;
 
 namespace SimulationUserInterface.Technics
 {
+
+    /// <summary>
+    /// Converts an Image
+    /// </summary>
     public class ImageConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a Imagpath ina XAML usable format for Image tag
+        /// Converts a Imagpath in a XAML usable format for Image tag
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -21,13 +25,13 @@ namespace SimulationUserInterface.Technics
             {
                 string s = value as string;
 
-                /// Security check
+                // Security check
                 if (s == null)
                 {
                     return new BitmapImage();
                 }
 
-                /// Return the new image created out of the path
+                // Return the new image created out of the path
                 return new BitmapImage(new Uri(s));
             }
             catch

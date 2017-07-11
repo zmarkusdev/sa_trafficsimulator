@@ -5,6 +5,9 @@ using Technics;
 
 namespace RuleEngineUserInterface.Models
 {
+    /// <summary>
+    /// Crossway Repository holding information of several crossways
+    /// </summary>
     public class CrosswayRepository : Model
     {
 
@@ -26,6 +29,9 @@ namespace RuleEngineUserInterface.Models
         }
 
 
+        /// <summary>
+        /// Default constructor initializing the crossway list
+        /// </summary>
         public CrosswayRepository()
         {
             Crossways = new ObservableCollection<Crossway>();
@@ -42,11 +48,11 @@ namespace RuleEngineUserInterface.Models
             {
                 foreach (Datamodel.Crossway singleCrossway in crossways)
                 {
-                    ///Create a temporary crossway and initialize it
+                    //Create a temporary crossway and initialize it
                     Crossway tempCrossway = new Crossway();
                     tempCrossway.SaveCrossway(singleCrossway.Id, singleCrossway.greenphase, rules);
 
-                    /// Save the temporary crossway in the list
+                    // Save the temporary crossway in the list
                     Crossways.Add(tempCrossway);
                 }
             }

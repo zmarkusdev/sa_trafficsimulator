@@ -20,6 +20,9 @@ namespace RuleEngineUserInterface.Views
     /// </summary>
     public partial class CrosswayLineView : UserControl
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public CrosswayLineView()
         {
             InitializeComponent();

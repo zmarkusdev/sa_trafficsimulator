@@ -9,6 +9,13 @@ namespace RuleEngineUserInterface.Technics.ValidationRules
     /// </summary>
     public class IntegerValidationRule : ValidationRule
     {
+
+        /// <summary>
+        /// Validate if the input is a integer
+        /// </summary>
+        /// <param name="value">input from the UI</param>
+        /// <param name="cultureInfo"></param>
+        /// <returns></returns>
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             try
@@ -17,10 +24,10 @@ namespace RuleEngineUserInterface.Technics.ValidationRules
 
                 int intval = 0;
 
-                /// Try to convert the string to an integer
+                // Try to convert the string to an integer
                 if (int.TryParse(val, out intval))
                 {
-                    /// Check the input if it is an integer
+                    // Check the input if it is an integer
                     if (intval <= 3)
                     {
                         return new ValidationResult(false, "time must be > 3");
@@ -30,7 +37,7 @@ namespace RuleEngineUserInterface.Technics.ValidationRules
                         return new ValidationResult(false, "time must be < 60");
                     }
 
-                    /// At this point the result is valid
+                    // At this point the result is valid
                     return ValidationResult.ValidResult;
                 }
                 else

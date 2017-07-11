@@ -3,6 +3,10 @@ using Technics;
 
 namespace SimulationUserInterface.Models
 {
+
+    /// <summary>
+    /// Class for holding the information of a position and enable it to show it in the UI
+    /// </summary>
     public class PositionModel : Model
     {
 
@@ -103,10 +107,11 @@ namespace SimulationUserInterface.Models
         /// <summary>
         /// Constructor which saves the shown position of a point for the UI
         /// </summary>
+        /// <param name="positionid">Id of the position</param>
         /// <param name="xpos">X value of the position</param>
         /// <param name="ypos">Y value of the position</param>
-        /// <param name="xScale">Calculated x-scale factor of the window</param>
-        /// <param name="yScale">Calculated y-scale factor of the window</param>
+        /// <param name="xscale">Calculated x-scale factor of the window</param>
+        /// <param name="yscale">Calculated y-scale factor of the window</param>
         public PositionModel(int positionid, int xpos, int ypos, double xscale, double yscale)
         {
             PositionId = positionid;
@@ -115,12 +120,15 @@ namespace SimulationUserInterface.Models
             XScaleFactor = xscale;
             YScaleFactor = yscale;
 
-            /// Bind the command to the function
+            // Bind the command to the function
             PositionClickCommand = new Command(() => PositionClickCommandExecute());
         }
 
         #endregion
 
+        /// <summary>
+        /// Command from UI that catches the click on a position point
+        /// </summary>
         public Command PositionClickCommand { get; }
         /// <summary>
         /// Function that shows the actual id and location of the current position

@@ -57,7 +57,7 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
+                // Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
                 XScaleFactor = (xScaleFactor == 0.0) ? 1 : xScaleFactor;
                 YScaleFactor = (yScaleFactor == 0.0) ? 1 : yScaleFactor;
             }
@@ -77,27 +77,26 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Delete all old Edges
+                // Delete all old Edges
                 MapEdges.Clear();
 
                 foreach (Edge singleEdge in edges)
                 {
-                    /// Get the start and end position IDs from the used edge
+                    // Get the start and end position IDs from the used edge
                     int startPositionId = singleEdge.StartPositionId;
                     int endPositionId = singleEdge.EndPositionId;
 
-                    /// Get the used positions from the list by its ID
+                    // Get the used positions from the list by its ID
                     Position startposition = positions.Where(var => var.Id == startPositionId).ToList().First();
                     Position endposition = positions.Where(var => var.Id == endPositionId).ToList().First();
                     
-                    /// Add a new edge with created information
+                    // Add a new edge with created information
                     MapEdges.Add(new EdgeModel(startposition.X, startposition.Y, endposition.X, endposition.Y, XScaleFactor, YScaleFactor));
-                    //Console.WriteLine($"Edge:{singleEdge.Id.ToString()} on pos {startPositionId.ToString()}, {endPositionId.ToString()} placed in memory. Positions: {positions.ToList().Count}");
                 }
             }
             catch (Exception ex)
             {
-                //Console.Write(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
