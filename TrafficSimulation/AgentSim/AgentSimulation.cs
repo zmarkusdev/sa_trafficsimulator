@@ -181,7 +181,7 @@ namespace AgentSim
                         //Console.WriteLine("# " + agent.Id + " restLength: " + restLength + ", brakingDistance: " + brakingDistance);
                         if (restLength <= brakingDistance)
                         {
-                            targetVelocity = 0;
+                            //targetVelocity = 0;
                             //Console.WriteLine("# " + agent.Id + " STOPPING");
                         }
                         break;
@@ -239,15 +239,16 @@ namespace AgentSim
             // ############# END: Safety Distance to other vehicles #############
 
             // Accelerate
-            //Console.WriteLine("# " + agent.Id + " targetVelocity: " + targetVelocity);
-            if (targetVelocity > agent.CurrentVelocityExact)
-            {
-                agent.CurrentAccelerationExact = agent.Acceleration;
-            }
+            //Console.WriteLine("# " + agent.Id + " targetVelocity: " + targetVelocity + "CurrentVelocityExact: " + agent.CurrentVelocityExact);
             // Decelerate
-            else
+            if (targetVelocity <= agent.CurrentVelocity)
             {
                 agent.CurrentAccelerationExact = -agent.Deceleration;
+            }
+            // Accelerate
+            else
+            {
+                agent.CurrentAccelerationExact = agent.Acceleration;
             }
 
         }
