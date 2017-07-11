@@ -3,6 +3,10 @@ using Technics;
 
 namespace SimulationUserInterface.Models
 {
+
+    /// <summary>
+    /// Class for holding the information of a sign and enable it to show it in the UI
+    /// </summary>
     public class SignModel : Model
     {
 
@@ -182,7 +186,7 @@ namespace SimulationUserInterface.Models
                     break;
                 case RuleType.Ampel:
 
-                    /// Overwrite the sign height because traffic lights are larger
+                    // Overwrite the sign height because traffic lights are larger
                     SignHeight = 45;
 
                     if (maxVelocity < 1)
@@ -195,7 +199,6 @@ namespace SimulationUserInterface.Models
                     }
                     break;
                 case RuleType.Geschwindigkeit:
-                    //ToDo: Eventuell dynamische Geschwindigkeitsanzeigen erstellen
                     ImagePath = "pack://application:,,,/Resources/Geschwindigkeitsbegrenzung.png";
                     break;
                 default:
@@ -203,7 +206,7 @@ namespace SimulationUserInterface.Models
                     break;
             }
 
-            /// Calculate the position after the size is known
+            // Calculate the position after the size is known
             XPosition = xPosition - SignWidth / 2;
             YPosition = yPosition - SignHeight / 2;
 
@@ -238,7 +241,7 @@ namespace SimulationUserInterface.Models
                     break;
                 case RuleType.Ampel:
 
-                    /// Overwrite the sign height because traffic lights are larger
+                    // Overwrite the sign height because traffic lights are larger
                     SignHeight = 45;
 
                     if (maxVelocity < 1)
@@ -259,7 +262,7 @@ namespace SimulationUserInterface.Models
                     break;
             }
 
-            /// Calculate the position after the size is known
+            // Calculate the position after the size is known
             XPosition = xPosition - SignWidth / 2;
             YPosition = yPosition - SignHeight / 2;
         }

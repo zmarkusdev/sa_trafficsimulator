@@ -5,11 +5,18 @@ using System.Runtime.CompilerServices;
 
 namespace Technics
 {
+
+    /// <summary>
+    /// Model holding the PropertyChanged and DataError Interfaces to enable MVVM
+    /// </summary>
     public abstract class Model : INotifyPropertyChanged, IDataErrorInfo
     {
 
         #region ------ IDataErrorInfo
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Error
         {
             get
@@ -18,6 +25,11 @@ namespace Technics
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <returns></returns>
         public virtual string this[string columnName]
         {
             get
@@ -26,6 +38,11 @@ namespace Technics
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         protected virtual string Validate(string propertyName)
         {
             return "Errorhandling not implemented for this field.";

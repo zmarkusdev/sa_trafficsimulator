@@ -7,6 +7,10 @@ using Technics;
 
 namespace SimulationUserInterface.Models
 {
+
+    /// <summary>
+    /// Class holding the information of a Edge and enable it to show the Edge in the UI
+    /// </summary>
     public class EdgeModel : Model
     {
 

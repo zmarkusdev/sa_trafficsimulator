@@ -2,6 +2,10 @@
 
 namespace RuleEngineUserInterface.Models
 {
+
+    /// <summary>
+    /// Window Model holding the connection to the UI
+    /// </summary>
     public class MainWindowModel : Model
     {
 

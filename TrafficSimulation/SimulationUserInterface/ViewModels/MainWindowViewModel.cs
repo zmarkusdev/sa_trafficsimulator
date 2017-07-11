@@ -8,6 +8,10 @@ using Technics;
 
 namespace SimulationUserInterface.ViewModels
 {
+
+    /// <summary>
+    /// Main structural class holding the logic and all other objects
+    /// </summary>
     public class MainWindowViewModel
     {
 
@@ -75,25 +79,25 @@ namespace SimulationUserInterface.ViewModels
         {
             try
             {
-                /// Create Models for GUI Communication
+                // Create Models for GUI Communication
                 UserInterfaceModel = new MainWindowModel();
                 UserInterfaceSigns = new SignRepository();
                 UserInterfaceAgents = new AgentRepository();
                 UserInterfacePositions = new PositionRepository();
                 UserInterfaceEdges = new EdgeRepository();
 
-                /// Get object repositorys
+                // Get object repositorys
                 UserInterfaceMap = MapRepositoryFactory.CreateRepository();
                 Edges = EdgeRepositoryFactory.CreateRepository();
                 Agents = AgentRepositoryFactory.CreateRepository();
                 Positions = PositionRepositoryFactory.CreateRepository();
                 Signs = RuleRepositoryFactory.CreateRepository();
                 
-                /// Update the map picture only at startup
+                // Update the map picture only at startup
                 Map BackgroundMap = UserInterfaceMap.GetMap();                
                 UserInterfaceModel.SetBackgroundInformation(BackgroundMap.BackgroundImageBase64, BackgroundMap.Width, BackgroundMap.Height);
 
-                /// Configurate and start the update timer for the gui update
+                // Configurate and start the update timer for the gui update
                 GuiAgentUpdateTimer.Interval = TimeSpan.FromMilliseconds(10);
                 GuiAgentUpdateTimer.Tick += AgentTimer_Tick;
                 GuiAgentUpdateTimer.Start();
@@ -102,7 +106,7 @@ namespace SimulationUserInterface.ViewModels
                 GuiAgentUpdateTimer.Tick += SignTimer_Tick;
                 GuiAgentUpdateTimer.Start();
 
-                /// Bind the command field to the function
+                // Bind the command field to the function
                 ChangeNetView = new Command(() => ChangeNetViewExecute());
                 
             }
@@ -120,6 +124,9 @@ namespace SimulationUserInterface.ViewModels
 
         #region ----- Commands
 
+        /// <summary>
+        /// Command for changing the visibility of the positions and lines
+        /// </summary>
         public Command ChangeNetView { get; }
         /// <summary>
         /// Event that gets executed from the gui and toggles the NetEnabled bit and deletes all Positions and Edges after a certain time
@@ -152,24 +159,24 @@ namespace SimulationUserInterface.ViewModels
 
             try
             {
-                /// Load Agents
+                // Load Agents
                 IEnumerable<Agent> agents = Agents.GetAllAgents();
                 IEnumerable<Edge> edges = Edges.GetAll();
                 IEnumerable<Position> positions = Positions.GetAll();
                 
-                /// Draw the Agent images on the screen
+                // Draw the Agent images on the screen
                 UserInterfaceAgents.DrawAgents(positions, edges, agents);
 
-                /// Load signs
+                // Load signs
                 IEnumerable<Rule> signs = Signs.GetAllRules();
 
-                /// Additionally also draw the positions and lines in this timer
+                // Additionally also draw the positions and lines in this timer
                 if (UserInterfaceModel.NetEnabled)
                 {
-                    /// Draw the Position points on the screen
+                    // Draw the Position points on the screen
                     UserInterfacePositions.DrawPositions(positions);
 
-                    /// Draw the Edge lines on the screen
+                    // Draw the Edge lines on the screen
                     UserInterfaceEdges.DrawEdges(positions, edges);
                 }
 
@@ -185,10 +192,10 @@ namespace SimulationUserInterface.ViewModels
 
             try
             {
-                /// Load signs
+                // Load signs
                 IEnumerable<Rule> signs = Signs.GetAllRules();
 
-                /// Draw the Signs on the screen (the dynamic but also the static)
+                // Draw the Signs on the screen (the dynamic but also the static)
                 UserInterfaceSigns.DrawSigns(signs);
 
             }

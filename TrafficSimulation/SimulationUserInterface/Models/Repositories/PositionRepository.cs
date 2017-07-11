@@ -57,7 +57,7 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
+                // Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
                 XScaleFactor = (xScaleFactor == 0.0) ? 1 : xScaleFactor;
                 YScaleFactor = (yScaleFactor == 0.0) ? 1 : yScaleFactor;
             }
@@ -75,12 +75,12 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Delete all old positions
+                // Delete all old positions
                 MapPositions.Clear();
 
                 foreach (Position singleposition in positions)
                 {
-                    /// Add a new position with created information
+                    // Add a new position with created information
                     MapPositions.Add(new PositionModel(singleposition.Id, singleposition.X, singleposition.Y, XScaleFactor, YScaleFactor));
                 }
             }

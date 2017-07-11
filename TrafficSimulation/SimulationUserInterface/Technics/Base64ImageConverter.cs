@@ -24,16 +24,16 @@ namespace SimulationUserInterface.Technics
             {
                 string s = value as string;
 
-                /// Security check
+                // Security check
                 if (s == null)
                 {
                     return new BitmapImage();
                 }
 
-                /// Create an Image
+                // Create an Image
                 BitmapImage bi = new BitmapImage();
 
-                /// Translate the stream into an Image
+                // Translate the stream into an Image
                 bi.BeginInit();
                 bi.StreamSource = new MemoryStream(System.Convert.FromBase64String(s));
                 bi.EndInit();

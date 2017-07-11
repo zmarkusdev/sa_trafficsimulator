@@ -57,7 +57,7 @@ namespace SimulationUserInterface.Models
         {
             try
             {
-                /// Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
+                // Set the scale factors (set to 1 if they are zero to prevent a possible division through 0)
                 XScaleFactor = (xScaleFactor == 0.0) ? 1 : xScaleFactor;
                 YScaleFactor = (yScaleFactor == 0.0) ? 1 : yScaleFactor;
             }
@@ -79,7 +79,7 @@ namespace SimulationUserInterface.Models
             foreach (Rule singleSign in signs)
             {
 
-                /// Add a new sign with the created information
+                // Add a new sign with the created information
                 MapSigns.Add(new SignModel(singleSign.Id, singleSign.X, singleSign.Y, singleSign.RuleType, singleSign.MaxVelocity));
 
             }
