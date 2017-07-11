@@ -74,8 +74,6 @@ namespace DataAccessLayer.Communication
 
         public IEnumerable<AgentSimConfiguration> GetAllAgentSimConfigurations()
         {
-#warning GetAllAgentSimConfigurations Not yet implemented.
-
             // Example Configuration
             Random rnd = new Random();
             List<AgentSimConfiguration> agentSimConfigs = new List<AgentSimConfiguration>();

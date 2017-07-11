@@ -66,8 +66,16 @@ namespace DataManager
         /// <returns></returns>
         IReadOnlyList<SimAgent> GetAgentsInRangeReverse(int edgeId, int startRunLength, int range);
 
+        /// <summary>
+        /// Creates a new dynamic edge in the data access layer
+        /// </summary>
+        /// <param name="edge">Edge that should be created</param>
         void CreateDynamicEdge(DynamicEdge edge);
 
+        /// <summary>
+        /// Deletes a dynamic edge in the data access layer
+        /// </summary>
+        /// <param name="edge">Edge that should be deleted</param>
         void DeleteDynamicEdge(DynamicEdge edge);
 
         /// <summary>
@@ -108,7 +116,7 @@ namespace DataManager
         /// <summary>
         /// Returns all successors for a given edge.
         /// </summary>
-        /// <param name="edge">The edge you want to know the successors for</param>
+        /// <param name="edgeId">The id of the edge you want to know the successors for</param>
         /// <returns>Read-only list of successor edges</returns>
         IReadOnlyList<Edge> GetSuccessorEdges(int edgeId);
 

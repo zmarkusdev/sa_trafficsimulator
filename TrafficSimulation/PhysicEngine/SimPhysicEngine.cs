@@ -15,6 +15,9 @@ using VehicleHandoverLibrary;
 
 namespace PhysicEngine
 {
+    /// <summary>
+    /// Implementaiton of the physics engine interface of the vehicle simulation component
+    /// </summary>
     public class SimPhysicEngine : IPhysicEngine
     {
         private readonly IDataManager dataManager_;
@@ -25,12 +28,20 @@ namespace PhysicEngine
 
         readonly ILog log_;
 
+        /// <summary>
+        /// Constructor for dependency injection of the data manager and the logging library
+        /// </summary>
+        /// <param name="dataManager">Data manager instance dependency</param>
+        /// <param name="log">Log instance dependency</param>
         public SimPhysicEngine(IDataManager dataManager, ILog log)
         {
             dataManager_ = dataManager;
             log_ = log;
         }
 
+        /// <summary>
+        /// Starts the physics engine main thread
+        /// </summary>
         public void Start()
         {
             shouldStop = false;
@@ -96,6 +107,9 @@ namespace PhysicEngine
             }
         }
 
+        /// <summary>
+        /// Stops the physics engine main thread
+        /// </summary>
         public void Stop()
         {
             shouldStop = true;

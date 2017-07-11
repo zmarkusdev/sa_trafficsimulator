@@ -348,7 +348,7 @@ namespace DataManager
         /// <summary>
         /// Returns an edge for an ID
         /// </summary>
-        /// <param name="edge">The edge you want to know return</param>
+        /// <param name="edgeId">The id of the edge you want to know return</param>
         /// <returns>Edge object</returns>
         public Edge GetEdgeForId(int edgeId)
         {

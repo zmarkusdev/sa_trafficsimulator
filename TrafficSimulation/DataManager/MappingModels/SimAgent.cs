@@ -59,6 +59,10 @@ namespace DataManager.MappingModels
         /// </summary>
         public double RunLengthExact { get; set; }
 
+        /// <summary>
+        /// Clones the current instance of SimAgent to a new object copy
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             return new SimAgent
@@ -81,6 +85,10 @@ namespace DataManager.MappingModels
             };
         }
 
+        /// <summary>
+        /// Converts the current SimAgent instance to an instance of type agent
+        /// </summary>
+        /// <returns></returns>
         public Agent ToAgent()
         {
             return new Agent

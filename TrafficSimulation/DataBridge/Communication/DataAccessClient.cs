@@ -26,7 +26,7 @@ namespace DataBridge.Communication
                     System.Threading.Thread.Sleep(1500);
                     isAliveFlag = Channel.isAlive();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine("Still waiting for the DataAccessServer to come up.");
                 }
