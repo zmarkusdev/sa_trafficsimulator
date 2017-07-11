@@ -24,6 +24,9 @@ namespace RuleEngineUserInterface.ViewModels
         public CrosswayRepository CrosswayRepository { get; set; }
 
 
+        /// <summary>
+        /// Default constructor initializing the crossway repository and the window content
+        /// </summary>
         public MainWindowViewModel()
         {
             /// Load GUI Variables

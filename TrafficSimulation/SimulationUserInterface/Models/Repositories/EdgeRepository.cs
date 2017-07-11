@@ -92,12 +92,11 @@ namespace SimulationUserInterface.Models
                     
                     /// Add a new edge with created information
                     MapEdges.Add(new EdgeModel(startposition.X, startposition.Y, endposition.X, endposition.Y, XScaleFactor, YScaleFactor));
-                    //Console.WriteLine($"Edge:{singleEdge.Id.ToString()} on pos {startPositionId.ToString()}, {endPositionId.ToString()} placed in memory. Positions: {positions.ToList().Count}");
                 }
             }
             catch (Exception ex)
             {
-                //Console.Write(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 

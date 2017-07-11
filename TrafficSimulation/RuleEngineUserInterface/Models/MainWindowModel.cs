@@ -40,6 +40,9 @@ namespace RuleEngineUserInterface.Models
         }
 
 
+        /// <summary>
+        /// Default constructor initializing the window size of the application
+        /// </summary>
         public MainWindowModel()
         {
             WindowHeight = 350;

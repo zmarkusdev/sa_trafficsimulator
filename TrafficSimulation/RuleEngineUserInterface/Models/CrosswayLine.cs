@@ -40,6 +40,11 @@ namespace RuleEngineUserInterface.Models
         private List<KeyValuePair<int, int>> BackupVelocity { get; set; }
 
 
+        /// <summary>
+        /// Constructor initializing the rules and the backup of the rule velocity
+        /// </summary>
+        /// <param name="highTime"></param>
+        /// <param name="rules"></param>
         public CrosswayLine(int highTime, List<Datamodel.Rule> rules)
         {
             HighTime = highTime;

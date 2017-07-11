@@ -80,7 +80,6 @@ namespace SimulationUserInterface.Models
             {
 
                 /// Add a new sign with the created information
-                //MapSigns.Add(new SignModel(singleSign.Id, singleSign.X, singleSign.Y, singleSign.RuleType, singleSign.MaxVelocity, XScaleFactor, YScaleFactor));
                 MapSigns.Add(new SignModel(singleSign.Id, singleSign.X, singleSign.Y, singleSign.RuleType, singleSign.MaxVelocity));
 
             }

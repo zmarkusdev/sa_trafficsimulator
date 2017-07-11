@@ -26,6 +26,9 @@ namespace RuleEngineUserInterface.Models
         }
 
 
+        /// <summary>
+        /// Default constructor initializing the crossway list
+        /// </summary>
         public CrosswayRepository()
         {
             Crossways = new ObservableCollection<Crossway>();

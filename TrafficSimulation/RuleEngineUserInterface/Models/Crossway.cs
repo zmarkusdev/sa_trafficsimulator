@@ -54,6 +54,9 @@ namespace RuleEngineUserInterface.Models
         private DispatcherTimer CrosswayTimer;
 
 
+        /// <summary>
+        /// Default Constructor initializing the crosswayline list and the dispatcher timer
+        /// </summary>
         public Crossway ()
         {
             CrosswayLines = new ObservableCollection<CrosswayLine>();
