@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the IAgentRepository.
+    /// </summary>
     public class AgentService : IAgentRepository
     {
         public Agent Create(Agent agent)

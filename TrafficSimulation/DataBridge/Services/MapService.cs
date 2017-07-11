@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the IMapRepository.
+    /// </summary>
     class MapService : IMapRepository
     {
         public Map GetMap()

@@ -9,6 +9,9 @@ using DataAccessLayer;
 
 namespace DataBridge
 {
+    /// <summary>
+    /// Implementation of the IPositionRepository.
+    /// </summary>
     class BetterMockedPositionService : IPositionRepository
     {
         IPostionDataAccess positionDataAccess = PositionDataAccessFactory.CreateRepository();

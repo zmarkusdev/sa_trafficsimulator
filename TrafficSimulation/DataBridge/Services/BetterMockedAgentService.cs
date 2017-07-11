@@ -9,6 +9,9 @@ using DataAccessLayer;
 
 namespace DataBridge
 {
+    /// <summary>
+    /// Implementation of the IAgentRepository.
+    /// </summary>
     class BetterMockedAgentService : IAgentRepository
     {
         IAgentDataAccess agentDataAccess = AgentDataAccessFactory.CreateRepository();

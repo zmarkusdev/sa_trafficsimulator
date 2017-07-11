@@ -11,8 +11,11 @@ using Datamodel;
 
 namespace DataAccessLayer
 {
-    // generic Class implementing the basic CRUD and persistence handling for 
-    // objects identified by an ID element of int Type.
+    /// <summary>
+    /// generic Class implementing the basic CRUD and persistence handling for
+    /// objects identified by an ID element of int Type.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class AbstractDataAccess<T> : IDataAccess<T> where T : BaseModel
     {
         ConcurrentDictionary<int, T> liste = new ConcurrentDictionary<int, T>();

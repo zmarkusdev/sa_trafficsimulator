@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the IRuleRepository.
+    /// </summary>
     class RuleService : IRuleRepository
     {
         public Rule Create(Rule rule)

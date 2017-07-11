@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    // decouple ICrosswayDataAccess Interface from Implementation
+    /// <summary>
+    /// decouple ICrosswayDataAccess Interface from Implementation
+    /// </summary>
     public class CrosswayDataAccessFactory
     {
         static ICrosswayDataAccess instance;
 
+        /// <summary>
+        /// Creates new Repository if no one exists.
+        /// </summary>
+        /// <returns>New repository or already existing instance</returns>
         public static ICrosswayDataAccess CreateRepository()
         {
             if (instance == null)

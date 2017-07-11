@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the IPositionRepository.
+    /// </summary>
     class PositionService : IPositionRepository
     {
         public Position Create(Position position)

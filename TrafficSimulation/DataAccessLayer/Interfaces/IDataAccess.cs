@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using Datamodel;
 namespace DataAccessLayer
 {
-    // The basic set of operations, any implenting Class which wants to use the DataAccessLayer has to offer
+    /// <summary>
+    /// The basic set of operations, any implenting Class which wants to use the DataAccessLayer has to offer.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IDataAccess<T>
     {
         void Init();

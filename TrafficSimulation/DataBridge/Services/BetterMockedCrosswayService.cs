@@ -10,7 +10,10 @@ using DataAccessLayer;
 
 namespace DataBridge
 {
-    class     BetterMockedCrosswayService : ICrosswayRepository
+    /// <summary>
+    /// Implementation of the ICrosswayRepository.
+    /// </summary>
+    class BetterMockedCrosswayService : ICrosswayRepository
     {
         ICrosswayDataAccess crosswayDataAccess = CrosswayDataAccessFactory.CreateRepository();
 

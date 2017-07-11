@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the IEdgeRepository.
+    /// </summary>
     class EdgeService : IEdgeRepository
     {
         public Edge Create(Edge edge)

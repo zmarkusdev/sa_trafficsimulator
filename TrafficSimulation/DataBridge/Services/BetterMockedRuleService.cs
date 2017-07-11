@@ -9,6 +9,9 @@ using Datamodel;
 
 namespace DataBridge
 {
+    /// <summary>
+    /// Implementation of the IRuleRepository.
+    /// </summary>
     class BetterMockedRuleService : IRuleRepository
     {
         IRuleDataAccess ruleDataAccess = RuleDataAccessFactory.CreateRepository();

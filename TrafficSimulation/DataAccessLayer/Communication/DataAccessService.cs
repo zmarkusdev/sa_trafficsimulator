@@ -9,6 +9,9 @@ using DataAccessLayer;
 
 namespace DataAccessLayer.Communication
 {
+    /// <summary>
+    /// Implementation of IDataAccessContract.
+    /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, ConcurrencyMode = ConcurrencyMode.Multiple)]
     class DataAccessService : IDataAccessContract
     {
@@ -18,6 +21,9 @@ namespace DataAccessLayer.Communication
         private IRuleDataAccess ruleDataAccess;
         private ICrosswayDataAccess crosswayDataAccess;
 
+        /// <summary>
+        /// Default constructor with init of all repositories.
+        /// </summary>
         public DataAccessService()
         {
             agentDataAccess = AgentDataAccessFactory.CreateRepository();

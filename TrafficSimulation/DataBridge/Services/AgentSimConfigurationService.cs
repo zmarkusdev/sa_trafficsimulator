@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the IAgentSimConfigurationRepository.
+    /// </summary>
     class AgentSimConfigurationService : IAgentSimConfigurationRepository
     {
         public IEnumerable<AgentSimConfiguration> GetAll()

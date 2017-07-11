@@ -9,6 +9,9 @@ using DataAccessLayer;
 
 namespace DataBridge
 {
+    /// <summary>
+    /// Implementation of the IEdgeRepository.
+    /// </summary>
     class BetterMockedEdgeService : IEdgeRepository
     {
         IEdgeDataAccess edgeDataAccess = EdgeDataAccessFactory.CreateRepository();

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Controller
 {
+    /// <summary>
+    /// Converter to serialize to JSON-Objects.
+    /// </summary>
     public class StreamConverter
     {
         private static StreamConverter instance;

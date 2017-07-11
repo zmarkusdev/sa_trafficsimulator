@@ -9,6 +9,9 @@ using DataBridge.Communication;
 
 namespace DataBridge.Services
 {
+    /// <summary>
+    /// Implementation of the ICrosswayRepository.
+    /// </summary>
     class CrosswayService : ICrosswayRepository
     {
         public Crossway Create(Crossway crossway)
