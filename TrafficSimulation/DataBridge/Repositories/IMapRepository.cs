@@ -14,8 +14,15 @@ using System.IO;
 
 
 namespace Repositories {
+    /// <summary>
+    /// IMapRepository
+    /// </summary>
 	public interface IMapRepository      {
 
+        /// <summary>
+        /// Get the map.
+        /// </summary>
+        /// <returns>Map or null</returns>
 		Datamodel.Map GetMap();
 	}//end IMapRepository
 

@@ -17,9 +17,15 @@ using Repositories;
 using DataBridge.Services;
 
 namespace Repositories {
-	public abstract class MapRepositoryFactory {
-
-		public static IMapRepository CreateRepository(){
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
+    public abstract class MapRepositoryFactory {
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>MockedMapService</returns>
+        public static IMapRepository CreateRepository(){
 
 			return new MockedMapService();
 		}

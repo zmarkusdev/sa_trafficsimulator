@@ -10,8 +10,15 @@ using DataBridge.Services;
 
 namespace Repositories
 {
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
     public abstract class CrosswayRepositoryFactory
     {
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>CrosswayService</returns>
         public static ICrosswayRepository CreateRepository()
         {
             return new CrosswayService();

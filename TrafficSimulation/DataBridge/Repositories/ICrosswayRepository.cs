@@ -16,13 +16,42 @@ using Datamodel;
 
 namespace Repositories
 {
+    /// <summary>
+    /// ICrosswayRepository.
+    /// </summary>
     public interface ICrosswayRepository
     {
+        /// <summary>
+        /// Creates new crossway.
+        /// </summary>
+        /// <param name="crossway">Crossway to create</param>
+        /// <returns>Created crossway</returns>
         Datamodel.Crossway Create(Crossway crossway);
+
+        /// <summary>
+        /// Deletes given crossway.
+        /// </summary>
+        /// <param name="crossway">Crossway to delete</param>
         void Delete(Crossway crossway);
+
+        /// <summary>
+        /// Get crossway by id.
+        /// </summary>
+        /// <param name="crosswayId">Id of crossway</param>
+        /// <returns>Crossway or null</returns>
         Crossway GetCrossway(int crosswayId);
+
+        /// <summary>
+        /// Updates given crossway.
+        /// </summary>
+        /// <param name="crossway">Crossway to update</param>
+        /// <returns>Updated crossway</returns>
         Crossway Update(Crossway crossway);
 
+        /// <summary>
+        /// Get all crossways.
+        /// </summary>
+        /// <returns>List of crossway or null</returns>
         IEnumerable<Crossway> GetAll();
     }
 }

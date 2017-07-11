@@ -10,8 +10,15 @@ using DataBridge.Services;
 
 namespace Repositories
 {
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
     public abstract class EdgeRepositoryFactory
     {
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>EdgeService</returns>
         public static IEdgeRepository CreateRepository()
         {
             return new EdgeService();

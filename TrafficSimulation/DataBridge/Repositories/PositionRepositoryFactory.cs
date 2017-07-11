@@ -18,8 +18,15 @@ using DataBridge.Services;
 
 namespace Repositories
 {
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
     public abstract class PositionRepositoryFactory
     {
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>IPositionRepository</returns>
         public static IPositionRepository CreateRepository()
         {
             return new PositionService();

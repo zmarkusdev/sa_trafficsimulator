@@ -17,7 +17,7 @@ namespace DataBridge.Communication
             NetNamedPipeBinding binding = new NetNamedPipeBinding(NetNamedPipeSecurityMode.None);
             EndpointAddress ep = new EndpointAddress(address);
             Channel = ChannelFactory<IDataAccessContract>.CreateChannel(binding, ep);
-            /// Warte, bis der Server da ist
+            // Warte, bis der Server da ist
             bool isAliveFlag = false;
             do
             {
@@ -26,7 +26,7 @@ namespace DataBridge.Communication
                     System.Threading.Thread.Sleep(1500);
                     isAliveFlag = Channel.isAlive();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine("Still waiting for the DataAccessServer to come up.");
                 }

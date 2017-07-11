@@ -15,9 +15,15 @@ using DataBridge;
 using DataBridge.Services;
 
 namespace Repositories {
-	public abstract class RuleRepositoryFactory {
-
-		public static IRuleRepository CreateRepository()
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
+    public abstract class RuleRepositoryFactory {
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>MockedRuleServiceMapService</returns>
+        public static IRuleRepository CreateRepository()
         {
             return new RuleService();
         }

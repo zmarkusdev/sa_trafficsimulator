@@ -16,37 +16,54 @@ using System.IO;
 using Datamodel;
 namespace Repositories {
 	/// <summary>
-	/// end IAgentRepository
+	/// IAgentRepository
 	/// </summary>
 	public interface IAgentRepository         {
 
-		/// 
-		/// <param name="agent"></param>
+		/// <summary>
+        /// Creates new agent.
+        /// </summary>
+        /// <param name="agent">Agent to create</param>
+        /// <returns>Created agent</returns>
 		Datamodel.Agent Create(Agent agent);
 
-		/// 
-		/// <param name="agent"></param>
+		/// <summary>
+        /// Delete agent.
+        /// </summary>
+        /// <param name="agent">Agent to delete</param>
 		void Delete(Agent agent);
 
-		/// 
-		/// <param name="agentId"></param>
+		/// <summary>
+        /// Get Agent by id.
+        /// </summary>
+        /// <param name="agentId">Id of agent</param>
+        /// <returns>Agent or null</returns>
 		Datamodel.Agent GetAgent(int agentId);
 
 		/// <summary>
-		/// TODO: List
-		/// </summary>
-		/// <param name="positionIds"></param>
+        /// Get agents by position id.
+        /// </summary>
+        /// <param name="positionIds">Id of position</param>
+        /// <returns>List of agents or null</returns>
 		IEnumerable<Agent> GetAgentsForPositionIds(int positionIds);
 
         /// <summary>
-        /// TODO: List
+        /// Get all agents.
         /// </summary>
+        /// <returns>List of agents or null</returns>
         IEnumerable<Agent> GetAllAgents();
 
-		/// 
-		/// <param name="agent"></param>
+		/// <summary>
+        /// Updates given agent.
+        /// </summary>
+        /// <param name="agent">Agent to update</param>
+        /// <returns>Updated agent</returns>
 		Datamodel.Agent Update(Agent agent);
 
+        /// <summary>
+        /// Update a list of agents.
+        /// </summary>
+        /// <param name="agents">List of agents</param>
         void BulkUpdate(IEnumerable<Agent> agents);
 	}//end IAgentRepository
 

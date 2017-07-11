@@ -15,17 +15,15 @@ using System.IO;
 
 using Repositories;
 namespace Repositories {
-	public abstract class AgentSimConfigurationRepositoryFactory {
-
-		public AgentSimConfigurationRepositoryFactory(){
-
-		}
-
-		~AgentSimConfigurationRepositoryFactory(){
-
-		}
-
-		public static IAgentSimConfigurationRepository CreateRepository(){
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
+    public abstract class AgentSimConfigurationRepositoryFactory {
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>AgentSimConfigurationService</returns>
+        public static IAgentSimConfigurationRepository CreateRepository(){
 
             return new DataBridge.Services.AgentSimConfigurationService();
 		}

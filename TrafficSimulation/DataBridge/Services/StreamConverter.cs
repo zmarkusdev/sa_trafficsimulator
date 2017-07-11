@@ -20,6 +20,10 @@ namespace DataAccessLayer.Controller
             //this.javaScriptSerializer = new JavaScriptSerializer();
         }
 
+        /// <summary>
+        /// Get instance of StreamConverter
+        /// </summary>
+        /// <returns>StreamConverter</returns>
         public static StreamConverter getInstance()
         {
             if (instance == null)
@@ -29,18 +33,36 @@ namespace DataAccessLayer.Controller
             return instance;
         }
 
+        /// <summary>
+        /// Converts given object to string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns>Serialized object</returns>
         public string convertToJson<T>(T obj)
         {
             throw new NotImplementedException();
             //return javaScriptSerializer.Serialize(obj);
         }
 
+        /// <summary>
+        /// Converts given List to string
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns>Serialized list</returns>
         public string convertListToJson<T>(IEnumerable<T> list)
         {
             throw new NotImplementedException();
             //return javaScriptSerializer.Serialize(list);
         }
 
+        /// <summary>
+        /// Converts Json to given object.
+        /// </summary>
+        /// <typeparam name="T">Object to cast</typeparam>
+        /// <param name="str"></param>
+        /// <returns>Deserialized object</returns>
         public T convertFromJson<T>(String str)
         {
             throw new NotImplementedException();

@@ -15,52 +15,70 @@ using System.IO;
 
 using Datamodel;
 namespace Repositories {
+    /// <summary>
+    /// IPositionRepository
+    /// </summary>
 	public interface IPositionRepository      {
 
-		/// 
-		/// <param name="position"></param>
+		/// <summary>
+        /// Create new position.
+        /// </summary>
+        /// <param name="position">Position to create</param>
+        /// <returns>Created position</returns>
 		Datamodel.Position Create(Position position);
 
-		/// 
-		/// <param name="position"></param>
+		/// <summary>
+        /// Deletes given position.
+        /// </summary>
+        /// <param name="position">Position to delete</param>
 		void Delete(Position position);
 
-		/// 
-		/// <param name="positionId"></param>
+		/// <summary>
+        /// Get position by id.
+        /// </summary>
+        /// <param name="positionId">Id of position</param>
+        /// <returns>Position or null</returns>
 		Datamodel.Position GetPosition(int positionId);
 
         /// <summary>
-        /// TODO: List
+        /// Get predeccessors of position.
         /// </summary>
-        /// <param name="numSteps"></param>
-        /// <param name="startPositionId"></param>
+        /// <param name="numSteps">Number of steps</param>
+        /// <param name="startPositionId">Id of queried position</param>
+        /// <returns>List of Positions or null</returns>
         IEnumerable<Position> GetPredeccessors(int numSteps, int startPositionId);
 
         /// <summary>
-        /// Todo: List
+        /// Get successors of position.
         /// </summary>
-        /// <param name="numSteps"></param>
-        /// <param name="startPositionId"></param>
+        /// <param name="numSteps">Number of steps</param>
+        /// <param name="startPositionId">Id of queried position</param>
+        /// <returns>List of Positions or null</returns>
         IEnumerable<Position> GetSuccessors(int numSteps, int startPositionId);
 
         /// <summary>
-        /// Todo: List
+        /// Get start positions.
         /// </summary>
+        /// <returns>List of positions or null</returns>
         IEnumerable<Position> GetStartPositions();
 
         /// <summary>
-        /// Todo: List
+        /// Get end positions.
         /// </summary>
+        /// <returns>List of positions or null</returns>
         IEnumerable<Position> GetEndPositions();
 
         /// <summary>
-        /// TODO: List
+        /// Get all positions.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of positions or null</returns>
         IEnumerable<Position> GetAll();
 
-        /// 
-        /// <param name="position"></param>
+        /// <summary>
+        /// Updates given position.
+        /// </summary>
+        /// <param name="position">Position to update</param>
+        /// <returns>Updated position</returns>
         Datamodel.Position Update(Position position);
 	}//end IPositionRepository
 

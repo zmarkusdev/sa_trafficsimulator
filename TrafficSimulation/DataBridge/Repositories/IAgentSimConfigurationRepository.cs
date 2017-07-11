@@ -14,8 +14,15 @@ using System.IO;
 
 using Datamodel;
 namespace Repositories {
+    /// <summary>
+    /// IAgentSimConfigurationRepository
+    /// </summary>
 	public interface IAgentSimConfigurationRepository  {
 
+        /// <summary>
+        /// Get all AgentSimConfigurations.
+        /// </summary>
+        /// <returns>List of AgentSimConfigurations or null</returns>
 		IEnumerable<AgentSimConfiguration> GetAll();
 	}//end IAgentSimConfigurationRepository
 

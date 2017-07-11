@@ -15,8 +15,15 @@ using DataBridge;
 using DataBridge.Services;
 
 namespace Repositories {
+    /// <summary>
+    /// Factory class to decouple components.
+    /// </summary>
 	public abstract class AgentRepositoryFactory {
 
+        /// <summary>
+        /// Factory to return new service. 
+        /// </summary>
+        /// <returns>AgentService</returns>
 		public static IAgentRepository CreateRepository(){
             return new AgentService();
 		}

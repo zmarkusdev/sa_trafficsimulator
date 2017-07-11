@@ -15,37 +15,54 @@ using System.IO;
 
 using Datamodel;
 namespace Repositories {
+    /// <summary>
+    /// IRuleRepository
+    /// </summary>
 	public interface IRuleRepository      {
 
-		/// 
-		/// <param name="rule"></param>
+		/// <summary>
+        /// Creates new rule.
+        /// </summary>
+        /// <param name="rule">Rule to create</param>
+        /// <returns>Created rule</returns>
 		Datamodel.Rule Create(Rule rule);
 
-		/// 
-		/// <param name="rule"></param>
+		/// <summary>
+        /// Deletes given rule.
+        /// </summary>
+        /// <param name="rule">Rule to delete</param>
 		void Delete(Rule rule);
 
         /// <summary>
-        /// TODO:List
+        /// Get all rules.
         /// </summary>
+        /// <returns>List of rules or null</returns>
         IEnumerable<Rule> GetAllRules();
 
         /// <summary>
-        /// Todo: List
+        /// Get all dynamic rules.
         /// </summary>
+        /// <returns>List of rules or null</returns>
         IEnumerable<Rule> GetDynamicRules();
 
-		/// 
-		/// <param name="ruleId"></param>
+		/// <summary>
+        /// Get rule by id.
+        /// </summary>
+        /// <param name="ruleId">Id of rule</param>
+        /// <returns>Rule or null</returns>
 		Datamodel.Rule GetRule(int ruleId);
 
         /// <summary>
-        /// Todo: List
+        /// Get all static rules.
         /// </summary>
+        /// <returns>List of rules or null</returns>
         IEnumerable<Rule> GetStaticRules();
 
-		/// 
-		/// <param name="rule"></param>
+		/// <summary>
+        /// Updates give rule.
+        /// </summary>
+        /// <param name="rule">Rule to update</param>
+        /// <returns>Updated rule</returns>
 		Datamodel.Rule Update(Rule rule);
 	}//end IRuleRepository
 
