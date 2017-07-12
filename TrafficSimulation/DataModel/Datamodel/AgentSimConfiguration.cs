@@ -14,51 +14,71 @@ using System.IO;
 
 
 namespace Datamodel {
+
+    /// <summary>
+    /// Agent sim configuration objects contain spawn informations for different agent types
+    /// </summary>
 	public class AgentSimConfiguration : BaseModel {
 
-		public AgentSimConfiguration(){
-
-		}
-
-		~AgentSimConfiguration(){
-
-		}
-
+        /// <summary>
+        /// Mean acceleration for the current agent type in m/s^2
+        /// </summary>
 		public int Acceleration{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Spread (+-) in m/s^2 for the acceleration
+        /// </summary>
 		public int AccelerationSpread{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Type for which this configuration object is for
+        /// </summary>
 		public AgentType AgentType{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Mean decelaration for the current agent type in m/s^2
+        /// </summary>
 		public int Deceleration{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Spread (+-) for the deceleration in m/s^2
+        /// </summary>
 		public int DecelerationSpread{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Probability in percent, that the agent type will spawn on each spawner tick.
+        /// </summary>
 		public int SpawnPropability{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Mean max velocity for the current agent type in m/s
+        /// </summary>
 		public int Velocity{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Spread (+-) of the max velocity in m/s
+        /// </summary>
 		public int VelocitySpread{
 			get;
 			set;

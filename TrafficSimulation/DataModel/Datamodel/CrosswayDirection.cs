@@ -10,9 +10,19 @@ using System.Collections.Generic;
 
 namespace Datamodel
 {
+    /// <summary>
+    /// Side of a crossway for traffic light control
+    /// </summary>
     public class CrosswayDirection
     {
+        /// <summary>
+        /// Time the traffic light is green
+        /// </summary>
         public int hightime;
+
+        /// <summary>
+        /// List of other crossway sites that are green at the same time
+        /// </summary>
         public List<int> concurrentGreen;
     }
 }

@@ -19,8 +19,7 @@ namespace VehicleDeactivatorLibraryExample
             {
                 messageSender.ToggleVehicle(1);
                 Thread.Sleep(1000);
-            }
-            System.Console.ReadLine();
+            }            
             
         }
 

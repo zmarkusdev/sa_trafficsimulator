@@ -15,13 +15,22 @@ using System.Threading.Tasks;
 
 namespace Datamodel
 {
-        public class Crossway : BaseModel
+    /// <summary>
+    /// The crossway is used as a group for the crossway directions for the traffic light control
+    /// </summary>
+    public class Crossway : BaseModel
     {
+        /// <summary>
+        /// Default constructor of the crossway initializes the greenphase list with an empty list.
+        /// </summary>
         public Crossway()
         {
             greenphase = new List<CrosswayDirection>();
         }
         
+        /// <summary>
+        /// The greenphase collection for the current crossway
+        /// </summary>
         public List<CrosswayDirection> greenphase;
 
     } //end Crossway

@@ -14,10 +14,28 @@ using System.IO;
 
 
 namespace Datamodel {
+    /// <summary>
+    /// Rule types control the rendering of the rule and handling by the agent behaviour
+    /// </summary>
 	public enum RuleType : int {
+        /// <summary>
+        /// Stop sign that signals, that the agent must stop, then check for other agents and then drive
+        /// </summary>
         Stopp = 1,
+
+        /// <summary>
+        /// Vorrang sign signals that agent must only stop, if other vehicles are in range
+        /// </summary>
         Vorrang = 2,
+
+        /// <summary>
+        /// Max velocity for the current position
+        /// </summary>
         Geschwindigkeit = 3,
+
+        /// <summary>
+        /// Traffic light with either state stop or go
+        /// </summary>
         Ampel = 4
 }//end RuleType
 

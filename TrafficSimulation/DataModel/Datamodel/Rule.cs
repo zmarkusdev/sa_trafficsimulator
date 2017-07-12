@@ -14,50 +14,63 @@ using System.IO;
 
 
 namespace Datamodel {
+    /// <summary>
+    /// A rule defines the traffic control rules of the edges on the map
+    /// </summary>
 	public class Rule : BaseModel {
-
-		public Rule(){
-
-		}
-
-		~Rule(){
-
-		}
-
+        
+        /// <summary>
+        /// List of positions that need to be checked if checking this rule (starting positions, predecessor edges need to be checked)
+        /// </summary>
 		public IEnumerable<int> CheckPositionIds
         {
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Marks the rule as dynamic rule. Dynamic rules change over time, like traffic lights.
+        /// </summary>
 		public bool IsDynamicRule{
 			get;
 			set;
 		}
 
 		/// <summary>
-		/// -1 = inherit from Position
+		/// Max velocity allowed on the connected edge
 		/// </summary>
 		public int MaxVelocity{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Id of the position this rule applies to
+        /// </summary>
 		public int PositionId{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Rule type of the current rule, defines visualization in the gui
+        /// </summary>
 		public RuleType RuleType{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// x-coordinate of the current rule for gui rendering
+        /// </summary>
 		public int X{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// y-coordinate of the current rule for gui rendering
+        /// </summary>
 		public int Y{
 			get;
 			set;

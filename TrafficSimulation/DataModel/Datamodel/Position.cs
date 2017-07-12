@@ -14,63 +14,102 @@ using System.IO;
 
 
 namespace Datamodel {
+    /// <summary>
+    /// A position of the map is a node on the graph model. Positions also define the starting and end points of
+    /// the edges in pixel coordinates
+    /// </summary>
     public class Position : BaseModel {
 
-        public Position() {
-
-        }
-
-        ~Position() {
-
-        }
-
+        /// <summary>
+        /// Max velocity allowed around this position in m/s (deprecated)
+        /// </summary>
         public int MaxVelocity {
             get;
             set;
         }
 
+        /// <summary>
+        /// Collection of edge ids that go into this position (predecessors)
+        /// </summary>
         public IEnumerable<int> PredecessorEdgeIds{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Rotation in degrees cars have on this position (deprecated)
+        /// </summary>
 		public int Rotation{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// List of rules that need to be considered when on this position (deprecated)
+        /// </summary>
 		public IEnumerable<int> RuleIds
         {
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// List of edge ids that come after this position (successors)
+        /// </summary>
 		public IEnumerable<int> SuccessorEdgeIds
         {
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// x coordinate of the position on the map in pixels
+        /// </summary>
 		public int X{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// y coordinate of the position on the map in pixels
+        /// </summary>
 		public int Y{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Marks the position as remote transfer edge, if a agent passes this position
+        /// and the transfer is set, the agent will be transferred to another simulation.
+        /// </summary>
         public RemoteAgentTransfer Transfer { get; set; } = RemoteAgentTransfer.none;
 
+        /// <summary>
+        /// Marks the current Position as remote entry point from another simulation
+        /// </summary>
         public bool IsRemoteEntryPoint { get; set; }
 	}//end Position
 
+    /// <summary>
+    /// Defines the possible values for remote agent transfer (different group targets)
+    /// </summary>
     public enum RemoteAgentTransfer : int
     {
+        /// <summary>
+        /// No transfer will be executed
+        /// </summary>
         none = 0,
+        /// <summary>
+        /// agent will be transferred to group 1
+        /// </summary>
         Group1 = 1,
+        /// <summary>
+        /// agent will be transferred to group 2
+        /// </summary>
         Group2 = 2,
+        /// <summary>
+        /// agent will be transferred to group 3
+        /// </summary>
         Group3 = 3
     }
 

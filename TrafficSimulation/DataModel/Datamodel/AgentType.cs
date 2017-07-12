@@ -12,10 +12,29 @@ using System.Text;
 using System.IO;
 
 namespace Datamodel {
+
+    /// <summary>
+    /// The available agent types of the simulation
+    /// </summary>
 	public enum AgentType : int {
+        /// <summary>
+        /// Car type one
+        /// </summary>
         Car01 = 1,
+
+        /// <summary>
+        /// Car type two
+        /// </summary>
         Car02 = 2,
+
+        /// <summary>
+        /// Truck type one
+        /// </summary>
         Lkw01 = 3,
+
+        /// <summary>
+        /// Truck type two
+        /// </summary>
         Lkw02 = 4
 	}//end AgentType
 

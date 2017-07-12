@@ -14,26 +14,30 @@ using System.IO;
 
 
 namespace Datamodel {
+    /// <summary>
+    /// Metadata for the map that will be rendered in the gui
+    /// </summary>
 	public class Map {
-
-		public Map(){
-
-		}
-
-		~Map(){
-
-		}
-
+        
+        /// <summary>
+        /// Background image of the map base64 encoded
+        /// </summary>
 		public char[] BackgroundImageBase64{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Height of the map in pixels
+        /// </summary>
 		public int Height{
 			get;
 			set;
 		}
 
+        /// <summary>
+        /// Width of the map in pixels
+        /// </summary>
 		public int Width{
 			get;
 			set;
