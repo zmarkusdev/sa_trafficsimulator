@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace VehicleHandoverLibrary
 {
-    public enum Groups { GROUP01, GROUP02, GROUP03 }
+
+    /// <summary>
+    /// Enum for selecting the groups
+    /// </summary>
+    public enum Groups
+    {
+        /// <summary>
+        /// Group 1
+        /// </summary>
+        GROUP01,
+        /// <summary>
+        /// Group 2
+        /// </summary>
+        GROUP02,
+        /// <summary>
+        /// Group 3
+        /// </summary>
+        GROUP03
+    }
 
     class Group
     {

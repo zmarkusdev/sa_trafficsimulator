@@ -1,13 +1,14 @@
 ﻿using Amazon.SQS;
 using Amazon.SQS.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace VehicleHandoverLibrary
 {
+
+    /// <summary>
+    /// Class for sending vehicles to a SQS queue
+    /// </summary>
     public class VehicleSender
     {
         // Propeties
@@ -19,7 +20,10 @@ namespace VehicleHandoverLibrary
         private const String MESSAGE_GROUP_ID = "01";
         private const int MAX_SENT_MESSAGES = 500;
 
-        // Constructor
+        /// <summary>
+        /// Constructor initializing the SQS
+        /// </summary>
+        /// <param name="group">Name of the groupt that uses the service</param>
         public VehicleSender(Groups group)
         {
             // Instantiate SQS client
@@ -29,12 +33,20 @@ namespace VehicleHandoverLibrary
             this.sqsUrl = Group.getUrlForGroup(group);
         }
 
+        /// <summary>
+        /// Send a vehicle to the queue
+        /// </summary>
+        /// <param name="vehicle">Vehicle to send</param>
         public void PushVehicle(Vehicle vehicle)
         {
             Task task = new Task(() => sendMessage(vehicle.toJSON()));
             task.Start();
         }
 
+        /// <summary>
+        /// Send a string message to the SQS queue
+        /// </summary>
+        /// <param name="message">Message in string format</param>
         private void sendMessage(String message)
         {
             var sendMessageRequest = new SendMessageRequest(sqsUrl, message);

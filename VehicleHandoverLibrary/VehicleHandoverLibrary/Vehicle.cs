@@ -1,46 +1,87 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace VehicleHandoverLibrary
 {
-    public enum VehicleType { CAR, TRUCK, BIKE };
 
+    /// <summary>
+    /// Type definition of the vehicle
+    /// </summary>
+    public enum VehicleType
+    {
+        /// <summary>
+        /// Car
+        /// </summary>
+        CAR,
+        /// <summary>
+        /// Truck
+        /// </summary>
+        TRUCK,
+        /// <summary>
+        /// Motorbike
+        /// </summary>
+        BIKE
+    };
+
+    /// <summary>
+    /// Vehicle class with basic information for handover library that has basic information of a vehicle for all groups
+    /// </summary>
     public class Vehicle
     {
-        // Maximum acceleration in m/s^2
+        /// <summary>
+        /// Maximum acceleration in m/s^2
+        /// </summary>
         public double MaxAcceleration { get; set; }
 
-        // Maximum deceleration in m/s^2
+        /// <summary>
+        /// Maximum deceleration in m/s^2
+        /// </summary>
         public double MaxDeceleration { get; set; }
 
-        // Maximum velocity in m/s
+        /// <summary>
+        /// Maximum velocity in m/s
+        /// </summary>
         public double MaxVelocity { get; set; }
 
-        // With of the vehicle in m
+        /// <summary>
+        /// With of the vehicle in m
+        /// </summary>
         public double Width { get; set; }
 
-        // Length of the vehicle in m
+        /// <summary>
+        /// Length of the vehicle in m
+        /// </summary>
         public double Length { get; set; }
 
-        // Type of the vehicle (see enum VehicleType)
+        /// <summary>
+        /// Type of the vehicle (see enum VehicleType)
+        /// </summary>
         public VehicleType Type { get; set; }
 
+        /// <summary>
+        /// Converts a Vehicle into json
+        /// </summary>
+        /// <returns>Json formated vehicle</returns>
         public String toJSON()
         {
             return JsonConvert.SerializeObject(this);
         }
 
+        /// <summary>
+        /// Returns a Vehicle from a json serialized string
+        /// </summary>
+        /// <param name="json">Json formated vehicle</param>
+        /// <returns>Vehicle object</returns>
         public static Vehicle fromJSON(String json)
         {
             return JsonConvert.DeserializeObject<Vehicle>(json);
         }
 
-        override
-        public String ToString()
+        /// <summary>
+        /// Prints the vehicle json string
+        /// </summary>
+        /// <returns></returns>
+        override public String ToString()
         {
             return "Vehicle: " + this.toJSON();
         }
