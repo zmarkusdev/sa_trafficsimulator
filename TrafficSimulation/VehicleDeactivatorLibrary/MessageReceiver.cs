@@ -8,16 +8,27 @@ using System.Threading.Tasks;
 
 namespace VehicleDeactivatorLibrary
 {
+
+    /// <summary>
+    /// This class receives messages from the Amazon Service to change the state of an agent
+    /// The purpose of this class is to tell the simulation that a vehicle 
+    /// has been damaged in the UI
+    /// </summary>
     public class MessageReceiver
     {
         // Propeties
         private AmazonSQSClient sqsClient;        
 
         // Events
+        /// <summary>
+        /// Receive a Message Event Handler
+        /// </summary>
         public event EventHandler<MessageEventArgs> ReceiveEventHandler;
         private String SQS_URL;
 
-        // Constructor
+        /// <summary>
+        /// Default constructor requesting the SQS client and url
+        /// </summary>
         public MessageReceiver()
         {
             // Instantiate SQS client
@@ -57,8 +68,11 @@ namespace VehicleDeactivatorLibrary
             }
         }
 
-        // Wrap event invocations inside a protected virtual method
-        // to allow derived classes to override the event invocation behavior
+        /// <summary>
+        /// Wrap event invocations inside a protected virtual method
+        /// to allow derived classes to override the event invocation behavior
+        /// </summary>
+        /// <param name="message"></param>
         protected virtual void RaiseReceiveEvent(Message message)
         {
             MessageEventArgs vehicleEventArgs = new MessageEventArgs(message);
