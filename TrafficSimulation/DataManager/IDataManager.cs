@@ -58,6 +58,27 @@ namespace DataManager
         IReadOnlyList<SimAgent> GetAgentsInRange(int edgeId, int startRunLength, int range);
 
         /// <summary>
+        /// Get a list of agents that are in the given range on the edge but in reverse order (use case is overtake)
+        /// </summary>
+        /// <param name="edgeId"></param>
+        /// <param name="startRunLength"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
+        IReadOnlyList<SimAgent> GetAgentsInRangeReverse(int edgeId, int startRunLength, int range);
+
+        /// <summary>
+        /// Creates a new dynamic edge in the data access layer
+        /// </summary>
+        /// <param name="edge">Edge that should be created</param>
+        void CreateDynamicEdge(DynamicEdge edge);
+
+        /// <summary>
+        /// Deletes a dynamic edge in the data access layer
+        /// </summary>
+        /// <param name="edge">Edge that should be deleted</param>
+        void DeleteDynamicEdge(DynamicEdge edge);
+
+        /// <summary>
         /// All currently active agents in the simulation
         /// </summary>
         IReadOnlyList<SimAgent> Agents { get; }
@@ -95,16 +116,30 @@ namespace DataManager
         /// <summary>
         /// Returns all successors for a given edge.
         /// </summary>
-        /// <param name="edge">The edge you want to know the successors for</param>
+        /// <param name="edgeId">The id of the edge you want to know the successors for</param>
         /// <returns>Read-only list of successor edges</returns>
         IReadOnlyList<Edge> GetSuccessorEdges(int edgeId);
 
         /// <summary>
         /// Returns an edge for an ID
         /// </summary>
-        /// <param name="edge">The edge you want to know return</param>
+        /// <param name="edgeId">The edge you want to know return</param>
         /// <returns>Edge object</returns>
         Edge GetEdgeForId(int edgeId);
+
+        /// <summary>
+        /// Returns the static rule for an edgeId
+        /// </summary>
+        /// <param name="edgeId">Edge ID we want the static rule for</param>
+        /// <returns>Static Rule for the given edgeId</returns>
+        IReadOnlyList<Rule> GetStaticRulesForEdgeId(int edgeId);
+
+        /// <summary>
+        /// Returns rules (static + dynamic) for an edgeId
+        /// </summary>
+        /// <param name="edgeId">Edge ID we want the rules for</param>
+        /// <returns>Rules for the given edgeId</returns>
+        IReadOnlyList<Rule> GetAllRulesForEdgeId(int edgeId);
 
     }
 }

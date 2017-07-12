@@ -15,6 +15,9 @@ using VehicleHandoverLibrary;
 
 namespace PhysicEngine
 {
+    /// <summary>
+    /// Implementaiton of the physics engine interface of the vehicle simulation component
+    /// </summary>
     public class SimPhysicEngine : IPhysicEngine
     {
         private readonly IDataManager dataManager_;
@@ -25,12 +28,20 @@ namespace PhysicEngine
 
         readonly ILog log_;
 
+        /// <summary>
+        /// Constructor for dependency injection of the data manager and the logging library
+        /// </summary>
+        /// <param name="dataManager">Data manager instance dependency</param>
+        /// <param name="log">Log instance dependency</param>
         public SimPhysicEngine(IDataManager dataManager, ILog log)
         {
             dataManager_ = dataManager;
             log_ = log;
         }
 
+        /// <summary>
+        /// Starts the physics engine main thread
+        /// </summary>
         public void Start()
         {
             shouldStop = false;
@@ -96,6 +107,9 @@ namespace PhysicEngine
             }
         }
 
+        /// <summary>
+        /// Stops the physics engine main thread
+        /// </summary>
         public void Stop()
         {
             shouldStop = true;
@@ -178,9 +192,13 @@ namespace PhysicEngine
 
         void CheckValidAccelerations(SimAgent curAgent)
         {
-            // Check valid accelerations
-            curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact < curAgent.Deceleration ? curAgent.Deceleration : curAgent.CurrentAccelerationExact;
-            curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact > curAgent.Acceleration ? curAgent.Acceleration : curAgent.CurrentAccelerationExact;
+            if(curAgent.CurrentAccelerationExact < 0) // Max Deccelerate
+            {
+                curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact < -curAgent.Deceleration ? -curAgent.Deceleration : curAgent.CurrentAccelerationExact;
+            } else // Max Accelerate
+            {
+                curAgent.CurrentAccelerationExact = curAgent.CurrentAccelerationExact > curAgent.Acceleration ? curAgent.Acceleration : curAgent.CurrentAccelerationExact;
+            }
         }
 
         void CheckValidVelocities(SimAgent curAgent)
@@ -215,6 +233,9 @@ namespace PhysicEngine
                 {
                     curEdge = curAgent.Route.Dequeue();
                     curAgent.EdgeId = curEdge.Id;
+
+                    // Check if transition from dynamic edge to normal edge, if true, 
+                    // delete dynamic edge and set run length to target run length
                 }
                 else
                 {                    

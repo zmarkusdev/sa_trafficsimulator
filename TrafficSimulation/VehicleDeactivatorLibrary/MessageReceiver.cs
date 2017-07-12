@@ -45,7 +45,7 @@ namespace VehicleDeactivatorLibrary
                         Message myMessage = Message.fromJSON(jsonString);
                         RaiseReceiveEvent(myMessage);
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         Console.WriteLine("Couldn't parse JSON");
                     }

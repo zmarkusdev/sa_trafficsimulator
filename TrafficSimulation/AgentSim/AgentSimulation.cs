@@ -1,5 +1,6 @@
 ﻿using DataManager;
 using DataManager.MappingModels;
+using Datamodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,7 @@ namespace AgentSim
                 //Console.WriteLine("Calculating behaviour of agent #" + agent.Id);
 
                 // Check, if the agent has a defined route, otherwise calculate it.
-                calculateRouteIfNeccessary(curAgent);
+                calculateRouteIfNeccessary(curAgent);                
 
                 // Update the behaviour (acceleration etc.)
                 updateBehaviour(curAgent);
@@ -80,6 +81,35 @@ namespace AgentSim
             }
         }
 
+
+        private void overtake(SimAgent agent)
+        {
+            // Blocking agent before me? isActive == false
+
+            // Neighbour Edge vorhanden?
+
+            // Gegenverkehr auf dieser Edge?
+
+            // Dynamic Edge anlegen (links abbiegen, überholen, rechts abbiegen)
+
+            /*
+               |
+              /|
+             | |
+              \|
+               |
+             */
+
+            // X/Y Koordinate ausrechnen wo sich auto gerade befindet
+            // X/Y Steht in der Position: d.h. Vektorskalierung von Vektor zwischen Start und Endposition
+            // [X1-X2 Y1-Y2] / Edgelänge * CurrentRunLength (Aktuelle Position)
+            // Vektor der die Neighbour Edge schneidet und im 45° von der aktuellen Edge absteht
+            // Vektor mit Vehicle Length vom blockierenden Fahrzeug erstellen
+            // Vektor der zur ursprünglichen Edge zurückgeht im 45° Winkel 
+            // (Hier die Überholvorgangslänge in das Feld DestinationRunLength schreiben, über Pythagoras berechnen)
+
+            // Aktuelle Route des Agenten löschen
+        }
 
         /// <summary>
         /// Checks, if a route exists for the passed agent.
@@ -125,52 +155,110 @@ namespace AgentSim
         /// <param name="agent">Agent for whom you want to recalculate the behaviour</param>
         private void updateBehaviour(SimAgent agent)
         {
-            double SAFE_DISTANCE = 5; // meters (TODO: calculate dynamically according to the current velocity)
+            agent.CurrentAccelerationExact = agent.Acceleration; // Default: fully accelerate
+            const double SAFE_DISTANCE = 15.0; // pixel
+            const double MAX_SPEED = 500; // Max allowed speed
+            double targetVelocity = MAX_SPEED;
+            double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration) + agent.VehicleLength + SAFE_DISTANCE;
 
-            // Calculate braking distance for the current velocity + add the safe distance
-            double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration);
-            brakingDistance += SAFE_DISTANCE + agent.VehicleLength;
+            // ############# START: Check Static Rules #############
+            IReadOnlyList<Rule> staticRulesForCurrentEdge = dataManager_.GetStaticRulesForEdgeId(agent.EdgeId);
+            foreach(Rule rule in staticRulesForCurrentEdge)
+            {
+                switch(rule.RuleType)
+                {
+                    case RuleType.Geschwindigkeit:
+                        // Get maximum allowed speed
+                        targetVelocity = rule.MaxVelocity > MAX_SPEED ? MAX_SPEED : rule.MaxVelocity;
+                        break;
+                    case RuleType.Vorrang:
+                        // Get edge length
+                        Edge edge = dataManager_.GetEdgeForId(agent.EdgeId);
+                        int edgeLength = edge.CurveLength;
+                        int agentCurrentRunLength = agent.RunLength;
+                        int restLength = edgeLength - agentCurrentRunLength;
 
+                        //Console.WriteLine("# " + agent.Id + " restLength: " + restLength + ", brakingDistance: " + brakingDistance);
+                        if (restLength <= brakingDistance)
+                        {
+                            //targetVelocity = 0;
+                            //Console.WriteLine("# " + agent.Id + " STOPPING");
+                        }
+                        break;
+                    case RuleType.Stopp:
+                        Console.WriteLine("TODO: RuleType.Ampel");
+                        break;
+                    case RuleType.Ampel:
+                        Console.WriteLine("TODO: RuleType.Ampel");
+                        break;
+                }
+            }
+            // ############# END: Check Speed Limit #############
+
+
+            // ############# START: Static Rule Checking #############
+            // Get all edges we have to check for other vehicles
+            //int[]edgesToCheck = staticRule.CheckPositionIds.ToArray<int>();
+            //Console.WriteLine("edgesToCheck: " + edgesToCheck.Count());
+            //foreach(int checkEdgeId in edgesToCheck)
+            //{
+                // Check, if a vehicle is on the edge
+                //targetVelocity = 0;
+                //IReadOnlyList<SimAgent> enemyAgents = dataManager_.GetAgentsInRange(checkEdgeId, 0, 50);
+                //if
+            //}
+            // ############# END: Static Rule Checking #############
+
+
+            // ############# START: Safety Distance to other vehicles #############
             // Check, if there's an obstacle in the braking distance
             IReadOnlyList<SimAgent> agentsInBrakingDistance = dataManager_.GetAgentsInRange(agent.EdgeId, agent.RunLength, (int)brakingDistance);
-            if(agentsInBrakingDistance.Count > 0)
+            foreach(SimAgent otherAgent in agentsInBrakingDistance)
             {
-                double targetVelocity = agentsInBrakingDistance[0].CurrentVelocityExact;
-                foreach(SimAgent otherAgent in agentsInBrakingDistance)
+                // Ignore self
+                if(otherAgent.Id == agent.Id)
                 {
-                    // Get delta velocity
-                    double deltaV = agent.CurrentVelocityExact - otherAgent.CurrentVelocityExact;
-
-                    // If the other agent is faster than we are, we ignore him
-                    if(deltaV <= 0)
-                        continue;
-
-                    // Our target velocity is the one of the other agent
-                    if (otherAgent.CurrentVelocityExact < targetVelocity)
-                        targetVelocity = otherAgent.CurrentVelocityExact;
+                    continue;
                 }
 
-                // TODO: continue here
+                // Get delta velocity
+                double deltaV = agent.CurrentVelocityExact - otherAgent.CurrentVelocityExact;
 
-                // Brake! (TODO: No full brake; Brake only as much as needed;)
-                agent.CurrentAccelerationExact = -agent.Deceleration;
-                //Console.WriteLine("BRAKE");
-            } else
+                // If the other agent is faster than we are, we ignore him
+                if (deltaV <= 0)
+                {
+                    continue;
+                }
+
+                // Our target velocity is the one of the other agent
+                if (otherAgent.CurrentVelocityExact < targetVelocity)
+                {
+                    targetVelocity = otherAgent.CurrentVelocityExact;
+                }
+            }
+            // ############# END: Safety Distance to other vehicles #############
+
+            // Accelerate
+            //Console.WriteLine("# " + agent.Id + " targetVelocity: " + targetVelocity + "CurrentVelocityExact: " + agent.CurrentVelocityExact);
+            // Decelerate
+            if (targetVelocity <= agent.CurrentVelocity)
             {
-                // Go!
+                agent.CurrentAccelerationExact = -agent.Deceleration;
+            }
+            // Accelerate
+            else
+            {
                 agent.CurrentAccelerationExact = agent.Acceleration;
-                //Console.WriteLine("GO");
             }
 
-            //Console.WriteLine("Updated behaviour of agent #" + agent.Id);
         }
 
 
         /// <summary>
-        /// Returns the braking distance in meters.
+        /// Returns the braking distance in pixel.
         /// </summary>
-        /// <param name="velocity">The current velocity in m/s</param>
-        /// <param name="deceleration">Deceleration in m^2/s</param>
+        /// <param name="velocity">The current velocity in pixel/s</param>
+        /// <param name="deceleration">Deceleration in pixel^2/s</param>
         /// <returns></returns>
         private double getBrakingDistance(double velocity, double deceleration)
         {
