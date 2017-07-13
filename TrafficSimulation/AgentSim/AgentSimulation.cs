@@ -161,9 +161,10 @@ namespace AgentSim
             double targetVelocity = MAX_SPEED;
             double brakingDistance = getBrakingDistance(agent.CurrentVelocityExact, agent.Deceleration) + agent.VehicleLength + SAFE_DISTANCE;
 
-            // ############# START: Check Static Rules #############
-            IReadOnlyList<Rule> staticRulesForCurrentEdge = dataManager_.GetStaticRulesForEdgeId(agent.EdgeId);
-            foreach(Rule rule in staticRulesForCurrentEdge)
+            // ############# START: Check All Rules #############
+            Edge curEdge = dataManager_.GetEdgeForId(agent.EdgeId);
+            IReadOnlyList<Rule> allRulesForCurrentEdge = dataManager_.GetStaticRulesForEdgeId(curEdge.EndPositionId);
+            foreach(Rule rule in allRulesForCurrentEdge)
             {
                 switch(rule.RuleType)
                 {
@@ -190,6 +191,7 @@ namespace AgentSim
                         break;
                     case RuleType.Ampel:
                         Console.WriteLine("TODO: RuleType.Ampel");
+                        targetVelocity = rule.MaxVelocity;
                         break;
                 }
             }
