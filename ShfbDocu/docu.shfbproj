@@ -26,30 +26,31 @@
     <CleanIntermediates>True</CleanIntermediates>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\TrafficSimulation\AgentSim\bin\Release\AgentSim.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\AgentSim\bin\Release\AgentSim.dll" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.dll" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.exe" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.dll" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.dll" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.exe" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.dll" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.exe" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.exe" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.exe" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.dll" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.xml" />
-      <DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.dll" />
-    </DocumentationSources>
+<DocumentationSource sourceFile="..\TrafficSimulation\AgentSim\bin\Release\AgentSim.dll" />
+<DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.dll" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.exe" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.dll" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.dll" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.exe" />
+<DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.dll" />
+<DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.exe" />
+<DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.exe" />
+<DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.exe" />
+<DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.dll" />
+<DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.xml" />
+<DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.dll" />
+<DocumentationSource sourceFile="..\VehicleHandoverLibrary\VehicleHandoverLibrary\bin\Debug\VehicleHandoverLibrary.XML" />
+<DocumentationSource sourceFile="..\VehicleHandoverLibrary\VehicleHandoverLibrary\bin\Debug\VehicleHandoverLibrary.dll" /></DocumentationSources>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>

@@ -197,26 +197,26 @@
     <HelpKINode Title="App Class" Url="html/91eae498-e2dd-b07f-ee14-4c797a92fe80.htm" />
     <HelpKINode Title="about App class" Url="html/91eae498-e2dd-b07f-ee14-4c797a92fe80.htm" />
     <HelpKINode Title="about App class" Url="html/cb423261-e79e-dfc8-e2d8-b87774e254c7.htm" />
-    <HelpKINode Title="constructor" Url="html/eb7f3dfd-3682-3a0a-fd92-ea7f48171b25.htm" />
     <HelpKINode Title="constructor" Url="html/55a044ec-07ff-4a34-bbe0-3c0c59b8adef.htm" />
+    <HelpKINode Title="constructor" Url="html/eb7f3dfd-3682-3a0a-fd92-ea7f48171b25.htm" />
     <HelpKINode Title="events" Url="html/526a8b1e-498e-140d-a65a-a12009b4a290.htm" />
     <HelpKINode Title="events" Url="html/1b050cc7-ecf8-94f2-1a76-fe4d935ec58d.htm" />
     <HelpKINode Title="methods" Url="html/9e812bed-2eab-b11d-e490-4c7c73fe3754.htm" />
     <HelpKINode Title="methods" Url="html/41bb7766-6e28-c499-edb5-57b467eac2d9.htm" />
-    <HelpKINode Title="properties" Url="html/d548ff76-7fed-36c7-7918-909ad8367e96.htm" />
     <HelpKINode Title="properties" Url="html/1eb6c54c-8559-722b-6a33-21bd0dece298.htm" />
+    <HelpKINode Title="properties" Url="html/d548ff76-7fed-36c7-7918-909ad8367e96.htm" />
   </HelpKINode>
   <HelpKINode Title="App.App constructor">
     <HelpKINode Title="App Constructor " Url="html/eb7f3dfd-3682-3a0a-fd92-ea7f48171b25.htm" />
     <HelpKINode Title="App Constructor " Url="html/55a044ec-07ff-4a34-bbe0-3c0c59b8adef.htm" />
   </HelpKINode>
   <HelpKINode Title="App.InitializeComponent method">
-    <HelpKINode Title="App.InitializeComponent Method " Url="html/6eb58886-996d-4731-b105-832c8d2f0041.htm" />
     <HelpKINode Title="App.InitializeComponent Method " Url="html/3acd79b9-c8cc-85e0-baea-c52a4c44ced1.htm" />
+    <HelpKINode Title="App.InitializeComponent Method " Url="html/6eb58886-996d-4731-b105-832c8d2f0041.htm" />
   </HelpKINode>
   <HelpKINode Title="App.Main method">
-    <HelpKINode Title="App.Main Method " Url="html/bbb31382-b3dc-9347-354f-265475ea3da8.htm" />
     <HelpKINode Title="App.Main Method " Url="html/aeaa933a-4705-9679-31c2-c63ef5ff00b5.htm" />
+    <HelpKINode Title="App.Main Method " Url="html/bbb31382-b3dc-9347-354f-265475ea3da8.htm" />
   </HelpKINode>
   <HelpKINode Title="BackgroundImageBase64 property" Url="html/ae2894ac-23df-8b26-1079-3c47162db8b9.htm" />
   <HelpKINode Title="BackgroundMap property" Url="html/582b2d65-0cc3-e298-8976-52abd8af347e.htm" />
@@ -240,6 +240,7 @@
   </HelpKINode>
   <HelpKINode Title="BaseModel.BaseModel constructor" Url="html/4600065c-b3d4-6dc8-9ac6-75bc02413484.htm" />
   <HelpKINode Title="BaseModel.Id property" Url="html/21e16472-3244-ca38-97fa-5b47c8d1c025.htm" />
+  <HelpKINode Title="BIKE enumeration member" Url="html/3720f039-7c31-6ca8-2410-79d52a5f7e40.htm" />
   <HelpKINode Title="BulkUpdate method">
     <HelpKINode Title="AgentService.BulkUpdate Method " Url="html/9f5f5723-96f9-6fda-2448-7ce7ff0496ed.htm" />
     <HelpKINode Title="IAgentRepository.BulkUpdate Method " Url="html/12b9183b-fc6d-ae5a-4581-94311d32f7d3.htm" />
@@ -247,6 +248,7 @@
   </HelpKINode>
   <HelpKINode Title="CanExecute property" Url="html/56688c4a-2a35-3131-fd33-9a2d18c7b803.htm" />
   <HelpKINode Title="CanExecuteChanged event" Url="html/f2f07208-75d4-4a4a-842f-c7b27d293c44.htm" />
+  <HelpKINode Title="CAR enumeration member" Url="html/3720f039-7c31-6ca8-2410-79d52a5f7e40.htm" />
   <HelpKINode Title="Car01 enumeration member" Url="html/bf0282f5-9d38-764c-8195-d901c989b8d6.htm" />
   <HelpKINode Title="Car02 enumeration member" Url="html/bf0282f5-9d38-764c-8195-d901c989b8d6.htm" />
   <HelpKINode Title="ChangeNetView property" Url="html/7053294f-dea4-c51b-4cdb-58d77bde3f0c.htm" />
@@ -330,20 +332,20 @@
   <HelpKINode Title="Crossway class">
     <HelpKINode Title="Crossway Class" Url="html/bd723da4-3248-d5d5-7e19-6cbadee3d57f.htm" />
     <HelpKINode Title="Crossway Class" Url="html/c7cdb172-5b44-ef89-2092-e7568e37bf40.htm" />
-    <HelpKINode Title="about Crossway class" Url="html/c7cdb172-5b44-ef89-2092-e7568e37bf40.htm" />
     <HelpKINode Title="about Crossway class" Url="html/bd723da4-3248-d5d5-7e19-6cbadee3d57f.htm" />
+    <HelpKINode Title="about Crossway class" Url="html/c7cdb172-5b44-ef89-2092-e7568e37bf40.htm" />
     <HelpKINode Title="constructor" Url="html/2647707c-d4e7-3ce1-f819-8efe50f7e959.htm" />
     <HelpKINode Title="constructor" Url="html/24cede4f-9be4-e87e-8834-7108cc771cd7.htm" />
     <HelpKINode Title="events" Url="html/0317cebb-35aa-7ae8-b6bb-5e535afadeb0.htm" />
     <HelpKINode Title="fields" Url="html/8557149c-b8c7-7f5f-7f2b-0ac7fec0723f.htm" />
-    <HelpKINode Title="methods" Url="html/f1dee612-68cc-cf1f-5ec8-8b93f36237e9.htm" />
     <HelpKINode Title="methods" Url="html/3616778f-93d4-bc15-90bf-f40a70dd3be5.htm" />
+    <HelpKINode Title="methods" Url="html/f1dee612-68cc-cf1f-5ec8-8b93f36237e9.htm" />
     <HelpKINode Title="properties" Url="html/480fcd0e-4233-0869-5e49-8f7fbb33d794.htm" />
     <HelpKINode Title="properties" Url="html/fb0415ab-401c-289d-a5c0-6cfb52ca59da.htm" />
   </HelpKINode>
   <HelpKINode Title="Crossway.Crossway constructor">
-    <HelpKINode Title="Crossway Constructor " Url="html/2647707c-d4e7-3ce1-f819-8efe50f7e959.htm" />
     <HelpKINode Title="Crossway Constructor " Url="html/24cede4f-9be4-e87e-8834-7108cc771cd7.htm" />
+    <HelpKINode Title="Crossway Constructor " Url="html/2647707c-d4e7-3ce1-f819-8efe50f7e959.htm" />
   </HelpKINode>
   <HelpKINode Title="Crossway.CrosswayId property" Url="html/b5e03cff-c6de-2e59-81ea-115f5b72a3b2.htm" />
   <HelpKINode Title="Crossway.CrosswayLines property" Url="html/4e8e13a4-1ac2-7356-1f93-b9ac2706eb3c.htm" />
@@ -602,7 +604,10 @@
   <HelpKINode Title="Executed event" Url="html/5a223548-2349-6518-b0d1-211c71ed4411.htm" />
   <HelpKINode Title="Executing event" Url="html/02b108ba-9401-1192-0b05-7232315bde74.htm" />
   <HelpKINode Title="ExitCommand property" Url="html/ed986d99-0524-ecb8-6208-779e4e6122b3.htm" />
-  <HelpKINode Title="fromJSON method" Url="html/e5be0ddb-3259-b051-6833-54ed5f1d0aa9.htm" />
+  <HelpKINode Title="fromJSON method">
+    <HelpKINode Title="Message.fromJSON Method " Url="html/e5be0ddb-3259-b051-6833-54ed5f1d0aa9.htm" />
+    <HelpKINode Title="Vehicle.fromJSON Method " Url="html/d520ac04-02bf-03ea-96ba-409ac70c757b.htm" />
+  </HelpKINode>
   <HelpKINode Title="Geschwindigkeit enumeration member" Url="html/ea76bc38-31bf-418c-070a-8e94c8f30e06.htm" />
   <HelpKINode Title="GetAgent method">
     <HelpKINode Title="AgentService.GetAgent Method " Url="html/0bddc908-5961-68a8-7a13-9da318c7caf7.htm" />
@@ -711,9 +716,13 @@
     <HelpKINode Title="DataAccessCommon.getuniqueId Method " Url="html/362024e3-5689-832c-c1b0-a1b323c0891f.htm" />
   </HelpKINode>
   <HelpKINode Title="greenphase field" Url="html/f53c95dc-2f3e-f7b1-07bb-a430adf349f5.htm" />
+  <HelpKINode Title="GROUP01 enumeration member" Url="html/d04cc49a-3e60-fed3-1cf2-908ff8446f4c.htm" />
+  <HelpKINode Title="GROUP02 enumeration member" Url="html/d04cc49a-3e60-fed3-1cf2-908ff8446f4c.htm" />
+  <HelpKINode Title="GROUP03 enumeration member" Url="html/d04cc49a-3e60-fed3-1cf2-908ff8446f4c.htm" />
   <HelpKINode Title="Group1 enumeration member" Url="html/a1239cf0-4725-edd8-1998-6b9e71e4b1d0.htm" />
   <HelpKINode Title="Group2 enumeration member" Url="html/a1239cf0-4725-edd8-1998-6b9e71e4b1d0.htm" />
   <HelpKINode Title="Group3 enumeration member" Url="html/a1239cf0-4725-edd8-1998-6b9e71e4b1d0.htm" />
+  <HelpKINode Title="Groups enumeration" Url="html/d04cc49a-3e60-fed3-1cf2-908ff8446f4c.htm" />
   <HelpKINode Title="Height property" Url="html/3e416a96-ac01-42b2-de24-178fbcf8b690.htm" />
   <HelpKINode Title="hightime field" Url="html/4b3504cd-f0c8-030f-a3d6-d73fb2113c7c.htm" />
   <HelpKINode Title="HighTime property" Url="html/bee11940-7293-7b52-8360-8c4203d2cef8.htm" />
@@ -927,8 +936,8 @@
     <HelpKINode Title="App.InitializeComponent Method " Url="html/3acd79b9-c8cc-85e0-baea-c52a4c44ced1.htm" />
     <HelpKINode Title="CrosswayLineView.InitializeComponent Method " Url="html/ca8b711a-e361-dcc6-a493-49e510dbd85d.htm" />
     <HelpKINode Title="CrosswayView.InitializeComponent Method " Url="html/bd8cd29a-ae8e-9a2b-9572-5888b00db82c.htm" />
-    <HelpKINode Title="MainWindow.InitializeComponent Method " Url="html/45033fd8-7cb0-69ab-5f93-fb99dbf90dcb.htm" />
     <HelpKINode Title="MainWindow.InitializeComponent Method " Url="html/d21ab3fb-8df1-468f-80f0-ef248975b9fa.htm" />
+    <HelpKINode Title="MainWindow.InitializeComponent Method " Url="html/45033fd8-7cb0-69ab-5f93-fb99dbf90dcb.htm" />
   </HelpKINode>
   <HelpKINode Title="Instance field" Url="html/63496088-7526-4a96-8ddd-5e4754bdcc1c.htm" />
   <HelpKINode Title="IntegerValidationRule class">
@@ -1006,6 +1015,7 @@
   <HelpKINode Title="IWatchdog.Start method" Url="html/41eb6f0f-0544-cd81-9dd0-98edb9df843d.htm" />
   <HelpKINode Title="IWatchdog.Stop method" Url="html/62c4869e-f923-f9e2-03ea-542b474d676e.htm" />
   <HelpKINode Title="IWatchdog.Watch method" Url="html/105a515b-e11b-c85d-6f19-ef1870e7a375.htm" />
+  <HelpKINode Title="Length property" Url="html/791a354a-f7a1-1536-3e21-9c41d2769618.htm" />
   <HelpKINode Title="Lkw01 enumeration member" Url="html/bf0282f5-9d38-764c-8195-d901c989b8d6.htm" />
   <HelpKINode Title="Lkw02 enumeration member" Url="html/bf0282f5-9d38-764c-8195-d901c989b8d6.htm" />
   <HelpKINode Title="LoadfromFile method">
@@ -1015,44 +1025,44 @@
   <HelpKINode Title="Log namespace" Url="html/dee26f75-6e1d-a9d2-faf0-34f2c2e88dae.htm" />
   <HelpKINode Title="Log.ILog interface" Url="html/cd155c12-8090-5e55-8dce-d64b5314750c.htm" />
   <HelpKINode Title="Main method">
-    <HelpKINode Title="App.Main Method " Url="html/aeaa933a-4705-9679-31c2-c63ef5ff00b5.htm" />
     <HelpKINode Title="App.Main Method " Url="html/bbb31382-b3dc-9347-354f-265475ea3da8.htm" />
+    <HelpKINode Title="App.Main Method " Url="html/aeaa933a-4705-9679-31c2-c63ef5ff00b5.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindow class">
     <HelpKINode Title="MainWindow Class" Url="html/cf4f382e-cf8d-0973-3ca0-e3df78e98241.htm" />
     <HelpKINode Title="MainWindow Class" Url="html/a106b961-acb2-ad11-ef01-efdee7e06b64.htm" />
     <HelpKINode Title="about MainWindow class" Url="html/cf4f382e-cf8d-0973-3ca0-e3df78e98241.htm" />
     <HelpKINode Title="about MainWindow class" Url="html/a106b961-acb2-ad11-ef01-efdee7e06b64.htm" />
-    <HelpKINode Title="constructor" Url="html/b6571b53-78a9-616c-8e45-e4073a4992df.htm" />
     <HelpKINode Title="constructor" Url="html/a96894ff-2118-61dc-21d9-076576781f82.htm" />
-    <HelpKINode Title="events" Url="html/49af10d1-623e-552d-8569-7db8efeea88d.htm" />
+    <HelpKINode Title="constructor" Url="html/b6571b53-78a9-616c-8e45-e4073a4992df.htm" />
     <HelpKINode Title="events" Url="html/d81e7b0b-4adf-fa6e-5570-ed1b1c30b45b.htm" />
-    <HelpKINode Title="methods" Url="html/d12b56bc-6620-5468-6c4a-8e9e0e4af11c.htm" />
+    <HelpKINode Title="events" Url="html/49af10d1-623e-552d-8569-7db8efeea88d.htm" />
     <HelpKINode Title="methods" Url="html/ddd60f6e-b7ff-b918-ebb1-ff94ce2eab45.htm" />
-    <HelpKINode Title="properties" Url="html/eeb423ec-a436-3396-ce6d-9c04861e8e5e.htm" />
+    <HelpKINode Title="methods" Url="html/d12b56bc-6620-5468-6c4a-8e9e0e4af11c.htm" />
     <HelpKINode Title="properties" Url="html/84ec9520-ff3d-8736-2cbe-447ba7d581a2.htm" />
+    <HelpKINode Title="properties" Url="html/eeb423ec-a436-3396-ce6d-9c04861e8e5e.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindow.InitializeComponent method">
     <HelpKINode Title="MainWindow.InitializeComponent Method " Url="html/d21ab3fb-8df1-468f-80f0-ef248975b9fa.htm" />
     <HelpKINode Title="MainWindow.InitializeComponent Method " Url="html/45033fd8-7cb0-69ab-5f93-fb99dbf90dcb.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindow.MainWindow constructor">
-    <HelpKINode Title="MainWindow Constructor " Url="html/b6571b53-78a9-616c-8e45-e4073a4992df.htm" />
     <HelpKINode Title="MainWindow Constructor " Url="html/a96894ff-2118-61dc-21d9-076576781f82.htm" />
+    <HelpKINode Title="MainWindow Constructor " Url="html/b6571b53-78a9-616c-8e45-e4073a4992df.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindowModel class">
     <HelpKINode Title="MainWindowModel Class" Url="html/0ad81cde-afed-7d9b-27be-25a89dfc0643.htm" />
     <HelpKINode Title="MainWindowModel Class" Url="html/46dabf1f-19cf-f1c7-756b-965b23dfa6dc.htm" />
-    <HelpKINode Title="about MainWindowModel class" Url="html/0ad81cde-afed-7d9b-27be-25a89dfc0643.htm" />
     <HelpKINode Title="about MainWindowModel class" Url="html/46dabf1f-19cf-f1c7-756b-965b23dfa6dc.htm" />
+    <HelpKINode Title="about MainWindowModel class" Url="html/0ad81cde-afed-7d9b-27be-25a89dfc0643.htm" />
     <HelpKINode Title="constructor" Url="html/e5615830-e76e-8203-130f-a6ae23d6c905.htm" />
     <HelpKINode Title="constructor" Url="html/d8d61c1c-2a29-843d-f2b6-cd36308111f9.htm" />
-    <HelpKINode Title="events" Url="html/f8dd4686-23a6-3f60-d251-653df96af183.htm" />
     <HelpKINode Title="events" Url="html/f7a0b10b-4608-19f9-044b-7cb592b194e8.htm" />
-    <HelpKINode Title="methods" Url="html/e379d7d6-dbdb-036d-f4d5-0a36ea91752e.htm" />
+    <HelpKINode Title="events" Url="html/f8dd4686-23a6-3f60-d251-653df96af183.htm" />
     <HelpKINode Title="methods" Url="html/9af5df19-c252-7487-9186-c8a6f3c0f9af.htm" />
-    <HelpKINode Title="properties" Url="html/38b338eb-b45e-bf31-f581-81e14ef4e4dc.htm" />
+    <HelpKINode Title="methods" Url="html/e379d7d6-dbdb-036d-f4d5-0a36ea91752e.htm" />
     <HelpKINode Title="properties" Url="html/4dc80552-58c1-6e62-2b59-6faa45b96adc.htm" />
+    <HelpKINode Title="properties" Url="html/38b338eb-b45e-bf31-f581-81e14ef4e4dc.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindowModel.BackgroundMap property" Url="html/582b2d65-0cc3-e298-8976-52abd8af347e.htm" />
   <HelpKINode Title="MainWindowModel.BackgroundMapHeight property" Url="html/4908ce55-51be-56ef-b294-0881f5a37140.htm" />
@@ -1070,18 +1080,18 @@
     <HelpKINode Title="MainWindowModel.WindowHeight Property " Url="html/be0dc22f-d337-e52a-17a9-6878b8cdc1f9.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindowModel.WindowWidth property">
-    <HelpKINode Title="MainWindowModel.WindowWidth Property " Url="html/8dea1f60-ff6e-abd5-6dc9-9835c62a4292.htm" />
     <HelpKINode Title="MainWindowModel.WindowWidth Property " Url="html/c3b9c33f-0d84-9b55-565a-a8e3246d0a57.htm" />
+    <HelpKINode Title="MainWindowModel.WindowWidth Property " Url="html/8dea1f60-ff6e-abd5-6dc9-9835c62a4292.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindowViewModel class">
-    <HelpKINode Title="MainWindowViewModel Class" Url="html/dffbb7d6-49f3-0370-e2e1-e104e7728aed.htm" />
     <HelpKINode Title="MainWindowViewModel Class" Url="html/4d5a32fb-e61c-a55e-4def-8f2eb6962fb2.htm" />
-    <HelpKINode Title="about MainWindowViewModel class" Url="html/dffbb7d6-49f3-0370-e2e1-e104e7728aed.htm" />
+    <HelpKINode Title="MainWindowViewModel Class" Url="html/dffbb7d6-49f3-0370-e2e1-e104e7728aed.htm" />
     <HelpKINode Title="about MainWindowViewModel class" Url="html/4d5a32fb-e61c-a55e-4def-8f2eb6962fb2.htm" />
-    <HelpKINode Title="constructor" Url="html/7cf13336-cd54-08ba-536f-e351ca96f248.htm" />
+    <HelpKINode Title="about MainWindowViewModel class" Url="html/dffbb7d6-49f3-0370-e2e1-e104e7728aed.htm" />
     <HelpKINode Title="constructor" Url="html/a70d18d4-cc43-ec88-1ad3-3fadae7ec837.htm" />
-    <HelpKINode Title="methods" Url="html/a083405e-372e-4d21-4434-c7c371d9750f.htm" />
+    <HelpKINode Title="constructor" Url="html/7cf13336-cd54-08ba-536f-e351ca96f248.htm" />
     <HelpKINode Title="methods" Url="html/352ba6fe-4c51-8556-278e-b8859a303384.htm" />
+    <HelpKINode Title="methods" Url="html/a083405e-372e-4d21-4434-c7c371d9750f.htm" />
     <HelpKINode Title="properties" Url="html/ee8438eb-d973-28f4-ad5a-ca155051df0f.htm" />
     <HelpKINode Title="properties" Url="html/76302814-dfd5-a39d-3859-57712b4b9cfa.htm" />
   </HelpKINode>
@@ -1089,14 +1099,14 @@
   <HelpKINode Title="MainWindowViewModel.CrosswayRepository property" Url="html/c09e6c8b-4f2c-f4e0-a4fd-5bc8dde9269e.htm" />
   <HelpKINode Title="MainWindowViewModel.ExitCommand property" Url="html/ed986d99-0524-ecb8-6208-779e4e6122b3.htm" />
   <HelpKINode Title="MainWindowViewModel.MainWindowViewModel constructor">
-    <HelpKINode Title="MainWindowViewModel Constructor " Url="html/7cf13336-cd54-08ba-536f-e351ca96f248.htm" />
     <HelpKINode Title="MainWindowViewModel Constructor " Url="html/a70d18d4-cc43-ec88-1ad3-3fadae7ec837.htm" />
+    <HelpKINode Title="MainWindowViewModel Constructor " Url="html/7cf13336-cd54-08ba-536f-e351ca96f248.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindowViewModel.UserInterfaceAgents property" Url="html/b9671981-09c3-3296-745f-0b977ec892d0.htm" />
   <HelpKINode Title="MainWindowViewModel.UserInterfaceEdges property" Url="html/d1ca1a42-b822-94e0-68d3-a236b7232a43.htm" />
   <HelpKINode Title="MainWindowViewModel.UserInterfaceModel property">
-    <HelpKINode Title="MainWindowViewModel.UserInterfaceModel Property " Url="html/ea9090a0-2f35-9cfd-75d0-2d73fdf9ee0d.htm" />
     <HelpKINode Title="MainWindowViewModel.UserInterfaceModel Property " Url="html/c1f565ed-426c-9e2d-c02e-b6974448ce55.htm" />
+    <HelpKINode Title="MainWindowViewModel.UserInterfaceModel Property " Url="html/ea9090a0-2f35-9cfd-75d0-2d73fdf9ee0d.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindowViewModel.UserInterfacePositions property" Url="html/45aca5dc-3ecb-f32c-9fee-859c7aabfea9.htm" />
   <HelpKINode Title="MainWindowViewModel.UserInterfaceSigns property" Url="html/b25d03e4-06e7-6997-22b2-4420f8133487.htm" />
@@ -1123,10 +1133,13 @@
   <HelpKINode Title="MapRepositoryFactory.CreateRepository method" Url="html/72eb287f-bbbb-734d-2627-62ff9438c90f.htm" />
   <HelpKINode Title="MapRepositoryFactory.MapRepositoryFactory constructor" Url="html/e8065fe0-800c-b78d-9512-475121d94c02.htm" />
   <HelpKINode Title="MapSigns property" Url="html/d335fbb3-0261-daae-db29-98ab42625aaa.htm" />
+  <HelpKINode Title="MaxAcceleration property" Url="html/a04beb41-ff2a-7fcb-7ae7-42ff8205da2e.htm" />
+  <HelpKINode Title="MaxDeceleration property" Url="html/9675ba00-8796-5062-1f85-6b970778f9aa.htm" />
   <HelpKINode Title="MaxVelocity property">
     <HelpKINode Title="Agent.MaxVelocity Property " Url="html/12a5c876-30f1-b6a7-c03e-1bfbf2ddf12f.htm" />
     <HelpKINode Title="Position.MaxVelocity Property " Url="html/152917b5-20fc-a158-3faa-dcfdad7955d2.htm" />
     <HelpKINode Title="Rule.MaxVelocity Property " Url="html/63c3cccf-a9f3-8aea-30bc-e000c06147ba.htm" />
+    <HelpKINode Title="Vehicle.MaxVelocity Property " Url="html/8ed81ef5-2fa4-008f-ba20-b9453acbe694.htm" />
   </HelpKINode>
   <HelpKINode Title="Message class">
     <HelpKINode Title="Message Class" Url="html/25e7209c-88d9-a262-8a67-a8e4acb82ab1.htm" />
@@ -1275,8 +1288,12 @@
   <HelpKINode Title="PositionRepositoryFactory.PositionRepositoryFactory constructor" Url="html/2688a3b5-553f-306d-030e-cd97f6d7bcc5.htm" />
   <HelpKINode Title="PredecessorEdgeIds property" Url="html/9cdbc6ae-151a-46b9-865d-9fa8780498bb.htm" />
   <HelpKINode Title="PropertyChanged event" Url="html/d26a5522-e8f3-039b-41e0-5260dc2716f9.htm" />
+  <HelpKINode Title="PushVehicle method" Url="html/65fa0fda-4a8c-9708-5352-f9034525929e.htm" />
   <HelpKINode Title="RaisePropertyChanged method" Url="html/c94d4f78-3dfd-3bb4-42be-8d161806bf24.htm" />
-  <HelpKINode Title="RaiseReceiveEvent method" Url="html/c68da903-1751-727e-af02-b480fdd7f918.htm" />
+  <HelpKINode Title="RaiseReceiveEvent method">
+    <HelpKINode Title="MessageReceiver.RaiseReceiveEvent Method " Url="html/c68da903-1751-727e-af02-b480fdd7f918.htm" />
+    <HelpKINode Title="VehicleReceiver.RaiseReceiveEvent Method " Url="html/4be4eab9-3076-fa77-af57-e1c4ee00b518.htm" />
+  </HelpKINode>
   <HelpKINode Title="ReadAll method">
     <HelpKINode Title="AbstractDataAccess(T).ReadAll Method " Url="html/87914c42-e836-aa54-e167-bafec7050461.htm" />
     <HelpKINode Title="IDataAccess(T).ReadAll Method " Url="html/89001eb3-7404-3a43-3732-21971e3a00b2.htm" />
@@ -1285,7 +1302,10 @@
     <HelpKINode Title="AbstractDataAccess(T).ReadbyId Method " Url="html/3f50040b-91f9-18e6-473b-5923263eda66.htm" />
     <HelpKINode Title="IDataAccess(T).ReadbyId Method " Url="html/7d916021-4bd4-303e-84e7-ea72a280de3c.htm" />
   </HelpKINode>
-  <HelpKINode Title="ReceiveEventHandler event" Url="html/6b7ac2b6-039f-5654-ff8f-2ed5eb4885fb.htm" />
+  <HelpKINode Title="ReceiveEventHandler event">
+    <HelpKINode Title="MessageReceiver.ReceiveEventHandler Event" Url="html/6b7ac2b6-039f-5654-ff8f-2ed5eb4885fb.htm" />
+    <HelpKINode Title="VehicleReceiver.ReceiveEventHandler Event" Url="html/f8f5270d-82fa-e6bf-1288-832721cbf883.htm" />
+  </HelpKINode>
   <HelpKINode Title="RemoteAgentTransfer enumeration" Url="html/a1239cf0-4725-edd8-1998-6b9e71e4b1d0.htm" />
   <HelpKINode Title="Repositories namespace" Url="html/e0edd2e7-f86c-850a-35e3-670eb5412ec9.htm" />
   <HelpKINode Title="Repositories.AgentRepositoryFactory class" Url="html/1aa29180-4618-4c7f-7457-01f440150042.htm" />
@@ -1545,10 +1565,20 @@
   <HelpKINode Title="Technics.Model class" Url="html/d1bc9265-c35d-6d47-b537-7d1e1034dd46.htm" />
   <HelpKINode Title="ToAgent method" Url="html/0e253fc9-5610-6fca-41bb-b39961db0858.htm" />
   <HelpKINode Title="ToggleVehicle method" Url="html/9723dc7c-5022-ce8c-4a64-80eb2d2e6a6f.htm" />
-  <HelpKINode Title="toJSON method" Url="html/df164c6e-c8a0-c19a-9055-67625941a522.htm" />
-  <HelpKINode Title="ToString method" Url="html/5b80988f-7351-4cbc-6513-42d1421099dc.htm" />
+  <HelpKINode Title="toJSON method">
+    <HelpKINode Title="Message.toJSON Method " Url="html/df164c6e-c8a0-c19a-9055-67625941a522.htm" />
+    <HelpKINode Title="Vehicle.toJSON Method " Url="html/7ca47c5b-093d-4cdc-82d0-e211cff07898.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ToString method">
+    <HelpKINode Title="Message.ToString Method " Url="html/5b80988f-7351-4cbc-6513-42d1421099dc.htm" />
+    <HelpKINode Title="Vehicle.ToString Method " Url="html/16e2509c-ebc9-6ff5-4b9b-ee8f36af10a5.htm" />
+  </HelpKINode>
   <HelpKINode Title="Transfer property" Url="html/9f583439-08e9-d886-f771-2e9b64d54e87.htm" />
-  <HelpKINode Title="Type property" Url="html/3f2a8bdd-e746-de5b-0ad9-3092930120dd.htm" />
+  <HelpKINode Title="TRUCK enumeration member" Url="html/3720f039-7c31-6ca8-2410-79d52a5f7e40.htm" />
+  <HelpKINode Title="Type property">
+    <HelpKINode Title="Agent.Type Property " Url="html/3f2a8bdd-e746-de5b-0ad9-3092930120dd.htm" />
+    <HelpKINode Title="Vehicle.Type Property " Url="html/65f201aa-7315-d937-e251-515add54b5d3.htm" />
+  </HelpKINode>
   <HelpKINode Title="Update method">
     <HelpKINode Title="AbstractDataAccess(T).Update Method " Url="html/60948704-2a62-c4ae-786d-2e35d5a7561b.htm" />
     <HelpKINode Title="AgentService.Update Method " Url="html/fa278efc-7150-3c3b-4e7e-aabb46ff79f6.htm" />
@@ -1580,29 +1610,85 @@
     <HelpKINode Title="IntegerValidationRule.Validate Method " Url="html/4ffc94cb-953b-378c-52c0-406b94edee06.htm" />
     <HelpKINode Title="Model.Validate Method " Url="html/9270cb2f-a7d8-9913-c21c-cd2f6783d8c2.htm" />
   </HelpKINode>
+  <HelpKINode Title="Vehicle class">
+    <HelpKINode Title="Vehicle Class" Url="html/92e247a2-6d15-367b-1d02-1ce137bc661d.htm" />
+    <HelpKINode Title="about Vehicle class" Url="html/92e247a2-6d15-367b-1d02-1ce137bc661d.htm" />
+    <HelpKINode Title="constructor" Url="html/5c7eb241-b3e6-b228-bc47-56449c3306d7.htm" />
+    <HelpKINode Title="methods" Url="html/535188f0-8fab-bbee-0858-05285f4d133e.htm" />
+    <HelpKINode Title="properties" Url="html/e433a1de-b9d7-3e00-de52-53b36c601f9e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Vehicle property" Url="html/bbb339a8-4cca-6389-9fae-294c11fb18ef.htm" />
+  <HelpKINode Title="Vehicle.fromJSON method" Url="html/d520ac04-02bf-03ea-96ba-409ac70c757b.htm" />
+  <HelpKINode Title="Vehicle.Length property" Url="html/791a354a-f7a1-1536-3e21-9c41d2769618.htm" />
+  <HelpKINode Title="Vehicle.MaxAcceleration property" Url="html/a04beb41-ff2a-7fcb-7ae7-42ff8205da2e.htm" />
+  <HelpKINode Title="Vehicle.MaxDeceleration property" Url="html/9675ba00-8796-5062-1f85-6b970778f9aa.htm" />
+  <HelpKINode Title="Vehicle.MaxVelocity property" Url="html/8ed81ef5-2fa4-008f-ba20-b9453acbe694.htm" />
+  <HelpKINode Title="Vehicle.toJSON method" Url="html/7ca47c5b-093d-4cdc-82d0-e211cff07898.htm" />
+  <HelpKINode Title="Vehicle.ToString method" Url="html/16e2509c-ebc9-6ff5-4b9b-ee8f36af10a5.htm" />
+  <HelpKINode Title="Vehicle.Type property" Url="html/65f201aa-7315-d937-e251-515add54b5d3.htm" />
+  <HelpKINode Title="Vehicle.Vehicle constructor" Url="html/5c7eb241-b3e6-b228-bc47-56449c3306d7.htm" />
+  <HelpKINode Title="Vehicle.Width property" Url="html/eee181f0-fa03-d0bb-8b91-b42500c47c90.htm" />
   <HelpKINode Title="VehicleDeactivatorLibrary namespace" Url="html/c43cf6ee-03f1-a316-7662-e98af57d389b.htm" />
   <HelpKINode Title="VehicleDeactivatorLibrary.Message class" Url="html/25e7209c-88d9-a262-8a67-a8e4acb82ab1.htm" />
   <HelpKINode Title="VehicleDeactivatorLibrary.MessageEventArgs class" Url="html/44bfb4e0-7014-5975-01a2-03261c281b12.htm" />
   <HelpKINode Title="VehicleDeactivatorLibrary.MessageReceiver class" Url="html/7c893012-9061-c355-cced-5ad1ffafb4b2.htm" />
   <HelpKINode Title="VehicleDeactivatorLibrary.MessageSender class" Url="html/de90a024-3402-5936-6f84-4f17ca48a512.htm" />
+  <HelpKINode Title="VehicleEventArgs class">
+    <HelpKINode Title="VehicleEventArgs Class" Url="html/5530f6ba-6e5f-b4aa-76c4-c964e351a03e.htm" />
+    <HelpKINode Title="about VehicleEventArgs class" Url="html/5530f6ba-6e5f-b4aa-76c4-c964e351a03e.htm" />
+    <HelpKINode Title="constructor" Url="html/fccd0112-a441-a215-38e4-60f06866cfb6.htm" />
+    <HelpKINode Title="methods" Url="html/3d21f25e-1399-c75a-75af-1b1751613790.htm" />
+    <HelpKINode Title="properties" Url="html/a982d170-b5fe-d1c0-a060-1add68e3ca11.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VehicleEventArgs.Vehicle property" Url="html/bbb339a8-4cca-6389-9fae-294c11fb18ef.htm" />
+  <HelpKINode Title="VehicleEventArgs.VehicleEventArgs constructor" Url="html/fccd0112-a441-a215-38e4-60f06866cfb6.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary namespace" Url="html/f0903701-94e0-329d-3683-75e5a6c2f73f.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary.Groups enumeration" Url="html/d04cc49a-3e60-fed3-1cf2-908ff8446f4c.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary.Vehicle class" Url="html/92e247a2-6d15-367b-1d02-1ce137bc661d.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary.VehicleEventArgs class" Url="html/5530f6ba-6e5f-b4aa-76c4-c964e351a03e.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary.VehicleReceiver class" Url="html/4ae659e6-40da-2263-0395-ecdf7916c53b.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary.VehicleSender class" Url="html/5c354a38-e27a-fb0d-676f-6f1a7b064867.htm" />
+  <HelpKINode Title="VehicleHandoverLibrary.VehicleType enumeration" Url="html/3720f039-7c31-6ca8-2410-79d52a5f7e40.htm" />
   <HelpKINode Title="VehicleLength property">
     <HelpKINode Title="Agent.VehicleLength Property " Url="html/9dacef51-7799-23d2-6c1e-430f7a07d943.htm" />
     <HelpKINode Title="AgentSimConfiguration.VehicleLength Property " Url="html/406e5928-aed0-97fc-b602-b7c7890eba41.htm" />
   </HelpKINode>
   <HelpKINode Title="VehicleLengthSpread property" Url="html/0532b2be-7ef3-3559-43c6-926c8ec8b461.htm" />
+  <HelpKINode Title="VehicleReceiver class">
+    <HelpKINode Title="VehicleReceiver Class" Url="html/4ae659e6-40da-2263-0395-ecdf7916c53b.htm" />
+    <HelpKINode Title="about VehicleReceiver class" Url="html/4ae659e6-40da-2263-0395-ecdf7916c53b.htm" />
+    <HelpKINode Title="constructor" Url="html/692c198c-6adf-5584-d108-4fe8abe49c57.htm" />
+    <HelpKINode Title="events" Url="html/4ea6e9f5-3c0a-3875-e04d-3548d5a8dd48.htm" />
+    <HelpKINode Title="methods" Url="html/fe678d3f-bc47-7594-b740-e9a02dd39749.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VehicleReceiver.RaiseReceiveEvent method" Url="html/4be4eab9-3076-fa77-af57-e1c4ee00b518.htm" />
+  <HelpKINode Title="VehicleReceiver.ReceiveEventHandler event" Url="html/f8f5270d-82fa-e6bf-1288-832721cbf883.htm" />
+  <HelpKINode Title="VehicleReceiver.VehicleReceiver constructor" Url="html/692c198c-6adf-5584-d108-4fe8abe49c57.htm" />
+  <HelpKINode Title="VehicleSender class">
+    <HelpKINode Title="VehicleSender Class" Url="html/5c354a38-e27a-fb0d-676f-6f1a7b064867.htm" />
+    <HelpKINode Title="about VehicleSender class" Url="html/5c354a38-e27a-fb0d-676f-6f1a7b064867.htm" />
+    <HelpKINode Title="constructor" Url="html/e2cc4ebd-ef47-d72b-7cd3-a4e2697aed8a.htm" />
+    <HelpKINode Title="methods" Url="html/cd1e3ef1-0975-08f4-63a4-a8f16cb27429.htm" />
+  </HelpKINode>
+  <HelpKINode Title="VehicleSender.PushVehicle method" Url="html/65fa0fda-4a8c-9708-5352-f9034525929e.htm" />
+  <HelpKINode Title="VehicleSender.VehicleSender constructor" Url="html/e2cc4ebd-ef47-d72b-7cd3-a4e2697aed8a.htm" />
+  <HelpKINode Title="VehicleType enumeration" Url="html/3720f039-7c31-6ca8-2410-79d52a5f7e40.htm" />
   <HelpKINode Title="VehicleWidth property" Url="html/96b7d203-26bc-f41f-9d0a-b66fff3dc583.htm" />
   <HelpKINode Title="Velocity property" Url="html/8f8684f1-e996-e94f-024a-19d7cfb11698.htm" />
   <HelpKINode Title="VelocitySpread property" Url="html/0297aa06-4c7e-511e-7e1c-d7bd9ffcee54.htm" />
   <HelpKINode Title="Vorrang enumeration member" Url="html/ea76bc38-31bf-418c-070a-8e94c8f30e06.htm" />
   <HelpKINode Title="Watch method" Url="html/105a515b-e11b-c85d-6f19-ef1870e7a375.htm" />
-  <HelpKINode Title="Width property" Url="html/59e3eb51-14d9-c9c9-2a73-7f9c22bcb38c.htm" />
+  <HelpKINode Title="Width property">
+    <HelpKINode Title="Map.Width Property " Url="html/59e3eb51-14d9-c9c9-2a73-7f9c22bcb38c.htm" />
+    <HelpKINode Title="Vehicle.Width Property " Url="html/eee181f0-fa03-d0bb-8b91-b42500c47c90.htm" />
+  </HelpKINode>
   <HelpKINode Title="WindowHeight property">
-    <HelpKINode Title="MainWindowModel.WindowHeight Property " Url="html/be0dc22f-d337-e52a-17a9-6878b8cdc1f9.htm" />
     <HelpKINode Title="MainWindowModel.WindowHeight Property " Url="html/136cc238-35bd-f73c-2621-597321d4517c.htm" />
+    <HelpKINode Title="MainWindowModel.WindowHeight Property " Url="html/be0dc22f-d337-e52a-17a9-6878b8cdc1f9.htm" />
   </HelpKINode>
   <HelpKINode Title="WindowWidth property">
-    <HelpKINode Title="MainWindowModel.WindowWidth Property " Url="html/c3b9c33f-0d84-9b55-565a-a8e3246d0a57.htm" />
     <HelpKINode Title="MainWindowModel.WindowWidth Property " Url="html/8dea1f60-ff6e-abd5-6dc9-9835c62a4292.htm" />
+    <HelpKINode Title="MainWindowModel.WindowWidth Property " Url="html/c3b9c33f-0d84-9b55-565a-a8e3246d0a57.htm" />
   </HelpKINode>
   <HelpKINode Title="X property">
     <HelpKINode Title="Position.X Property " Url="html/4c059d8f-3518-1f8d-e48a-e8cc41fa0808.htm" />
