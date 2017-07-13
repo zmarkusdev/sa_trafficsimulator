@@ -1,6 +1,6 @@
-{"CheckPositionIds":[],"Id":1,"IsDynamicRule":false,"MaxVelocity":50,"PositionId":2,"RuleType":2,"X":180,"Y":280}
-{"CheckPositionIds":[],"Id":2,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":2,"RuleType":4,"X":180,"Y":150}
-{"CheckPositionIds":[],"Id":3,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":8,"RuleType":4,"X":630,"Y":500}
-{"CheckPositionIds":[],"Id":4,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":9,"RuleType":4,"X":720,"Y":415}
-{"CheckPositionIds":[],"Id":5,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":9,"RuleType":4,"X":635,"Y":410}
-{"CheckPositionIds":[],"Id":6,"IsDynamicRule":true,"MaxVelocity":50,"PositionId":9,"RuleType":4,"X":700,"Y":500}
+{"CheckPositionIds":[],"Id":1,"IsDynamicRule":false,"MaxVelocity":500,"PositionId":2,"RuleType":2,"X":180,"Y":280}
+{"CheckPositionIds":[],"Id":2,"IsDynamicRule":true,"MaxVelocity":500,"PositionId":2222,"RuleType":4,"X":180,"Y":150}
+{"CheckPositionIds":[],"Id":3,"IsDynamicRule":true,"MaxVelocity":500,"PositionId":21,"RuleType":4,"X":630,"Y":500}
+{"CheckPositionIds":[],"Id":4,"IsDynamicRule":true,"MaxVelocity":500,"PositionId":999,"RuleType":4,"X":720,"Y":415}
+{"CheckPositionIds":[],"Id":5,"IsDynamicRule":true,"MaxVelocity":500,"PositionId":999,"RuleType":4,"X":635,"Y":410}
+{"CheckPositionIds":[],"Id":6,"IsDynamicRule":true,"MaxVelocity":500,"PositionId":22,"RuleType":4,"X":700,"Y":500}

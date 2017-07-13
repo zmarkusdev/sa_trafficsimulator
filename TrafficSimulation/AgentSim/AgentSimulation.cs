@@ -1,6 +1,7 @@
 ﻿using DataManager;
 using DataManager.MappingModels;
 using Datamodel;
+using Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -163,7 +164,7 @@ namespace AgentSim
 
             // ############# START: Check All Rules #############
             Edge curEdge = dataManager_.GetEdgeForId(agent.EdgeId);
-            IReadOnlyList<Rule> allRulesForCurrentEdge = dataManager_.GetStaticRulesForEdgeId(curEdge.EndPositionId);
+            IReadOnlyList<Rule> allRulesForCurrentEdge = dataManager_.GetAllRulesForPositionId(curEdge.EndPositionId);
             foreach(Rule rule in allRulesForCurrentEdge)
             {
                 switch(rule.RuleType)
@@ -187,11 +188,11 @@ namespace AgentSim
                         }
                         break;
                     case RuleType.Stopp:
-                        Console.WriteLine("TODO: RuleType.Ampel");
+                        Console.WriteLine("TODO: RuleType.Stopp");
                         break;
                     case RuleType.Ampel:
                         Console.WriteLine("TODO: RuleType.Ampel");
-                        targetVelocity = rule.MaxVelocity;
+                        targetVelocity = RuleRepositoryFactory.CreateRepository().GetRule(rule.Id).MaxVelocity;
                         break;
                 }
             }
