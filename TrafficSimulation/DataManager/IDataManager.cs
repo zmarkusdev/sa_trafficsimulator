@@ -141,5 +141,12 @@ namespace DataManager
         /// <returns>Rules for the given edgeId</returns>
         IReadOnlyList<Rule> GetAllRulesForEdgeId(int edgeId);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="positionId"></param>
+        /// <returns></returns>
+        IReadOnlyList<Rule> GetAllRulesForPositionId(int positionId);
+
     }
 }

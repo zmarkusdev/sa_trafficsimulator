@@ -377,6 +377,13 @@ namespace DataManager
             return staticRules.Concat(dynamicRules).ToList();
         }
 
+        IReadOnlyList<Rule> IDataManager.GetAllRulesForPositionId(int positionId)
+        {
+            List<Rule> staticRules = staticRules_.FindAll(p => p.PositionId == positionId);
+            List<Rule> dynamicRules = dynamicRules_.FindAll(p => p.PositionId == positionId);
+            return staticRules.Concat(dynamicRules).ToList();
+        }
+
         /// <summary>
         /// Check edge and predecessor edges for possible agents in the given range, returns list
         /// of agents in the range.
