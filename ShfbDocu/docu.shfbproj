@@ -19,47 +19,76 @@
     <Language>en-US</Language>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
-    <HelpFileFormat>Markdown</HelpFileFormat>
+    <HelpFileFormat>Website</HelpFileFormat>
     <IndentHtml>False</IndentHtml>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\TrafficSimulation\AgentSim\bin\Release\AgentSim.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\AgentSim\bin\Release\AgentSim.dll" />
-<DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.dll" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.exe" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.dll" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.dll" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.exe" />
-<DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.dll" />
-<DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.exe" />
-<DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.exe" />
-<DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.exe" />
-<DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.dll" />
-<DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.xml" />
-<DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.dll" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\TrafficSimulation\AgentSim\bin\Release\AgentSim.dll" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\AgentSpawner\bin\Release\AgentSpawner.dll" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataAccessLayer\bin\Release\DataAccessLayer.exe" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataBridge\bin\Release\DataBridge.dll" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataManager\bin\Release\DataManager.dll" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\DataModel\bin\Release\DataModel.exe" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\PhysicEngine\bin\Release\PhysicEngine.dll" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\RuleEngineUserInterface\bin\Release\RuleEngineUserInterface.exe" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\SimulationUserInterface\bin\Release\SimulationUserInterface.exe" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\TrafficSimulation\bin\Release\TrafficSimulation.exe" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\VehicleDeactivatorLibrary\bin\Release\VehicleDeactivatorLibrary.dll" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.xml" />
+      <DocumentationSource sourceFile="..\TrafficSimulation\Log\bin\Release\Log.dll" />
+    </DocumentationSources>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>False</NamespaceGrouping>
     <SyntaxFilters>C#</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
-    <RootNamespaceContainer>False</RootNamespaceContainer>
-    <PresentationStyle>Markdown</PresentationStyle>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>Traffic Simulation</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="True" />
+      <NamespaceSummaryItem name="AgentSim" isDocumented="True" />
+      <NamespaceSummaryItem name="AgentSpawner" isDocumented="True" />
+      <NamespaceSummaryItem name="DataAccessLayer" isDocumented="True" />
+      <NamespaceSummaryItem name="DataAccessLayer.Communication" isDocumented="True" />
+      <NamespaceSummaryItem name="DataAccessLayer.Controller" isDocumented="True" />
+      <NamespaceSummaryItem name="DataBridge.Services" isDocumented="True" />
+      <NamespaceSummaryItem name="DataManager" isDocumented="True" />
+      <NamespaceSummaryItem name="DataManager.MappingModels" isDocumented="True" />
+      <NamespaceSummaryItem name="Datamodel" isDocumented="True" />
+      <NamespaceSummaryItem name="Log" isDocumented="True" />
+      <NamespaceSummaryItem name="PhysicEngine" isDocumented="True" />
+      <NamespaceSummaryItem name="Repositories" isDocumented="True" />
+      <NamespaceSummaryItem name="RuleEngineUserInterface" isDocumented="True" />
+      <NamespaceSummaryItem name="RuleEngineUserInterface.Models" isDocumented="True" />
+      <NamespaceSummaryItem name="RuleEngineUserInterface.Technics.ValidationRules" isDocumented="True" />
+      <NamespaceSummaryItem name="RuleEngineUserInterface.ViewModels" isDocumented="True" />
+      <NamespaceSummaryItem name="RuleEngineUserInterface.Views" isDocumented="True" />
+      <NamespaceSummaryItem name="Simulation" isDocumented="True" />
+      <NamespaceSummaryItem name="SimulationUserInterface" isDocumented="True" />
+      <NamespaceSummaryItem name="SimulationUserInterface.Models" isDocumented="True" />
+      <NamespaceSummaryItem name="SimulationUserInterface.Technics" isDocumented="True" />
+      <NamespaceSummaryItem name="SimulationUserInterface.ViewModels" isDocumented="True" />
+      <NamespaceSummaryItem name="Technics" isDocumented="True" />
+      <NamespaceSummaryItem name="VehicleDeactivatorLibrary" isDocumented="True" />
+    </NamespaceSummaries>
+    <RootNamespaceTitle>Traffic Simulation</RootNamespaceTitle>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
