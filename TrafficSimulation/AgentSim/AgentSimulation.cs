@@ -188,10 +188,10 @@ namespace AgentSim
                         }
                         break;
                     case RuleType.Stopp:
-                        Console.WriteLine("TODO: RuleType.Stopp");
+                        // Console.WriteLine("TODO: RuleType.Stopp");
                         break;
                     case RuleType.Ampel:
-                        Console.WriteLine("TODO: RuleType.Ampel");
+                        // Console.WriteLine("TODO: RuleType.Ampel");
 
                         if(agent.RunLength >= edge.CurveLength - brakingDistance)
                         {
