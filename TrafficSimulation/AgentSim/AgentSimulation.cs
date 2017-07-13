@@ -167,7 +167,8 @@ namespace AgentSim
             IReadOnlyList<Rule> allRulesForCurrentEdge = dataManager_.GetAllRulesForPositionId(curEdge.EndPositionId);
             foreach(Rule rule in allRulesForCurrentEdge)
             {
-                switch(rule.RuleType)
+                Edge edge = dataManager_.GetEdgeForId(agent.EdgeId);
+                switch (rule.RuleType)
                 {
                     case RuleType.Geschwindigkeit:
                         // Get maximum allowed speed
@@ -175,7 +176,6 @@ namespace AgentSim
                         break;
                     case RuleType.Vorrang:
                         // Get edge length
-                        Edge edge = dataManager_.GetEdgeForId(agent.EdgeId);
                         int edgeLength = edge.CurveLength;
                         int agentCurrentRunLength = agent.RunLength;
                         int restLength = edgeLength - agentCurrentRunLength;
@@ -192,7 +192,14 @@ namespace AgentSim
                         break;
                     case RuleType.Ampel:
                         Console.WriteLine("TODO: RuleType.Ampel");
-                        targetVelocity = RuleRepositoryFactory.CreateRepository().GetRule(rule.Id).MaxVelocity;
+
+                        if(agent.RunLength >= edge.CurveLength - brakingDistance)
+                        {
+                            targetVelocity = RuleRepositoryFactory.CreateRepository().GetRule(rule.Id).MaxVelocity;
+                        } else
+                        {
+                            targetVelocity = MAX_SPEED;
+                        }                        
                         break;
                 }
             }
